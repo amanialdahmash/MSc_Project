@@ -1,0 +1,78 @@
+choices,assumption weakening steps,assumption counter-strategy generation steps,guarantee weakening steps,guarantee counter-strategy generation steps,guarantee deadlock generations,solution status compared to ideal,id solution reached,assumptions modified,guarantees modified,rules and modifications,cleaned output (choices and results)
+[0],1,,,,,Success - Assumptions and Guarantees Captured..,0,1,,"not_all_buttons_on:
+G(b1=false | b2=false | b3=false);
+=>
+G(b1=false-> b1=false | b2=false | b3=false);","AW: 0
+0: ['antecedent_exception(not_all_buttons_on,V1,V2) :- holds_at(b1,V1,V2).', '', '']
+1: ['antecedent_exception(not_all_buttons_on,V1,V2) :- holds_at(b2,V1,V2).', '', '']
+2: ['antecedent_exception(not_all_buttons_on,V1,V2) :- holds_at(b3,V1,V2).', '', '']
+3: ['antecedent_exception(not_all_buttons_on,V1,V2) :- holds_at(f1,V1,V2).', '', '']
+4: ['antecedent_exception(not_all_buttons_on,V1,V2) :- not_holds_at(c,V1,V2).', '', '']
+5: ['antecedent_exception(not_all_buttons_on,V1,V2) :- not_holds_at(f2,V1,V2).', '', '']
+6: ['antecedent_exception(not_all_buttons_on,V1,V2) :- not_holds_at(f3,V1,V2).', '', '']"
+[1],1,,,,,Success - Assumptions and Guarantees Captured..,0,1,,"not_all_buttons_on:
+G(b1=false | b2=false | b3=false);
+=>
+G(b2=false-> b1=false | b2=false | b3=false);","AW: 1
+0: ['antecedent_exception(not_all_buttons_on,V1,V2) :- holds_at(b1,V1,V2).', '', '']
+1: ['antecedent_exception(not_all_buttons_on,V1,V2) :- holds_at(b2,V1,V2).', '', '']
+2: ['antecedent_exception(not_all_buttons_on,V1,V2) :- holds_at(b3,V1,V2).', '', '']
+3: ['antecedent_exception(not_all_buttons_on,V1,V2) :- holds_at(f1,V1,V2).', '', '']
+4: ['antecedent_exception(not_all_buttons_on,V1,V2) :- not_holds_at(c,V1,V2).', '', '']
+5: ['antecedent_exception(not_all_buttons_on,V1,V2) :- not_holds_at(f2,V1,V2).', '', '']
+6: ['antecedent_exception(not_all_buttons_on,V1,V2) :- not_holds_at(f3,V1,V2).', '', '']"
+[2],1,,,,,Success - Assumptions and Guarantees Captured..,0,1,,"not_all_buttons_on:
+G(b1=false | b2=false | b3=false);
+=>
+G(b3=false-> b1=false | b2=false | b3=false);","AW: 2
+0: ['antecedent_exception(not_all_buttons_on,V1,V2) :- holds_at(b1,V1,V2).', '', '']
+1: ['antecedent_exception(not_all_buttons_on,V1,V2) :- holds_at(b2,V1,V2).', '', '']
+2: ['antecedent_exception(not_all_buttons_on,V1,V2) :- holds_at(b3,V1,V2).', '', '']
+3: ['antecedent_exception(not_all_buttons_on,V1,V2) :- holds_at(f1,V1,V2).', '', '']
+4: ['antecedent_exception(not_all_buttons_on,V1,V2) :- not_holds_at(c,V1,V2).', '', '']
+5: ['antecedent_exception(not_all_buttons_on,V1,V2) :- not_holds_at(f2,V1,V2).', '', '']
+6: ['antecedent_exception(not_all_buttons_on,V1,V2) :- not_holds_at(f3,V1,V2).', '', '']"
+[3],1,,,,,Alternative Realizable Specification Produced..,1,1,,"not_all_buttons_on:
+G(b1=false | b2=false | b3=false);
+=>
+G(f1=false-> b1=false | b2=false | b3=false);","AW: 3
+0: ['antecedent_exception(not_all_buttons_on,V1,V2) :- holds_at(b1,V1,V2).', '', '']
+1: ['antecedent_exception(not_all_buttons_on,V1,V2) :- holds_at(b2,V1,V2).', '', '']
+2: ['antecedent_exception(not_all_buttons_on,V1,V2) :- holds_at(b3,V1,V2).', '', '']
+3: ['antecedent_exception(not_all_buttons_on,V1,V2) :- holds_at(f1,V1,V2).', '', '']
+4: ['antecedent_exception(not_all_buttons_on,V1,V2) :- not_holds_at(c,V1,V2).', '', '']
+5: ['antecedent_exception(not_all_buttons_on,V1,V2) :- not_holds_at(f2,V1,V2).', '', '']
+6: ['antecedent_exception(not_all_buttons_on,V1,V2) :- not_holds_at(f3,V1,V2).', '', '']"
+[4],1,,,,,Alternative Realizable Specification Produced..,2,1,,"not_all_buttons_on:
+G(b1=false | b2=false | b3=false);
+=>
+G(c=true-> b1=false | b2=false | b3=false);","AW: 4
+0: ['antecedent_exception(not_all_buttons_on,V1,V2) :- holds_at(b1,V1,V2).', '', '']
+1: ['antecedent_exception(not_all_buttons_on,V1,V2) :- holds_at(b2,V1,V2).', '', '']
+2: ['antecedent_exception(not_all_buttons_on,V1,V2) :- holds_at(b3,V1,V2).', '', '']
+3: ['antecedent_exception(not_all_buttons_on,V1,V2) :- holds_at(f1,V1,V2).', '', '']
+4: ['antecedent_exception(not_all_buttons_on,V1,V2) :- not_holds_at(c,V1,V2).', '', '']
+5: ['antecedent_exception(not_all_buttons_on,V1,V2) :- not_holds_at(f2,V1,V2).', '', '']
+6: ['antecedent_exception(not_all_buttons_on,V1,V2) :- not_holds_at(f3,V1,V2).', '', '']"
+[5],1,,,,,Alternative Realizable Specification Produced..,3,1,,"not_all_buttons_on:
+G(b1=false | b2=false | b3=false);
+=>
+G(f2=true-> b1=false | b2=false | b3=false);","AW: 5
+0: ['antecedent_exception(not_all_buttons_on,V1,V2) :- holds_at(b1,V1,V2).', '', '']
+1: ['antecedent_exception(not_all_buttons_on,V1,V2) :- holds_at(b2,V1,V2).', '', '']
+2: ['antecedent_exception(not_all_buttons_on,V1,V2) :- holds_at(b3,V1,V2).', '', '']
+3: ['antecedent_exception(not_all_buttons_on,V1,V2) :- holds_at(f1,V1,V2).', '', '']
+4: ['antecedent_exception(not_all_buttons_on,V1,V2) :- not_holds_at(c,V1,V2).', '', '']
+5: ['antecedent_exception(not_all_buttons_on,V1,V2) :- not_holds_at(f2,V1,V2).', '', '']
+6: ['antecedent_exception(not_all_buttons_on,V1,V2) :- not_holds_at(f3,V1,V2).', '', '']"
+[6],1,,,,,Alternative Realizable Specification Produced.. Moving to next run None,4,1,,"not_all_buttons_on:
+G(b1=false | b2=false | b3=false);
+=>
+G(f3=true-> b1=false | b2=false | b3=false);","AW: 6
+0: ['antecedent_exception(not_all_buttons_on,V1,V2) :- holds_at(b1,V1,V2).', '', '']
+1: ['antecedent_exception(not_all_buttons_on,V1,V2) :- holds_at(b2,V1,V2).', '', '']
+2: ['antecedent_exception(not_all_buttons_on,V1,V2) :- holds_at(b3,V1,V2).', '', '']
+3: ['antecedent_exception(not_all_buttons_on,V1,V2) :- holds_at(f1,V1,V2).', '', '']
+4: ['antecedent_exception(not_all_buttons_on,V1,V2) :- not_holds_at(c,V1,V2).', '', '']
+5: ['antecedent_exception(not_all_buttons_on,V1,V2) :- not_holds_at(f2,V1,V2).', '', '']
+6: ['antecedent_exception(not_all_buttons_on,V1,V2) :- not_holds_at(f3,V1,V2).', '', '']"

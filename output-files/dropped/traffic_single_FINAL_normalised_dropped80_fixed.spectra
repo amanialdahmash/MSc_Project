@@ -1,0 +1,17 @@
+module TrafficE2
+env boolean car;
+env boolean emergency;
+env boolean police;
+sys boolean green;
+guarantee -- green_often:
+	G(car=true->F(green=true));
+guarantee -- no_car_often:
+	GF(car=false);
+assumption -- not_police_often:
+	GF(police=false);
+assumption -- car_idle_when_red:
+	G(next(car=true) | emergency=true | car=false);
+assumption -- car_moves_when_green:
+	G(green=true-> next(car=false) );
+
+

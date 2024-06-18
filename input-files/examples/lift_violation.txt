@@ -1,0 +1,31 @@
+not_holds_at(b1,0,forced_violation).
+not_holds_at(b2,0,forced_violation).
+not_holds_at(b3,0,forced_violation).
+    holds_at(f1,0,forced_violation).
+not_holds_at(f2,0,forced_violation).
+not_holds_at(f3,0,forced_violation).
+not_holds_at(cancel,0,forced_violation).
+
+not_holds_at(b1,1,forced_violation).
+not_holds_at(b2,1,forced_violation).
+    holds_at(b3,1,forced_violation).
+    holds_at(f1,1,forced_violation).
+not_holds_at(cancel,1,forced_violation).
+not_holds_at(f2,1,forced_violation).
+not_holds_at(f3,1,forced_violation).
+
+not_holds_at(b1,2,forced_violation).
+not_holds_at(b2,2,forced_violation).
+    holds_at(b3,2,forced_violation).
+    holds_at(cancel,2,forced_violation).
+not_holds_at(f1,2,forced_violation).
+    holds_at(f2,2,forced_violation).
+not_holds_at(f3,2,forced_violation).
+
+not_holds_at(b1,3,forced_violation).
+not_holds_at(b2,3,forced_violation).
+not_holds_at(b3,3,forced_violation).
+not_holds_at(cancel,3,forced_violation).
+not_holds_at(f1,3,forced_violation).
+    holds_at(f2,3,forced_violation).
+not_holds_at(f3,3,forced_violation).

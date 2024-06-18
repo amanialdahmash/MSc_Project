@@ -1,0 +1,13 @@
+b'clingo version 5.4.0
+Reading from ...e_arbiter_v1/Simple_Arbiter_V1_BC11.lp
+Solving...
+Answer: 1
+violation_holds(assumption1,0,forced_violation_BC11)
+violation_holds(assumption1,1,forced_violation_BC11)
+SATISFIABLE
+
+Models       : 1
+Calls        : 1
+Time         : 0.047s (Solving: 0.00s 1st Model: 0.00s Unsat: 0.00s)
+CPU Time     : 0.026s
+'

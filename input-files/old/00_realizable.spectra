@@ -1,0 +1,41 @@
+// Specification 
+// check if realizable -- expected answer Yes 
+// but one of the assumptions neverBC is violated 
+// by TRACE: lowWater&!highWater&methane & X !lowWater&!highWater&methane & !lowWater&highWater&methane]
+
+module EffectivePump
+
+env boolean methane;
+env boolean lowWater;
+env boolean highWater;
+
+sys boolean pumpOn;
+
+
+asm waterLoweredWhenPumpon:
+	alw (PREV(pumpOn=true) & pumpOn=true) -> next(highWater=false);
+
+asm neverBC0:
+	alw highWater=true -> methane=false;
+
+asm neverBC1:
+	alw methane=true -> highWater=false;
+
+asm neverHighandLowWater0:
+	alw highWater=true -> lowWater=false;
+
+asm neverHighandLowWater1:
+	alw lowWater=true -> highWater=false;
+
+//cannot meet this guarantee, because pump has to go off next if lowWater
+gar waterEventuallyLowered:
+	alw PREV(PREV(highWater=true)) & PREV(highWater=true) -> (highWater=false);
+
+gar pumpOffWhenLowWater:
+	alw lowWater=true -> next(pumpOn=false);
+
+gar pumpOffWhenMethan:
+	alw methane=true -> next(pumpOn=false);
+
+
+

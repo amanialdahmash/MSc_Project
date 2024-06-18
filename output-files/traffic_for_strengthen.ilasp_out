@@ -1,0 +1,14 @@
+b'%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Pre-processing                          : 0.368s
+%% Hypothesis Space Generation             : 0.253s
+%% Conflict analysis                       : 0.177s
+%%   - Positive Examples                   : 0.177s
+%% Counterexample search                   : 0.024s
+%%   - CDOEs                               : 0.002s
+%%   - CDPIs                               : 0.021s
+%% Hypothesis Search                       : 0.017s
+%% Total                                   : 0.844s
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+antecedent_exception(carA_moves_when_green,V1,V2) :- not_holds_at(greenB,V1,V2).
+
+'

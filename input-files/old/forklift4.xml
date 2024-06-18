@@ -1,0 +1,137 @@
+<?xml version="1.0"?>
+<project>
+  <signals>
+    <signal>
+      <name>fardistance</name>
+      <kind>E</kind>
+      <type>boolean</type>
+      <auto_signal value="False"/>
+      <notes></notes>
+    </signal>
+    <signal>
+      <name>liftcommand</name>
+      <kind>S</kind>
+      <type>boolean</type>
+      <auto_signal value="False"/>
+      <notes></notes>
+    </signal>
+    <signal>
+      <name>dropcommand</name>
+      <kind>S</kind>
+      <type>boolean</type>
+      <auto_signal value="False"/>
+      <notes></notes>
+    </signal>
+    <signal>
+      <name>gocommand</name>
+      <kind>S</kind>
+      <type>boolean</type>
+      <auto_signal value="False"/>
+      <notes></notes>
+    </signal>
+    <signal>
+      <name>idlecommand</name>
+      <kind>S</kind>
+      <type>boolean</type>
+      <auto_signal value="False"/>
+      <notes></notes>
+    </signal>
+  </signals>
+  <requirements>
+    <requirement>
+      <name>idle_far</name>
+      <property>G (idlecommand &amp;&amp; fardistance -&gt; X(fardistance))</property>
+      <kind>A</kind>
+      <base_automaton_name></base_automaton_name>
+      <notes></notes>
+      <toggled>1</toggled>
+    </requirement>
+    <requirement>
+      <name>idle_close</name>
+      <property>G (idlecommand &amp;&amp; !fardistance -&gt; X(!fardistance))</property>
+      <kind>A</kind>
+      <base_automaton_name></base_automaton_name>
+      <notes></notes>
+      <toggled>1</toggled>
+    </requirement>
+    <requirement>
+      <name>go_close</name>
+      <property>G (gocommand -&gt; X (!fardistance))</property>
+      <kind>A</kind>
+      <base_automaton_name></base_automaton_name>
+      <notes></notes>
+      <toggled>1</toggled>
+    </requirement>
+    <requirement>
+      <name>silly_close_nolift</name>
+      <property>G (fardistance &amp;&amp; !liftcommand  -&gt;
+        X(!fardistance))</property>
+      <kind>A</kind>
+      <base_automaton_name></base_automaton_name>
+      <notes></notes>
+      <toggled>1</toggled>
+    </requirement>
+    <requirement>
+      <name>close_withlift</name>
+      <property>G(!fardistance &amp;&amp; liftcommand -&gt; X(fardistance) )</property>
+      <kind>A</kind>
+      <base_automaton_name></base_automaton_name>
+      <notes></notes>
+      <toggled>1</toggled>
+    </requirement>
+    <requirement>
+      <name>s_init</name>
+      <property>liftcommand</property>
+      <kind>G</kind>
+      <base_automaton_name></base_automaton_name>
+      <notes></notes>
+      <toggled>1</toggled>
+    </requirement>
+    <requirement>
+      <name>s_11</name>
+      <property>G (fardistance -&gt; X (!dropcommand))</property>
+      <kind>G</kind>
+      <base_automaton_name></base_automaton_name>
+      <notes></notes>
+      <toggled>1</toggled>
+    </requirement>
+    <requirement>
+      <name>s_12</name>
+      <property>G (!fardistance -&gt; X (!gocommand))</property>
+      <kind>G</kind>
+      <base_automaton_name></base_automaton_name>
+      <notes></notes>
+      <toggled>1</toggled>
+    </requirement>
+  </requirements>
+  <property_assurance>
+    <possibilities/>
+    <assertions/>
+  </property_assurance>
+  <property_simulation/>
+  <categories>
+    <category>
+      <name>New</name>
+      <editable>no</editable>
+      <notes>This is the category of those traces that have been just created</notes>
+    </category>
+    <category>
+      <name>Default</name>
+      <editable>no</editable>
+      <notes>This is the default category for traces</notes>
+    </category>
+    <category>
+      <name>Out of Date</name>
+      <editable>no</editable>
+      <notes>Contains the traces whose dependencies might be no longer consistent</notes>
+    </category>
+    <category>
+      <name>Trash</name>
+      <editable>no</editable>
+      <notes>Contains the traces that have been deleted</notes>
+    </category>
+  </categories>
+  <automata/>
+  <active_view>ga</active_view>
+  <notes></notes>
+</project>

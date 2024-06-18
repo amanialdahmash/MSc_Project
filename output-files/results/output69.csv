@@ -1,0 +1,4 @@
+,file,run,types,prevs,n_dropped,outcome,total_time,max_time,median_time,n_runs
+0,../Translators/input-files/examples/lift_FINAL.spectra,0,"['A,G']",False,0,SimEnv.Realizable,908.0968523025513,173.59075832366943,88.27920985221863,10
+1,../Translators/input-files/examples/lift_FINAL.spectra,1,"['A,G']",False,0,SimEnv.Realizable,916.7119071483612,115.65022039413452,107.56080067157745,10
+2,../Translators/input-files/examples/lift_FINAL.spectra,2,"['A,G']",False,0,SimEnv.Realizable,962.6040940284729,153.98807907104492,110.03091883659363,10

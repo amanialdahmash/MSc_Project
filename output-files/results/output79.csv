@@ -1,0 +1,14 @@
+,file,run,types,prevs,n_dropped,outcome,total_time,max_time,median_time,n_runs
+0,../Translators/input-files/case-studies/modified-specs/minepump/genuine/minepump_fixed1.spectra,0,['A'],False,1,SimEnv.Success,3.028748035430908,3.028748035430908,3.028748035430908,1
+1,../Translators/input-files/case-studies/modified-specs/minepump/genuine/minepump_fixed1.spectra,0,"['A,G']",False,1,SimEnv.Realizable,34.94004702568054,3.903208017349243,3.4238390922546387,10
+2,../Translators/input-files/case-studies/modified-specs/minepump/genuine/minepump_fixed1.spectra,1,"['A,G']",False,2,SimEnv.Realizable,39.09852123260498,4.2005531787872314,3.9016244411468506,10
+3,../Translators/input-files/examples/Traffic/traffic_single_FINAL.spectra,0,['A'],False,2,SimEnv.Realizable,50.92005968093872,5.5391271114349365,4.916409254074097,10
+4,../Translators/input-files/examples/Traffic/traffic_single_FINAL.spectra,1,['A'],False,1,SimEnv.Success,4.895247459411621,4.895247459411621,4.895247459411621,1
+5,../Translators/input-files/examples/Traffic/traffic_single_FINAL.spectra,2,['A'],False,1,SimEnv.Success,10.71362590789795,10.71362590789795,10.71362590789795,1
+6,../Translators/input-files/examples/Traffic/traffic_single_FINAL.spectra,3,['A'],False,2,SimEnv.Realizable,85.18690466880798,11.218133211135864,10.421676516532898,10
+7,../Translators/input-files/examples/Traffic/traffic_single_FINAL.spectra,4,['A'],False,1,SimEnv.Success,5.337006330490112,5.337006330490112,5.337006330490112,1
+8,../Translators/input-files/examples/Traffic/traffic_single_FINAL.spectra,5,['A'],False,1,SimEnv.Success,9.98848032951355,9.98848032951355,9.98848032951355,1
+9,../Translators/input-files/examples/Traffic/traffic_single_FINAL.spectra,6,['A'],False,2,SimEnv.Realizable,51.07272410392761,5.301552772521973,5.189404129981995,10
+10,../Translators/input-files/examples/Traffic/traffic_single_FINAL.spectra,7,['A'],False,2,SimEnv.Realizable,73.53178000450134,10.752413034439087,5.805743932723999,10
+11,../Translators/input-files/examples/Traffic/traffic_single_FINAL.spectra,8,['A'],False,2,SimEnv.Realizable,51.19979524612427,5.465442895889282,5.113979339599609,10
+12,../Translators/input-files/examples/Traffic/traffic_single_FINAL.spectra,9,['A'],False,2,SimEnv.Realizable,53.99805521965027,6.342130184173584,5.390560507774353,10

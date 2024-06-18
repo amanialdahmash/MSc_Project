@@ -1,0 +1,52 @@
+b'clingo version 5.4.0
+Reading from ...ed/lift_FINAL_normalised_dropped114.lp
+Solving...
+Answer: 1
+assumption(initial_assumptions)
+assumption(button1_off_at_floor1)
+assumption(button2_off_at_floor2)
+assumption(button3_off_at_floor3)
+assumption(button1_stays_on)
+assumption(button2_stays_on)
+assumption(button3_stays_on)
+violation_holds(initial_guarantees,0,trace_name_0)
+violation_holds(one_floor,0,trace_name_0)
+violation_holds(move_one_max3,0,trace_name_0)
+violation_holds(one_floor,1,trace_name_0)
+violation_holds(move_one_max3,1,trace_name_0)
+violation_holds(one_floor,2,trace_name_0)
+violation_holds(initial_guarantees,0,trace_name_1)
+violation_holds(move_one_max2,0,trace_name_1)
+violation_holds(move_one_max3,0,trace_name_1)
+violation_holds(one_floor,1,trace_name_1)
+violation_holds(move_one_max3,1,trace_name_1)
+violation_holds(one_floor,2,trace_name_1)
+violation_holds(initial_guarantees,0,trace_name_2)
+violation_holds(one_floor,0,trace_name_2)
+violation_holds(move_one_max3,0,trace_name_2)
+violation_holds(one_floor,1,trace_name_2)
+violation_holds(move_one_max3,1,trace_name_2)
+violation_holds(one_floor,2,trace_name_2)
+violation_holds(initial_guarantees,0,trace_name_3)
+violation_holds(move_one_max2,0,trace_name_3)
+violation_holds(move_one_max3,0,trace_name_3)
+violation_holds(one_floor,1,trace_name_3)
+violation_holds(move_one_max3,1,trace_name_3)
+violation_holds(one_floor,2,trace_name_3)
+violation_holds(one_floor_only1,0,trace_name_4)
+violation_holds(move_one_max1,0,trace_name_4)
+violation_holds(move_one_max3,0,trace_name_4)
+violation_holds(one_floor,1,trace_name_4)
+violation_holds(move_one_max3,1,trace_name_4)
+violation_holds(one_floor,2,trace_name_4)
+violation_holds(one_floor_only1,0,counter_strat_0)
+violation_holds(move_one_max1,0,counter_strat_0)
+violation_holds(move_one_max3,0,counter_strat_0)
+violation_holds(one_floor,1,counter_strat_0)
+SATISFIABLE
+
+Models       : 1
+Calls        : 1
+Time         : 0.014s (Solving: 0.00s 1st Model: 0.00s Unsat: 0.00s)
+CPU Time     : 0.008s
+'

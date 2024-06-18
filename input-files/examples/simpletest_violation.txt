@@ -1,0 +1,16 @@
+Trace Type: Counterexample
+  -> State: 1.1 <-
+    input2 = TRUE
+    input1 = FALSE
+    output2 = FALSE
+    output1 = FALSE
+  -> State: 1.2 <-
+    input2 = TRUE
+    input1 = TRUE
+    output2 = FALSE
+    output1 = TRUE
+  -> State: 1.3 <-
+    input2 = FALSE
+    input1 = FALSE
+  -- Loop starts here
+End

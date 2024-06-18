@@ -1,0 +1,79 @@
+%input(carA).
+%input(carB).
+%input(emergency).
+%output(greenA).
+%output(greenB).
+
+%atom(A) :- input(A).
+%atom(A) :- output(A).
+
+timepoint(0..2).
+trace(example_trace).
+last(example_trace,2).0
+
+
+%alwEv definition
+%1 {holds(A,Tfut,S)} :- alwEv(A), timepoint(Tnow), timepoint(Tfut), Tfut>=Tnow, trace(S), not last(Tnow,S).
+%1 {not_holds(A,Tfut,S)} :- alwEv_not(A), timepoint(Tnow), timepoint(Tfut), Tfut>=Tnow, trace(S), not last(Tnow,S).
+1 {holds(A,T,S) : timepoint(T)} :- alwEv(A), trace(S).
+1 {not_holds(A,T,S) : timepoint(T)} :- alwEv_not(A), trace(S).
+
+:- holds(A,T,S), not_holds(A,T,S), timepoint(T), trace(S).
+
+%carA becomes true at least once:
+alwEv(carA).
+
+%carB becomes true at least once:
+alwEv(carB).
+
+% there is not always an emergency:
+alwEv_not(emergency).
+
+alwEv(greenA).
+alwEv(greenB).
+
+
+% lights are never green at the same time:
+%:- holds(greenA,T,S), holds(greenB,T,S), timepoint(T), trace(S).
+%OR:
+
+holds(nested_pred0,T,S) :- holds(greenA,T,S), holds(greenB,T,S), timepoint(T), trace(S).
+:- holds(nested_pred0,T,S), timepoint(T), trace(S).
+
+% emergency means both lights are red:
+not_holds(greenA,T,S), not_holds(greenB,T,S) :- holds(emergency,T,S), timepoint(T), trace(S).
+
+% carA doesn't run red lights:
+holds(carA,Tnext,S) :- holds(carA,T,S), not_holds(greenA,T,S), 
+			timepoint(T), timepoint(Tnext), 
+			trace(S), Tnext = T+1.
+
+% carA doesn't run red lights:
+holds(carB,Tnext,S) :- holds(carB,T,S), not_holds(greenB,T,S), 
+			timepoint(T), timepoint(Tnext), 
+			trace(S), Tnext = T+1.
+
+% carA always goes on green light:
+not_holds(carA,Tnext,S) :- holds(carA,T,S), holds(greenA,T,S), 
+			timepoint(T), timepoint(Tnext), 
+			trace(S), Tnext = T+1.
+
+% carB always goes on green light:
+not_holds(carB,Tnext,S) :- holds(carB,T,S), holds(greenB,T,S), 
+			timepoint(T), timepoint(Tnext), 
+			trace(S), Tnext = T+1.
+
+
+#show holds/3.
+#show not_holds/3.
+
+
+
+
+
+
+
+
+
+
+

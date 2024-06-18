@@ -1,0 +1,194 @@
+///////////////////////////
+// V1.Delay
+///////////////////////////
+
+VARENV
+  cargo : { CLEAR, BLOCKED };
+  sense : { CLEAR, BLOCKED };
+  station : boolean;
+  emgOff : boolean;
+
+VAR
+  mLeft : { FWD, STOP, BWD };
+  mRight : { FWD, STOP, BWD };
+  lift : { LIFT, DROP, NIL };
+
+VAR
+  spec_loaded : boolean;
+
+DEFINE
+  backing := mLeft = BWD & mRight = BWD;
+  stopping := mLeft = STOP & mRight = STOP;
+  turning := mLeft = BWD & mRight = FWD | mLeft = FWD & mRight = BWD;
+  forwarding := mLeft = FWD & mRight = FWD;
+  
+  dropping := lift = DROP;
+  lifting := lift = LIFT;
+  
+  lowObstacle := (cargo = BLOCKED & station = 0);
+
+// Environment Specification
+/////////////////////////////////////
+
+// A1 find cargo if going forward to next station
+ASSUMPTION
+  G ((forwarding & !spec_loaded) -> F ((station & cargo = BLOCKED) | backing | stopping));
+ASSUMPTION
+  G ((forwarding & spec_loaded) -> F ((station & cargo = CLEAR) | backing | stopping));  
+
+// A2 leave station eventually
+ASSUMPTION
+  G ((forwarding) -> F (!station | stopping));
+ASSUMPTION
+  G ((backing) -> F (!station | stopping));
+  
+// FIXME: the four specs above should also have turning 
+// because we might drive in circles
+// BUT this gives a strategy to the environment to present obstacles 
+// release itself from having to reach a station 
+  
+// unblock path if backing or turning
+ASSUMPTION
+  G ((backing | turning) -> F ((sense = CLEAR & cargo = CLEAR) | forwarding | stopping));
+
+// station does not change when stopping
+ASSUMPTION
+  G (stopping -> station = next(station));
+
+
+// System Specification
+///////////////////////////////////////
+
+// initial state
+GUARANTEE
+  stopping & lift = NIL & !spec_loaded;
+
+// local var spec_loaded 
+//////////////////////////////////////
+GUARANTEE
+  G (lifting -> next (spec_loaded));
+GUARANTEE
+  G (dropping -> ! next (spec_loaded));
+GUARANTEE
+  G (lift = NIL -> next (spec_loaded) = spec_loaded);
+
+// G3 restricting lifting action based on var spec_loaded
+GUARANTEE
+  G (spec_loaded -> !lifting);
+
+GUARANTEE
+  G (!spec_loaded -> !dropping);
+////////////////////////////////////////
+
+// G1 dont run into obstacles
+GUARANTEE
+  G ((sense = BLOCKED | lowObstacle) -> ! forwarding);
+// don't mess with low obstacles
+GUARANTEE
+  G (cargo=BLOCKED -> !turning);
+
+// don't lift if no cargo found
+GUARANTEE
+  G (cargo = CLEAR -> !lifting);
+  
+// don't move while lifting or dropping
+GUARANTEE
+  G (lift != NIL -> stopping);
+
+GUARANTEE // do nothing if stopped
+  G (emgOff -> (stopping & lift=NIL)); 
+
+// only turn, go, stop or back
+GUARANTEE
+  G (forwarding | turning | stopping | backing);
+
+// liveness of system
+///////////////////////////////////////
+
+//G4
+GUARANTEE
+  G F ((lift = DROP) | emgOff | lowObstacle);
+  
+  
+///////////////////////
+//  Patterns
+
+--  GUARANTEE -- have to leave station to deliver 
+--  (!atStation) occurs between 
+--               (lift=LIFT) and (lift=DROP);  --P09    
+
+VAR -- auxiliary variables States of DBW
+  new spec_stateGP1 : { S0, S1, S2};
+
+GUARANTEE -- initial assignments: initial spec_stateGP1
+  spec_stateGP1=S0;
+
+GUARANTEE -- safety this and next spec_stateGP1
+  G ((spec_stateGP1=S0 & ((!(lift=LIFT) & !(!station)) | ((lift=LIFT) & (lift=DROP)) | (!(lift=DROP) & (!station)) | (!(lift=LIFT) & (lift=DROP) & (!station))) & next(spec_stateGP1=S0)) |
+  (spec_stateGP1=S0 & ((lift=LIFT) & !(lift=DROP) & !(!station)) & next(spec_stateGP1=S1)) |
+  (spec_stateGP1=S1 & (!(lift=DROP) & (!station)) & next(spec_stateGP1=S0)) |
+  (spec_stateGP1=S1 & (!(lift=DROP) & !(!station)) & next(spec_stateGP1=S1)) |
+  (spec_stateGP1=S1 & ((lift=DROP)) & next(spec_stateGP1=S2)) |
+  (spec_stateGP1=S2 & TRUE & next(spec_stateGP1=S2)));
+
+GUARANTEE -- equivalence of satisfaction
+  (G F (spec_stateGP1=S0 | spec_stateGP1=S1));
+
+
+
+--  ASSUMPTION -- at most blocked twice
+--  After (!atStation) have at most two 
+--    (lowObstacle) until (atStation);      --P15
+
+VAR -- auxiliary variables States of DBW
+  new spec_stateAP1 : { S0, S1, S2, S3, S4, S5, S6};
+
+GUARANTEE -- initial assignments: initial spec_stateAP1
+  spec_stateAP1=S0;
+
+GUARANTEE -- safety this and next spec_stateAP1
+  G ((spec_stateAP1=S0 & ((!(!station) & !station) | (station)) & next(spec_stateAP1=S0)) |
+  (spec_stateAP1=S0 & ((!station) & !lowObstacle & !station) & next(spec_stateAP1=S1)) |
+  (spec_stateAP1=S0 & ((!station) & lowObstacle & !station) & next(spec_stateAP1=S4)) |
+  (spec_stateAP1=S1 & (station) & next(spec_stateAP1=S0)) |
+  (spec_stateAP1=S1 & (!lowObstacle & !station) & next(spec_stateAP1=S1)) |
+  (spec_stateAP1=S1 & (lowObstacle & !station) & next(spec_stateAP1=S4)) |
+  (spec_stateAP1=S2 & TRUE & next(spec_stateAP1=S2)) |
+  (spec_stateAP1=S3 & (station) & next(spec_stateAP1=S0)) |
+  (spec_stateAP1=S3 & (lowObstacle & !station) & next(spec_stateAP1=S2)) |
+  (spec_stateAP1=S3 & (!lowObstacle & !station) & next(spec_stateAP1=S3)) |
+  (spec_stateAP1=S4 & (station) & next(spec_stateAP1=S0)) |
+  (spec_stateAP1=S4 & (lowObstacle & !station) & next(spec_stateAP1=S4)) |
+  (spec_stateAP1=S4 & (!lowObstacle & !station) & next(spec_stateAP1=S5)) |
+  (spec_stateAP1=S5 & (station) & next(spec_stateAP1=S0)) |
+  (spec_stateAP1=S5 & (!lowObstacle & !station) & next(spec_stateAP1=S5)) |
+  (spec_stateAP1=S5 & (lowObstacle & !station) & next(spec_stateAP1=S6)) |
+  (spec_stateAP1=S6 & (station) & next(spec_stateAP1=S0)) |
+  (spec_stateAP1=S6 & (!lowObstacle & !station) & next(spec_stateAP1=S3)) |
+  (spec_stateAP1=S6 & (lowObstacle & !station) & next(spec_stateAP1=S6)));
+
+ASSUMPTION -- equivalence of satisfaction
+  (G F (spec_stateAP1=S0 | spec_stateAP1=S1 | spec_stateAP1=S3 | spec_stateAP1=S4 | spec_stateAP1=S5 | spec_stateAP1=S6));
+  
+-- GUARANTEE  
+-- Globally (lift!=DROP S lift=LIFT) after
+--  (!atStation) until (atStation) --P20  
+
+VAR -- auxiliary variables States of DBW
+  new spec_stateGP2 : { S0, S1, S2};
+
+GUARANTEE -- initial assignments: initial spec_stateGP2
+  spec_stateGP2=S0;
+
+GUARANTEE -- safety this and next spec_stateGP2
+  G ((spec_stateGP2=S0 & ((!(!station) & !station) | (station)) & next(spec_stateGP2=S0)) |
+  (spec_stateGP2=S0 & ((!station) & !(lift=NIL) & !station) & next(spec_stateGP2=S1)) |
+  (spec_stateGP2=S0 & ((!station) & (lift=NIL) & !station) & next(spec_stateGP2=S2)) |
+  (spec_stateGP2=S1 & TRUE & next(spec_stateGP2=S1)) |
+  (spec_stateGP2=S2 & (station) & next(spec_stateGP2=S0)) |
+  (spec_stateGP2=S2 & (!(lift=NIL) & !station) & next(spec_stateGP2=S1)) |
+  (spec_stateGP2=S2 & ((lift=NIL) & !station) & next(spec_stateGP2=S2)));
+
+GUARANTEE -- equivalence of satisfaction
+  (G F (spec_stateGP2=S0 | spec_stateGP2=S2));
+

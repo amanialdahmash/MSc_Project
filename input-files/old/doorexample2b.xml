@@ -1,0 +1,191 @@
+<?xml version="1.0"?>
+<project>
+  <signals>
+    <signal>
+      <name>onedoorhit</name>
+      <kind>E</kind>
+      <type>boolean</type>
+      <auto_signal value="False"/>
+      <notes></notes>
+    </signal>
+    <signal>
+      <name>onebellpressed</name>
+      <kind>E</kind>
+      <type>boolean</type>
+      <auto_signal value="False"/>
+      <notes></notes>
+    </signal>
+    <signal>
+      <name>oneknocksound</name>
+      <kind>E</kind>
+      <type>boolean</type>
+      <auto_signal value="False"/>
+      <notes></notes>
+    </signal>
+    <signal>
+      <name>onebellrings</name>
+      <kind>E</kind>
+      <type>boolean</type>
+      <auto_signal value="False"/>
+      <notes></notes>
+    </signal>
+    <signal>
+      <name>onedooranswered</name>
+      <kind>S</kind>
+      <type>boolean</type>
+      <auto_signal value="False"/>
+      <notes></notes>
+    </signal>
+    <signal>
+      <name>twodoorhit</name>
+      <kind>E</kind>
+      <type>boolean</type>
+      <auto_signal value="False"/>
+      <notes></notes>
+    </signal>
+    <signal>
+      <name>twobellpressed</name>
+      <kind>E</kind>
+      <type>boolean</type>
+      <auto_signal value="False"/>
+      <notes></notes>
+    </signal>
+    <signal>
+      <name>twoknocksound</name>
+      <kind>E</kind>
+      <type>boolean</type>
+      <auto_signal value="False"/>
+      <notes></notes>
+    </signal>
+    <signal>
+      <name>twobellrings</name>
+      <kind>E</kind>
+      <type>boolean</type>
+      <auto_signal value="False"/>
+      <notes></notes>
+    </signal>
+    <signal>
+      <name>twodooranswered</name>
+      <kind>S</kind>
+      <type>boolean</type>
+      <auto_signal value="False"/>
+      <notes></notes>
+    </signal>
+  </signals>
+  <requirements>
+    <requirement>
+      <name>e_init</name>
+      <property>!onebellrings &amp;&amp; !onedoorhit &amp;&amp; !onebellpressed
+          &amp;&amp; !oneknocksound &amp;&amp; !twobellrings &amp;&amp;
+          !twodoorhit &amp;&amp; !twobellpressed &amp;&amp;
+          !twoknocksound</property>
+      <kind>A</kind>
+      <base_automaton_name></base_automaton_name>
+      <notes></notes>
+      <toggled>1</toggled>
+    </requirement>
+    <requirement>
+      <name>onefineassumption</name>
+      <property>G(onedoorhit -&gt; oneknocksound)</property>
+      <kind>A</kind>
+      <base_automaton_name></base_automaton_name>
+      <notes></notes>
+      <toggled>1</toggled>
+    </requirement>
+    <requirement>
+      <name>oneotherassumption</name>
+      <property>G(onebellpressed -&gt; onebellrings)</property>
+      <kind>A</kind>
+      <base_automaton_name></base_automaton_name>
+      <notes></notes>
+      <toggled>1</toggled>
+    </requirement>
+    <requirement>
+      <name>twosillyassumption</name>
+      <property>G(twobellpressed -&gt; twoknocksound)</property>
+      <kind>A</kind>
+      <base_automaton_name></base_automaton_name>
+      <notes></notes>
+      <toggled>1</toggled>
+    </requirement>
+    <requirement>
+      <name>twootherassumption</name>
+      <property>G(twodoorhit -&gt; twoknocksound)</property>
+      <kind>A</kind>
+      <base_automaton_name></base_automaton_name>
+      <notes></notes>
+      <toggled>1</toggled>
+    </requirement>
+    <requirement>
+      <name>s_init</name>
+      <property>(!onedooranswered &amp;&amp; !twodooranswered)</property>
+      <kind>G</kind>
+      <base_automaton_name></base_automaton_name>
+      <notes></notes>
+      <toggled>1</toggled>
+    </requirement>
+    <requirement>
+      <name>onegoal1</name>
+      <property>G(onebellrings -&gt; onedooranswered)</property>
+      <kind>G</kind>
+      <base_automaton_name></base_automaton_name>
+      <notes></notes>
+      <toggled>1</toggled>
+    </requirement>
+    <requirement>
+      <name>onegoal2</name>
+      <property>G(oneknocksound -&gt; onedooranswered)</property>
+      <kind>G</kind>
+      <base_automaton_name></base_automaton_name>
+      <notes></notes>
+      <toggled>1</toggled>
+    </requirement>
+    <requirement>
+      <name>twogoal1</name>
+      <property>G(twobellrings -&gt; twodooranswered)</property>
+      <kind>G</kind>
+      <base_automaton_name></base_automaton_name>
+      <notes></notes>
+      <toggled>1</toggled>
+    </requirement>
+    <requirement>
+      <name>twogoal2</name>
+      <property>G(twoknocksound -&gt; twodooranswered)</property>
+      <kind>G</kind>
+      <base_automaton_name></base_automaton_name>
+      <notes></notes>
+      <toggled>1</toggled>
+    </requirement>
+  </requirements>
+  <property_assurance>
+    <possibilities/>
+    <assertions/>
+  </property_assurance>
+  <property_simulation/>
+  <categories>
+    <category>
+      <name>New</name>
+      <editable>no</editable>
+      <notes>This is the category of those traces that have been just created</notes>
+    </category>
+    <category>
+      <name>Default</name>
+      <editable>no</editable>
+      <notes>This is the default category for traces</notes>
+    </category>
+    <category>
+      <name>Out of Date</name>
+      <editable>no</editable>
+      <notes>Contains the traces whose dependencies might be no longer consistent</notes>
+    </category>
+    <category>
+      <name>Trash</name>
+      <editable>no</editable>
+      <notes>Contains the traces that have been deleted</notes>
+    </category>
+  </categories>
+  <automata/>
+  <active_view>ga</active_view>
+  <notes></notes>
+</project>
+

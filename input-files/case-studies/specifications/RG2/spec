@@ -1,0 +1,1 @@
+-g'=G(req -> F (X grant))' -g='G( (cancel || grant) -> X !grant)' -ins='req,cancel' -outs='grant'

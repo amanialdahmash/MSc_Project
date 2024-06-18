@@ -1,0 +1,15 @@
+Trace Type: Counterexample
+  -> State: 1.1 <-
+    lowWater = TRUE
+    highWater = FALSE
+    methane = TRUE
+  -> State: 1.2 <-
+    lowWater = FALSE
+    highWater = FALSE
+    methane = TRUE
+  -> State: 1.3 <-
+    lowWater = FALSE
+    highWater = TRUE
+    methane = TRUE
+  -- Loop starts here
+End

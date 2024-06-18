@@ -1,0 +1,67 @@
+module ForkLift2
+
+env boolean fardistance ;
+
+sys boolean liftcommand ;
+
+sys boolean dropcommand ;
+
+sys boolean gocommand ;
+
+sys boolean idlecommand ;
+
+assumption -- silly_idle_far
+
+assumption -- idle_close
+
+assumption -- go_close
+
+assumption -- close_nolift
+
+assumption -- close_withlift
+
+guarantee -- s_init
+
+liftcommand=true;
+
+guarantee -- s_11
+
+G ( fardistance=true -> next( dropcommand=false) );
+
+guarantee -- s_12
+
+G ( fardistance=false  -> next( gocommand=false) );
+
+module ForkLift2
+
+env boolean fardistance ;
+
+sys boolean liftcommand ;
+
+sys boolean dropcommand ;
+
+sys boolean gocommand ;
+
+sys boolean idlecommand ;
+
+assumption -- silly_idle_far
+
+assumption -- idle_close
+
+assumption -- go_close
+
+assumption -- close_nolift
+
+assumption -- close_withlift
+
+guarantee -- s_init
+
+liftcommand=true;
+
+guarantee -- s_11
+
+G ( fardistance=true -> next( dropcommand=false) );
+
+guarantee -- s_12
+
+G ( fardistance=false  -> next( gocommand=false) );

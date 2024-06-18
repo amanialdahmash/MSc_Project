@@ -1,0 +1,11 @@
+,file,run,types,n_dropped,outcome,total_time,mean_time,max_time,median_time,n_runs
+0,../Translators/input-files/case-studies/modified-specs/minepump/genuine/minepump_fixed1.spectra,0,"A,G",1,SimEnv.Unrealizable,12.536243915557861,12.536243915557861,12.536243915557861,12.536243915557861,1
+1,../Translators/input-files/case-studies/modified-specs/minepump/genuine/minepump_fixed1.spectra,1,"A,G",3,SimEnv.Success,34.299283266067505,11.433094422022501,19.10769009590149,10.792673826217651,3
+2,../Translators/input-files/case-studies/modified-specs/minepump/genuine/minepump_fixed1.spectra,2,"A,G",2,SimEnv.Timeout,53.95697093009949,5.395697093009948,8.343207597732544,4.855162620544434,10
+3,../Translators/input-files/case-studies/modified-specs/minepump/genuine/minepump_fixed1.spectra,3,"A,G",1,SimEnv.Unrealizable,12.10067081451416,12.10067081451416,12.10067081451416,12.10067081451416,1
+4,../Translators/input-files/case-studies/modified-specs/minepump/genuine/minepump_fixed1.spectra,4,"A,G",1,SimEnv.Success,7.965051889419556,7.965051889419556,7.965051889419556,7.965051889419556,1
+5,../Translators/input-files/case-studies/modified-specs/minepump/genuine/minepump_fixed1.spectra,0,"A,G",2,SimEnv.Timeout,48.7773699760437,4.87773699760437,6.521669387817383,4.838435649871826,10
+6,../Translators/input-files/case-studies/modified-specs/minepump/genuine/minepump_fixed1.spectra,1,"A,G",2,SimEnv.Success,10.506746530532837,10.506746530532837,10.506746530532837,10.506746530532837,1
+7,../Translators/input-files/case-studies/modified-specs/minepump/genuine/minepump_fixed1.spectra,2,"A,G",3,SimEnv.Timeout,89.35672450065613,8.935672450065614,12.643428325653076,8.20954692363739,10
+8,../Translators/input-files/case-studies/modified-specs/minepump/genuine/minepump_fixed1.spectra,3,"A,G",1,SimEnv.Success,7.719984292984009,7.719984292984009,7.719984292984009,7.719984292984009,1
+9,../Translators/input-files/case-studies/modified-specs/minepump/genuine/minepump_fixed1.spectra,4,"A,G",2,SimEnv.Timeout,99.60093593597412,9.960093593597412,14.494949102401733,9.081420063972473,10

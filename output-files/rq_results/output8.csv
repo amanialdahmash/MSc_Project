@@ -1,0 +1,229 @@
+,name,random_hypothesis,trace_length,n_assumptions,n_guarantees,n_violations,av_variables_in_violations,min_var_in_violations,max_var_in_violations,av_temporals_in_violations,min_temp_in_violations,max_temp_in_violations,n_assumption_realizability_checks,n_guarantee_realizability_checks,av_min_solutions,n_weakened_assumptions,n_weakened_guarantees,learning_time,result,file,timestamp,learner,temporals
+0,Minepump,True,1,2,2,1,2.0,2,2,2.0,2,2,1,4,0,1,0,16.025466442108154,Realizable,../Translators/output-files/rq_files/minepump_fixed0_fixed0.spectra,2022-09-28 15:47:51,FastLAS,True
+1,Minepump,True,1,2,2,1,2.0,2,2,2.0,2,2,1,1,0,1,0,7.942821502685547,Realizable,../Translators/output-files/rq_files/minepump_fixed0_fixed1.spectra,2022-09-28 15:47:51,FastLAS,False
+2,Minepump,True,1,2,2,1,2.0,2,2,2.0,2,2,1,5,0,1,0,18.715903520584106,Realizable,../Translators/output-files/rq_files/minepump_fixed0_fixed2.spectra,2022-09-28 15:47:51,FastLAS,True
+3,Minepump,True,1,2,2,1,2.0,2,2,2.0,2,2,1,1,0,1,0,8.019396543502808,Realizable,../Translators/output-files/rq_files/minepump_fixed0_fixed3.spectra,2022-09-28 15:47:51,FastLAS,False
+4,Minepump,True,1,2,2,1,2.0,2,2,2.0,2,2,1,4,0,1,0,15.709176778793335,Realizable,../Translators/output-files/rq_files/minepump_fixed0_fixed4.spectra,2022-09-28 15:47:51,FastLAS,True
+5,Minepump,True,1,2,2,1,2.0,2,2,2.0,2,2,1,1,0,1,0,7.985578298568726,Realizable,../Translators/output-files/rq_files/minepump_fixed0_fixed5.spectra,2022-09-28 15:47:51,FastLAS,False
+6,Minepump,True,1,2,2,1,2.0,2,2,2.0,2,2,1,3,0,1,0,13.014059066772461,Realizable,../Translators/output-files/rq_files/minepump_fixed0_fixed6.spectra,2022-09-28 15:47:51,FastLAS,True
+7,Minepump,True,1,2,2,1,2.0,2,2,2.0,2,2,1,1,0,1,0,7.938596248626709,Realizable,../Translators/output-files/rq_files/minepump_fixed0_fixed7.spectra,2022-09-28 15:47:51,FastLAS,False
+8,Minepump,True,1,2,2,1,2.0,2,2,2.0,2,2,1,3,0,1,0,13.020569324493408,Realizable,../Translators/output-files/rq_files/minepump_fixed0_fixed8.spectra,2022-09-28 15:47:51,FastLAS,True
+9,Minepump,True,1,2,2,1,2.0,2,2,2.0,2,2,1,1,0,1,0,7.935250997543335,Realizable,../Translators/output-files/rq_files/minepump_fixed0_fixed9.spectra,2022-09-28 15:47:51,FastLAS,False
+10,Minepump,True,1,2,2,1,2.0,2,2,2.0,2,2,1,2,0,1,0,10.84008240699768,Realizable,../Translators/output-files/rq_files/minepump_fixed0_fixed10.spectra,2022-09-28 15:47:51,FastLAS,True
+11,Minepump,True,1,2,2,1,2.0,2,2,2.0,2,2,1,1,0,1,0,8.140268802642822,Realizable,../Translators/output-files/rq_files/minepump_fixed0_fixed11.spectra,2022-09-28 15:47:51,FastLAS,False
+12,Minepump,True,1,2,2,1,2.0,2,2,2.0,2,2,1,1,0,1,0,8.040096998214722,Realizable,../Translators/output-files/rq_files/minepump_fixed0_fixed12.spectra,2022-09-28 15:47:51,FastLAS,True
+13,Minepump,True,1,2,2,1,2.0,2,2,2.0,2,2,1,1,0,1,0,8.027807235717773,Realizable,../Translators/output-files/rq_files/minepump_fixed0_fixed13.spectra,2022-09-28 15:47:51,FastLAS,False
+14,Minepump,True,1,2,2,1,2.0,2,2,2.0,2,2,1,2,0,1,0,10.666292428970337,Realizable,../Translators/output-files/rq_files/minepump_fixed0_fixed14.spectra,2022-09-28 15:47:51,FastLAS,True
+15,Minepump,True,1,2,2,1,2.0,2,2,2.0,2,2,1,1,0,1,0,8.041149139404297,Realizable,../Translators/output-files/rq_files/minepump_fixed0_fixed15.spectra,2022-09-28 15:47:51,FastLAS,False
+16,Minepump,True,1,2,2,1,2.0,2,2,2.0,2,2,1,2,0,1,0,10.59260368347168,Realizable,../Translators/output-files/rq_files/minepump_fixed0_fixed16.spectra,2022-09-28 15:47:51,FastLAS,True
+17,Minepump,True,1,2,2,1,2.0,2,2,2.0,2,2,1,1,0,1,0,8.099937677383423,Realizable,../Translators/output-files/rq_files/minepump_fixed0_fixed17.spectra,2022-09-28 15:47:51,FastLAS,False
+18,Minepump,True,1,2,2,1,2.0,2,2,2.0,2,2,1,2,0,1,0,10.404973268508911,Realizable,../Translators/output-files/rq_files/minepump_fixed0_fixed18.spectra,2022-09-28 15:47:51,FastLAS,True
+19,Minepump,True,1,2,2,1,2.0,2,2,2.0,2,2,1,1,0,1,0,8.013675212860107,Realizable,../Translators/output-files/rq_files/minepump_fixed0_fixed19.spectra,2022-09-28 15:47:51,FastLAS,False
+20,Minepump,False,1,2,2,1,2.0,2,2,2.0,2,2,1,2,0,1,0,10.503719806671143,Realizable,../Translators/output-files/rq_files/minepump_fixed0_fixed20.spectra,2022-09-28 15:47:51,FastLAS,True
+21,Minepump,False,1,2,2,1,2.0,2,2,2.0,2,2,1,1,0,1,0,8.209123849868774,Realizable,../Translators/output-files/rq_files/minepump_fixed0_fixed21.spectra,2022-09-28 15:47:51,FastLAS,False
+22,Minepump,False,1,2,2,1,2.0,2,2,2.0,2,2,1,1,0,1,0,8.161074161529541,Realizable,../Translators/output-files/rq_files/minepump_fixed0_fixed22.spectra,2022-09-28 15:47:51,FastLAS,True
+23,Minepump,False,1,2,2,1,2.0,2,2,2.0,2,2,1,1,0,1,0,8.071654081344604,Realizable,../Translators/output-files/rq_files/minepump_fixed0_fixed23.spectra,2022-09-28 15:47:51,FastLAS,False
+24,Minepump,False,2,2,2,1,2.0,2,2,2.0,2,2,25,3,0,1,0,76.02833294868469,Realizable,../Translators/output-files/rq_files/minepump_fixed0_fixed24.spectra,2022-09-28 15:47:51,FastLAS,True
+25,Minepump,False,2,2,2,1,2.0,2,2,2.0,2,2,1,1,0,1,0,8.214420080184937,Realizable,../Translators/output-files/rq_files/minepump_fixed0_fixed25.spectra,2022-09-28 15:47:51,FastLAS,False
+26,Minepump,False,2,2,2,1,2.0,2,2,2.0,2,2,11,2,0,1,0,34.380194902420044,Incorrect Guarantees,../Translators/output-files/rq_files/minepump_fixed0_fixed26.spectra,2022-09-28 15:47:51,FastLAS,True
+27,Minepump,False,2,2,2,1,2.0,2,2,2.0,2,2,1,1,0,1,0,8.553617000579834,Realizable,../Translators/output-files/rq_files/minepump_fixed0_fixed27.spectra,2022-09-28 15:47:51,FastLAS,False
+28,Minepump,False,2,2,2,1,2.0,2,2,2.0,2,2,6,0,0,0,0,13.618402481079102,Realizable,../Translators/output-files/rq_files/minepump_fixed0_fixed28.spectra,2022-09-28 15:47:51,FastLAS,True
+29,Minepump,False,2,2,2,1,2.0,2,2,2.0,2,2,1,1,0,1,0,8.098410606384277,Realizable,../Translators/output-files/rq_files/minepump_fixed0_fixed29.spectra,2022-09-28 15:47:51,FastLAS,False
+30,Minepump,False,2,2,2,1,2.0,2,2,2.0,2,2,10,0,0,0,0,23.10097861289978,Realizable,../Translators/output-files/rq_files/minepump_fixed0_fixed30.spectra,2022-09-28 15:47:51,FastLAS,True
+31,Minepump,False,2,2,2,1,2.0,2,2,2.0,2,2,1,1,0,1,0,8.213185787200928,Realizable,../Translators/output-files/rq_files/minepump_fixed0_fixed31.spectra,2022-09-28 15:47:51,FastLAS,False
+32,Minepump,False,2,2,2,1,2.0,2,2,2.0,2,2,11,2,0,1,0,45.13529825210571,Realizable,../Translators/output-files/rq_files/minepump_fixed0_fixed32.spectra,2022-09-28 15:47:51,FastLAS,True
+33,Minepump,False,2,2,2,1,2.0,2,2,2.0,2,2,1,1,0,1,0,9.918664455413818,Realizable,../Translators/output-files/rq_files/minepump_fixed0_fixed33.spectra,2022-09-28 15:47:51,FastLAS,False
+34,Minepump,False,2,2,2,1,2.0,2,2,2.0,2,2,1,2,0,1,0,12.43392038345337,Realizable,../Translators/output-files/rq_files/minepump_fixed0_fixed34.spectra,2022-09-28 15:47:51,FastLAS,True
+35,Minepump,False,2,2,2,1,2.0,2,2,2.0,2,2,1,1,0,1,0,10.872010469436646,Realizable,../Translators/output-files/rq_files/minepump_fixed0_fixed35.spectra,2022-09-28 15:47:51,FastLAS,False
+36,Arbiter,True,1,1,4,1,1.0,1,1,1.0,1,1,1,0,0,0,0,2.7009334564208984,Success,../Translators/output-files/rq_files/Arbiter_FINAL_strong_fixed_patterned0.spectra,2022-09-28 15:47:51,FastLAS,True
+37,Arbiter,True,1,1,4,1,1.0,1,1,1.0,1,1,1,0,0,0,0,2.881704330444336,Success,../Translators/output-files/rq_files/Arbiter_FINAL_strong_fixed_patterned1.spectra,2022-09-28 15:47:51,FastLAS,False
+38,Arbiter,True,1,1,4,1,1.0,1,1,1.0,1,1,1,0,0,0,0,2.8592331409454346,Success,../Translators/output-files/rq_files/Arbiter_FINAL_strong_fixed_patterned2.spectra,2022-09-28 15:47:51,FastLAS,True
+39,Arbiter,True,1,1,4,1,1.0,1,1,1.0,1,1,1,0,0,0,0,2.8068485260009766,Success,../Translators/output-files/rq_files/Arbiter_FINAL_strong_fixed_patterned3.spectra,2022-09-28 15:47:51,FastLAS,False
+40,Arbiter,True,1,1,4,1,1.0,1,1,1.0,1,1,1,0,0,0,0,3.5164601802825928,Success,../Translators/output-files/rq_files/Arbiter_FINAL_strong_fixed_patterned4.spectra,2022-09-28 15:47:51,FastLAS,True
+41,Arbiter,True,1,1,4,1,1.0,1,1,1.0,1,1,1,0,0,0,0,2.655207872390747,Success,../Translators/output-files/rq_files/Arbiter_FINAL_strong_fixed_patterned5.spectra,2022-09-28 15:47:51,FastLAS,False
+42,Arbiter,True,1,1,4,1,1.0,1,1,1.0,1,1,1,0,0,0,0,2.606182813644409,Success,../Translators/output-files/rq_files/Arbiter_FINAL_strong_fixed_patterned6.spectra,2022-09-28 15:47:51,FastLAS,True
+43,Arbiter,True,1,1,4,1,1.0,1,1,1.0,1,1,1,0,0,0,0,2.517849922180176,Success,../Translators/output-files/rq_files/Arbiter_FINAL_strong_fixed_patterned7.spectra,2022-09-28 15:47:51,FastLAS,False
+44,Arbiter,True,1,1,4,1,1.0,1,1,1.0,1,1,1,0,0,0,0,2.8974573612213135,Success,../Translators/output-files/rq_files/Arbiter_FINAL_strong_fixed_patterned8.spectra,2022-09-28 15:47:51,FastLAS,True
+45,Arbiter,True,1,1,4,1,1.0,1,1,1.0,1,1,1,0,0,0,0,2.607736349105835,Success,../Translators/output-files/rq_files/Arbiter_FINAL_strong_fixed_patterned9.spectra,2022-09-28 15:47:51,FastLAS,False
+46,Arbiter,True,1,1,4,1,1.0,1,1,1.0,1,1,1,0,0,0,0,2.480192184448242,Success,../Translators/output-files/rq_files/Arbiter_FINAL_strong_fixed_patterned10.spectra,2022-09-28 15:47:51,FastLAS,True
+47,Arbiter,True,1,1,4,1,1.0,1,1,1.0,1,1,1,0,0,0,0,2.4160244464874268,Success,../Translators/output-files/rq_files/Arbiter_FINAL_strong_fixed_patterned11.spectra,2022-09-28 15:47:51,FastLAS,False
+48,Arbiter,True,1,1,4,1,1.0,1,1,1.0,1,1,1,0,0,0,0,2.5227508544921875,Success,../Translators/output-files/rq_files/Arbiter_FINAL_strong_fixed_patterned12.spectra,2022-09-28 15:47:51,FastLAS,True
+49,Arbiter,True,1,1,4,1,1.0,1,1,1.0,1,1,1,0,0,0,0,2.41805362701416,Success,../Translators/output-files/rq_files/Arbiter_FINAL_strong_fixed_patterned13.spectra,2022-09-28 15:47:51,FastLAS,False
+50,Arbiter,True,1,1,4,1,1.0,1,1,1.0,1,1,1,0,0,0,0,2.778290033340454,Success,../Translators/output-files/rq_files/Arbiter_FINAL_strong_fixed_patterned14.spectra,2022-09-28 15:47:51,FastLAS,True
+51,Arbiter,True,1,1,4,1,1.0,1,1,1.0,1,1,1,0,0,0,0,2.458193778991699,Success,../Translators/output-files/rq_files/Arbiter_FINAL_strong_fixed_patterned15.spectra,2022-09-28 15:47:51,FastLAS,False
+52,Arbiter,True,1,1,4,1,1.0,1,1,1.0,1,1,1,0,0,0,0,2.4000627994537354,Success,../Translators/output-files/rq_files/Arbiter_FINAL_strong_fixed_patterned16.spectra,2022-09-28 15:47:51,FastLAS,True
+53,Arbiter,True,1,1,4,1,1.0,1,1,1.0,1,1,1,0,0,0,0,2.4792916774749756,Success,../Translators/output-files/rq_files/Arbiter_FINAL_strong_fixed_patterned17.spectra,2022-09-28 15:47:51,FastLAS,False
+54,Arbiter,True,1,1,4,1,1.0,1,1,1.0,1,1,1,0,0,0,0,2.3873355388641357,Success,../Translators/output-files/rq_files/Arbiter_FINAL_strong_fixed_patterned18.spectra,2022-09-28 15:47:51,FastLAS,True
+55,Arbiter,True,1,1,4,1,1.0,1,1,1.0,1,1,1,0,0,0,0,2.4540891647338867,Success,../Translators/output-files/rq_files/Arbiter_FINAL_strong_fixed_patterned19.spectra,2022-09-28 15:47:51,FastLAS,False
+56,Arbiter,False,1,1,4,1,1.0,1,1,1.0,1,1,1,0,0,0,0,2.907646894454956,Success,../Translators/output-files/rq_files/Arbiter_FINAL_strong_fixed_patterned20.spectra,2022-09-28 15:47:51,FastLAS,True
+57,Arbiter,False,1,1,4,1,1.0,1,1,1.0,1,1,1,0,0,0,0,2.4370930194854736,Success,../Translators/output-files/rq_files/Arbiter_FINAL_strong_fixed_patterned21.spectra,2022-09-28 15:47:51,FastLAS,False
+58,Arbiter,False,1,1,4,1,1.0,1,1,1.0,1,1,1,0,0,0,0,2.644787549972534,Realizable,../Translators/output-files/rq_files/Arbiter_FINAL_strong_fixed_patterned22.spectra,2022-09-28 15:47:51,FastLAS,True
+59,Arbiter,False,1,1,4,1,1.0,1,1,1.0,1,1,1,0,0,0,0,2.4217915534973145,Realizable,../Translators/output-files/rq_files/Arbiter_FINAL_strong_fixed_patterned23.spectra,2022-09-28 15:47:51,FastLAS,False
+60,Arbiter,False,1,1,4,1,1.0,1,1,1.0,1,1,1,1,0,1,0,9.12725019454956,Realizable,../Translators/output-files/rq_files/Arbiter_FINAL_strong_fixed_patterned24.spectra,2022-09-28 15:47:51,FastLAS,True
+61,Arbiter,False,1,1,4,1,1.0,1,1,1.0,1,1,1,2,0,1,0,11.152807474136353,Realizable,../Translators/output-files/rq_files/Arbiter_FINAL_strong_fixed_patterned25.spectra,2022-09-28 15:47:51,FastLAS,False
+62,Arbiter,False,1,1,4,1,1.0,1,1,1.0,1,1,2,0,0,0,0,4.995400667190552,Realizable,../Translators/output-files/rq_files/Arbiter_FINAL_strong_fixed_patterned26.spectra,2022-09-28 15:47:51,FastLAS,True
+63,Arbiter,False,1,1,4,1,1.0,1,1,1.0,1,1,2,0,0,0,0,4.954207181930542,Realizable,../Translators/output-files/rq_files/Arbiter_FINAL_strong_fixed_patterned27.spectra,2022-09-28 15:47:51,FastLAS,False
+64,Arbiter,False,1,1,4,1,1.0,1,1,1.0,1,1,1,0,0,0,0,3.0124447345733643,Realizable,../Translators/output-files/rq_files/Arbiter_FINAL_strong_fixed_patterned28.spectra,2022-09-28 15:47:51,FastLAS,True
+65,Arbiter,False,1,1,4,1,1.0,1,1,1.0,1,1,1,0,0,0,0,26.38908624649048,Realizable,../Translators/output-files/rq_files/Arbiter_FINAL_strong_fixed_patterned29.spectra,2022-09-28 15:47:51,FastLAS,False
+66,Arbiter,False,1,1,4,1,1.0,1,1,1.0,1,1,1,0,0,0,0,3.840196132659912,Realizable,../Translators/output-files/rq_files/Arbiter_FINAL_strong_fixed_patterned30.spectra,2022-09-28 15:47:51,FastLAS,True
+67,Arbiter,False,1,1,4,1,1.0,1,1,1.0,1,1,1,0,0,0,0,3.814420700073242,Realizable,../Translators/output-files/rq_files/Arbiter_FINAL_strong_fixed_patterned31.spectra,2022-09-28 15:47:51,FastLAS,False
+68,Arbiter,False,1,1,4,1,1.0,1,1,1.0,1,1,1,0,0,0,0,3.560898542404175,Realizable,../Translators/output-files/rq_files/Arbiter_FINAL_strong_fixed_patterned32.spectra,2022-09-28 15:47:51,FastLAS,True
+69,Arbiter,False,1,1,4,1,1.0,1,1,1.0,1,1,1,0,0,0,0,3.668017864227295,Realizable,../Translators/output-files/rq_files/Arbiter_FINAL_strong_fixed_patterned33.spectra,2022-09-28 15:47:51,FastLAS,False
+70,Arbiter,False,1,1,4,1,1.0,1,1,1.0,1,1,1,0,0,0,0,3.674365758895874,Realizable,../Translators/output-files/rq_files/Arbiter_FINAL_strong_fixed_patterned34.spectra,2022-09-28 15:47:51,FastLAS,True
+71,Arbiter,False,1,1,4,1,1.0,1,1,1.0,1,1,1,0,0,0,0,3.45495867729187,Realizable,../Translators/output-files/rq_files/Arbiter_FINAL_strong_fixed_patterned35.spectra,2022-09-28 15:47:51,FastLAS,False
+72,Arbiter,False,1,1,4,1,1.0,1,1,1.0,1,1,1,0,0,0,0,3.64188551902771,Realizable,../Translators/output-files/rq_files/Arbiter_FINAL_strong_fixed_patterned36.spectra,2022-09-28 15:47:51,FastLAS,True
+73,Arbiter,False,1,1,4,1,1.0,1,1,1.0,1,1,1,0,0,0,0,3.6099438667297363,Realizable,../Translators/output-files/rq_files/Arbiter_FINAL_strong_fixed_patterned37.spectra,2022-09-28 15:47:51,FastLAS,False
+74,Arbiter,False,1,1,4,1,1.0,1,1,1.0,1,1,1,0,0,0,0,3.947458267211914,Realizable,../Translators/output-files/rq_files/Arbiter_FINAL_strong_fixed_patterned38.spectra,2022-09-28 15:47:51,FastLAS,True
+75,Arbiter,False,1,1,4,1,1.0,1,1,1.0,1,1,1,0,0,0,0,4.143807888031006,Realizable,../Translators/output-files/rq_files/Arbiter_FINAL_strong_fixed_patterned39.spectra,2022-09-28 15:47:51,FastLAS,False
+76,Lift,True,2,12,7,1,3.0,3,3,3.0,3,3,1,0,0,0,0,4.059422016143799,Realizable,../Translators/output-files/rq_files/lift_FINAL_NEW_strong_fixed_patterned0.spectra,2022-09-28 15:47:51,FastLAS,True
+77,Lift,True,2,12,7,1,3.0,3,3,3.0,3,3,1,0,0,0,0,4.040543556213379,Realizable,../Translators/output-files/rq_files/lift_FINAL_NEW_strong_fixed_patterned1.spectra,2022-09-28 15:47:51,FastLAS,False
+78,Lift,True,2,12,7,1,3.0,3,3,3.0,3,3,1,0,0,0,0,4.0711400508880615,Realizable,../Translators/output-files/rq_files/lift_FINAL_NEW_strong_fixed_patterned2.spectra,2022-09-28 15:47:51,FastLAS,True
+79,Lift,True,2,12,7,1,3.0,3,3,3.0,3,3,1,0,0,0,0,4.007934093475342,Realizable,../Translators/output-files/rq_files/lift_FINAL_NEW_strong_fixed_patterned3.spectra,2022-09-28 15:47:51,FastLAS,False
+80,Lift,True,2,12,7,1,3.0,3,3,3.0,3,3,1,0,0,0,0,4.056711912155151,Realizable,../Translators/output-files/rq_files/lift_FINAL_NEW_strong_fixed_patterned4.spectra,2022-09-28 15:47:51,FastLAS,True
+81,Lift,True,2,12,7,1,3.0,3,3,3.0,3,3,1,0,0,0,0,3.9515559673309326,Realizable,../Translators/output-files/rq_files/lift_FINAL_NEW_strong_fixed_patterned5.spectra,2022-09-28 15:47:51,FastLAS,False
+82,Lift,True,2,12,7,1,3.0,3,3,3.0,3,3,1,0,0,0,0,3.9721362590789795,Realizable,../Translators/output-files/rq_files/lift_FINAL_NEW_strong_fixed_patterned6.spectra,2022-09-28 15:47:51,FastLAS,True
+83,Lift,True,2,12,7,1,3.0,3,3,3.0,3,3,1,0,0,0,0,4.006810903549194,Realizable,../Translators/output-files/rq_files/lift_FINAL_NEW_strong_fixed_patterned7.spectra,2022-09-28 15:47:51,FastLAS,False
+84,Lift,True,2,12,7,1,3.0,3,3,3.0,3,3,1,0,0,0,0,4.061548233032227,Realizable,../Translators/output-files/rq_files/lift_FINAL_NEW_strong_fixed_patterned8.spectra,2022-09-28 15:47:51,FastLAS,True
+85,Lift,True,2,12,7,1,3.0,3,3,3.0,3,3,1,0,0,0,0,3.9941341876983643,Realizable,../Translators/output-files/rq_files/lift_FINAL_NEW_strong_fixed_patterned9.spectra,2022-09-28 15:47:51,FastLAS,False
+86,Lift,True,2,12,7,1,3.0,3,3,3.0,3,3,1,0,0,0,0,4.259392738342285,Realizable,../Translators/output-files/rq_files/lift_FINAL_NEW_strong_fixed_patterned10.spectra,2022-09-28 15:47:51,FastLAS,True
+87,Lift,True,2,12,7,1,3.0,3,3,3.0,3,3,1,0,0,0,0,3.9414331912994385,Realizable,../Translators/output-files/rq_files/lift_FINAL_NEW_strong_fixed_patterned11.spectra,2022-09-28 15:47:51,FastLAS,False
+88,Lift,True,2,12,7,1,3.0,3,3,3.0,3,3,1,0,0,0,0,4.083518981933594,Realizable,../Translators/output-files/rq_files/lift_FINAL_NEW_strong_fixed_patterned12.spectra,2022-09-28 15:47:51,FastLAS,True
+89,Lift,True,2,12,7,1,3.0,3,3,3.0,3,3,1,0,0,0,0,4.001061201095581,Realizable,../Translators/output-files/rq_files/lift_FINAL_NEW_strong_fixed_patterned13.spectra,2022-09-28 15:47:51,FastLAS,False
+90,Lift,True,2,12,7,1,3.0,3,3,3.0,3,3,1,0,0,0,0,3.9473862648010254,Realizable,../Translators/output-files/rq_files/lift_FINAL_NEW_strong_fixed_patterned14.spectra,2022-09-28 15:47:51,FastLAS,True
+91,Lift,True,2,12,7,1,3.0,3,3,3.0,3,3,1,0,0,0,0,3.9611706733703613,Realizable,../Translators/output-files/rq_files/lift_FINAL_NEW_strong_fixed_patterned15.spectra,2022-09-28 15:47:51,FastLAS,False
+92,Lift,True,2,12,7,1,3.0,3,3,3.0,3,3,1,0,0,0,0,4.110469579696655,Realizable,../Translators/output-files/rq_files/lift_FINAL_NEW_strong_fixed_patterned16.spectra,2022-09-28 15:47:51,FastLAS,True
+93,Lift,True,2,12,7,1,3.0,3,3,3.0,3,3,1,0,0,0,0,4.0073466300964355,Realizable,../Translators/output-files/rq_files/lift_FINAL_NEW_strong_fixed_patterned17.spectra,2022-09-28 15:47:51,FastLAS,False
+94,Lift,True,2,12,7,1,3.0,3,3,3.0,3,3,1,0,0,0,0,4.205365419387817,Realizable,../Translators/output-files/rq_files/lift_FINAL_NEW_strong_fixed_patterned18.spectra,2022-09-28 15:47:51,FastLAS,True
+95,Lift,True,2,12,7,1,3.0,3,3,3.0,3,3,1,0,0,0,0,3.991316080093384,Realizable,../Translators/output-files/rq_files/lift_FINAL_NEW_strong_fixed_patterned19.spectra,2022-09-28 15:47:51,FastLAS,False
+96,Lift,False,2,12,7,1,3.0,3,3,3.0,3,3,1,0,0,0,0,4.073077201843262,Realizable,../Translators/output-files/rq_files/lift_FINAL_NEW_strong_fixed_patterned20.spectra,2022-09-28 15:47:51,FastLAS,True
+97,Lift,False,2,12,7,1,3.0,3,3,3.0,3,3,1,0,0,0,0,3.9299216270446777,Realizable,../Translators/output-files/rq_files/lift_FINAL_NEW_strong_fixed_patterned21.spectra,2022-09-28 15:47:51,FastLAS,False
+98,Lift,False,2,12,7,1,3.0,3,3,3.0,3,3,1,0,0,0,0,4.126706600189209,Realizable,../Translators/output-files/rq_files/lift_FINAL_NEW_strong_fixed_patterned22.spectra,2022-09-28 15:47:51,FastLAS,True
+99,Lift,False,2,12,7,1,3.0,3,3,3.0,3,3,1,0,0,0,0,3.93703031539917,Realizable,../Translators/output-files/rq_files/lift_FINAL_NEW_strong_fixed_patterned23.spectra,2022-09-28 15:47:51,FastLAS,False
+100,Lift,False,2,12,7,1,3.0,3,3,3.0,3,3,1,0,0,0,0,4.187528610229492,Realizable,../Translators/output-files/rq_files/lift_FINAL_NEW_strong_fixed_patterned24.spectra,2022-09-28 15:47:51,FastLAS,True
+101,Lift,False,2,12,7,1,3.0,3,3,3.0,3,3,1,0,0,0,0,3.9020156860351562,Realizable,../Translators/output-files/rq_files/lift_FINAL_NEW_strong_fixed_patterned25.spectra,2022-09-28 15:47:51,FastLAS,False
+102,Lift,False,2,12,7,1,3.0,3,3,3.0,3,3,1,0,0,0,0,3.983450174331665,Realizable,../Translators/output-files/rq_files/lift_FINAL_NEW_strong_fixed_patterned26.spectra,2022-09-28 15:47:51,FastLAS,True
+103,Lift,False,2,12,7,1,3.0,3,3,3.0,3,3,1,0,0,0,0,4.01209568977356,Realizable,../Translators/output-files/rq_files/lift_FINAL_NEW_strong_fixed_patterned27.spectra,2022-09-28 15:47:51,FastLAS,False
+104,Lift,False,2,12,7,1,3.0,3,3,3.0,3,3,1,0,0,0,0,4.142862319946289,Realizable,../Translators/output-files/rq_files/lift_FINAL_NEW_strong_fixed_patterned28.spectra,2022-09-28 15:47:51,FastLAS,True
+105,Lift,False,2,12,7,1,3.0,3,3,3.0,3,3,1,0,0,0,0,3.971512794494629,Realizable,../Translators/output-files/rq_files/lift_FINAL_NEW_strong_fixed_patterned29.spectra,2022-09-28 15:47:51,FastLAS,False
+106,Lift,False,2,12,7,1,3.0,3,3,3.0,3,3,1,0,0,0,0,4.103816986083984,Realizable,../Translators/output-files/rq_files/lift_FINAL_NEW_strong_fixed_patterned30.spectra,2022-09-28 15:47:51,FastLAS,True
+107,Lift,False,2,12,7,1,3.0,3,3,3.0,3,3,1,0,0,0,0,4.017391681671143,Realizable,../Translators/output-files/rq_files/lift_FINAL_NEW_strong_fixed_patterned31.spectra,2022-09-28 15:47:51,FastLAS,False
+108,Traffic Single,True,2,3,2,1,3.0,3,3,4.0,4,4,2,0,0,0,0,7.02468729019165,Realizable,../Translators/output-files/rq_files/traffic_single_FINAL_strong_fixed_patterned0.spectra,2022-09-28 15:47:51,FastLAS,True
+109,Traffic Single,True,2,3,2,1,3.0,3,3,4.0,4,4,1,0,0,0,0,3.456155300140381,Realizable,../Translators/output-files/rq_files/traffic_single_FINAL_strong_fixed_patterned1.spectra,2022-09-28 15:47:51,FastLAS,False
+110,Traffic Single,True,2,3,2,1,3.0,3,3,4.0,4,4,2,0,0,0,0,6.944830894470215,Realizable,../Translators/output-files/rq_files/traffic_single_FINAL_strong_fixed_patterned2.spectra,2022-09-28 15:47:51,FastLAS,True
+111,Traffic Single,True,2,3,2,1,3.0,3,3,4.0,4,4,1,0,0,0,0,3.6143815517425537,Realizable,../Translators/output-files/rq_files/traffic_single_FINAL_strong_fixed_patterned3.spectra,2022-09-28 15:47:51,FastLAS,False
+112,Traffic Single,True,2,3,2,1,3.0,3,3,4.0,4,4,2,0,0,0,0,7.004687309265137,Realizable,../Translators/output-files/rq_files/traffic_single_FINAL_strong_fixed_patterned4.spectra,2022-09-28 15:47:51,FastLAS,True
+113,Traffic Single,True,2,3,2,1,3.0,3,3,4.0,4,4,1,0,0,0,0,3.641065835952759,Realizable,../Translators/output-files/rq_files/traffic_single_FINAL_strong_fixed_patterned5.spectra,2022-09-28 15:47:51,FastLAS,False
+114,Traffic Single,True,2,3,2,1,3.0,3,3,4.0,4,4,2,0,0,0,0,7.061723709106445,Realizable,../Translators/output-files/rq_files/traffic_single_FINAL_strong_fixed_patterned6.spectra,2022-09-28 15:47:51,FastLAS,True
+115,Traffic Single,True,2,3,2,1,3.0,3,3,4.0,4,4,1,0,0,0,0,3.541015863418579,Realizable,../Translators/output-files/rq_files/traffic_single_FINAL_strong_fixed_patterned7.spectra,2022-09-28 15:47:51,FastLAS,False
+116,Traffic Single,True,2,3,2,1,3.0,3,3,4.0,4,4,2,0,0,0,0,6.78278923034668,Realizable,../Translators/output-files/rq_files/traffic_single_FINAL_strong_fixed_patterned8.spectra,2022-09-28 15:47:51,FastLAS,True
+117,Traffic Single,True,2,3,2,1,3.0,3,3,4.0,4,4,1,0,0,0,0,3.5342013835906982,Realizable,../Translators/output-files/rq_files/traffic_single_FINAL_strong_fixed_patterned9.spectra,2022-09-28 15:47:51,FastLAS,False
+118,Traffic Single,True,2,3,2,1,3.0,3,3,4.0,4,4,2,0,0,0,0,6.791192054748535,Realizable,../Translators/output-files/rq_files/traffic_single_FINAL_strong_fixed_patterned10.spectra,2022-09-28 15:47:51,FastLAS,True
+119,Traffic Single,True,2,3,2,1,3.0,3,3,4.0,4,4,1,0,0,0,0,3.5744268894195557,Realizable,../Translators/output-files/rq_files/traffic_single_FINAL_strong_fixed_patterned11.spectra,2022-09-28 15:47:51,FastLAS,False
+120,Traffic Single,True,2,3,2,1,3.0,3,3,4.0,4,4,2,0,0,0,0,6.858760356903076,Realizable,../Translators/output-files/rq_files/traffic_single_FINAL_strong_fixed_patterned12.spectra,2022-09-28 15:47:51,FastLAS,True
+121,Traffic Single,True,2,3,2,1,3.0,3,3,4.0,4,4,1,0,0,0,0,3.6127467155456543,Realizable,../Translators/output-files/rq_files/traffic_single_FINAL_strong_fixed_patterned13.spectra,2022-09-28 15:47:51,FastLAS,False
+122,Traffic Single,True,2,3,2,1,3.0,3,3,4.0,4,4,2,0,0,0,0,6.903948783874512,Realizable,../Translators/output-files/rq_files/traffic_single_FINAL_strong_fixed_patterned14.spectra,2022-09-28 15:47:51,FastLAS,True
+123,Traffic Single,True,2,3,2,1,3.0,3,3,4.0,4,4,1,0,0,0,0,3.6810004711151123,Realizable,../Translators/output-files/rq_files/traffic_single_FINAL_strong_fixed_patterned15.spectra,2022-09-28 15:47:51,FastLAS,False
+124,Traffic Single,True,2,3,2,1,3.0,3,3,4.0,4,4,2,0,0,0,0,7.042418479919434,Realizable,../Translators/output-files/rq_files/traffic_single_FINAL_strong_fixed_patterned16.spectra,2022-09-28 15:47:51,FastLAS,True
+125,Traffic Single,True,2,3,2,1,3.0,3,3,4.0,4,4,1,0,0,0,0,3.637397289276123,Realizable,../Translators/output-files/rq_files/traffic_single_FINAL_strong_fixed_patterned17.spectra,2022-09-28 15:47:51,FastLAS,False
+126,Traffic Single,True,2,3,2,1,3.0,3,3,4.0,4,4,2,0,0,0,0,6.920779705047607,Realizable,../Translators/output-files/rq_files/traffic_single_FINAL_strong_fixed_patterned18.spectra,2022-09-28 15:47:51,FastLAS,True
+127,Traffic Single,True,2,3,2,1,3.0,3,3,4.0,4,4,1,0,0,0,0,3.5090274810791016,Realizable,../Translators/output-files/rq_files/traffic_single_FINAL_strong_fixed_patterned19.spectra,2022-09-28 15:47:51,FastLAS,False
+128,Traffic Single,False,2,3,2,1,3.0,3,3,4.0,4,4,2,0,0,0,0,6.966721534729004,Realizable,../Translators/output-files/rq_files/traffic_single_FINAL_strong_fixed_patterned20.spectra,2022-09-28 15:47:51,FastLAS,True
+129,Traffic Single,False,2,3,2,1,3.0,3,3,4.0,4,4,1,0,0,0,0,3.4880449771881104,Realizable,../Translators/output-files/rq_files/traffic_single_FINAL_strong_fixed_patterned21.spectra,2022-09-28 15:47:51,FastLAS,False
+130,Traffic Single,False,2,3,2,1,3.0,3,3,4.0,4,4,3,0,0,0,0,10.358545541763306,Realizable,../Translators/output-files/rq_files/traffic_single_FINAL_strong_fixed_patterned22.spectra,2022-09-28 15:47:51,FastLAS,True
+131,Traffic Single,False,2,3,2,1,3.0,3,3,4.0,4,4,1,0,0,0,0,3.5129032135009766,Realizable,../Translators/output-files/rq_files/traffic_single_FINAL_strong_fixed_patterned23.spectra,2022-09-28 15:47:51,FastLAS,False
+132,Traffic Single,False,2,3,2,1,3.0,3,3,4.0,4,4,1,0,0,0,0,3.442553997039795,Realizable,../Translators/output-files/rq_files/traffic_single_FINAL_strong_fixed_patterned24.spectra,2022-09-28 15:47:51,FastLAS,True
+133,Traffic Single,False,2,3,2,1,3.0,3,3,4.0,4,4,1,0,0,0,0,3.4718568325042725,Realizable,../Translators/output-files/rq_files/traffic_single_FINAL_strong_fixed_patterned25.spectra,2022-09-28 15:47:51,FastLAS,False
+134,Traffic Single,False,2,3,2,1,3.0,3,3,4.0,4,4,1,0,0,0,0,4.896977186203003,Realizable,../Translators/output-files/rq_files/traffic_single_FINAL_strong_fixed_patterned26.spectra,2022-09-28 15:47:51,FastLAS,True
+135,Traffic Single,False,2,3,2,1,3.0,3,3,4.0,4,4,1,0,0,0,0,4.14981746673584,Realizable,../Translators/output-files/rq_files/traffic_single_FINAL_strong_fixed_patterned27.spectra,2022-09-28 15:47:51,FastLAS,False
+136,Traffic Single,False,3,3,2,1,3.0,3,3,4.0,4,4,1,0,0,0,0,3.9166460037231445,Realizable,../Translators/output-files/rq_files/traffic_single_FINAL_strong_fixed_patterned28.spectra,2022-09-28 15:47:51,FastLAS,True
+137,Traffic Single,False,3,3,2,1,3.0,3,3,4.0,4,4,1,0,0,0,0,3.5777130126953125,Realizable,../Translators/output-files/rq_files/traffic_single_FINAL_strong_fixed_patterned29.spectra,2022-09-28 15:47:51,FastLAS,False
+138,Traffic Single,False,3,3,2,1,3.0,3,3,4.0,4,4,1,0,0,0,0,4.026968717575073,Realizable,../Translators/output-files/rq_files/traffic_single_FINAL_strong_fixed_patterned30.spectra,2022-09-28 15:47:51,FastLAS,True
+139,Traffic Single,False,3,3,2,1,3.0,3,3,4.0,4,4,1,0,0,0,0,3.8719727993011475,Realizable,../Translators/output-files/rq_files/traffic_single_FINAL_strong_fixed_patterned31.spectra,2022-09-28 15:47:51,FastLAS,False
+140,Traffic Single,False,3,3,2,1,3.0,3,3,4.0,4,4,1,0,0,0,0,3.944192886352539,Realizable,../Translators/output-files/rq_files/traffic_single_FINAL_strong_fixed_patterned32.spectra,2022-09-28 15:47:51,FastLAS,True
+141,Traffic Single,False,3,3,2,1,3.0,3,3,4.0,4,4,1,0,0,0,0,3.559056282043457,Realizable,../Translators/output-files/rq_files/traffic_single_FINAL_strong_fixed_patterned33.spectra,2022-09-28 15:47:51,FastLAS,False
+142,Traffic Single,False,3,3,2,1,3.0,3,3,4.0,4,4,1,0,0,0,0,3.8221347332000732,Realizable,../Translators/output-files/rq_files/traffic_single_FINAL_strong_fixed_patterned34.spectra,2022-09-28 15:47:51,FastLAS,True
+143,Traffic Single,False,3,3,2,1,3.0,3,3,4.0,4,4,1,0,0,0,0,3.807711601257324,Realizable,../Translators/output-files/rq_files/traffic_single_FINAL_strong_fixed_patterned35.spectra,2022-09-28 15:47:51,FastLAS,False
+144,Traffic Single,False,3,3,2,1,3.0,3,3,4.0,4,4,1,0,0,0,0,3.6001081466674805,Realizable,../Translators/output-files/rq_files/traffic_single_FINAL_strong_fixed_patterned36.spectra,2022-09-28 15:47:51,FastLAS,True
+145,Traffic Single,False,3,3,2,1,3.0,3,3,4.0,4,4,1,0,0,0,0,3.9048309326171875,Realizable,../Translators/output-files/rq_files/traffic_single_FINAL_strong_fixed_patterned37.spectra,2022-09-28 15:47:51,FastLAS,False
+146,Traffic Single,False,3,3,2,1,3.0,3,3,4.0,4,4,1,0,0,0,0,3.6550426483154297,Realizable,../Translators/output-files/rq_files/traffic_single_FINAL_strong_fixed_patterned38.spectra,2022-09-28 15:47:51,FastLAS,True
+147,Traffic Single,False,3,3,2,1,3.0,3,3,4.0,4,4,1,0,0,0,0,3.852686882019043,Realizable,../Translators/output-files/rq_files/traffic_single_FINAL_strong_fixed_patterned39.spectra,2022-09-28 15:47:51,FastLAS,False
+148,Traffic,True,2,5,4,2,3.0,3,3,4.0,4,4,1,0,0,0,0,4.284030914306641,Realizable,../Translators/output-files/rq_files/traffic_updated_FINAL_strong_fixed_patterned0.spectra,2022-09-28 15:47:51,FastLAS,True
+149,Traffic,True,2,5,4,2,3.0,3,3,4.0,4,4,1,0,0,0,0,3.727458953857422,Realizable,../Translators/output-files/rq_files/traffic_updated_FINAL_strong_fixed_patterned1.spectra,2022-09-28 15:47:51,FastLAS,False
+150,Traffic,True,2,5,4,2,3.0,3,3,4.0,4,4,1,0,0,0,0,4.01203727722168,Realizable,../Translators/output-files/rq_files/traffic_updated_FINAL_strong_fixed_patterned2.spectra,2022-09-28 15:47:51,FastLAS,True
+151,Traffic,True,2,5,4,2,3.0,3,3,4.0,4,4,1,0,0,0,0,4.013607501983643,Realizable,../Translators/output-files/rq_files/traffic_updated_FINAL_strong_fixed_patterned3.spectra,2022-09-28 15:47:51,FastLAS,False
+152,Traffic,True,2,5,4,2,3.0,3,3,4.0,4,4,1,0,0,0,0,3.7845780849456787,Realizable,../Translators/output-files/rq_files/traffic_updated_FINAL_strong_fixed_patterned4.spectra,2022-09-28 15:47:51,FastLAS,True
+153,Traffic,True,2,5,4,2,3.0,3,3,4.0,4,4,1,0,0,0,0,3.706204652786255,Realizable,../Translators/output-files/rq_files/traffic_updated_FINAL_strong_fixed_patterned5.spectra,2022-09-28 15:47:51,FastLAS,False
+154,Traffic,True,2,5,4,2,3.0,3,3,4.0,4,4,1,0,0,0,0,3.7549614906311035,Realizable,../Translators/output-files/rq_files/traffic_updated_FINAL_strong_fixed_patterned6.spectra,2022-09-28 15:47:51,FastLAS,True
+155,Traffic,True,2,5,4,2,3.0,3,3,4.0,4,4,1,0,0,0,0,3.956857681274414,Realizable,../Translators/output-files/rq_files/traffic_updated_FINAL_strong_fixed_patterned7.spectra,2022-09-28 15:47:51,FastLAS,False
+156,Traffic,True,2,5,4,2,3.0,3,3,4.0,4,4,1,0,0,0,0,3.7205448150634766,Realizable,../Translators/output-files/rq_files/traffic_updated_FINAL_strong_fixed_patterned8.spectra,2022-09-28 15:47:51,FastLAS,True
+157,Traffic,True,2,5,4,2,3.0,3,3,4.0,4,4,1,0,0,0,0,4.161235809326172,Realizable,../Translators/output-files/rq_files/traffic_updated_FINAL_strong_fixed_patterned9.spectra,2022-09-28 15:47:51,FastLAS,False
+158,Traffic,True,2,5,4,2,3.0,3,3,4.0,4,4,1,0,0,0,0,3.731689214706421,Realizable,../Translators/output-files/rq_files/traffic_updated_FINAL_strong_fixed_patterned10.spectra,2022-09-28 15:47:51,FastLAS,True
+159,Traffic,True,2,5,4,2,3.0,3,3,4.0,4,4,1,0,0,0,0,4.066928386688232,Realizable,../Translators/output-files/rq_files/traffic_updated_FINAL_strong_fixed_patterned11.spectra,2022-09-28 15:47:51,FastLAS,False
+160,Traffic,True,2,5,4,2,3.0,3,3,4.0,4,4,1,0,0,0,0,4.027483224868774,Realizable,../Translators/output-files/rq_files/traffic_updated_FINAL_strong_fixed_patterned12.spectra,2022-09-28 15:47:51,FastLAS,True
+161,Traffic,True,2,5,4,2,3.0,3,3,4.0,4,4,1,0,0,0,0,3.9063503742218018,Realizable,../Translators/output-files/rq_files/traffic_updated_FINAL_strong_fixed_patterned13.spectra,2022-09-28 15:47:51,FastLAS,False
+162,Traffic,True,2,5,4,2,3.0,3,3,4.0,4,4,1,0,0,0,0,3.725649118423462,Realizable,../Translators/output-files/rq_files/traffic_updated_FINAL_strong_fixed_patterned14.spectra,2022-09-28 15:47:51,FastLAS,True
+163,Traffic,True,2,5,4,2,3.0,3,3,4.0,4,4,1,0,0,0,0,3.899859666824341,Realizable,../Translators/output-files/rq_files/traffic_updated_FINAL_strong_fixed_patterned15.spectra,2022-09-28 15:47:51,FastLAS,False
+164,Traffic,True,2,5,4,2,3.0,3,3,4.0,4,4,1,0,0,0,0,4.102354288101196,Realizable,../Translators/output-files/rq_files/traffic_updated_FINAL_strong_fixed_patterned16.spectra,2022-09-28 15:47:51,FastLAS,True
+165,Traffic,True,2,5,4,2,3.0,3,3,4.0,4,4,1,0,0,0,0,4.273812770843506,Realizable,../Translators/output-files/rq_files/traffic_updated_FINAL_strong_fixed_patterned17.spectra,2022-09-28 15:47:51,FastLAS,False
+166,Traffic,True,2,5,4,2,3.0,3,3,4.0,4,4,1,0,0,0,0,3.8194644451141357,Realizable,../Translators/output-files/rq_files/traffic_updated_FINAL_strong_fixed_patterned18.spectra,2022-09-28 15:47:51,FastLAS,True
+167,Traffic,True,2,5,4,2,3.0,3,3,4.0,4,4,1,0,0,0,0,4.3816986083984375,Realizable,../Translators/output-files/rq_files/traffic_updated_FINAL_strong_fixed_patterned19.spectra,2022-09-28 15:47:51,FastLAS,False
+168,Traffic,False,2,5,4,2,3.0,3,3,4.0,4,4,1,0,0,0,0,3.9252846240997314,Realizable,../Translators/output-files/rq_files/traffic_updated_FINAL_strong_fixed_patterned20.spectra,2022-09-28 15:47:51,FastLAS,True
+169,Traffic,False,2,5,4,2,3.0,3,3,4.0,4,4,1,0,0,0,0,4.100101947784424,Realizable,../Translators/output-files/rq_files/traffic_updated_FINAL_strong_fixed_patterned21.spectra,2022-09-28 15:47:51,FastLAS,False
+170,Traffic,False,2,5,4,1,3.0,3,3,4.0,4,4,1,0,0,0,0,3.9383785724639893,Realizable,../Translators/output-files/rq_files/traffic_updated_FINAL_strong_fixed_patterned22.spectra,2022-09-28 15:47:51,FastLAS,True
+171,Traffic,False,2,5,4,1,3.0,3,3,4.0,4,4,1,0,0,0,0,3.99316668510437,Realizable,../Translators/output-files/rq_files/traffic_updated_FINAL_strong_fixed_patterned23.spectra,2022-09-28 15:47:51,FastLAS,False
+172,Traffic,False,2,5,4,1,3.0,3,3,4.0,4,4,1,0,0,0,0,4.185253858566284,Realizable,../Translators/output-files/rq_files/traffic_updated_FINAL_strong_fixed_patterned24.spectra,2022-09-28 15:47:51,FastLAS,True
+173,Traffic,False,2,5,4,1,3.0,3,3,4.0,4,4,1,0,0,0,0,3.5211029052734375,Realizable,../Translators/output-files/rq_files/traffic_updated_FINAL_strong_fixed_patterned25.spectra,2022-09-28 15:47:51,FastLAS,False
+174,Traffic,False,2,5,4,1,3.0,3,3,4.0,4,4,1,0,0,0,0,3.9424169063568115,Realizable,../Translators/output-files/rq_files/traffic_updated_FINAL_strong_fixed_patterned26.spectra,2022-09-28 15:47:51,FastLAS,True
+175,Traffic,False,2,5,4,1,3.0,3,3,4.0,4,4,1,0,0,0,0,3.938957691192627,Realizable,../Translators/output-files/rq_files/traffic_updated_FINAL_strong_fixed_patterned27.spectra,2022-09-28 15:47:51,FastLAS,False
+176,Traffic,False,2,5,4,1,3.0,3,3,4.0,4,4,1,0,0,0,0,4.041453123092651,Realizable,../Translators/output-files/rq_files/traffic_updated_FINAL_strong_fixed_patterned28.spectra,2022-09-28 15:47:51,FastLAS,True
+177,Traffic,False,2,5,4,1,3.0,3,3,4.0,4,4,1,0,0,0,0,3.740826368331909,Realizable,../Translators/output-files/rq_files/traffic_updated_FINAL_strong_fixed_patterned29.spectra,2022-09-28 15:47:51,FastLAS,False
+178,Traffic,False,2,5,4,1,3.0,3,3,4.0,4,4,1,0,0,0,0,3.812520980834961,Realizable,../Translators/output-files/rq_files/traffic_updated_FINAL_strong_fixed_patterned30.spectra,2022-09-28 15:47:51,FastLAS,True
+179,Traffic,False,2,5,4,1,3.0,3,3,4.0,4,4,1,0,0,0,0,3.7579150199890137,Realizable,../Translators/output-files/rq_files/traffic_updated_FINAL_strong_fixed_patterned31.spectra,2022-09-28 15:47:51,FastLAS,False
+180,Traffic,False,2,5,4,2,3.0,3,3,4.0,4,4,1,0,0,0,0,3.6706337928771973,Realizable,../Translators/output-files/rq_files/traffic_updated_FINAL_strong_fixed_patterned32.spectra,2022-09-28 15:47:51,FastLAS,True
+181,Traffic,False,2,5,4,2,3.0,3,3,4.0,4,4,1,0,0,0,0,4.212052822113037,Realizable,../Translators/output-files/rq_files/traffic_updated_FINAL_strong_fixed_patterned33.spectra,2022-09-28 15:47:51,FastLAS,False
+182,Traffic,False,2,5,4,1,3.0,3,3,4.0,4,4,1,0,0,0,0,3.696424961090088,Realizable,../Translators/output-files/rq_files/traffic_updated_FINAL_strong_fixed_patterned34.spectra,2022-09-28 15:47:51,FastLAS,True
+183,Traffic,False,2,5,4,1,3.0,3,3,4.0,4,4,1,0,0,0,0,3.825144052505493,Realizable,../Translators/output-files/rq_files/traffic_updated_FINAL_strong_fixed_patterned35.spectra,2022-09-28 15:47:51,FastLAS,False
+184,Traffic,False,2,5,4,1,3.0,3,3,4.0,4,4,1,0,0,0,0,3.8024086952209473,Realizable,../Translators/output-files/rq_files/traffic_updated_FINAL_strong_fixed_patterned36.spectra,2022-09-28 15:47:51,FastLAS,True
+185,Traffic,False,2,5,4,1,3.0,3,3,4.0,4,4,1,0,0,0,0,3.927454710006714,Realizable,../Translators/output-files/rq_files/traffic_updated_FINAL_strong_fixed_patterned37.spectra,2022-09-28 15:47:51,FastLAS,False
+186,Traffic,False,2,5,4,1,3.0,3,3,4.0,4,4,1,0,0,0,0,3.814617872238159,Realizable,../Translators/output-files/rq_files/traffic_updated_FINAL_strong_fixed_patterned38.spectra,2022-09-28 15:47:51,FastLAS,True
+187,Traffic,False,2,5,4,1,3.0,3,3,4.0,4,4,1,0,0,0,0,3.894757032394409,Realizable,../Translators/output-files/rq_files/traffic_updated_FINAL_strong_fixed_patterned39.spectra,2022-09-28 15:47:51,FastLAS,False
+188,Genbuf,True,2,28,81,2,2.0,2,2,3.0,3,3,1,0,0,0,0,9.81174087524414,Realizable,../Translators/output-files/rq_files/genbuf_05_normalised_dropped_fixed0.spectra,2022-09-28 15:47:51,FastLAS,True
+189,Genbuf,True,2,28,81,2,2.0,2,2,3.0,3,3,1,0,0,0,0,8.487045049667358,Realizable,../Translators/output-files/rq_files/genbuf_05_normalised_dropped_fixed1.spectra,2022-09-28 15:47:51,FastLAS,False
+190,Genbuf,True,2,28,81,2,2.0,2,2,3.0,3,3,1,0,0,0,0,9.406257390975952,Realizable,../Translators/output-files/rq_files/genbuf_05_normalised_dropped_fixed2.spectra,2022-09-28 15:47:51,FastLAS,True
+191,Genbuf,True,2,28,81,2,2.0,2,2,3.0,3,3,1,0,0,0,0,8.270751953125,Realizable,../Translators/output-files/rq_files/genbuf_05_normalised_dropped_fixed3.spectra,2022-09-28 15:47:51,FastLAS,False
+192,Genbuf,True,2,28,81,2,2.0,2,2,3.0,3,3,1,0,0,0,0,9.414782762527466,Realizable,../Translators/output-files/rq_files/genbuf_05_normalised_dropped_fixed4.spectra,2022-09-28 15:47:51,FastLAS,True
+193,Genbuf,True,2,28,81,2,2.0,2,2,3.0,3,3,1,0,0,0,0,8.176444053649902,Realizable,../Translators/output-files/rq_files/genbuf_05_normalised_dropped_fixed5.spectra,2022-09-28 15:47:51,FastLAS,False
+194,Genbuf,True,2,28,81,2,2.0,2,2,3.0,3,3,1,0,0,0,0,9.524235010147095,Realizable,../Translators/output-files/rq_files/genbuf_05_normalised_dropped_fixed6.spectra,2022-09-28 15:47:51,FastLAS,True
+195,Genbuf,True,2,28,81,2,2.0,2,2,3.0,3,3,1,0,0,0,0,8.135159969329834,Realizable,../Translators/output-files/rq_files/genbuf_05_normalised_dropped_fixed7.spectra,2022-09-28 15:47:51,FastLAS,False
+196,Genbuf,True,2,28,81,2,2.0,2,2,3.0,3,3,1,0,0,0,0,9.391264915466309,Realizable,../Translators/output-files/rq_files/genbuf_05_normalised_dropped_fixed8.spectra,2022-09-28 15:47:51,FastLAS,True
+197,Genbuf,True,2,28,81,2,2.0,2,2,3.0,3,3,1,0,0,0,0,8.233912229537964,Realizable,../Translators/output-files/rq_files/genbuf_05_normalised_dropped_fixed9.spectra,2022-09-28 15:47:51,FastLAS,False
+198,Genbuf,True,2,28,81,2,2.0,2,2,3.0,3,3,1,0,0,0,0,9.586797952651978,Realizable,../Translators/output-files/rq_files/genbuf_05_normalised_dropped_fixed10.spectra,2022-09-28 15:47:51,FastLAS,True
+199,Genbuf,True,2,28,81,2,2.0,2,2,3.0,3,3,1,0,0,0,0,8.786549806594849,Realizable,../Translators/output-files/rq_files/genbuf_05_normalised_dropped_fixed11.spectra,2022-09-28 15:47:51,FastLAS,False
+200,Genbuf,True,2,28,81,2,2.0,2,2,3.0,3,3,1,0,0,0,0,9.35634469985962,Realizable,../Translators/output-files/rq_files/genbuf_05_normalised_dropped_fixed12.spectra,2022-09-28 15:47:51,FastLAS,True
+201,Genbuf,True,2,28,81,2,2.0,2,2,3.0,3,3,1,0,0,0,0,8.246228218078613,Realizable,../Translators/output-files/rq_files/genbuf_05_normalised_dropped_fixed13.spectra,2022-09-28 15:47:51,FastLAS,False
+202,Genbuf,True,2,28,81,2,2.0,2,2,3.0,3,3,1,0,0,0,0,9.528065204620361,Realizable,../Translators/output-files/rq_files/genbuf_05_normalised_dropped_fixed14.spectra,2022-09-28 15:47:51,FastLAS,True
+203,Genbuf,True,2,28,81,2,2.0,2,2,3.0,3,3,1,0,0,0,0,8.148012161254883,Realizable,../Translators/output-files/rq_files/genbuf_05_normalised_dropped_fixed15.spectra,2022-09-28 15:47:51,FastLAS,False
+204,Genbuf,True,2,28,81,2,2.0,2,2,3.0,3,3,1,0,0,0,0,9.487994909286499,Realizable,../Translators/output-files/rq_files/genbuf_05_normalised_dropped_fixed16.spectra,2022-09-28 15:47:51,FastLAS,True
+205,Genbuf,True,2,28,81,2,2.0,2,2,3.0,3,3,1,0,0,0,0,8.371088743209839,Realizable,../Translators/output-files/rq_files/genbuf_05_normalised_dropped_fixed17.spectra,2022-09-28 15:47:51,FastLAS,False
+206,Genbuf,True,2,28,81,2,2.0,2,2,3.0,3,3,1,0,0,0,0,9.305797576904297,Realizable,../Translators/output-files/rq_files/genbuf_05_normalised_dropped_fixed18.spectra,2022-09-28 15:47:51,FastLAS,True
+207,Genbuf,True,2,28,81,2,2.0,2,2,3.0,3,3,1,0,0,0,0,8.288620710372925,Realizable,../Translators/output-files/rq_files/genbuf_05_normalised_dropped_fixed19.spectra,2022-09-28 15:47:51,FastLAS,False
+208,Genbuf,False,2,28,81,2,2.0,2,2,3.0,3,3,1,0,0,0,0,8.854458332061768,Realizable,../Translators/output-files/rq_files/genbuf_05_normalised_dropped_fixed20.spectra,2022-09-28 15:47:51,FastLAS,True
+209,Genbuf,False,2,28,81,2,2.0,2,2,3.0,3,3,1,0,0,0,0,8.452799320220947,Realizable,../Translators/output-files/rq_files/genbuf_05_normalised_dropped_fixed21.spectra,2022-09-28 15:47:51,FastLAS,False
+210,Genbuf,False,2,28,81,2,2.0,2,2,3.0,3,3,1,0,0,0,0,9.262902021408081,Realizable,../Translators/output-files/rq_files/genbuf_05_normalised_dropped_fixed22.spectra,2022-09-28 15:47:51,FastLAS,True
+211,Genbuf,False,2,28,81,2,2.0,2,2,3.0,3,3,1,0,0,0,0,8.272862434387207,Realizable,../Translators/output-files/rq_files/genbuf_05_normalised_dropped_fixed23.spectra,2022-09-28 15:47:51,FastLAS,False
+212,Genbuf,False,2,28,81,2,2.0,2,2,3.0,3,3,1,0,0,0,0,9.534364223480225,Realizable,../Translators/output-files/rq_files/genbuf_05_normalised_dropped_fixed24.spectra,2022-09-28 15:47:51,FastLAS,True
+213,Genbuf,False,2,28,81,2,2.0,2,2,3.0,3,3,1,0,0,0,0,8.45254397392273,Realizable,../Translators/output-files/rq_files/genbuf_05_normalised_dropped_fixed25.spectra,2022-09-28 15:47:51,FastLAS,False
+214,Genbuf,False,2,28,81,2,2.0,2,2,3.0,3,3,1,0,0,0,0,9.570512294769287,Realizable,../Translators/output-files/rq_files/genbuf_05_normalised_dropped_fixed26.spectra,2022-09-28 15:47:51,FastLAS,True
+215,Genbuf,False,2,28,81,2,2.0,2,2,3.0,3,3,1,0,0,0,0,8.308313608169556,Realizable,../Translators/output-files/rq_files/genbuf_05_normalised_dropped_fixed27.spectra,2022-09-28 15:47:51,FastLAS,False
+216,Genbuf,False,2,28,81,2,2.0,2,2,3.0,3,3,1,0,0,0,0,9.481892347335815,Realizable,../Translators/output-files/rq_files/genbuf_05_normalised_dropped_fixed28.spectra,2022-09-28 15:47:51,FastLAS,True
+217,Genbuf,False,2,28,81,2,2.0,2,2,3.0,3,3,1,0,0,0,0,7.804745197296143,Realizable,../Translators/output-files/rq_files/genbuf_05_normalised_dropped_fixed29.spectra,2022-09-28 15:47:51,FastLAS,False
+218,Genbuf,False,2,28,81,2,2.0,2,2,3.0,3,3,1,0,0,0,0,9.30471396446228,Realizable,../Translators/output-files/rq_files/genbuf_05_normalised_dropped_fixed30.spectra,2022-09-28 15:47:51,FastLAS,True
+219,Genbuf,False,2,28,81,2,2.0,2,2,3.0,3,3,1,0,0,0,0,8.36006212234497,Realizable,../Translators/output-files/rq_files/genbuf_05_normalised_dropped_fixed31.spectra,2022-09-28 15:47:51,FastLAS,False
+220,Genbuf,False,2,28,81,2,2.0,2,2,3.0,3,3,1,0,0,0,0,9.492231130599976,Realizable,../Translators/output-files/rq_files/genbuf_05_normalised_dropped_fixed32.spectra,2022-09-28 15:47:51,FastLAS,True
+221,Genbuf,False,2,28,81,2,2.0,2,2,3.0,3,3,1,0,0,0,0,8.606033325195312,Realizable,../Translators/output-files/rq_files/genbuf_05_normalised_dropped_fixed33.spectra,2022-09-28 15:47:51,FastLAS,False
+222,Genbuf,False,2,28,81,2,2.0,2,2,3.0,3,3,1,0,0,0,0,9.564283847808838,Realizable,../Translators/output-files/rq_files/genbuf_05_normalised_dropped_fixed34.spectra,2022-09-28 15:47:51,FastLAS,True
+223,Genbuf,False,2,28,81,2,2.0,2,2,3.0,3,3,1,0,0,0,0,8.378243923187256,Realizable,../Translators/output-files/rq_files/genbuf_05_normalised_dropped_fixed35.spectra,2022-09-28 15:47:51,FastLAS,False
+224,Genbuf,False,2,28,81,2,2.0,2,2,3.0,3,3,1,0,0,0,0,9.505967140197754,Realizable,../Translators/output-files/rq_files/genbuf_05_normalised_dropped_fixed36.spectra,2022-09-28 15:47:51,FastLAS,True
+225,Genbuf,False,2,28,81,2,2.0,2,2,3.0,3,3,1,0,0,0,0,8.54835820198059,Realizable,../Translators/output-files/rq_files/genbuf_05_normalised_dropped_fixed37.spectra,2022-09-28 15:47:51,FastLAS,False
+226,Genbuf,False,2,28,81,2,2.0,2,2,3.0,3,3,1,0,0,0,0,9.468513011932373,Realizable,../Translators/output-files/rq_files/genbuf_05_normalised_dropped_fixed38.spectra,2022-09-28 15:47:51,FastLAS,True
+227,Genbuf,False,2,28,81,2,2.0,2,2,3.0,3,3,1,0,0,0,0,8.196002006530762,Realizable,../Translators/output-files/rq_files/genbuf_05_normalised_dropped_fixed39.spectra,2022-09-28 15:47:51,FastLAS,False

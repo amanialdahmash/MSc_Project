@@ -1,0 +1,22 @@
+,type,name,formula,antecedent,consequent
+0,assumption,initial_env_conditions,I(carA=false&carB=false&emergency=false);,,"not_holds_at(carA,0,S),
+	not_holds_at(carB,0,S),
+	not_holds_at(emergency,0,S)"
+1,guarantee,initial_sys_conditions,I(greenA=false&greenB=false);,,"not_holds_at(greenA,0,S),
+	not_holds_at(greenB,0,S)"
+2,assumption,carA_detected_often,GF(carA=true);,,"holds_at_eventually(carA,T1,S)"
+3,assumption,carB_detected_often,GF(carB=true);,,"holds_at_eventually(carB,T1,S)"
+4,assumption,not_police_often,GF(police=false);,,"not_holds_at_eventually(police,T1,S)"
+5,guarantee,Bred_when_Agreen,G(greenA=true->greenB=false);,"holds_at(greenA,T1,S)","not_holds_at(greenB,T1,S)"
+6,guarantee,Ared_when_Bgreen,G(greenB=true->greenA=false);,"holds_at(greenB,T1,S)","not_holds_at(greenA,T1,S)"
+7,guarantee,greenA_often,GF(greenA=true);,,"holds_at_eventually(greenA,T1,S)"
+8,guarantee,greenB_often,GF(greenB=true);,,"holds_at_eventually(greenB,T1,S)"
+9,guarantee,no_carA_often,GF(carA=false);,,"not_holds_at_eventually(carA,T1,S)"
+10,assumption,carA_idle_when_red,G(carA=true&greenA=false->next(carA=true));,"holds_at(carA,T1,S),
+	not_holds_at(greenA,T1,S)","holds_at_next(carA,T1,S)"
+11,assumption,carB_idle_when_red,G(carB=true&greenB=false->next(carB=true));,"holds_at(carB,T1,S),
+	not_holds_at(greenB,T1,S)","holds_at_next(carB,T1,S)"
+12,assumption,carA_moves_when_green,G(carA=true&greenA=true->next(carA=false));,"holds_at(carA,T1,S),
+	holds_at(greenA,T1,S)","not_holds_at_next(carA,T1,S)"
+13,assumption,carB_moves_when_green,G(carB=true&greenB=true->next(carB=false));,"holds_at(carB,T1,S),
+	holds_at(greenB,T1,S)","not_holds_at_next(carB,T1,S)"

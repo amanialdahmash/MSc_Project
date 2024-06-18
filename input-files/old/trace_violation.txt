@@ -1,0 +1,19 @@
+Trace Type: Counterexample
+  -> State: 1.1 <-
+    carB = TRUE
+    carA = FALSE
+    greenB = FALSE
+    greenA = FALSE
+    emergency = TRUE
+  -> State: 1.2 <-
+    carB = TRUE
+    carA = TRUE
+    greenB = FALSE
+    greenA = TRUE
+    emergency = FALSE
+  -> State: 1.3 <-
+    carB = FALSE
+    carA = FALSE
+    emergency = FALSE
+  -- Loop starts here
+End

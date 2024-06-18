@@ -1,0 +1,21 @@
+module Test
+
+env boolean switch;
+
+sys boolean powercut;
+sys boolean lightbulb;
+
+asm initial_env_conditions:
+	ini !switch;
+	
+gar initial_sys_conditions:
+	ini !lightbulb;
+
+asm switch_often:
+	alwEv switch;
+
+gar switch_turns_on_lightbulb:
+	alw switch -> next(lightbulb) | switch -> next(powercut);
+	
+gar switch_turns_off_lightbulb:
+	alw !switch -> next(!lightbulb) | powercut -> switch & next(!powercut);

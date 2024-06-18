@@ -1,0 +1,20 @@
+Trace Type: Counterexample
+  -> State: 1.1 <-
+    fardistance = TRUE
+    liftcommand = TRUE
+    dropcommand = FALSE
+    gocommand = FALSE
+    idlecommand = FALSE
+  -> State: 1.2 <-
+    fardistance = TRUE
+    liftcommand = FALSE
+    dropcommand = FALSE
+    gocommand = TRUE
+    idlecommand = FALSE
+  -> State: 1.3 <-
+    fardistance = FALSE
+    liftcommand = FALSE
+    dropcommand = FALSE
+    gocommand = FALSE
+    idlecommand = TRUE
+End

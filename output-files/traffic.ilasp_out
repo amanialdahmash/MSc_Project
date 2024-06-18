@@ -1,0 +1,42 @@
+b'%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Pre-processing                          : 0.133s
+%% Hypothesis Space Generation             : 6.656s
+%% Conflict analysis                       : 4.653s
+%%   - Positive Examples                   : 4.653s
+%% Counterexample search                   : 0.087s
+%%   - CDOEs                               : 0.024s
+%%   - CDPIs                               : 0.063s
+%% Hypothesis Search                       : 1.698s
+%% Total                                   : 13.241s
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Solution 1 (score 2) 
+antecedent_exception(carA_idle_when_red,V1,V2) :- not_holds_at(carB,V1,V2).
+
+%% Solution 2 (score 2) 
+antecedent_exception(carA_idle_when_red,V1,V2) :- not_holds_at(greenB,V1,V2).
+
+%% Solution 3 (score 2) 
+antecedent_exception(carA_idle_when_red,V1,V2) :- not_holds_at_prev(carB,V1,V2).
+
+%% Solution 4 (score 2) 
+antecedent_exception(carA_idle_when_red,V1,V2) :- holds_at(emergency,V1,V2).
+
+%% Solution 5 (score 2) 
+antecedent_exception(carA_idle_when_red,V1,V2) :- not_holds_at_prev(greenB,V1,V2).
+
+%% Solution 6 (score 2) 
+antecedent_exception(carA_idle_when_red,V1,V2) :- not_holds_at_prev(greenA,V1,V2).
+
+%% Solution 7 (score 2) 
+antecedent_exception(carA_idle_when_red,V1,V2) :- not_holds_at_prev(emergency,V1,V2).
+
+%% Solution 8 (score 2) 
+antecedent_exception(carA_idle_when_red,V1,V2) :- not_holds_at_prev(carA,V1,V2).
+
+%% Solution 9 (score 3) 
+antecedent_exception(carA_idle_when_red,V1,V2) :- not_holds_at(greenB,V1,V2); holds_at_prev(carA,V3,V2).
+
+%% Solution 10 (score 3) 
+antecedent_exception(carA_idle_when_red,V1,V2) :- not_holds_at(carB,V1,V2); holds_at_prev(carA,V3,V2).
+
+'

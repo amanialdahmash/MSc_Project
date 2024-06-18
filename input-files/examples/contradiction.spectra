@@ -1,0 +1,14 @@
+module Cont
+
+env boolean a;
+sys boolean b;
+
+assumption -- contradiction
+	G(a & !a);
+	
+guarantee -- non_contradiction
+	GF(b -> !b)
+
+guarantee -- trivial
+    G(a -> a);
+

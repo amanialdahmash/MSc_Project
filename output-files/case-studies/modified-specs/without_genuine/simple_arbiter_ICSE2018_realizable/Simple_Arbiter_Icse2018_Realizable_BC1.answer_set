@@ -1,0 +1,12 @@
+b'clingo version 5.4.0
+Reading from ...ple_Arbiter_Icse2018_Realizable_BC1.lp
+Solving...
+Answer: 1
+violation_holds(negated_bc1_1,1,forced_violation_BC1)
+SATISFIABLE
+
+Models       : 1
+Calls        : 1
+Time         : 0.073s (Solving: 0.00s 1st Model: 0.00s Unsat: 0.00s)
+CPU Time     : 0.020s
+'

@@ -1,0 +1,59 @@
+pattern pRespondsToS(s, p) {
+  var { S0, S1} state;
+
+  // initial assignments: initial state
+  ini state=S0;
+
+  // safety this and next state
+  alw ((state=S0 & ((!s) | (s & p)) & next(state=S0)) |
+  (state=S0 & (s & !p) & next(state=S1)) |
+  (state=S1 & (p) & next(state=S0)) |
+  (state=S1 & (!p) & next(state=S1)));
+
+  // equivalence of satisfaction
+  alwEv (state=S0);
+}
+
+pattern aImplies_bUntil_c(a, b, c) {
+  var { S0, S1, S2} state;
+
+  // initial assignments: initial state
+  ini state=S1;
+
+  // safety this and next state
+  alw (
+		(state=S1 & (!a | c) & next(state=S1)) |
+		(state=S1 & (a & b & !c) & next(state=S0)) |
+		(state=S1 & (a & !b & !c) & next(state=S2)) |
+		(state=S0 & (b & !c) & next(state=S0)) |
+		(state=S0 & (!b & !c) & next(state=S2)) |
+		(state=S0 & (c) & next(state=S1)) |
+		(state=S2 & next(state=S2))
+	  );
+
+  // equivalence of satisfaction
+  alwEv (state=S0);
+  alwEv (state=S1);
+}
+
+pattern aImpliesNext_bUntil_c(a, b, c) {
+  var { S0, S1, S2} state;
+
+  // initial assignments: initial state
+  ini state=S0;
+
+  // safety this and next state
+  alw (
+		(state=S0 & (!a) & next(state=S0)) |
+		(state=S0 & (a) & next(state=S1)) |
+
+		(state=S1 & ((a & c) | (b & !c)) & next(state=S1)) |
+		(state=S1 & (!a & c) & next(state=S0)) |
+		(state=S1 & (!b & !c) & next(state=S2)) |
+		(state=S2 & next(state=S2))
+	  );
+
+  // equivalence of satisfaction
+  alwEv (state=S0);
+  alwEv (state=S1);
+}

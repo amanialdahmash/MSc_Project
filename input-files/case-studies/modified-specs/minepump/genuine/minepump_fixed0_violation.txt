@@ -1,0 +1,7 @@
+holds_at(p,0,forced_violation).
+not_holds_at(h,0,forced_violation).
+not_holds_at(m,0,forced_violation).
+
+holds_at(h,1,forced_violation).
+not_holds_at(m,1,forced_violation).
+not_holds_at(p,1,forced_violation).

@@ -1,0 +1,119 @@
+<project>
+  <signals>
+    <signal>
+      <name>doorhit</name>
+      <kind>E</kind>
+      <type>boolean</type>
+      <auto_signal value="False" />
+      <notes />
+    </signal>
+    <signal>
+      <name>bellpressed</name>
+      <kind>E</kind>
+      <type>boolean</type>
+      <auto_signal value="False" />
+      <notes />
+    </signal>
+    <signal>
+      <name>knocksound</name>
+      <kind>E</kind>
+      <type>boolean</type>
+      <auto_signal value="False" />
+      <notes />
+    </signal>
+    <signal>
+      <name>bellrings</name>
+      <kind>E</kind>
+      <type>boolean</type>
+      <auto_signal value="False" />
+      <notes />
+    </signal>
+    <signal>
+      <name>dooranswered</name>
+      <kind>S</kind>
+      <type>boolean</type>
+      <auto_signal value="False" />
+      <notes />
+    </signal>
+  </signals>
+  <requirements>
+    <requirement>
+      <name>e_init</name>
+      <property>!bellrings &amp;&amp; !doorhit &amp;&amp; !bellpressed &amp;&amp; !knocksound</property>
+      <kind>A</kind>
+      <base_automaton_name />
+      <notes />
+      <toggled>1</toggled>
+    </requirement>
+    <requirement>
+      <name>sillyassumption</name>
+      <property>G ( ( doorhit ) -&gt; X ( bellrings ) )</property>
+      <kind>A</kind>
+      <base_automaton_name />
+      <notes />
+      <toggled>1</toggled>
+    </requirement>
+    <requirement>
+      <name>otherassumption</name>
+      <property>G ( ( bellpressed ) -&gt; ( bellrings ) )</property>
+      <kind>A</kind>
+      <base_automaton_name />
+      <notes />
+      <toggled>1</toggled>
+    </requirement>
+    <requirement>
+      <name>s_init</name>
+      <property>(!dooranswered)</property>
+      <kind>G</kind>
+      <base_automaton_name />
+      <notes />
+      <toggled>1</toggled>
+    </requirement>
+    <requirement>
+      <name>goal1</name>
+      <property>G(bellrings -&gt; dooranswered)</property>
+      <kind>G</kind>
+      <base_automaton_name />
+      <notes />
+      <toggled>1</toggled>
+    </requirement>
+    <requirement>
+      <name>goal2</name>
+      <property>G(knocksound -&gt; dooranswered)</property>
+      <kind>G</kind>
+      <base_automaton_name />
+      <notes />
+      <toggled>1</toggled>
+    </requirement>
+  </requirements>
+  <property_assurance>
+    <possibilities />
+    <assertions />
+  </property_assurance>
+  <property_simulation />
+  <categories>
+    <category>
+      <name>New</name>
+      <editable>no</editable>
+      <notes>This is the category of those traces that have been just created</notes>
+    </category>
+    <category>
+      <name>Default</name>
+      <editable>no</editable>
+      <notes>This is the default category for traces</notes>
+    </category>
+    <category>
+      <name>Out of Date</name>
+      <editable>no</editable>
+      <notes>Contains the traces whose dependencies might be no longer consistent</notes>
+    </category>
+    <category>
+      <name>Trash</name>
+      <editable>no</editable>
+      <notes>Contains the traces that have been deleted</notes>
+    </category>
+  </categories>
+  <automata />
+  <active_view>ga</active_view>
+  <notes />
+</project>

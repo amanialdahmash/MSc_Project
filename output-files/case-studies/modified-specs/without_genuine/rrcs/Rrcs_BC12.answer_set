@@ -1,0 +1,13 @@
+b'clingo version 5.4.0
+Reading from ...pecs/without_genuine/rrcs/Rrcs_BC12.lp
+Solving...
+Answer: 1
+violation_holds(negated_bc1_1,0,forced_violation_BC12)
+violation_holds(guarantee1_1,0,forced_violation_BC12)
+SATISFIABLE
+
+Models       : 1
+Calls        : 1
+Time         : 0.085s (Solving: 0.00s 1st Model: 0.00s Unsat: 0.00s)
+CPU Time     : 0.026s
+'

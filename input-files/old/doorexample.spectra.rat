@@ -1,0 +1,79 @@
+<?xml version="1.0" ?>
+<project>
+	<signals>
+		<signal>
+			<name>bellpressed</name>
+			<kind>E</kind>
+			<type>boolean</type>
+			<notes/>
+		</signal>
+		<signal>
+			<name>doorhit</name>
+			<kind>E</kind>
+			<type>boolean</type>
+			<notes/>
+		</signal>
+		<signal>
+			<name>knocksound</name>
+			<kind>E</kind>
+			<type>boolean</type>
+			<notes/>
+		</signal>
+		<signal>
+			<name>bellrings</name>
+			<kind>E</kind>
+			<type>boolean</type>
+			<notes/>
+		</signal>
+		<signal>
+			<name>dooranswered</name>
+			<kind>S</kind>
+			<type>boolean</type>
+			<notes/>
+		</signal>
+	</signals>
+	<requirements>
+		<requirement>
+			<name>assum_0</name>
+			<property>(!bellrings) &amp;(!doorhit) &amp;(!bellpressed) &amp;(!knocksound)</property>
+			<kind>A</kind>
+			<notes/>
+			<toggled>1</toggled>
+		</requirement>
+		<requirement>
+			<name>assum_1</name>
+			<property>G(doorhit -&gt; bellrings)</property>
+			<kind>A</kind>
+			<notes/>
+			<toggled>1</toggled>
+		</requirement>
+		<requirement>
+			<name>assum_2</name>
+			<property>G(bellpressed -&gt; bellrings)</property>
+			<kind>A</kind>
+			<notes/>
+			<toggled>1</toggled>
+		</requirement>
+		<requirement>
+			<name>guar_0</name>
+			<property>G(bellrings -&gt; dooranswered)</property>
+			<kind>G</kind>
+			<notes/>
+			<toggled>1</toggled>
+		</requirement>
+		<requirement>
+			<name>guar_1</name>
+			<property>G(knocksound -&gt; dooranswered)</property>
+			<kind>G</kind>
+			<notes/>
+			<toggled>1</toggled>
+		</requirement>
+		<requirement>
+			<name>guar_2</name>
+			<property>!dooranswered</property>
+			<kind>G</kind>
+			<notes/>
+			<toggled>1</toggled>
+		</requirement>
+	</requirements>
+</project>

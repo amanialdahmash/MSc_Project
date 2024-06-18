@@ -1,0 +1,91 @@
+%Below I have translated all of the expressions as if they were 
+%being weakened (as you can see more specifics of the translation that way).
+
+
+%assumption -- prev_and_next
+%	G(PREV(a=true)->next(c=true));
+
+assumption(prev_and_next).
+
+antecedent_holds(prev_and_next,T1,S):-
+	trace(S),
+	timepoint(T1,S),
+	holds_at_prev(a,T1,S),
+	not antecedent_exception(prev_and_next,T1,S).
+
+consequent_holds(prev_and_next,T1,S):-
+	trace(S),
+	timepoint(T1,S),
+	holds_at_next(c,T1,S).
+
+
+%guarantee -- justice
+%	G(a=true->b=true);
+
+guarantee(justice).
+
+antecedent_holds(justice,T1,S):-
+	trace(S),
+	timepoint(T1,S),
+	holds_at(a,T1,S).
+
+consequent_holds(justice,T1,S):-
+	trace(S),
+	timepoint(T1,S),
+	holds_at(b,T1,S).
+
+consequent_holds(justice,T1,S):-
+	trace(S),
+	timepoint(T1,S),
+	consequent_exception(justice,T1,S).
+
+
+%guarantee -- fairness
+%	GF(a=true|c=true);
+
+guarantee(fairness).
+
+antecedent_holds(fairness,T1,S):-
+	trace(S),
+	timepoint(T1,S).
+
+consequent_holds(fairness,T1,S):-
+	trace(S),
+	timepoint(T1,S),
+	timepoint(T2,S),
+	holds_at_eventually(a,T1,T2,S).
+
+consequent_holds(fairness,T1,S):-
+	trace(S),
+	timepoint(T1,S),
+	consequent_exception(fairness,T1,S).
+
+consequent_holds(fairness,T1,S):-
+	trace(S),
+	timepoint(T1,S),
+	timepoint(T2,S),
+	holds_at_eventually(c,T1,T2,S).
+
+
+%guarantee -- pRespondsToS
+%	G(b=true->F(c=true));
+
+guarantee(pRespondsToS).
+
+antecedent_holds(pRespondsToS,T1,S):-
+	trace(S),
+	timepoint(T1,S),
+	timepoint(T2,S),
+	holds_at(b,T1,S).
+
+consequent_holds(pRespondsToS,T1,S):-
+	trace(S),
+	timepoint(T1,S),
+	timepoint(T2,S),
+	holds_at_eventually(c,T1,T2,S).
+
+consequent_holds(pRespondsToS,T1,S):-
+	trace(S),
+	timepoint(T1,S),
+	consequent_exception(pRespondsToS,T1,S).
+

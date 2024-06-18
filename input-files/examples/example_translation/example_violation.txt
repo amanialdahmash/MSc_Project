@@ -1,0 +1,12 @@
+    holds_at(a,0,trace_name).
+    holds_at(b,0,trace_name).
+not_holds_at(c,0,trace_name).
+
+not_holds_at(a,1,trace_name).
+not_holds_at(b,1,trace_name).
+not_holds_at(c,1,trace_name).
+
+not_holds_at(a,2,trace_name).
+not_holds_at(b,2,trace_name).
+not_holds_at(c,2,trace_name).
+

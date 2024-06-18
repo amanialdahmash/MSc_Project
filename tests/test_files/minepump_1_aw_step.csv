@@ -1,0 +1,7 @@
+type,name,formula,antecedent,consequent,when
+assumption,initial_assumption,highwater=false&methane=false;,[],"['not_holds_at(current,highwater,0,S),\n\tnot_holds_at(current,methane,0,S)']",When.INITIALLY
+guarantee,initial_guarantee,pump=false;,[],"['not_holds_at(current,pump,0,S)']",When.INITIALLY
+guarantee,guarantee1_1,G(highwater=true->next(pump=true));,"['holds_at(current,highwater,T,S)']","['holds_at(next,pump,T,S)']",When.ALWAYS
+guarantee,guarantee2_1,G(methane=true->next(pump=false));,"['holds_at(current,methane,T,S)']","['not_holds_at(next,pump,T,S)']",When.ALWAYS
+assumption,assumption1_1,G(PREV(pump=true)&pump=true->next(highwater=false));,"['holds_at(prev,pump,T,S),\n\tholds_at(current,pump,T,S)']","['not_holds_at(next,highwater,T,S)']",When.ALWAYS
+assumption,assumption2_1,G(highwater=false|methane=false);,[],"['not_holds_at(current,highwater,T,S)', 'not_holds_at(current,methane,T,S)']",When.ALWAYS

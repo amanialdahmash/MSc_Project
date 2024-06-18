@@ -1,0 +1,15 @@
+Trace Type: Counterexample
+  -> State: 1.1 <-
+    doorhit = FALSE
+    bellpressed = FALSE
+    knocksound = FALSE
+    bellrings = FALSE
+    dooranswered = FALSE
+  -> State: 1.2 <-
+    doorhit = TRUE
+    bellpressed = FALSE
+    knocksound = TRUE
+    bellrings = FALSE
+    dooranswered = TRUE
+  -- Loop starts here
+End

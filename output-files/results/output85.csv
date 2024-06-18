@@ -1,0 +1,4 @@
+,file,run,types,prevs,n_dropped,outcome,total_time,max_time,median_time,n_runs
+0,../Translators/input-files/case-studies/modified-specs/minepump/genuine/minepump_fixed1.spectra,0,['A'],False,1,SimEnv.Success,3.904578447341919,3.904578447341919,3.904578447341919,1
+1,../Translators/input-files/case-studies/modified-specs/minepump/genuine/minepump_fixed1.spectra,0,"['A,G']",False,2,SimEnv.Realizable,41.551751136779785,4.586677074432373,4.424331426620483,10
+2,../Translators/input-files/case-studies/modified-specs/minepump/genuine/minepump_fixed1.spectra,1,"['A,G']",False,1,SimEnv.Success,3.3822975158691406,3.3822975158691406,3.3822975158691406,1

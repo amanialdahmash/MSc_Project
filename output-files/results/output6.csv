@@ -1,0 +1,11 @@
+,file,run,types,n_dropped,outcome,total_time,max_time,median_time,n_runs
+0,../Translators/input-files/examples/Traffic/traffic_single_FINAL.spectra,0,['A'],2,SimEnv.NoTraceFound,22.453134536743164,16.7919180393219,11.226567268371582,2
+1,../Translators/input-files/examples/Traffic/traffic_single_FINAL.spectra,1,['A'],3,SimEnv.Timeout,51.252609968185425,5.448121786117554,5.1323031187057495,10
+2,../Translators/input-files/examples/Traffic/traffic_single_FINAL.spectra,2,['A'],1,SimEnv.NoTraceFound,0.0,0.0,0.0,0
+3,../Translators/input-files/examples/Traffic/traffic_single_FINAL.spectra,3,['A'],3,SimEnv.NoTraceFound,151.0818989276886,31.24262046813965,18.6170392036438,7
+4,../Translators/input-files/examples/Traffic/traffic_single_FINAL.spectra,4,['A'],1,SimEnv.Timeout,55.28161692619324,6.429121255874634,5.386096477508545,10
+5,../Translators/input-files/examples/Traffic/traffic_single_FINAL.spectra,0,"['A,G']",5,SimEnv.Timeout,53.89498519897461,6.029118061065674,5.413758993148804,10
+6,../Translators/input-files/examples/Traffic/traffic_single_FINAL.spectra,1,"['A,G']",4,SimEnv.NoTraceFound,0.0,0.0,0.0,0
+7,../Translators/input-files/examples/Traffic/traffic_single_FINAL.spectra,2,"['A,G']",3,SimEnv.NoTraceFound,10.481138706207275,5.46253228187561,5.240569353103638,2
+8,../Translators/input-files/examples/Traffic/traffic_single_FINAL.spectra,3,"['A,G']",5,SimEnv.Timeout,54.682705879211426,6.668412208557129,5.333630681037903,10
+9,../Translators/input-files/examples/Traffic/traffic_single_FINAL.spectra,4,"['A,G']",4,SimEnv.NoTraceFound,22.685648679733276,6.3752148151397705,5.5356327295303345,4

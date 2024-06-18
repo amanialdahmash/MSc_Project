@@ -1,0 +1,14 @@
+not_holds_at(carA, 0, stop_if_police_and_emergency).
+not_holds_at(emergency, 0, stop_if_police_and_emergency).
+not_holds_at(greenA, 0, stop_if_police_and_emergency).
+not_holds_at(police, 0, stop_if_police_and_emergency).
+
+holds_at(carA, 1, stop_if_police_and_emergency).
+holds_at(emergency, 1, stop_if_police_and_emergency).
+holds_at(greenA, 1, stop_if_police_and_emergency).
+holds_at(police, 1, stop_if_police_and_emergency).
+
+holds_at(carA, 2, stop_if_police_and_emergency).
+not_holds_at(emergency, 2, stop_if_police_and_emergency).
+not_holds_at(greenA, 2, stop_if_police_and_emergency).
+not_holds_at(police, 2, stop_if_police_and_emergency).

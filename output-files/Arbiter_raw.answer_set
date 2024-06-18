@@ -1,0 +1,57 @@
+b'clingo version 5.4.0
+Reading from ...ranslators/output-files/Arbiter_raw.lp
+Solving...
+Answer: 1
+timepoint(0,forced_violation)
+trace(forced_violation)
+atom(a)
+atom(r1)
+atom(r2)
+atom(g1)
+atom(g2)
+holds_at_next(a,0,forced_violation)
+holds_at_next(r1,0,forced_violation)
+holds_at_next(r2,0,forced_violation)
+holds_at_next(g1,0,forced_violation)
+holds_at_next(g2,0,forced_violation)
+not_holds_at_next(a,0,forced_violation)
+not_holds_at_next(r1,0,forced_violation)
+not_holds_at_next(r2,0,forced_violation)
+not_holds_at_next(g1,0,forced_violation)
+not_holds_at_next(g2,0,forced_violation)
+not_holds_at(a,0,forced_violation)
+not_holds_at(r1,0,forced_violation)
+not_holds_at(r2,0,forced_violation)
+not_holds_at(g1,0,forced_violation)
+not_holds_at(g2,0,forced_violation)
+holds_at_eventually(a,0,0,forced_violation)
+holds_at_eventually(r1,0,0,forced_violation)
+holds_at_eventually(r2,0,0,forced_violation)
+holds_at_eventually(g1,0,0,forced_violation)
+holds_at_eventually(g2,0,0,forced_violation)
+not_holds_at_eventually(a,0,0,forced_violation)
+not_holds_at_eventually(r1,0,0,forced_violation)
+not_holds_at_eventually(r2,0,0,forced_violation)
+not_holds_at_eventually(g1,0,0,forced_violation)
+not_holds_at_eventually(g2,0,0,forced_violation)
+eq(0,0)
+consequent_holds(guarantee3_1,0,forced_violation)
+consequent_holds(false_always,0,forced_violation)
+antecedent_holds(guarantee3_1,0,forced_violation)
+antecedent_holds(false_always,0,forced_violation)
+exp(false_always)
+exp(guarantee3_1)
+holds_non_vacuously(guarantee3_1,0,forced_violation)
+holds_non_vacuously(false_always,0,forced_violation)
+holds(guarantee3_1,0,forced_violation)
+holds(false_always,0,forced_violation)
+entailed(forced_violation)
+guarantee(guarantee3_1)
+assumption(false_always)
+SATISFIABLE
+
+Models       : 1
+Calls        : 1
+Time         : 0.010s (Solving: 0.00s 1st Model: 0.00s Unsat: 0.00s)
+CPU Time     : 0.004s
+'

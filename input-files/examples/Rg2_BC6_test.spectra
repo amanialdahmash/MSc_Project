@@ -1,0 +1,15 @@
+module Rg2
+
+env boolean req;
+env boolean cancel;
+sys boolean grant;
+
+guarantee -- guarantee1_1
+	G((cancel|grant)->next(!grant));
+
+assumption -- negated_bc1_1
+	G(req->F(grant));
+
+assumption -- negated_bc2_1
+	G((cancel|grant)&req->next(!grant));
+

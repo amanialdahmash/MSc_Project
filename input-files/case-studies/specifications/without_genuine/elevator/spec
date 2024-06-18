@@ -1,0 +1,1 @@
+-ins='open,call' -outs='atfloor' -d='G ( X(open) -> atfloor)' -g='G(call -> F(open))'

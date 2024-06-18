@@ -1,0 +1,27 @@
+INI -> S0 {carA:false, emergency:false, police:false} / {greenA:false};
+S0 -> S0 {carA:true, emergency:false, police:true} / {greenA:false};
+S0 -> S0 {carA:true, emergency:false, police:true} / {greenA:true};
+
+
+%---*** Violation Trace ***---
+
+#pos({},{entailed(ini_S0_S0)},{
+
+trace(ini_S0_S0).
+
+timepoint(0,ini_S0_S0).
+timepoint(1,ini_S0_S0).
+next(1,0,ini_S0_S0).
+next(1,1,ini_S0_S0).
+
+not_holds_at(carA,0,ini_S0_S0).
+not_holds_at(emergency,0,ini_S0_S0).
+not_holds_at(police,0,ini_S0_S0).
+not_holds_at(greenA,0,ini_S0_S0).
+holds_at(carA,1,ini_S0_S0).
+not_holds_at(emergency,1,ini_S0_S0).
+holds_at(police,1,ini_S0_S0).
+holds_at(greenA,1,ini_S0_S0).
+
+}).
+

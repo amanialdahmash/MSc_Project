@@ -1,0 +1,33 @@
+module TrafficE2
+
+env boolean carA;
+env boolean emergency;
+env boolean police;
+
+sys boolean greenA;
+
+assumption -- initial_env_conditions:
+    (  carA=false & emergency=false ) ;
+
+guarantee -- initial_sys_conditions:
+    (  greenA=false ) ;
+
+assumption -- carA_detected_often:
+	GF (  carA=true ) ;
+
+assumption -- not_police_often:
+	GF (  police=false ) ;
+
+guarantee -- greenA_often:
+	GF (  greenA=true ) ;
+
+guarantee -- no_carA_often:
+    GF (  carA=false ) ;
+
+assumption -- carA_idle_when_red:
+	G (  carA=true & greenA=false -> next(carA=true) ) ;
+
+assumption -- carA_moves_when_green:
+	G (  carA=true & greenA=true & emergency=false -> next(carA=false) ) ;
+
+

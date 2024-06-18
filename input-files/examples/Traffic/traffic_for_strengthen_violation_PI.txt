@@ -1,0 +1,194 @@
+%---*** Violation Trace ***---
+
+#pos({entailed(stop_on_emergency)},{},{
+trace(stop_on_emergency).
+
+timepoint(0,stop_on_emergency).
+timepoint(1,stop_on_emergency).
+timepoint(2,stop_on_emergency).
+next(1,0,stop_on_emergency).
+next(2,1,stop_on_emergency).
+prev(0,1,stop_on_emergency).
+prev(1,2,stop_on_emergency).
+
+not_holds_at(carA, 0, stop_on_emergency).
+not_holds_at(carB, 0, stop_on_emergency).
+not_holds_at(emergency, 0, stop_on_emergency).
+not_holds_at(greenA, 0, stop_on_emergency).
+not_holds_at(greenB, 0, stop_on_emergency).
+not_holds_at(police, 0, stop_on_emergency).
+holds_at(carA, 1, stop_on_emergency).
+not_holds_at(carB, 1, stop_on_emergency).
+holds_at(emergency, 1, stop_on_emergency).
+holds_at(greenA, 1, stop_on_emergency).
+not_holds_at(greenB, 1, stop_on_emergency).
+not_holds_at(police, 1, stop_on_emergency).
+holds_at(carA, 2, stop_on_emergency).
+not_holds_at(carB, 2, stop_on_emergency).
+not_holds_at(emergency, 2, stop_on_emergency).
+not_holds_at(greenA, 2, stop_on_emergency).
+not_holds_at(greenB, 2, stop_on_emergency).
+not_holds_at(police, 2, stop_on_emergency).
+
+}).
+
+#pos({entailed(goes_if_police)},{},{
+trace(goes_if_police).
+
+timepoint(0,goes_if_police).
+timepoint(1,goes_if_police).
+timepoint(2,goes_if_police).
+next(1,0,goes_if_police).
+next(2,1,goes_if_police).
+prev(0,1,goes_if_police).
+prev(1,2,goes_if_police).
+
+not_holds_at(carA, 0, goes_if_police).
+not_holds_at(carB, 0, goes_if_police).
+not_holds_at(emergency, 0, goes_if_police).
+not_holds_at(greenA, 0, goes_if_police).
+not_holds_at(greenB, 0, goes_if_police).
+not_holds_at(police, 0, goes_if_police).
+holds_at(carA, 1, goes_if_police).
+not_holds_at(carB, 1, goes_if_police).
+not_holds_at(emergency, 1, goes_if_police).
+holds_at(greenA, 1, goes_if_police).
+not_holds_at(greenB, 1, goes_if_police).
+holds_at(police, 1, goes_if_police).
+not_holds_at(carA, 2, goes_if_police).
+not_holds_at(carB, 2, goes_if_police).
+not_holds_at(emergency, 2, goes_if_police).
+not_holds_at(greenA, 2, goes_if_police).
+not_holds_at(greenB, 2, goes_if_police).
+not_holds_at(police, 2, goes_if_police).
+
+}).
+
+#pos({entailed(idle_if_red)},{},{
+trace(idle_if_red).
+
+timepoint(0,idle_if_red).
+timepoint(1,idle_if_red).
+timepoint(2,idle_if_red).
+next(1,0,idle_if_red).
+next(2,1,idle_if_red).
+prev(0,1,idle_if_red).
+prev(1,2,idle_if_red).
+
+not_holds_at(carA, 0, idle_if_red).
+not_holds_at(carB, 0, idle_if_red).
+not_holds_at(emergency, 0, idle_if_red).
+not_holds_at(greenA, 0, idle_if_red).
+not_holds_at(greenB, 0, idle_if_red).
+not_holds_at(police, 0, idle_if_red).
+holds_at(carA, 1, idle_if_red).
+not_holds_at(carB, 1, idle_if_red).
+not_holds_at(emergency, 1, idle_if_red).
+not_holds_at(greenA, 1, idle_if_red).
+holds_at(greenB, 1, idle_if_red).
+not_holds_at(police, 1, idle_if_red).
+holds_at(carA, 2, idle_if_red).
+not_holds_at(carB, 2, idle_if_red).
+not_holds_at(emergency, 2, idle_if_red).
+not_holds_at(greenA, 2, idle_if_red).
+not_holds_at(greenB, 2, idle_if_red).
+not_holds_at(police, 2, idle_if_red).
+
+}).
+
+#pos({entailed(idle_if_both_red)},{},{
+trace(idle_if_both_red).
+
+timepoint(0,idle_if_both_red).
+timepoint(1,idle_if_both_red).
+timepoint(2,idle_if_both_red).
+next(1,0,idle_if_both_red).
+next(2,1,idle_if_both_red).
+prev(0,1,idle_if_both_red).
+prev(1,2,idle_if_both_red).
+
+not_holds_at(carA, 0, idle_if_both_red).
+not_holds_at(carB, 0, idle_if_both_red).
+not_holds_at(emergency, 0, idle_if_both_red).
+not_holds_at(greenA, 0, idle_if_both_red).
+not_holds_at(greenB, 0, idle_if_both_red).
+not_holds_at(police, 0, idle_if_both_red).
+holds_at(carA, 1, idle_if_both_red).
+not_holds_at(carB, 1, idle_if_both_red).
+not_holds_at(emergency, 1, idle_if_both_red).
+not_holds_at(greenA, 1, idle_if_both_red).
+not_holds_at(greenB, 1, idle_if_both_red).
+not_holds_at(police, 1, idle_if_both_red).
+holds_at(carA, 2, idle_if_both_red).
+not_holds_at(carB, 2, idle_if_both_red).
+not_holds_at(emergency, 2, idle_if_both_red).
+not_holds_at(greenA, 2, idle_if_both_red).
+not_holds_at(greenB, 2, idle_if_both_red).
+not_holds_at(police, 2, idle_if_both_red).
+
+}).
+
+#pos({entailed(goes_if_green)},{},{
+trace(goes_if_green).
+
+timepoint(0,goes_if_green).
+timepoint(1,goes_if_green).
+timepoint(2,goes_if_green).
+next(1,0,goes_if_green).
+next(2,1,goes_if_green).
+prev(0,1,goes_if_green).
+prev(1,2,goes_if_green).
+
+not_holds_at(carA, 0, goes_if_green).
+not_holds_at(carB, 0, goes_if_green).
+not_holds_at(emergency, 0, goes_if_green).
+not_holds_at(greenA, 0, goes_if_green).
+not_holds_at(greenB, 0, goes_if_green).
+not_holds_at(police, 0, goes_if_green).
+holds_at(carA, 1, goes_if_green).
+not_holds_at(carB, 1, goes_if_green).
+not_holds_at(emergency, 1, goes_if_green).
+holds_at(greenA, 1, goes_if_green).
+not_holds_at(greenB, 1, goes_if_green).
+not_holds_at(police, 1, goes_if_green).
+not_holds_at(carA, 2, goes_if_green).
+not_holds_at(carB, 2, goes_if_green).
+not_holds_at(emergency, 2, goes_if_green).
+not_holds_at(greenA, 2, goes_if_green).
+not_holds_at(greenB, 2, goes_if_green).
+not_holds_at(police, 2, goes_if_green).
+
+}).
+
+#pos({entailed(stop_on_emerg_even_if_carB)},{},{
+trace(stop_on_emerg_even_if_carB).
+
+timepoint(0,stop_on_emerg_even_if_carB).
+timepoint(1,stop_on_emerg_even_if_carB).
+timepoint(2,stop_on_emerg_even_if_carB).
+next(1,0,stop_on_emerg_even_if_carB).
+next(2,1,stop_on_emerg_even_if_carB).
+prev(0,1,stop_on_emerg_even_if_carB).
+prev(1,2,stop_on_emerg_even_if_carB).
+
+not_holds_at(carA, 0, stop_on_emerg_even_if_carB).
+not_holds_at(carB, 0, stop_on_emerg_even_if_carB).
+not_holds_at(emergency, 0, stop_on_emerg_even_if_carB).
+not_holds_at(greenA, 0, stop_on_emerg_even_if_carB).
+not_holds_at(greenB, 0, stop_on_emerg_even_if_carB).
+not_holds_at(police, 0, stop_on_emerg_even_if_carB).
+holds_at(carA, 1, stop_on_emerg_even_if_carB).
+holds_at(carB, 1, stop_on_emerg_even_if_carB).
+holds_at(emergency, 1, stop_on_emerg_even_if_carB).
+holds_at(greenA, 1, stop_on_emerg_even_if_carB).
+not_holds_at(greenB, 1, stop_on_emerg_even_if_carB).
+not_holds_at(police, 1, stop_on_emerg_even_if_carB).
+holds_at(carA, 2, stop_on_emerg_even_if_carB).
+holds_at(carB, 2, stop_on_emerg_even_if_carB).
+not_holds_at(emergency, 2, stop_on_emerg_even_if_carB).
+not_holds_at(greenA, 2, stop_on_emerg_even_if_carB).
+not_holds_at(greenB, 2, stop_on_emerg_even_if_carB).
+not_holds_at(police, 2, stop_on_emerg_even_if_carB).
+
+}).
+

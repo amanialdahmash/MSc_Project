@@ -1,0 +1,92 @@
+module ForkLift1
+
+env boolean fardistance ;
+
+env boolean closedistance ;
+
+
+sys boolean liftcommand ;
+
+sys boolean dropcommand ;
+
+sys boolean gocommand ;
+
+sys boolean idlecommand ;
+
+
+// safety requirements of environment
+
+assumption -- either
+
+G (fardistance=false -> closedistance=true );
+
+assumption -- not_both
+
+G (fardistance=true -> closedistance=false );
+
+
+
+assumption -- idle_far
+
+G (idlecommand=true & fardistance=true -> next( fardistance=true ) );
+
+assumption -- idle_close
+
+G (idlecommand=true & closedistance=true -> next( closedistance=true ));
+
+assumption -- go_close
+
+G (gocommand=true -> next( closedistance=true ) );
+
+assumption -- close_nolift
+
+G (closedistance=true & liftcommand=false -> next( closedistance=true ) );
+
+assumption -- close_withlift
+
+G  (closedistance=true & liftcommand=true -> next( closedistance=false ) );
+
+
+// safety of system
+
+guarantee -- s_init
+
+liftcommand=true;
+
+guarantee -- s_11
+
+G (fardistance=true -> next( dropcommand=false ) );
+
+guarantee -- s_12
+
+G (closedistance=true  -> next( gocommand=false ) );
+
+
+
+guarantee -- s_3
+
+G (liftcommand=false & dropcommand=false & gocommand=false -> idlecommand=true) ;
+
+guarantee -- s_41
+
+G (liftcommand=true -> dropcommand=false );
+
+guarantee -- s_42
+
+G (liftcommand=true -> gocommand=false );
+
+guarantee -- s_43
+
+G (liftcommand=true -> idlecommand=false );
+
+guarantee -- s_44
+
+G (dropcommand=true -> gocommand=false );
+
+guarantee  -- s_45
+
+G (dropcommand=true -> idlecommand=false );
+
+guarantee  -- s_46
+
+G (gocommand=true -> idlecommand=false );

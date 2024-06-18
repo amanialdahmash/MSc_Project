@@ -1,0 +1,17 @@
+\head{assumption(assumption\_name).}
+\head{antecedent\_holds(assumption\_name,T1,S):-}
+    \body{trace(S),}
+    \body{timepoint(T1,S),}
+    \body{holds\_at(a,T1,S),}
+    \lastbody{holds\_at(b,T1,S).}
+
+\head{consequent\_holds(assumption\_name,T1,S):-}
+    \body{trace(S),}
+    \body{timepoint(T1,S),}
+    \lastbody{holds\_at\_next(c,T1,S).}
+
+\head{consequent\_holds(assumption\_name,T1,S):-}
+    \body{trace(S),}
+    \body{timepoint(T1,S),}
+    \lastbody{holds\_at\_next(d,T1,S).}
+

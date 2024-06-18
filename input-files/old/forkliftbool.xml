@@ -1,0 +1,232 @@
+<?xml version="1.0"?>
+<project>
+  <signals>
+    <signal>
+      <name>fardistance</name>
+      <kind>E</kind>
+      <type>boolean</type>
+      <auto_signal value="False"/>
+      <notes></notes>
+    </signal>
+    <signal>
+      <name>closedistance</name>
+      <kind>E</kind>
+      <type>boolean</type>
+      <auto_signal value="False"/>
+      <notes></notes>
+    </signal>
+    <signal>
+      <name>liftcommand</name>
+      <kind>S</kind>
+      <type>boolean</type>
+      <auto_signal value="False"/>
+      <notes></notes>
+    </signal>
+    <signal>
+      <name>dropcommand</name>
+      <kind>S</kind>
+      <type>boolean</type>
+      <auto_signal value="False"/>
+      <notes></notes>
+    </signal>
+    <signal>
+      <name>gocommand</name>
+      <kind>S</kind>
+      <type>boolean</type>
+      <auto_signal value="False"/>
+      <notes></notes>
+    </signal>
+    <signal>
+      <name>idlecommand</name>
+      <kind>S</kind>
+      <type>boolean</type>
+      <auto_signal value="False"/>
+      <notes></notes>
+    </signal>
+  </signals>
+  <requirements>
+    <requirement>
+      <name>either</name>
+      <property>G (!fardistance -&gt; closedistance )</property>
+      <kind>A</kind>
+      <base_automaton_name></base_automaton_name>
+      <notes></notes>
+      <toggled>1</toggled>
+    </requirement>
+    <requirement>
+      <name>not_both</name>
+      <property>G (fardistance -&gt; !closedistance )</property>
+      <kind>A</kind>
+      <base_automaton_name></base_automaton_name>
+      <notes></notes>
+      <toggled>1</toggled>
+    </requirement>
+    <requirement>
+      <name>idle_far</name>
+      <property>G (idlecommand &amp;&amp; fardistance -&gt; X(fardistance))</property>
+      <kind>A</kind>
+      <base_automaton_name></base_automaton_name>
+      <notes></notes>
+      <toggled>1</toggled>
+    </requirement>
+    <requirement>
+      <name>idle_close</name>
+      <property>G (idlecommand &amp;&amp; closedistance -&gt; X(closedistance))</property>
+      <kind>A</kind>
+      <base_automaton_name></base_automaton_name>
+      <notes></notes>
+      <toggled>1</toggled>
+    </requirement>
+    <requirement>
+      <name>go_close</name>
+      <property>G (gocommand -&gt; X (closedistance))</property>
+      <kind>A</kind>
+      <base_automaton_name></base_automaton_name>
+      <notes></notes>
+      <toggled>1</toggled>
+    </requirement>
+    <requirement>
+      <name>close_nolift</name>
+      <property>G (closedistance &amp;&amp; !liftcommand  -&gt; X(closedistance))</property>
+      <kind>A</kind>
+      <base_automaton_name></base_automaton_name>
+      <notes></notes>
+      <toggled>1</toggled>
+    </requirement>
+    <requirement>
+      <name>close_withlift</name>
+      <property>G(closedistance &amp;&amp; liftcommand -&gt;
+          X(!closedistance))</property>
+      <kind>A</kind>
+      <base_automaton_name></base_automaton_name>
+      <notes></notes>
+      <toggled>1</toggled>
+    </requirement>
+    <requirement>
+      <name>s_init</name>
+      <property>liftcommand</property>
+      <kind>G</kind>
+      <base_automaton_name></base_automaton_name>
+      <notes></notes>
+      <toggled>1</toggled>
+    </requirement>
+    <requirement>
+      <name>s_11</name>
+      <property>G (fardistance -&gt; X (!dropcommand))</property>
+      <kind>G</kind>
+      <base_automaton_name></base_automaton_name>
+      <notes></notes>
+      <toggled>1</toggled>
+    </requirement>
+    <requirement>
+      <name>s_12</name>
+      <property>G (closedistance -&gt; X (!gocommand))</property>
+      <kind>G</kind>
+      <base_automaton_name></base_automaton_name>
+      <notes></notes>
+      <toggled>1</toggled>
+    </requirement>
+    <requirement>
+      <name>s_21</name>
+      <property>GF (dropcommand)</property>
+      <kind>G</kind>
+      <base_automaton_name></base_automaton_name>
+      <notes></notes>
+      <toggled>1</toggled>
+    </requirement>
+    <requirement>
+      <name>s_22</name>
+      <property>GF (gocommand)</property>
+      <kind>G</kind>
+      <base_automaton_name></base_automaton_name>
+      <notes></notes>
+      <toggled>1</toggled>
+    </requirement>
+    <requirement>
+      <name>s_3</name>
+      <property>G(!liftcommand &amp;&amp; !dropcommand &amp;&amp; !gocommand -&gt; idlecommand)</property>
+      <kind>G</kind>
+      <base_automaton_name></base_automaton_name>
+      <notes></notes>
+      <toggled>1</toggled>
+    </requirement>
+    <requirement>
+      <name>s_41</name>
+      <property>G (liftcommand -&gt; !dropcommand )</property>
+      <kind>G</kind>
+      <base_automaton_name></base_automaton_name>
+      <notes></notes>
+      <toggled>1</toggled>
+    </requirement>
+    <requirement>
+      <name>s_42</name>
+      <property>G (liftcommand -&gt; !gocommand )</property>
+      <kind>G</kind>
+      <base_automaton_name></base_automaton_name>
+      <notes></notes>
+      <toggled>1</toggled>
+    </requirement>
+    <requirement>
+      <name>s_43</name>
+      <property>G (liftcommand -&gt; !idlecommand )</property>
+      <kind>G</kind>
+      <base_automaton_name></base_automaton_name>
+      <notes></notes>
+      <toggled>1</toggled>
+    </requirement>
+    <requirement>
+      <name>s_44</name>
+      <property>G (dropcommand -&gt; !gocommand )</property>
+      <kind>G</kind>
+      <base_automaton_name></base_automaton_name>
+      <notes></notes>
+      <toggled>1</toggled>
+    </requirement>
+    <requirement>
+      <name>s_45</name>
+      <property>G (dropcommand -&gt; !idlecommand )</property>
+      <kind>G</kind>
+      <base_automaton_name></base_automaton_name>
+      <notes></notes>
+      <toggled>1</toggled>
+    </requirement>
+    <requirement>
+      <name>s_46</name>
+      <property>G (gocommand -&gt; !idlecommand )</property>
+      <kind>G</kind>
+      <base_automaton_name></base_automaton_name>
+      <notes></notes>
+      <toggled>1</toggled>
+    </requirement>
+  </requirements>
+  <property_assurance>
+    <possibilities/>
+    <assertions/>
+  </property_assurance>
+  <property_simulation/>
+  <categories>
+    <category>
+      <name>New</name>
+      <editable>no</editable>
+      <notes>This is the category of those traces that have been just created</notes>
+    </category>
+    <category>
+      <name>Default</name>
+      <editable>no</editable>
+      <notes>This is the default category for traces</notes>
+    </category>
+    <category>
+      <name>Out of Date</name>
+      <editable>no</editable>
+      <notes>Contains the traces whose dependencies might be no longer consistent</notes>
+    </category>
+    <category>
+      <name>Trash</name>
+      <editable>no</editable>
+      <notes>Contains the traces that have been deleted</notes>
+    </category>
+  </categories>
+  <automata/>
+  <active_view>ga</active_view>
+  <notes></notes>
+</project>

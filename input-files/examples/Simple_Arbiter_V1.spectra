@@ -1,0 +1,19 @@
+module Simple_Arbiter_V1
+
+env boolean r_0;
+env boolean r_1;
+sys boolean g_0;
+sys boolean g_1;
+
+assumption -- assumption1
+	G((!(g_0))|(!(g_1)));
+
+assumption -- assumption2
+	G((r_0)&(next(r_1))->next((g_0)&(g_1)));
+
+assumption -- assumption3
+	G(r_0->F(g_0));
+
+assumption -- assumption4
+	G(r_1->F(g_1));
+

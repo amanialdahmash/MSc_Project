@@ -1,0 +1,95 @@
+,name,random_hypothesis,trace_length,n_assumptions,n_guarantees,n_violations,av_variables_in_violations,av_temporals_in_violations,n_assumption_realizability_checks,n_guarantee_realizability_checks,av_min_solutions,n_weakened_assumptions,n_weakened_guarantees,learning_time,result
+0,Genbuf,True,2,28,81,2,2.0,3.0,1,0,10.0,2,0,381.5461735725403,Not Calculated
+1,Genbuf,True,2,28,81,2,2.0,3.0,1,0,10.0,2,0,379.6534073352814,Not Calculated
+2,Genbuf,True,2,28,81,2,2.0,3.0,1,0,10.0,2,0,376.71482968330383,Not Calculated
+3,Genbuf,True,2,28,81,2,2.0,3.0,1,0,10.0,2,0,378.58260464668274,Not Calculated
+4,Genbuf,True,2,28,81,2,2.0,3.0,1,0,10.0,2,0,375.8141465187073,Not Calculated
+5,Genbuf,True,2,28,81,2,2.0,3.0,1,0,10.0,2,0,377.64445972442627,Not Calculated
+6,Genbuf,True,2,28,81,2,2.0,3.0,1,0,10.0,2,0,376.8568322658539,Not Calculated
+7,Genbuf,True,2,28,81,2,2.0,3.0,1,0,10.0,2,0,378.953528881073,Not Calculated
+8,Genbuf,True,2,28,81,2,2.0,3.0,1,0,10.0,2,0,380.18756318092346,Not Calculated
+9,Genbuf,True,2,28,81,2,2.0,3.0,1,0,10.0,2,0,384.0381488800049,Not Calculated
+10,Genbuf,False,2,28,81,2,2.0,3.0,1,0,10.0,2,0,383.2819707393646,Not Calculated
+11,Genbuf,False,2,28,81,2,2.0,3.0,1,0,10.0,2,0,407.80587697029114,Not Calculated
+12,Genbuf,False,2,28,81,2,2.0,3.0,1,0,10.0,2,0,406.96027088165283,Not Calculated
+13,Genbuf,False,2,28,81,2,2.0,3.0,1,0,10.0,2,0,432.57582998275757,Not Calculated
+14,Genbuf,False,2,28,81,2,2.0,3.0,1,0,10.0,2,0,459.0503969192505,Not Calculated
+15,Genbuf,False,2,28,81,2,2.0,3.0,1,0,10.0,2,0,441.98211336135864,Not Calculated
+16,Genbuf,False,2,28,81,2,2.0,3.0,1,0,10.0,2,0,472.33133697509766,Not Calculated
+17,Genbuf,False,2,28,81,2,2.0,3.0,1,0,10.0,2,0,451.93084812164307,Not Calculated
+18,Genbuf,False,2,28,81,2,2.0,3.0,1,0,10.0,2,0,503.6461799144745,Not Calculated
+19,Genbuf,False,2,28,81,2,2.0,3.0,1,0,10.0,2,0,465.2502043247223,Not Calculated
+20,Minepump,True,1,2,2,1,2.0,2.0,1,1,3.0,1,1,14.113483428955078,Realizable
+21,Minepump,True,1,2,2,1,2.0,2.0,1,1,3.0,1,1,13.986983060836792,Incorrect Guarantees
+22,Minepump,True,1,2,2,1,2.0,2.0,1,1,3.0,1,1,13.753126621246338,Success
+23,Minepump,True,1,2,2,1,2.0,2.0,1,1,3.0,1,1,13.30348539352417,Incorrect Guarantees
+24,Minepump,True,1,2,2,1,2.0,2.0,1,1,3.0,1,1,13.179589986801147,Realizable
+25,Minepump,True,1,2,2,1,2.0,2.0,1,1,3.0,1,1,13.436168909072876,Success
+26,Minepump,True,1,2,2,1,2.0,2.0,1,1,3.0,1,1,13.569930791854858,Success
+27,Minepump,True,1,2,2,1,2.0,2.0,1,1,3.0,1,1,13.486549854278564,Realizable
+28,Minepump,True,1,2,2,1,2.0,2.0,1,1,3.0,1,1,13.619421243667603,Realizable
+29,Minepump,True,1,2,2,1,2.0,2.0,1,1,3.0,1,1,13.385211944580078,Incorrect Guarantees
+30,Minepump,False,1,2,2,1,2.0,2.0,1,1,3.0,1,1,13.453126668930054,Success
+31,Minepump,False,1,2,2,1,2.0,2.0,1,1,3.0,1,1,13.303099632263184,Realizable
+32,Minepump,False,2,2,2,1,2.0,2.0,1,1,3.0,1,1,13.886888027191162,Realizable
+33,Minepump,False,2,2,2,1,2.0,2.0,1,1,3.0,1,1,13.669931411743164,Success
+34,Minepump,False,2,2,2,1,2.0,2.0,1,1,3.0,1,1,13.353588104248047,Realizable
+35,Minepump,False,2,2,2,1,2.0,2.0,1,1,3.0,1,1,13.420108318328857,Incorrect Guarantees
+36,Minepump,False,2,2,2,1,2.0,2.0,1,1,3.0,1,1,13.969606399536133,Realizable
+37,Minepump,False,2,2,2,1,2.0,2.0,1,1,3.0,1,1,13.734120845794678,Success
+38,Lift,True,2,12,7,1,3.0,3.0,1,0,7.0,1,0,17.310904026031494,Realizable
+39,Lift,True,2,12,7,1,3.0,3.0,1,0,7.0,1,0,17.45459222793579,Realizable
+40,Lift,True,2,12,7,1,3.0,3.0,1,0,7.0,1,0,17.420700788497925,Realizable
+41,Lift,True,2,12,7,1,3.0,3.0,1,0,7.0,1,0,17.706169366836548,Realizable
+42,Lift,True,2,12,7,1,3.0,3.0,1,0,7.0,1,0,17.0709707736969,Realizable
+43,Lift,True,2,12,7,1,3.0,3.0,1,0,7.0,1,0,17.070841789245605,Success
+44,Lift,True,2,12,7,1,3.0,3.0,1,0,7.0,1,0,17.104066371917725,Realizable
+45,Lift,True,2,12,7,1,3.0,3.0,1,0,7.0,1,0,17.03791856765747,Realizable
+46,Lift,True,2,12,7,1,3.0,3.0,1,0,7.0,1,0,16.82150912284851,Realizable
+47,Lift,True,2,12,7,1,3.0,3.0,1,0,7.0,1,0,17.587825059890747,Realizable
+48,Lift,False,2,12,7,1,3.0,3.0,1,0,7.0,1,0,17.554428815841675,Realizable
+49,Lift,False,2,12,7,1,3.0,3.0,1,0,7.0,1,0,28.157182216644287,Realizable
+50,Lift,False,2,12,7,1,3.0,3.0,1,0,7.0,1,0,17.054131746292114,Realizable
+51,Lift,False,2,12,7,1,3.0,3.0,1,0,7.0,1,0,16.854360342025757,Realizable
+52,Lift,False,2,12,7,1,3.0,3.0,1,0,7.0,1,0,16.65468955039978,Realizable
+53,Lift,False,2,12,7,1,3.0,3.0,1,0,7.0,1,0,16.620543718338013,Realizable
+54,Traffic Single,True,2,3,2,1,3.0,4.0,1,0,2.0,1,0,4.832967281341553,Realizable
+55,Traffic Single,True,2,3,2,1,3.0,4.0,1,0,2.0,1,0,5.068763017654419,Realizable
+56,Traffic Single,True,2,3,2,1,3.0,4.0,1,1,3.0,1,1,16.237698793411255,Realizable
+57,Traffic Single,True,2,3,2,1,3.0,4.0,1,0,2.0,1,0,5.16770339012146,Realizable
+58,Traffic Single,True,2,3,2,1,3.0,4.0,1,1,3.0,1,1,16.196967601776123,Realizable
+59,Traffic Single,True,2,3,2,1,3.0,4.0,1,0,2.0,1,0,4.817690849304199,Realizable
+60,Traffic Single,True,2,3,2,1,3.0,4.0,1,0,2.0,1,0,4.851125478744507,Realizable
+61,Traffic Single,True,2,3,2,1,3.0,4.0,1,1,3.0,1,1,16.049803733825684,Realizable
+62,Traffic Single,True,2,3,2,1,3.0,4.0,1,0,2.0,1,0,4.784614562988281,Realizable
+63,Traffic Single,True,2,3,2,1,3.0,4.0,1,0,2.0,1,0,4.8008949756622314,Realizable
+64,Traffic Single,False,2,3,2,1,3.0,4.0,1,1,3.0,1,1,15.975911140441895,Realizable
+65,Traffic Single,False,2,3,2,1,3.0,4.0,1,1,3.0,1,1,16.319911241531372,Realizable
+66,Traffic Single,False,2,3,2,1,3.0,4.0,1,0,2.0,1,0,4.79647421836853,Realizable
+67,Traffic Single,False,2,3,2,1,3.0,4.0,1,0,2.0,1,0,5.2512147426605225,Realizable
+68,Traffic Single,False,3,3,2,1,3.0,4.0,1,0,2.0,1,0,4.834673166275024,Realizable
+69,Traffic Single,False,3,3,2,1,3.0,4.0,1,0,2.0,1,0,4.81065034866333,Realizable
+70,Traffic Single,False,3,3,2,1,3.0,4.0,1,0,2.0,1,0,4.934939384460449,Realizable
+71,Traffic Single,False,3,3,2,1,3.0,4.0,1,0,2.0,1,0,4.901681900024414,Realizable
+72,Traffic Single,False,3,3,2,1,3.0,4.0,1,0,2.0,1,0,4.784285545349121,Realizable
+73,Traffic Single,False,3,3,2,1,3.0,4.0,1,0,2.0,1,0,4.851143836975098,Realizable
+74,Traffic,True,2,5,4,2,3.0,4.0,1,0,9.0,2,0,7.652363538742065,Realizable
+75,Traffic,True,2,5,4,2,3.0,4.0,1,0,9.0,2,0,7.085384845733643,Realizable
+76,Traffic,True,2,5,4,2,3.0,4.0,1,0,9.0,2,0,7.019465684890747,Realizable
+77,Traffic,True,2,5,4,2,3.0,4.0,1,0,9.0,2,0,7.468569278717041,Realizable
+78,Traffic,True,2,5,4,2,3.0,4.0,1,0,9.0,2,0,7.252065658569336,Success
+79,Traffic,True,2,5,4,2,3.0,4.0,1,0,9.0,2,0,7.085216045379639,Realizable
+80,Traffic,True,2,5,4,2,3.0,4.0,1,0,9.0,2,0,7.085106372833252,Realizable
+81,Traffic,True,2,5,4,2,3.0,4.0,1,0,9.0,2,0,7.151691675186157,Realizable
+82,Traffic,True,2,5,4,2,3.0,4.0,1,0,9.0,2,0,7.418608903884888,Realizable
+83,Traffic,True,2,5,4,2,3.0,4.0,1,0,9.0,2,0,7.501757621765137,Realizable
+84,Traffic,False,2,5,4,2,3.0,4.0,1,0,9.0,2,0,7.168462514877319,Realizable
+85,Traffic,False,2,5,4,1,3.0,4.0,1,0,3.0,1,0,6.966960668563843,Realizable
+86,Traffic,False,2,5,4,1,3.0,4.0,1,0,3.0,1,0,6.918154001235962,Realizable
+87,Traffic,False,2,5,4,1,3.0,4.0,1,0,3.0,1,0,7.185274600982666,Realizable
+88,Traffic,False,2,5,4,1,3.0,4.0,1,0,3.0,1,0,6.890430450439453,Realizable
+89,Traffic,False,2,5,4,1,3.0,4.0,1,0,3.0,1,0,7.001626968383789,Realizable
+90,Traffic,False,2,5,4,2,3.0,4.0,1,0,9.0,2,0,7.334848642349243,Realizable
+91,Traffic,False,2,5,4,1,3.0,4.0,1,0,3.0,1,0,8.084429025650024,Realizable
+92,Traffic,False,2,5,4,1,3.0,4.0,1,0,3.0,1,0,7.235408544540405,Realizable
+93,Traffic,False,2,5,4,1,3.0,4.0,1,0,3.0,1,0,7.452249050140381,Realizable

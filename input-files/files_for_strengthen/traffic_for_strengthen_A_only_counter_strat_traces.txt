@@ -1,0 +1,8 @@
+not_holds_at(carA,0,INI_S0_S0).
+not_holds_at(emergency,0,INI_S0_S0).
+not_holds_at(police,0,INI_S0_S0).
+not_holds_at(greenA,0,INI_S0_S0).
+holds_at(carA,1,INI_S0_S0).
+holds_at(emergency,1,INI_S0_S0).
+not_holds_at(police,1,INI_S0_S0).
+holds_at(greenA,1,INI_S0_S0).

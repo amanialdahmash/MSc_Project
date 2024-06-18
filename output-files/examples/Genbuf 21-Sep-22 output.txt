@@ -1,0 +1,674 @@
+C:\Users\titus\AppData\Local\Microsoft\WindowsApps\python3.8.exe C:/Users/titus/PycharmProjects/Translators/Specification.py
+
+
+Rule:
+	G((deq=true & deq=false) | (deq=true & enq=false) | (enq=true & deq=false) | (enq=true & enq=false) | (empty=true & next(empty=true) & full=true & next(full=true)) | (empty=true & next(empty=true) & full=false & next(full=false)) | (full=true & next(full=true) & empty=false & next(empty=false)) | (empty=false & next(empty=false) & full=false & next(full=false)));
+Hypothesis:
+	antecedent_exception(assumption25,V1,V2) :- not_holds_at(stateg7_0,V1,V2).
+New Rule:
+	G(stateg7_0=true-> (deq=true & deq=false) | (deq=true & enq=false) | (enq=true & deq=false) | (enq=true & enq=false) | (empty=true & next(empty=true) & full=true & next(full=true)) | (empty=true & next(empty=true) & full=false & next(full=false)) | (full=true & next(full=true) & empty=false & next(empty=false)) | (empty=false & next(empty=false) & full=false & next(full=false)));
+Unrealizable
+INI -> S0 {stob_req0:false, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:false, rtob_ack1:false, full:false, empty:true} / {btos_ack0:false, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:false, btor_req1:false, stateg7_0:false, stateg7_1:true, enq:false, deq:false, stateg12:false, slc0:false, slc1:false, slc2:false};
+S0 -> S1 {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:false, rtob_ack1:false, full:true, empty:false} / {btos_ack0:false, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:false, btor_req1:false, stateg7_0:true, stateg7_1:true, enq:false, deq:false, stateg12:false, slc0:true, slc1:true, slc2:true};
+S0 -> S4 {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:false, rtob_ack1:false, full:true, empty:false} / {btos_ack0:false, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:true, btor_req1:false, stateg7_0:true, stateg7_1:true, enq:false, deq:false, stateg12:false, slc0:false, slc1:true, slc2:true};
+S0 -> S1 {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:false, rtob_ack1:false, full:true, empty:false} / {btos_ack0:false, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:false, btor_req1:false, stateg7_0:true, stateg7_1:true, enq:false, deq:false, stateg12:false, slc0:false, slc1:false, slc2:false};
+S0 -> DEAD {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:false, rtob_ack1:false, full:true, empty:false} / {btos_ack0:false, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:false, btor_req1:true, stateg7_0:true, stateg7_1:true, enq:false, deq:false, stateg12:false, slc0:true, slc1:true, slc2:true};
+S0 -> DEAD {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:false, rtob_ack1:false, full:true, empty:false} / {btos_ack0:false, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:true, btor_req1:true, stateg7_0:true, stateg7_1:true, enq:false, deq:false, stateg12:false, slc0:false, slc1:true, slc2:true};
+S0 -> DEAD {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:false, rtob_ack1:false, full:true, empty:false} / {btos_ack0:false, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:false, btor_req1:true, stateg7_0:true, stateg7_1:true, enq:false, deq:false, stateg12:false, slc0:false, slc1:false, slc2:false};
+S0 -> S4 {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:false, rtob_ack1:false, full:true, empty:false} / {btos_ack0:false, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:true, btor_req1:false, stateg7_0:true, stateg7_1:true, enq:false, deq:false, stateg12:false, slc0:true, slc1:true, slc2:true};
+S0 -> S1 {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:false, rtob_ack1:false, full:true, empty:false} / {btos_ack0:false, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:false, btor_req1:false, stateg7_0:true, stateg7_1:true, enq:false, deq:false, stateg12:false, slc0:true, slc1:false, slc2:true};
+S0 -> S4 {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:false, rtob_ack1:false, full:true, empty:false} / {btos_ack0:false, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:true, btor_req1:false, stateg7_0:true, stateg7_1:true, enq:false, deq:false, stateg12:false, slc0:false, slc1:false, slc2:false};
+S0 -> DEAD {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:false, rtob_ack1:false, full:true, empty:false} / {btos_ack0:false, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:true, btor_req1:true, stateg7_0:true, stateg7_1:true, enq:false, deq:false, stateg12:false, slc0:true, slc1:true, slc2:true};
+S0 -> DEAD {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:false, rtob_ack1:false, full:true, empty:false} / {btos_ack0:false, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:false, btor_req1:true, stateg7_0:true, stateg7_1:true, enq:false, deq:false, stateg12:false, slc0:true, slc1:false, slc2:true};
+S0 -> DEAD {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:false, rtob_ack1:false, full:true, empty:false} / {btos_ack0:false, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:true, btor_req1:true, stateg7_0:true, stateg7_1:true, enq:false, deq:false, stateg12:false, slc0:false, slc1:false, slc2:false};
+S0 -> S4 {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:false, rtob_ack1:false, full:true, empty:false} / {btos_ack0:false, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:true, btor_req1:false, stateg7_0:true, stateg7_1:true, enq:false, deq:false, stateg12:false, slc0:true, slc1:false, slc2:true};
+S0 -> S1 {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:false, rtob_ack1:false, full:true, empty:false} / {btos_ack0:false, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:false, btor_req1:false, stateg7_0:true, stateg7_1:true, enq:false, deq:false, stateg12:false, slc0:false, slc1:true, slc2:true};
+S0 -> DEAD {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:false, rtob_ack1:false, full:true, empty:false} / {btos_ack0:false, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:true, btor_req1:true, stateg7_0:true, stateg7_1:true, enq:false, deq:false, stateg12:false, slc0:true, slc1:false, slc2:true};
+S0 -> DEAD {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:false, rtob_ack1:false, full:true, empty:false} / {btos_ack0:false, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:false, btor_req1:true, stateg7_0:true, stateg7_1:true, enq:false, deq:false, stateg12:false, slc0:false, slc1:true, slc2:true};
+S1 -> DEAD {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:false, rtob_ack1:false, full:true, empty:false} / {btos_ack0:false, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:false, btor_req1:true, stateg7_0:true, stateg7_1:true, enq:false, deq:false, stateg12:true, slc0:true, slc1:false, slc2:true};
+S1 -> DEAD {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:false, rtob_ack1:false, full:true, empty:false} / {btos_ack0:false, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:true, btor_req1:true, stateg7_0:true, stateg7_1:true, enq:false, deq:false, stateg12:true, slc0:false, slc1:false, slc2:false};
+S1 -> S3 {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:false, rtob_ack1:false, full:true, empty:false} / {btos_ack0:false, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:true, btor_req1:false, stateg7_0:true, stateg7_1:true, enq:false, deq:false, stateg12:true, slc0:true, slc1:false, slc2:true};
+S1 -> S2 {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:false, rtob_ack1:false, full:true, empty:false} / {btos_ack0:false, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:false, btor_req1:false, stateg7_0:true, stateg7_1:true, enq:false, deq:false, stateg12:true, slc0:false, slc1:true, slc2:true};
+S1 -> DEAD {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:false, rtob_ack1:false, full:true, empty:false} / {btos_ack0:false, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:true, btor_req1:true, stateg7_0:true, stateg7_1:true, enq:false, deq:false, stateg12:true, slc0:true, slc1:false, slc2:true};
+S1 -> DEAD {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:false, rtob_ack1:false, full:true, empty:false} / {btos_ack0:false, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:true, btor_req1:true, stateg7_0:true, stateg7_1:true, enq:false, deq:false, stateg12:true, slc0:true, slc1:true, slc2:true};
+S1 -> DEAD {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:false, rtob_ack1:false, full:true, empty:false} / {btos_ack0:true, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:false, btor_req1:false, stateg7_0:true, stateg7_1:true, enq:true, deq:false, stateg12:true, slc0:false, slc1:false, slc2:false};
+S1 -> DEAD {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:false, rtob_ack1:false, full:true, empty:false} / {btos_ack0:true, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:false, btor_req1:true, stateg7_0:true, stateg7_1:true, enq:true, deq:false, stateg12:true, slc0:false, slc1:false, slc2:false};
+S1 -> DEAD {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:false, rtob_ack1:false, full:true, empty:false} / {btos_ack0:true, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:true, btor_req1:false, stateg7_0:true, stateg7_1:true, enq:true, deq:false, stateg12:true, slc0:false, slc1:false, slc2:false};
+S1 -> DEAD {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:false, rtob_ack1:false, full:true, empty:false} / {btos_ack0:true, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:true, btor_req1:true, stateg7_0:true, stateg7_1:true, enq:true, deq:false, stateg12:true, slc0:false, slc1:false, slc2:false};
+S1 -> DEAD {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:false, rtob_ack1:false, full:true, empty:false} / {btos_ack0:false, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:false, btor_req1:true, stateg7_0:true, stateg7_1:true, enq:false, deq:false, stateg12:true, slc0:false, slc1:true, slc2:true};
+S1 -> S2 {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:false, rtob_ack1:false, full:true, empty:false} / {btos_ack0:false, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:false, btor_req1:false, stateg7_0:true, stateg7_1:true, enq:false, deq:false, stateg12:true, slc0:true, slc1:true, slc2:true};
+S1 -> S3 {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:false, rtob_ack1:false, full:true, empty:false} / {btos_ack0:false, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:true, btor_req1:false, stateg7_0:true, stateg7_1:true, enq:false, deq:false, stateg12:true, slc0:false, slc1:true, slc2:true};
+S1 -> S2 {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:false, rtob_ack1:false, full:true, empty:false} / {btos_ack0:false, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:false, btor_req1:false, stateg7_0:true, stateg7_1:true, enq:false, deq:false, stateg12:true, slc0:false, slc1:false, slc2:false};
+S1 -> DEAD {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:false, rtob_ack1:false, full:true, empty:false} / {btos_ack0:false, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:false, btor_req1:true, stateg7_0:true, stateg7_1:true, enq:false, deq:false, stateg12:true, slc0:true, slc1:true, slc2:true};
+S1 -> DEAD {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:false, rtob_ack1:false, full:true, empty:false} / {btos_ack0:false, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:true, btor_req1:true, stateg7_0:true, stateg7_1:true, enq:false, deq:false, stateg12:true, slc0:false, slc1:true, slc2:true};
+S1 -> DEAD {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:false, rtob_ack1:false, full:true, empty:false} / {btos_ack0:false, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:false, btor_req1:true, stateg7_0:true, stateg7_1:true, enq:false, deq:false, stateg12:true, slc0:false, slc1:false, slc2:false};
+S1 -> S3 {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:false, rtob_ack1:false, full:true, empty:false} / {btos_ack0:false, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:true, btor_req1:false, stateg7_0:true, stateg7_1:true, enq:false, deq:false, stateg12:true, slc0:true, slc1:true, slc2:true};
+S1 -> S2 {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:false, rtob_ack1:false, full:true, empty:false} / {btos_ack0:false, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:false, btor_req1:false, stateg7_0:true, stateg7_1:true, enq:false, deq:false, stateg12:true, slc0:true, slc1:false, slc2:true};
+S1 -> S3 {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:false, rtob_ack1:false, full:true, empty:false} / {btos_ack0:false, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:true, btor_req1:false, stateg7_0:true, stateg7_1:true, enq:false, deq:false, stateg12:true, slc0:false, slc1:false, slc2:false};
+S2 -> DEAD {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:false, rtob_ack1:false, full:true, empty:false} / {btos_ack0:false, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:false, btor_req1:true, stateg7_0:true, stateg7_1:true, enq:false, deq:false, stateg12:true, slc0:true, slc1:false, slc2:true};
+S2 -> DEAD {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:false, rtob_ack1:false, full:true, empty:false} / {btos_ack0:false, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:true, btor_req1:true, stateg7_0:true, stateg7_1:true, enq:false, deq:false, stateg12:true, slc0:false, slc1:false, slc2:false};
+S2 -> S4 {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:false, rtob_ack1:false, full:true, empty:false} / {btos_ack0:false, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:true, btor_req1:false, stateg7_0:true, stateg7_1:true, enq:false, deq:false, stateg12:true, slc0:true, slc1:false, slc2:true};
+S2 -> S1 {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:false, rtob_ack1:false, full:true, empty:false} / {btos_ack0:false, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:false, btor_req1:false, stateg7_0:true, stateg7_1:true, enq:false, deq:false, stateg12:true, slc0:false, slc1:true, slc2:true};
+S2 -> DEAD {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:false, rtob_ack1:false, full:true, empty:false} / {btos_ack0:false, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:true, btor_req1:true, stateg7_0:true, stateg7_1:true, enq:false, deq:false, stateg12:true, slc0:true, slc1:false, slc2:true};
+S2 -> DEAD {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:false, rtob_ack1:false, full:true, empty:false} / {btos_ack0:false, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:true, btor_req1:true, stateg7_0:true, stateg7_1:true, enq:false, deq:false, stateg12:true, slc0:true, slc1:true, slc2:true};
+S2 -> DEAD {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:false, rtob_ack1:false, full:true, empty:false} / {btos_ack0:true, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:false, btor_req1:false, stateg7_0:true, stateg7_1:true, enq:true, deq:false, stateg12:true, slc0:false, slc1:false, slc2:false};
+S2 -> DEAD {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:false, rtob_ack1:false, full:true, empty:false} / {btos_ack0:true, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:false, btor_req1:true, stateg7_0:true, stateg7_1:true, enq:true, deq:false, stateg12:true, slc0:false, slc1:false, slc2:false};
+S2 -> DEAD {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:false, rtob_ack1:false, full:true, empty:false} / {btos_ack0:true, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:true, btor_req1:false, stateg7_0:true, stateg7_1:true, enq:true, deq:false, stateg12:true, slc0:false, slc1:false, slc2:false};
+S2 -> DEAD {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:false, rtob_ack1:false, full:true, empty:false} / {btos_ack0:true, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:true, btor_req1:true, stateg7_0:true, stateg7_1:true, enq:true, deq:false, stateg12:true, slc0:false, slc1:false, slc2:false};
+S2 -> DEAD {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:false, rtob_ack1:false, full:true, empty:false} / {btos_ack0:false, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:false, btor_req1:true, stateg7_0:true, stateg7_1:true, enq:false, deq:false, stateg12:true, slc0:false, slc1:true, slc2:true};
+S2 -> S1 {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:false, rtob_ack1:false, full:true, empty:false} / {btos_ack0:false, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:false, btor_req1:false, stateg7_0:true, stateg7_1:true, enq:false, deq:false, stateg12:true, slc0:true, slc1:true, slc2:true};
+S2 -> S4 {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:false, rtob_ack1:false, full:true, empty:false} / {btos_ack0:false, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:true, btor_req1:false, stateg7_0:true, stateg7_1:true, enq:false, deq:false, stateg12:true, slc0:false, slc1:true, slc2:true};
+S2 -> S1 {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:false, rtob_ack1:false, full:true, empty:false} / {btos_ack0:false, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:false, btor_req1:false, stateg7_0:true, stateg7_1:true, enq:false, deq:false, stateg12:true, slc0:false, slc1:false, slc2:false};
+S2 -> DEAD {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:false, rtob_ack1:false, full:true, empty:false} / {btos_ack0:false, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:false, btor_req1:true, stateg7_0:true, stateg7_1:true, enq:false, deq:false, stateg12:true, slc0:true, slc1:true, slc2:true};
+S2 -> DEAD {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:false, rtob_ack1:false, full:true, empty:false} / {btos_ack0:false, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:true, btor_req1:true, stateg7_0:true, stateg7_1:true, enq:false, deq:false, stateg12:true, slc0:false, slc1:true, slc2:true};
+S2 -> DEAD {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:false, rtob_ack1:false, full:true, empty:false} / {btos_ack0:false, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:false, btor_req1:true, stateg7_0:true, stateg7_1:true, enq:false, deq:false, stateg12:true, slc0:false, slc1:false, slc2:false};
+S2 -> S4 {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:false, rtob_ack1:false, full:true, empty:false} / {btos_ack0:false, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:true, btor_req1:false, stateg7_0:true, stateg7_1:true, enq:false, deq:false, stateg12:true, slc0:true, slc1:true, slc2:true};
+S2 -> S1 {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:false, rtob_ack1:false, full:true, empty:false} / {btos_ack0:false, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:false, btor_req1:false, stateg7_0:true, stateg7_1:true, enq:false, deq:false, stateg12:true, slc0:true, slc1:false, slc2:true};
+S2 -> S4 {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:false, rtob_ack1:false, full:true, empty:false} / {btos_ack0:false, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:true, btor_req1:false, stateg7_0:true, stateg7_1:true, enq:false, deq:false, stateg12:true, slc0:false, slc1:false, slc2:false};
+S3 -> DEAD {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:false, rtob_ack1:false, full:true, empty:false} / {btos_ack0:false, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:true, btor_req1:true, stateg7_0:false, stateg7_1:false, enq:false, deq:false, stateg12:true, slc0:true, slc1:false, slc2:true};
+S3 -> DEAD {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:false, rtob_ack1:false, full:true, empty:false} / {btos_ack0:false, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:true, btor_req1:true, stateg7_0:false, stateg7_1:false, enq:false, deq:false, stateg12:true, slc0:true, slc1:true, slc2:true};
+S3 -> DEAD {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:false, rtob_ack1:false, full:true, empty:false} / {btos_ack0:true, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:true, btor_req1:false, stateg7_0:false, stateg7_1:false, enq:true, deq:false, stateg12:true, slc0:false, slc1:false, slc2:false};
+S3 -> DEAD {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:false, rtob_ack1:false, full:true, empty:false} / {btos_ack0:true, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:true, btor_req1:true, stateg7_0:false, stateg7_1:false, enq:true, deq:false, stateg12:true, slc0:false, slc1:false, slc2:false};
+S3 -> S4 {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:false, rtob_ack1:false, full:true, empty:false} / {btos_ack0:false, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:true, btor_req1:false, stateg7_0:false, stateg7_1:false, enq:false, deq:false, stateg12:true, slc0:false, slc1:true, slc2:true};
+S3 -> S4 {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:false, rtob_ack1:false, full:true, empty:false} / {btos_ack0:false, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:true, btor_req1:false, stateg7_0:false, stateg7_1:false, enq:false, deq:false, stateg12:true, slc0:true, slc1:true, slc2:true};
+S3 -> DEAD {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:false, rtob_ack1:false, full:true, empty:false} / {btos_ack0:false, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:true, btor_req1:true, stateg7_0:false, stateg7_1:false, enq:false, deq:false, stateg12:true, slc0:false, slc1:true, slc2:true};
+S3 -> S4 {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:false, rtob_ack1:false, full:true, empty:false} / {btos_ack0:false, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:true, btor_req1:false, stateg7_0:false, stateg7_1:false, enq:false, deq:false, stateg12:true, slc0:false, slc1:false, slc2:false};
+S3 -> S4 {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:false, rtob_ack1:false, full:true, empty:false} / {btos_ack0:false, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:true, btor_req1:false, stateg7_0:false, stateg7_1:false, enq:false, deq:false, stateg12:true, slc0:true, slc1:false, slc2:true};
+S3 -> DEAD {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:false, rtob_ack1:false, full:true, empty:false} / {btos_ack0:false, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:true, btor_req1:true, stateg7_0:false, stateg7_1:false, enq:false, deq:false, stateg12:true, slc0:false, slc1:false, slc2:false};
+S4 -> DEAD {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:true, rtob_ack1:false, full:true, empty:false} / {btos_ack0:false, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:true, btor_req1:true, stateg7_0:false, stateg7_1:false, enq:false, deq:false, stateg12:true, slc0:true, slc1:false, slc2:true};
+S4 -> DEAD {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:true, rtob_ack1:false, full:true, empty:false} / {btos_ack0:false, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:true, btor_req1:true, stateg7_0:false, stateg7_1:false, enq:false, deq:false, stateg12:true, slc0:true, slc1:true, slc2:true};
+S4 -> DEAD {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:true, rtob_ack1:false, full:true, empty:false} / {btos_ack0:true, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:true, btor_req1:false, stateg7_0:false, stateg7_1:false, enq:true, deq:false, stateg12:true, slc0:false, slc1:false, slc2:false};
+S4 -> DEAD {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:true, rtob_ack1:false, full:true, empty:false} / {btos_ack0:true, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:true, btor_req1:true, stateg7_0:false, stateg7_1:false, enq:true, deq:false, stateg12:true, slc0:false, slc1:false, slc2:false};
+S4 -> S5 {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:true, rtob_ack1:false, full:true, empty:false} / {btos_ack0:false, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:true, btor_req1:false, stateg7_0:false, stateg7_1:false, enq:false, deq:false, stateg12:true, slc0:false, slc1:true, slc2:true};
+S4 -> S5 {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:true, rtob_ack1:false, full:true, empty:false} / {btos_ack0:false, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:true, btor_req1:false, stateg7_0:false, stateg7_1:false, enq:false, deq:false, stateg12:true, slc0:true, slc1:true, slc2:true};
+S4 -> DEAD {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:true, rtob_ack1:false, full:true, empty:false} / {btos_ack0:false, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:true, btor_req1:true, stateg7_0:false, stateg7_1:false, enq:false, deq:false, stateg12:true, slc0:false, slc1:true, slc2:true};
+S4 -> S5 {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:true, rtob_ack1:false, full:true, empty:false} / {btos_ack0:false, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:true, btor_req1:false, stateg7_0:false, stateg7_1:false, enq:false, deq:false, stateg12:true, slc0:false, slc1:false, slc2:false};
+S4 -> S5 {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:true, rtob_ack1:false, full:true, empty:false} / {btos_ack0:false, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:true, btor_req1:false, stateg7_0:false, stateg7_1:false, enq:false, deq:false, stateg12:true, slc0:true, slc1:false, slc2:true};
+S4 -> DEAD {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:true, rtob_ack1:false, full:true, empty:false} / {btos_ack0:false, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:true, btor_req1:true, stateg7_0:false, stateg7_1:false, enq:false, deq:false, stateg12:true, slc0:false, slc1:false, slc2:false};
+S5 -> S7 {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:true, rtob_ack1:false, full:true, empty:false} / {btos_ack0:false, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:false, btor_req1:true, stateg7_0:false, stateg7_1:false, enq:false, deq:false, stateg12:true, slc0:false, slc1:false, slc2:false};
+S5 -> S7 {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:true, rtob_ack1:false, full:true, empty:false} / {btos_ack0:false, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:false, btor_req1:true, stateg7_0:false, stateg7_1:false, enq:false, deq:false, stateg12:true, slc0:true, slc1:false, slc2:true};
+S5 -> S6 {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:true, rtob_ack1:false, full:true, empty:false} / {btos_ack0:false, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:false, btor_req1:false, stateg7_0:false, stateg7_1:false, enq:false, deq:false, stateg12:true, slc0:false, slc1:true, slc2:true};
+S5 -> DEAD {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:true, rtob_ack1:false, full:true, empty:false} / {btos_ack0:true, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:false, btor_req1:false, stateg7_0:false, stateg7_1:false, enq:true, deq:false, stateg12:true, slc0:false, slc1:false, slc2:false};
+S5 -> DEAD {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:true, rtob_ack1:false, full:true, empty:false} / {btos_ack0:true, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:false, btor_req1:true, stateg7_0:false, stateg7_1:false, enq:true, deq:false, stateg12:true, slc0:false, slc1:false, slc2:false};
+S5 -> S6 {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:true, rtob_ack1:false, full:true, empty:false} / {btos_ack0:false, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:false, btor_req1:false, stateg7_0:false, stateg7_1:false, enq:false, deq:false, stateg12:true, slc0:true, slc1:true, slc2:true};
+S5 -> S7 {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:true, rtob_ack1:false, full:true, empty:false} / {btos_ack0:false, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:false, btor_req1:true, stateg7_0:false, stateg7_1:false, enq:false, deq:false, stateg12:true, slc0:false, slc1:true, slc2:true};
+S5 -> S6 {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:true, rtob_ack1:false, full:true, empty:false} / {btos_ack0:false, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:false, btor_req1:false, stateg7_0:false, stateg7_1:false, enq:false, deq:false, stateg12:true, slc0:false, slc1:false, slc2:false};
+S5 -> S7 {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:true, rtob_ack1:false, full:true, empty:false} / {btos_ack0:false, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:false, btor_req1:true, stateg7_0:false, stateg7_1:false, enq:false, deq:false, stateg12:true, slc0:true, slc1:true, slc2:true};
+S5 -> S6 {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:true, rtob_ack1:false, full:true, empty:false} / {btos_ack0:false, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:false, btor_req1:false, stateg7_0:false, stateg7_1:false, enq:false, deq:false, stateg12:true, slc0:true, slc1:false, slc2:true};
+S6 -> DEAD {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:false, rtob_ack1:false, full:false, empty:true} / {btos_ack0:false, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:false, btor_req1:false, stateg7_0:true, stateg7_1:false, enq:false, deq:true, stateg12:true, slc0:false, slc1:false, slc2:false};
+S6 -> DEAD {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:false, rtob_ack1:false, full:false, empty:true} / {btos_ack0:false, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:false, btor_req1:true, stateg7_0:true, stateg7_1:false, enq:false, deq:true, stateg12:true, slc0:false, slc1:false, slc2:false};
+S6 -> DEAD {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:false, rtob_ack1:false, full:false, empty:true} / {btos_ack0:false, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:false, btor_req1:false, stateg7_0:true, stateg7_1:false, enq:false, deq:true, stateg12:true, slc0:false, slc1:true, slc2:true};
+S6 -> DEAD {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:false, rtob_ack1:false, full:false, empty:true} / {btos_ack0:false, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:false, btor_req1:true, stateg7_0:true, stateg7_1:false, enq:false, deq:true, stateg12:true, slc0:false, slc1:true, slc2:true};
+S6 -> DEAD {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:false, rtob_ack1:false, full:false, empty:true} / {btos_ack0:false, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:false, btor_req1:false, stateg7_0:true, stateg7_1:false, enq:false, deq:true, stateg12:true, slc0:true, slc1:false, slc2:true};
+S6 -> DEAD {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:false, rtob_ack1:false, full:false, empty:true} / {btos_ack0:false, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:false, btor_req1:true, stateg7_0:true, stateg7_1:false, enq:false, deq:true, stateg12:true, slc0:true, slc1:false, slc2:true};
+S6 -> DEAD {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:false, rtob_ack1:false, full:false, empty:true} / {btos_ack0:false, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:false, btor_req1:false, stateg7_0:true, stateg7_1:false, enq:false, deq:true, stateg12:true, slc0:true, slc1:true, slc2:true};
+S6 -> DEAD {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:false, rtob_ack1:false, full:false, empty:true} / {btos_ack0:false, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:false, btor_req1:true, stateg7_0:true, stateg7_1:false, enq:false, deq:true, stateg12:true, slc0:true, slc1:true, slc2:true};
+S6 -> DEAD {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:false, rtob_ack1:false, full:false, empty:true} / {btos_ack0:true, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:false, btor_req1:false, stateg7_0:true, stateg7_1:false, enq:true, deq:true, stateg12:true, slc0:false, slc1:false, slc2:false};
+S6 -> DEAD {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:false, rtob_ack1:false, full:false, empty:true} / {btos_ack0:true, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:false, btor_req1:true, stateg7_0:true, stateg7_1:false, enq:true, deq:true, stateg12:true, slc0:false, slc1:false, slc2:false};
+S7 -> DEAD {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:false, rtob_ack1:false, full:false, empty:true} / {btos_ack0:false, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:false, btor_req1:true, stateg7_0:false, stateg7_1:true, enq:false, deq:true, stateg12:true, slc0:false, slc1:false, slc2:false};
+S7 -> DEAD {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:false, rtob_ack1:false, full:false, empty:true} / {btos_ack0:false, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:false, btor_req1:true, stateg7_0:false, stateg7_1:true, enq:false, deq:true, stateg12:true, slc0:false, slc1:true, slc2:true};
+S7 -> DEAD {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:false, rtob_ack1:false, full:false, empty:true} / {btos_ack0:false, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:false, btor_req1:true, stateg7_0:false, stateg7_1:true, enq:false, deq:true, stateg12:true, slc0:true, slc1:false, slc2:true};
+S7 -> DEAD {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:false, rtob_ack1:false, full:false, empty:true} / {btos_ack0:false, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:false, btor_req1:true, stateg7_0:false, stateg7_1:true, enq:false, deq:true, stateg12:true, slc0:true, slc1:true, slc2:true};
+S7 -> DEAD {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:false, rtob_ack1:false, full:false, empty:true} / {btos_ack0:true, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:false, btor_req1:true, stateg7_0:false, stateg7_1:true, enq:true, deq:true, stateg12:true, slc0:false, slc1:false, slc2:false};
+%---*** Violation Trace ***---
+
+#pos({},{entailed(counter_strat_0)},{
+
+% CS_Path: ini_S0_S1_DEAD
+
+trace(counter_strat_0).
+
+timepoint(0,counter_strat_0).
+timepoint(1,counter_strat_0).
+timepoint(2,counter_strat_0).
+next(1,0,counter_strat_0).
+next(2,1,counter_strat_0).
+
+not_holds_at(stob_req0,0,counter_strat_0).
+not_holds_at(stob_req1,0,counter_strat_0).
+not_holds_at(stob_req2,0,counter_strat_0).
+not_holds_at(stob_req3,0,counter_strat_0).
+not_holds_at(stob_req4,0,counter_strat_0).
+not_holds_at(rtob_ack0,0,counter_strat_0).
+not_holds_at(rtob_ack1,0,counter_strat_0).
+not_holds_at(full,0,counter_strat_0).
+holds_at(empty,0,counter_strat_0).
+not_holds_at(btos_ack0,0,counter_strat_0).
+not_holds_at(btos_ack1,0,counter_strat_0).
+not_holds_at(btos_ack2,0,counter_strat_0).
+not_holds_at(btos_ack3,0,counter_strat_0).
+not_holds_at(btos_ack4,0,counter_strat_0).
+not_holds_at(btor_req0,0,counter_strat_0).
+not_holds_at(btor_req1,0,counter_strat_0).
+not_holds_at(stateg7_0,0,counter_strat_0).
+holds_at(stateg7_1,0,counter_strat_0).
+not_holds_at(enq,0,counter_strat_0).
+not_holds_at(deq,0,counter_strat_0).
+not_holds_at(stateg12,0,counter_strat_0).
+not_holds_at(slc0,0,counter_strat_0).
+not_holds_at(slc1,0,counter_strat_0).
+not_holds_at(slc2,0,counter_strat_0).
+holds_at(stob_req0,1,counter_strat_0).
+not_holds_at(stob_req1,1,counter_strat_0).
+not_holds_at(stob_req2,1,counter_strat_0).
+not_holds_at(stob_req3,1,counter_strat_0).
+not_holds_at(stob_req4,1,counter_strat_0).
+not_holds_at(rtob_ack0,1,counter_strat_0).
+not_holds_at(rtob_ack1,1,counter_strat_0).
+holds_at(full,1,counter_strat_0).
+not_holds_at(empty,1,counter_strat_0).
+not_holds_at(btos_ack0,1,counter_strat_0).
+not_holds_at(btos_ack1,1,counter_strat_0).
+not_holds_at(btos_ack2,1,counter_strat_0).
+not_holds_at(btos_ack3,1,counter_strat_0).
+not_holds_at(btos_ack4,1,counter_strat_0).
+not_holds_at(btor_req0,1,counter_strat_0).
+not_holds_at(btor_req1,1,counter_strat_0).
+holds_at(stateg7_0,1,counter_strat_0).
+holds_at(stateg7_1,1,counter_strat_0).
+not_holds_at(enq,1,counter_strat_0).
+not_holds_at(deq,1,counter_strat_0).
+not_holds_at(stateg12,1,counter_strat_0).
+not_holds_at(slc0,1,counter_strat_0).
+holds_at(slc1,1,counter_strat_0).
+holds_at(slc2,1,counter_strat_0).
+holds_at(stob_req0,2,counter_strat_0).
+not_holds_at(stob_req1,2,counter_strat_0).
+not_holds_at(stob_req2,2,counter_strat_0).
+not_holds_at(stob_req3,2,counter_strat_0).
+not_holds_at(stob_req4,2,counter_strat_0).
+not_holds_at(rtob_ack0,2,counter_strat_0).
+not_holds_at(rtob_ack1,2,counter_strat_0).
+holds_at(full,2,counter_strat_0).
+not_holds_at(empty,2,counter_strat_0).
+not_holds_at(btos_ack0,2,counter_strat_0).
+not_holds_at(btos_ack1,2,counter_strat_0).
+not_holds_at(btos_ack2,2,counter_strat_0).
+not_holds_at(btos_ack3,2,counter_strat_0).
+not_holds_at(btos_ack4,2,counter_strat_0).
+not_holds_at(btor_req0,2,counter_strat_0).
+holds_at(btor_req1,2,counter_strat_0).
+holds_at(stateg7_0,2,counter_strat_0).
+holds_at(stateg7_1,2,counter_strat_0).
+not_holds_at(enq,2,counter_strat_0).
+not_holds_at(deq,2,counter_strat_0).
+holds_at(stateg12,2,counter_strat_0).
+not_holds_at(slc0,2,counter_strat_0).
+not_holds_at(slc1,2,counter_strat_0).
+not_holds_at(slc2,2,counter_strat_0).
+
+}).
+
+#pos({},{entailed(counter_strat_1)},{
+
+% CS_Path: ini_S0_S1_S2_S1
+
+trace(counter_strat_1).
+
+timepoint(0,counter_strat_1).
+timepoint(1,counter_strat_1).
+timepoint(2,counter_strat_1).
+timepoint(3,counter_strat_1).
+next(1,0,counter_strat_1).
+next(2,1,counter_strat_1).
+next(3,2,counter_strat_1).
+next(2,3,counter_strat_1).
+
+not_holds_at(stob_req0,0,counter_strat_1).
+not_holds_at(stob_req1,0,counter_strat_1).
+not_holds_at(stob_req2,0,counter_strat_1).
+not_holds_at(stob_req3,0,counter_strat_1).
+not_holds_at(stob_req4,0,counter_strat_1).
+not_holds_at(rtob_ack0,0,counter_strat_1).
+not_holds_at(rtob_ack1,0,counter_strat_1).
+not_holds_at(full,0,counter_strat_1).
+holds_at(empty,0,counter_strat_1).
+not_holds_at(btos_ack0,0,counter_strat_1).
+not_holds_at(btos_ack1,0,counter_strat_1).
+not_holds_at(btos_ack2,0,counter_strat_1).
+not_holds_at(btos_ack3,0,counter_strat_1).
+not_holds_at(btos_ack4,0,counter_strat_1).
+not_holds_at(btor_req0,0,counter_strat_1).
+not_holds_at(btor_req1,0,counter_strat_1).
+not_holds_at(stateg7_0,0,counter_strat_1).
+holds_at(stateg7_1,0,counter_strat_1).
+not_holds_at(enq,0,counter_strat_1).
+not_holds_at(deq,0,counter_strat_1).
+not_holds_at(stateg12,0,counter_strat_1).
+not_holds_at(slc0,0,counter_strat_1).
+not_holds_at(slc1,0,counter_strat_1).
+not_holds_at(slc2,0,counter_strat_1).
+holds_at(stob_req0,1,counter_strat_1).
+not_holds_at(stob_req1,1,counter_strat_1).
+not_holds_at(stob_req2,1,counter_strat_1).
+not_holds_at(stob_req3,1,counter_strat_1).
+not_holds_at(stob_req4,1,counter_strat_1).
+not_holds_at(rtob_ack0,1,counter_strat_1).
+not_holds_at(rtob_ack1,1,counter_strat_1).
+holds_at(full,1,counter_strat_1).
+not_holds_at(empty,1,counter_strat_1).
+not_holds_at(btos_ack0,1,counter_strat_1).
+not_holds_at(btos_ack1,1,counter_strat_1).
+not_holds_at(btos_ack2,1,counter_strat_1).
+not_holds_at(btos_ack3,1,counter_strat_1).
+not_holds_at(btos_ack4,1,counter_strat_1).
+not_holds_at(btor_req0,1,counter_strat_1).
+not_holds_at(btor_req1,1,counter_strat_1).
+holds_at(stateg7_0,1,counter_strat_1).
+holds_at(stateg7_1,1,counter_strat_1).
+not_holds_at(enq,1,counter_strat_1).
+not_holds_at(deq,1,counter_strat_1).
+not_holds_at(stateg12,1,counter_strat_1).
+not_holds_at(slc0,1,counter_strat_1).
+holds_at(slc1,1,counter_strat_1).
+holds_at(slc2,1,counter_strat_1).
+holds_at(stob_req0,2,counter_strat_1).
+not_holds_at(stob_req1,2,counter_strat_1).
+not_holds_at(stob_req2,2,counter_strat_1).
+not_holds_at(stob_req3,2,counter_strat_1).
+not_holds_at(stob_req4,2,counter_strat_1).
+not_holds_at(rtob_ack0,2,counter_strat_1).
+not_holds_at(rtob_ack1,2,counter_strat_1).
+holds_at(full,2,counter_strat_1).
+not_holds_at(empty,2,counter_strat_1).
+not_holds_at(btos_ack0,2,counter_strat_1).
+not_holds_at(btos_ack1,2,counter_strat_1).
+not_holds_at(btos_ack2,2,counter_strat_1).
+not_holds_at(btos_ack3,2,counter_strat_1).
+not_holds_at(btos_ack4,2,counter_strat_1).
+not_holds_at(btor_req0,2,counter_strat_1).
+not_holds_at(btor_req1,2,counter_strat_1).
+holds_at(stateg7_0,2,counter_strat_1).
+holds_at(stateg7_1,2,counter_strat_1).
+not_holds_at(enq,2,counter_strat_1).
+not_holds_at(deq,2,counter_strat_1).
+holds_at(stateg12,2,counter_strat_1).
+holds_at(slc0,2,counter_strat_1).
+not_holds_at(slc1,2,counter_strat_1).
+holds_at(slc2,2,counter_strat_1).
+holds_at(stob_req0,3,counter_strat_1).
+not_holds_at(stob_req1,3,counter_strat_1).
+not_holds_at(stob_req2,3,counter_strat_1).
+not_holds_at(stob_req3,3,counter_strat_1).
+not_holds_at(stob_req4,3,counter_strat_1).
+not_holds_at(rtob_ack0,3,counter_strat_1).
+not_holds_at(rtob_ack1,3,counter_strat_1).
+holds_at(full,3,counter_strat_1).
+not_holds_at(empty,3,counter_strat_1).
+not_holds_at(btos_ack0,3,counter_strat_1).
+not_holds_at(btos_ack1,3,counter_strat_1).
+not_holds_at(btos_ack2,3,counter_strat_1).
+not_holds_at(btos_ack3,3,counter_strat_1).
+not_holds_at(btos_ack4,3,counter_strat_1).
+not_holds_at(btor_req0,3,counter_strat_1).
+not_holds_at(btor_req1,3,counter_strat_1).
+holds_at(stateg7_0,3,counter_strat_1).
+holds_at(stateg7_1,3,counter_strat_1).
+not_holds_at(enq,3,counter_strat_1).
+not_holds_at(deq,3,counter_strat_1).
+holds_at(stateg12,3,counter_strat_1).
+holds_at(slc0,3,counter_strat_1).
+not_holds_at(slc1,3,counter_strat_1).
+holds_at(slc2,3,counter_strat_1).
+
+}).
+
+
+
+No assumption weakening produces realizable spec (las file UNSAT)
+Moving to Guarantee Weakening
+
+Reverting to:
+	antecedent_exception(assumption25,V1,V2) :- not_holds_at(stateg7_0,V1,V2).
+INI -> S0 {stob_req0:false, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:false, rtob_ack1:false, full:false, empty:true} / {btos_ack0:false, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:false, btor_req1:false, stateg7_0:false, stateg7_1:true, enq:false, deq:false, stateg12:false, slc0:false, slc1:false, slc2:false};
+S0 -> S1 {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:false, rtob_ack1:false, full:true, empty:false} / {btos_ack0:false, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:false, btor_req1:false, stateg7_0:true, stateg7_1:true, enq:false, deq:false, stateg12:false, slc0:true, slc1:true, slc2:true};
+S0 -> S4 {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:false, rtob_ack1:false, full:true, empty:false} / {btos_ack0:false, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:true, btor_req1:false, stateg7_0:true, stateg7_1:true, enq:false, deq:false, stateg12:false, slc0:false, slc1:true, slc2:true};
+S0 -> S1 {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:false, rtob_ack1:false, full:true, empty:false} / {btos_ack0:false, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:false, btor_req1:false, stateg7_0:true, stateg7_1:true, enq:false, deq:false, stateg12:false, slc0:false, slc1:false, slc2:false};
+S0 -> DEAD {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:false, rtob_ack1:false, full:true, empty:false} / {btos_ack0:false, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:false, btor_req1:true, stateg7_0:true, stateg7_1:true, enq:false, deq:false, stateg12:false, slc0:true, slc1:true, slc2:true};
+S0 -> DEAD {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:false, rtob_ack1:false, full:true, empty:false} / {btos_ack0:false, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:true, btor_req1:true, stateg7_0:true, stateg7_1:true, enq:false, deq:false, stateg12:false, slc0:false, slc1:true, slc2:true};
+S0 -> DEAD {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:false, rtob_ack1:false, full:true, empty:false} / {btos_ack0:false, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:false, btor_req1:true, stateg7_0:true, stateg7_1:true, enq:false, deq:false, stateg12:false, slc0:false, slc1:false, slc2:false};
+S0 -> S4 {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:false, rtob_ack1:false, full:true, empty:false} / {btos_ack0:false, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:true, btor_req1:false, stateg7_0:true, stateg7_1:true, enq:false, deq:false, stateg12:false, slc0:true, slc1:true, slc2:true};
+S0 -> S1 {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:false, rtob_ack1:false, full:true, empty:false} / {btos_ack0:false, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:false, btor_req1:false, stateg7_0:true, stateg7_1:true, enq:false, deq:false, stateg12:false, slc0:true, slc1:false, slc2:true};
+S0 -> S4 {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:false, rtob_ack1:false, full:true, empty:false} / {btos_ack0:false, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:true, btor_req1:false, stateg7_0:true, stateg7_1:true, enq:false, deq:false, stateg12:false, slc0:false, slc1:false, slc2:false};
+S0 -> DEAD {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:false, rtob_ack1:false, full:true, empty:false} / {btos_ack0:false, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:true, btor_req1:true, stateg7_0:true, stateg7_1:true, enq:false, deq:false, stateg12:false, slc0:true, slc1:true, slc2:true};
+S0 -> DEAD {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:false, rtob_ack1:false, full:true, empty:false} / {btos_ack0:false, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:false, btor_req1:true, stateg7_0:true, stateg7_1:true, enq:false, deq:false, stateg12:false, slc0:true, slc1:false, slc2:true};
+S0 -> DEAD {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:false, rtob_ack1:false, full:true, empty:false} / {btos_ack0:false, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:true, btor_req1:true, stateg7_0:true, stateg7_1:true, enq:false, deq:false, stateg12:false, slc0:false, slc1:false, slc2:false};
+S0 -> S4 {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:false, rtob_ack1:false, full:true, empty:false} / {btos_ack0:false, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:true, btor_req1:false, stateg7_0:true, stateg7_1:true, enq:false, deq:false, stateg12:false, slc0:true, slc1:false, slc2:true};
+S0 -> S1 {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:false, rtob_ack1:false, full:true, empty:false} / {btos_ack0:false, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:false, btor_req1:false, stateg7_0:true, stateg7_1:true, enq:false, deq:false, stateg12:false, slc0:false, slc1:true, slc2:true};
+S0 -> DEAD {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:false, rtob_ack1:false, full:true, empty:false} / {btos_ack0:false, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:true, btor_req1:true, stateg7_0:true, stateg7_1:true, enq:false, deq:false, stateg12:false, slc0:true, slc1:false, slc2:true};
+S0 -> DEAD {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:false, rtob_ack1:false, full:true, empty:false} / {btos_ack0:false, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:false, btor_req1:true, stateg7_0:true, stateg7_1:true, enq:false, deq:false, stateg12:false, slc0:false, slc1:true, slc2:true};
+S1 -> DEAD {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:false, rtob_ack1:false, full:true, empty:false} / {btos_ack0:false, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:false, btor_req1:true, stateg7_0:true, stateg7_1:true, enq:false, deq:false, stateg12:true, slc0:true, slc1:false, slc2:true};
+S1 -> DEAD {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:false, rtob_ack1:false, full:true, empty:false} / {btos_ack0:false, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:true, btor_req1:true, stateg7_0:true, stateg7_1:true, enq:false, deq:false, stateg12:true, slc0:false, slc1:false, slc2:false};
+S1 -> S3 {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:false, rtob_ack1:false, full:true, empty:false} / {btos_ack0:false, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:true, btor_req1:false, stateg7_0:true, stateg7_1:true, enq:false, deq:false, stateg12:true, slc0:true, slc1:false, slc2:true};
+S1 -> S2 {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:false, rtob_ack1:false, full:true, empty:false} / {btos_ack0:false, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:false, btor_req1:false, stateg7_0:true, stateg7_1:true, enq:false, deq:false, stateg12:true, slc0:false, slc1:true, slc2:true};
+S1 -> DEAD {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:false, rtob_ack1:false, full:true, empty:false} / {btos_ack0:false, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:true, btor_req1:true, stateg7_0:true, stateg7_1:true, enq:false, deq:false, stateg12:true, slc0:true, slc1:false, slc2:true};
+S1 -> DEAD {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:false, rtob_ack1:false, full:true, empty:false} / {btos_ack0:false, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:true, btor_req1:true, stateg7_0:true, stateg7_1:true, enq:false, deq:false, stateg12:true, slc0:true, slc1:true, slc2:true};
+S1 -> DEAD {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:false, rtob_ack1:false, full:true, empty:false} / {btos_ack0:true, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:false, btor_req1:false, stateg7_0:true, stateg7_1:true, enq:true, deq:false, stateg12:true, slc0:false, slc1:false, slc2:false};
+S1 -> DEAD {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:false, rtob_ack1:false, full:true, empty:false} / {btos_ack0:true, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:false, btor_req1:true, stateg7_0:true, stateg7_1:true, enq:true, deq:false, stateg12:true, slc0:false, slc1:false, slc2:false};
+S1 -> DEAD {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:false, rtob_ack1:false, full:true, empty:false} / {btos_ack0:true, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:true, btor_req1:false, stateg7_0:true, stateg7_1:true, enq:true, deq:false, stateg12:true, slc0:false, slc1:false, slc2:false};
+S1 -> DEAD {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:false, rtob_ack1:false, full:true, empty:false} / {btos_ack0:true, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:true, btor_req1:true, stateg7_0:true, stateg7_1:true, enq:true, deq:false, stateg12:true, slc0:false, slc1:false, slc2:false};
+S1 -> DEAD {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:false, rtob_ack1:false, full:true, empty:false} / {btos_ack0:false, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:false, btor_req1:true, stateg7_0:true, stateg7_1:true, enq:false, deq:false, stateg12:true, slc0:false, slc1:true, slc2:true};
+S1 -> S2 {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:false, rtob_ack1:false, full:true, empty:false} / {btos_ack0:false, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:false, btor_req1:false, stateg7_0:true, stateg7_1:true, enq:false, deq:false, stateg12:true, slc0:true, slc1:true, slc2:true};
+S1 -> S3 {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:false, rtob_ack1:false, full:true, empty:false} / {btos_ack0:false, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:true, btor_req1:false, stateg7_0:true, stateg7_1:true, enq:false, deq:false, stateg12:true, slc0:false, slc1:true, slc2:true};
+S1 -> S2 {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:false, rtob_ack1:false, full:true, empty:false} / {btos_ack0:false, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:false, btor_req1:false, stateg7_0:true, stateg7_1:true, enq:false, deq:false, stateg12:true, slc0:false, slc1:false, slc2:false};
+S1 -> DEAD {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:false, rtob_ack1:false, full:true, empty:false} / {btos_ack0:false, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:false, btor_req1:true, stateg7_0:true, stateg7_1:true, enq:false, deq:false, stateg12:true, slc0:true, slc1:true, slc2:true};
+S1 -> DEAD {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:false, rtob_ack1:false, full:true, empty:false} / {btos_ack0:false, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:true, btor_req1:true, stateg7_0:true, stateg7_1:true, enq:false, deq:false, stateg12:true, slc0:false, slc1:true, slc2:true};
+S1 -> DEAD {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:false, rtob_ack1:false, full:true, empty:false} / {btos_ack0:false, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:false, btor_req1:true, stateg7_0:true, stateg7_1:true, enq:false, deq:false, stateg12:true, slc0:false, slc1:false, slc2:false};
+S1 -> S3 {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:false, rtob_ack1:false, full:true, empty:false} / {btos_ack0:false, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:true, btor_req1:false, stateg7_0:true, stateg7_1:true, enq:false, deq:false, stateg12:true, slc0:true, slc1:true, slc2:true};
+S1 -> S2 {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:false, rtob_ack1:false, full:true, empty:false} / {btos_ack0:false, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:false, btor_req1:false, stateg7_0:true, stateg7_1:true, enq:false, deq:false, stateg12:true, slc0:true, slc1:false, slc2:true};
+S1 -> S3 {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:false, rtob_ack1:false, full:true, empty:false} / {btos_ack0:false, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:true, btor_req1:false, stateg7_0:true, stateg7_1:true, enq:false, deq:false, stateg12:true, slc0:false, slc1:false, slc2:false};
+S2 -> DEAD {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:false, rtob_ack1:false, full:true, empty:false} / {btos_ack0:false, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:false, btor_req1:true, stateg7_0:true, stateg7_1:true, enq:false, deq:false, stateg12:true, slc0:true, slc1:false, slc2:true};
+S2 -> DEAD {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:false, rtob_ack1:false, full:true, empty:false} / {btos_ack0:false, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:true, btor_req1:true, stateg7_0:true, stateg7_1:true, enq:false, deq:false, stateg12:true, slc0:false, slc1:false, slc2:false};
+S2 -> S4 {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:false, rtob_ack1:false, full:true, empty:false} / {btos_ack0:false, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:true, btor_req1:false, stateg7_0:true, stateg7_1:true, enq:false, deq:false, stateg12:true, slc0:true, slc1:false, slc2:true};
+S2 -> S1 {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:false, rtob_ack1:false, full:true, empty:false} / {btos_ack0:false, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:false, btor_req1:false, stateg7_0:true, stateg7_1:true, enq:false, deq:false, stateg12:true, slc0:false, slc1:true, slc2:true};
+S2 -> DEAD {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:false, rtob_ack1:false, full:true, empty:false} / {btos_ack0:false, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:true, btor_req1:true, stateg7_0:true, stateg7_1:true, enq:false, deq:false, stateg12:true, slc0:true, slc1:false, slc2:true};
+S2 -> DEAD {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:false, rtob_ack1:false, full:true, empty:false} / {btos_ack0:false, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:true, btor_req1:true, stateg7_0:true, stateg7_1:true, enq:false, deq:false, stateg12:true, slc0:true, slc1:true, slc2:true};
+S2 -> DEAD {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:false, rtob_ack1:false, full:true, empty:false} / {btos_ack0:true, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:false, btor_req1:false, stateg7_0:true, stateg7_1:true, enq:true, deq:false, stateg12:true, slc0:false, slc1:false, slc2:false};
+S2 -> DEAD {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:false, rtob_ack1:false, full:true, empty:false} / {btos_ack0:true, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:false, btor_req1:true, stateg7_0:true, stateg7_1:true, enq:true, deq:false, stateg12:true, slc0:false, slc1:false, slc2:false};
+S2 -> DEAD {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:false, rtob_ack1:false, full:true, empty:false} / {btos_ack0:true, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:true, btor_req1:false, stateg7_0:true, stateg7_1:true, enq:true, deq:false, stateg12:true, slc0:false, slc1:false, slc2:false};
+S2 -> DEAD {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:false, rtob_ack1:false, full:true, empty:false} / {btos_ack0:true, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:true, btor_req1:true, stateg7_0:true, stateg7_1:true, enq:true, deq:false, stateg12:true, slc0:false, slc1:false, slc2:false};
+S2 -> DEAD {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:false, rtob_ack1:false, full:true, empty:false} / {btos_ack0:false, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:false, btor_req1:true, stateg7_0:true, stateg7_1:true, enq:false, deq:false, stateg12:true, slc0:false, slc1:true, slc2:true};
+S2 -> S1 {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:false, rtob_ack1:false, full:true, empty:false} / {btos_ack0:false, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:false, btor_req1:false, stateg7_0:true, stateg7_1:true, enq:false, deq:false, stateg12:true, slc0:true, slc1:true, slc2:true};
+S2 -> S4 {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:false, rtob_ack1:false, full:true, empty:false} / {btos_ack0:false, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:true, btor_req1:false, stateg7_0:true, stateg7_1:true, enq:false, deq:false, stateg12:true, slc0:false, slc1:true, slc2:true};
+S2 -> S1 {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:false, rtob_ack1:false, full:true, empty:false} / {btos_ack0:false, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:false, btor_req1:false, stateg7_0:true, stateg7_1:true, enq:false, deq:false, stateg12:true, slc0:false, slc1:false, slc2:false};
+S2 -> DEAD {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:false, rtob_ack1:false, full:true, empty:false} / {btos_ack0:false, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:false, btor_req1:true, stateg7_0:true, stateg7_1:true, enq:false, deq:false, stateg12:true, slc0:true, slc1:true, slc2:true};
+S2 -> DEAD {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:false, rtob_ack1:false, full:true, empty:false} / {btos_ack0:false, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:true, btor_req1:true, stateg7_0:true, stateg7_1:true, enq:false, deq:false, stateg12:true, slc0:false, slc1:true, slc2:true};
+S2 -> DEAD {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:false, rtob_ack1:false, full:true, empty:false} / {btos_ack0:false, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:false, btor_req1:true, stateg7_0:true, stateg7_1:true, enq:false, deq:false, stateg12:true, slc0:false, slc1:false, slc2:false};
+S2 -> S4 {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:false, rtob_ack1:false, full:true, empty:false} / {btos_ack0:false, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:true, btor_req1:false, stateg7_0:true, stateg7_1:true, enq:false, deq:false, stateg12:true, slc0:true, slc1:true, slc2:true};
+S2 -> S1 {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:false, rtob_ack1:false, full:true, empty:false} / {btos_ack0:false, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:false, btor_req1:false, stateg7_0:true, stateg7_1:true, enq:false, deq:false, stateg12:true, slc0:true, slc1:false, slc2:true};
+S2 -> S4 {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:false, rtob_ack1:false, full:true, empty:false} / {btos_ack0:false, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:true, btor_req1:false, stateg7_0:true, stateg7_1:true, enq:false, deq:false, stateg12:true, slc0:false, slc1:false, slc2:false};
+S3 -> DEAD {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:false, rtob_ack1:false, full:true, empty:false} / {btos_ack0:false, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:true, btor_req1:true, stateg7_0:false, stateg7_1:false, enq:false, deq:false, stateg12:true, slc0:true, slc1:false, slc2:true};
+S3 -> DEAD {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:false, rtob_ack1:false, full:true, empty:false} / {btos_ack0:false, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:true, btor_req1:true, stateg7_0:false, stateg7_1:false, enq:false, deq:false, stateg12:true, slc0:true, slc1:true, slc2:true};
+S3 -> DEAD {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:false, rtob_ack1:false, full:true, empty:false} / {btos_ack0:true, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:true, btor_req1:false, stateg7_0:false, stateg7_1:false, enq:true, deq:false, stateg12:true, slc0:false, slc1:false, slc2:false};
+S3 -> DEAD {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:false, rtob_ack1:false, full:true, empty:false} / {btos_ack0:true, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:true, btor_req1:true, stateg7_0:false, stateg7_1:false, enq:true, deq:false, stateg12:true, slc0:false, slc1:false, slc2:false};
+S3 -> S4 {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:false, rtob_ack1:false, full:true, empty:false} / {btos_ack0:false, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:true, btor_req1:false, stateg7_0:false, stateg7_1:false, enq:false, deq:false, stateg12:true, slc0:false, slc1:true, slc2:true};
+S3 -> S4 {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:false, rtob_ack1:false, full:true, empty:false} / {btos_ack0:false, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:true, btor_req1:false, stateg7_0:false, stateg7_1:false, enq:false, deq:false, stateg12:true, slc0:true, slc1:true, slc2:true};
+S3 -> DEAD {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:false, rtob_ack1:false, full:true, empty:false} / {btos_ack0:false, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:true, btor_req1:true, stateg7_0:false, stateg7_1:false, enq:false, deq:false, stateg12:true, slc0:false, slc1:true, slc2:true};
+S3 -> S4 {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:false, rtob_ack1:false, full:true, empty:false} / {btos_ack0:false, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:true, btor_req1:false, stateg7_0:false, stateg7_1:false, enq:false, deq:false, stateg12:true, slc0:false, slc1:false, slc2:false};
+S3 -> S4 {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:false, rtob_ack1:false, full:true, empty:false} / {btos_ack0:false, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:true, btor_req1:false, stateg7_0:false, stateg7_1:false, enq:false, deq:false, stateg12:true, slc0:true, slc1:false, slc2:true};
+S3 -> DEAD {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:false, rtob_ack1:false, full:true, empty:false} / {btos_ack0:false, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:true, btor_req1:true, stateg7_0:false, stateg7_1:false, enq:false, deq:false, stateg12:true, slc0:false, slc1:false, slc2:false};
+S4 -> DEAD {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:true, rtob_ack1:false, full:true, empty:false} / {btos_ack0:false, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:true, btor_req1:true, stateg7_0:false, stateg7_1:false, enq:false, deq:false, stateg12:true, slc0:true, slc1:false, slc2:true};
+S4 -> DEAD {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:true, rtob_ack1:false, full:true, empty:false} / {btos_ack0:false, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:true, btor_req1:true, stateg7_0:false, stateg7_1:false, enq:false, deq:false, stateg12:true, slc0:true, slc1:true, slc2:true};
+S4 -> DEAD {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:true, rtob_ack1:false, full:true, empty:false} / {btos_ack0:true, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:true, btor_req1:false, stateg7_0:false, stateg7_1:false, enq:true, deq:false, stateg12:true, slc0:false, slc1:false, slc2:false};
+S4 -> DEAD {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:true, rtob_ack1:false, full:true, empty:false} / {btos_ack0:true, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:true, btor_req1:true, stateg7_0:false, stateg7_1:false, enq:true, deq:false, stateg12:true, slc0:false, slc1:false, slc2:false};
+S4 -> S5 {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:true, rtob_ack1:false, full:true, empty:false} / {btos_ack0:false, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:true, btor_req1:false, stateg7_0:false, stateg7_1:false, enq:false, deq:false, stateg12:true, slc0:false, slc1:true, slc2:true};
+S4 -> S5 {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:true, rtob_ack1:false, full:true, empty:false} / {btos_ack0:false, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:true, btor_req1:false, stateg7_0:false, stateg7_1:false, enq:false, deq:false, stateg12:true, slc0:true, slc1:true, slc2:true};
+S4 -> DEAD {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:true, rtob_ack1:false, full:true, empty:false} / {btos_ack0:false, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:true, btor_req1:true, stateg7_0:false, stateg7_1:false, enq:false, deq:false, stateg12:true, slc0:false, slc1:true, slc2:true};
+S4 -> S5 {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:true, rtob_ack1:false, full:true, empty:false} / {btos_ack0:false, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:true, btor_req1:false, stateg7_0:false, stateg7_1:false, enq:false, deq:false, stateg12:true, slc0:false, slc1:false, slc2:false};
+S4 -> S5 {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:true, rtob_ack1:false, full:true, empty:false} / {btos_ack0:false, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:true, btor_req1:false, stateg7_0:false, stateg7_1:false, enq:false, deq:false, stateg12:true, slc0:true, slc1:false, slc2:true};
+S4 -> DEAD {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:true, rtob_ack1:false, full:true, empty:false} / {btos_ack0:false, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:true, btor_req1:true, stateg7_0:false, stateg7_1:false, enq:false, deq:false, stateg12:true, slc0:false, slc1:false, slc2:false};
+S5 -> S7 {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:true, rtob_ack1:false, full:true, empty:false} / {btos_ack0:false, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:false, btor_req1:true, stateg7_0:false, stateg7_1:false, enq:false, deq:false, stateg12:true, slc0:false, slc1:false, slc2:false};
+S5 -> S7 {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:true, rtob_ack1:false, full:true, empty:false} / {btos_ack0:false, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:false, btor_req1:true, stateg7_0:false, stateg7_1:false, enq:false, deq:false, stateg12:true, slc0:true, slc1:false, slc2:true};
+S5 -> S6 {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:true, rtob_ack1:false, full:true, empty:false} / {btos_ack0:false, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:false, btor_req1:false, stateg7_0:false, stateg7_1:false, enq:false, deq:false, stateg12:true, slc0:false, slc1:true, slc2:true};
+S5 -> DEAD {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:true, rtob_ack1:false, full:true, empty:false} / {btos_ack0:true, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:false, btor_req1:false, stateg7_0:false, stateg7_1:false, enq:true, deq:false, stateg12:true, slc0:false, slc1:false, slc2:false};
+S5 -> DEAD {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:true, rtob_ack1:false, full:true, empty:false} / {btos_ack0:true, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:false, btor_req1:true, stateg7_0:false, stateg7_1:false, enq:true, deq:false, stateg12:true, slc0:false, slc1:false, slc2:false};
+S5 -> S6 {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:true, rtob_ack1:false, full:true, empty:false} / {btos_ack0:false, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:false, btor_req1:false, stateg7_0:false, stateg7_1:false, enq:false, deq:false, stateg12:true, slc0:true, slc1:true, slc2:true};
+S5 -> S7 {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:true, rtob_ack1:false, full:true, empty:false} / {btos_ack0:false, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:false, btor_req1:true, stateg7_0:false, stateg7_1:false, enq:false, deq:false, stateg12:true, slc0:false, slc1:true, slc2:true};
+S5 -> S6 {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:true, rtob_ack1:false, full:true, empty:false} / {btos_ack0:false, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:false, btor_req1:false, stateg7_0:false, stateg7_1:false, enq:false, deq:false, stateg12:true, slc0:false, slc1:false, slc2:false};
+S5 -> S7 {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:true, rtob_ack1:false, full:true, empty:false} / {btos_ack0:false, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:false, btor_req1:true, stateg7_0:false, stateg7_1:false, enq:false, deq:false, stateg12:true, slc0:true, slc1:true, slc2:true};
+S5 -> S6 {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:true, rtob_ack1:false, full:true, empty:false} / {btos_ack0:false, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:false, btor_req1:false, stateg7_0:false, stateg7_1:false, enq:false, deq:false, stateg12:true, slc0:true, slc1:false, slc2:true};
+S6 -> DEAD {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:false, rtob_ack1:false, full:false, empty:true} / {btos_ack0:false, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:false, btor_req1:false, stateg7_0:true, stateg7_1:false, enq:false, deq:true, stateg12:true, slc0:false, slc1:false, slc2:false};
+S6 -> DEAD {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:false, rtob_ack1:false, full:false, empty:true} / {btos_ack0:false, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:false, btor_req1:true, stateg7_0:true, stateg7_1:false, enq:false, deq:true, stateg12:true, slc0:false, slc1:false, slc2:false};
+S6 -> DEAD {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:false, rtob_ack1:false, full:false, empty:true} / {btos_ack0:false, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:false, btor_req1:false, stateg7_0:true, stateg7_1:false, enq:false, deq:true, stateg12:true, slc0:false, slc1:true, slc2:true};
+S6 -> DEAD {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:false, rtob_ack1:false, full:false, empty:true} / {btos_ack0:false, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:false, btor_req1:true, stateg7_0:true, stateg7_1:false, enq:false, deq:true, stateg12:true, slc0:false, slc1:true, slc2:true};
+S6 -> DEAD {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:false, rtob_ack1:false, full:false, empty:true} / {btos_ack0:false, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:false, btor_req1:false, stateg7_0:true, stateg7_1:false, enq:false, deq:true, stateg12:true, slc0:true, slc1:false, slc2:true};
+S6 -> DEAD {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:false, rtob_ack1:false, full:false, empty:true} / {btos_ack0:false, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:false, btor_req1:true, stateg7_0:true, stateg7_1:false, enq:false, deq:true, stateg12:true, slc0:true, slc1:false, slc2:true};
+S6 -> DEAD {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:false, rtob_ack1:false, full:false, empty:true} / {btos_ack0:false, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:false, btor_req1:false, stateg7_0:true, stateg7_1:false, enq:false, deq:true, stateg12:true, slc0:true, slc1:true, slc2:true};
+S6 -> DEAD {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:false, rtob_ack1:false, full:false, empty:true} / {btos_ack0:false, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:false, btor_req1:true, stateg7_0:true, stateg7_1:false, enq:false, deq:true, stateg12:true, slc0:true, slc1:true, slc2:true};
+S6 -> DEAD {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:false, rtob_ack1:false, full:false, empty:true} / {btos_ack0:true, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:false, btor_req1:false, stateg7_0:true, stateg7_1:false, enq:true, deq:true, stateg12:true, slc0:false, slc1:false, slc2:false};
+S6 -> DEAD {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:false, rtob_ack1:false, full:false, empty:true} / {btos_ack0:true, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:false, btor_req1:true, stateg7_0:true, stateg7_1:false, enq:true, deq:true, stateg12:true, slc0:false, slc1:false, slc2:false};
+S7 -> DEAD {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:false, rtob_ack1:false, full:false, empty:true} / {btos_ack0:false, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:false, btor_req1:true, stateg7_0:false, stateg7_1:true, enq:false, deq:true, stateg12:true, slc0:false, slc1:false, slc2:false};
+S7 -> DEAD {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:false, rtob_ack1:false, full:false, empty:true} / {btos_ack0:false, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:false, btor_req1:true, stateg7_0:false, stateg7_1:true, enq:false, deq:true, stateg12:true, slc0:false, slc1:true, slc2:true};
+S7 -> DEAD {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:false, rtob_ack1:false, full:false, empty:true} / {btos_ack0:false, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:false, btor_req1:true, stateg7_0:false, stateg7_1:true, enq:false, deq:true, stateg12:true, slc0:true, slc1:false, slc2:true};
+S7 -> DEAD {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:false, rtob_ack1:false, full:false, empty:true} / {btos_ack0:false, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:false, btor_req1:true, stateg7_0:false, stateg7_1:true, enq:false, deq:true, stateg12:true, slc0:true, slc1:true, slc2:true};
+S7 -> DEAD {stob_req0:true, stob_req1:false, stob_req2:false, stob_req3:false, stob_req4:false, rtob_ack0:false, rtob_ack1:false, full:false, empty:true} / {btos_ack0:true, btos_ack1:false, btos_ack2:false, btos_ack3:false, btos_ack4:false, btor_req0:false, btor_req1:true, stateg7_0:false, stateg7_1:true, enq:true, deq:true, stateg12:true, slc0:false, slc1:false, slc2:false};
+
+Unrealizable core:
+guarantee34
+95:	(btor_req1=false);
+
+guarantee35
+97:	(stateg7_0=false);
+
+guarantee36
+99:	(stateg7_1=true);
+
+guarantee73
+173:	G(FALSE | btor_req0=false | btor_req1=false);
+
+guarantee75
+177:	G(btor_req1=true | btor_req0=false | stateg7_1=false | (next(stateg7_0=false) & next(stateg7_1=false)));
+
+guarantee77
+181:	G(btor_req0=true | btor_req1=true | stateg7_1=false | (next(stateg7_0=true) & next(stateg7_1=true)));
+
+guarantee81
+189:	G(FALSE | btor_req1=false | stateg7_0=false | stateg7_1=false);
+
+guarantee90
+207:	G(btos_ack4=true | next(enq=true) | next(btos_ack4=false));
+
+guarantee93
+213:	G(next(deq=true) | next(rtob_ack0=true) | rtob_ack0=false);
+
+guarantee95
+217:	G(next(deq=false) | (rtob_ack0=true & next(rtob_ack0=false)) | (rtob_ack1=true & next(rtob_ack1=false)));
+
+guarantee96
+219:	G(deq=true | enq=false | full=false);
+
+guarantee97
+221:	G(deq=false | empty=false);
+
+guarantee107
+241:	GF((btos_ack4=true & stob_req4=true) | (btos_ack4=false & stob_req4=false));
+
+%---*** Violation Trace ***---
+
+#pos({entailed(counter_strat_0)},{},{
+
+% CS_Path: ini_S0_S1_DEAD
+
+trace(counter_strat_0).
+
+timepoint(0,counter_strat_0).
+timepoint(1,counter_strat_0).
+timepoint(2,counter_strat_0).
+next(1,0,counter_strat_0).
+next(2,1,counter_strat_0).
+
+not_holds_at(stob_req0,0,counter_strat_0).
+not_holds_at(stob_req1,0,counter_strat_0).
+not_holds_at(stob_req2,0,counter_strat_0).
+not_holds_at(stob_req3,0,counter_strat_0).
+not_holds_at(stob_req4,0,counter_strat_0).
+not_holds_at(rtob_ack0,0,counter_strat_0).
+not_holds_at(rtob_ack1,0,counter_strat_0).
+not_holds_at(full,0,counter_strat_0).
+holds_at(empty,0,counter_strat_0).
+not_holds_at(btos_ack0,0,counter_strat_0).
+not_holds_at(btos_ack1,0,counter_strat_0).
+not_holds_at(btos_ack2,0,counter_strat_0).
+not_holds_at(btos_ack3,0,counter_strat_0).
+not_holds_at(btos_ack4,0,counter_strat_0).
+not_holds_at(btor_req0,0,counter_strat_0).
+not_holds_at(btor_req1,0,counter_strat_0).
+not_holds_at(stateg7_0,0,counter_strat_0).
+holds_at(stateg7_1,0,counter_strat_0).
+not_holds_at(enq,0,counter_strat_0).
+not_holds_at(deq,0,counter_strat_0).
+not_holds_at(stateg12,0,counter_strat_0).
+not_holds_at(slc0,0,counter_strat_0).
+not_holds_at(slc1,0,counter_strat_0).
+not_holds_at(slc2,0,counter_strat_0).
+holds_at(stob_req0,1,counter_strat_0).
+not_holds_at(stob_req1,1,counter_strat_0).
+not_holds_at(stob_req2,1,counter_strat_0).
+not_holds_at(stob_req3,1,counter_strat_0).
+not_holds_at(stob_req4,1,counter_strat_0).
+not_holds_at(rtob_ack0,1,counter_strat_0).
+not_holds_at(rtob_ack1,1,counter_strat_0).
+holds_at(full,1,counter_strat_0).
+not_holds_at(empty,1,counter_strat_0).
+not_holds_at(btos_ack0,1,counter_strat_0).
+not_holds_at(btos_ack1,1,counter_strat_0).
+not_holds_at(btos_ack2,1,counter_strat_0).
+not_holds_at(btos_ack3,1,counter_strat_0).
+not_holds_at(btos_ack4,1,counter_strat_0).
+not_holds_at(btor_req0,1,counter_strat_0).
+not_holds_at(btor_req1,1,counter_strat_0).
+holds_at(stateg7_0,1,counter_strat_0).
+holds_at(stateg7_1,1,counter_strat_0).
+not_holds_at(enq,1,counter_strat_0).
+not_holds_at(deq,1,counter_strat_0).
+not_holds_at(stateg12,1,counter_strat_0).
+not_holds_at(slc0,1,counter_strat_0).
+holds_at(slc1,1,counter_strat_0).
+holds_at(slc2,1,counter_strat_0).
+holds_at(stob_req0,2,counter_strat_0).
+not_holds_at(stob_req1,2,counter_strat_0).
+not_holds_at(stob_req2,2,counter_strat_0).
+not_holds_at(stob_req3,2,counter_strat_0).
+not_holds_at(stob_req4,2,counter_strat_0).
+not_holds_at(rtob_ack0,2,counter_strat_0).
+not_holds_at(rtob_ack1,2,counter_strat_0).
+holds_at(full,2,counter_strat_0).
+not_holds_at(empty,2,counter_strat_0).
+not_holds_at(btos_ack0,2,counter_strat_0).
+not_holds_at(btos_ack1,2,counter_strat_0).
+not_holds_at(btos_ack2,2,counter_strat_0).
+not_holds_at(btos_ack3,2,counter_strat_0).
+not_holds_at(btos_ack4,2,counter_strat_0).
+not_holds_at(btor_req0,2,counter_strat_0).
+holds_at(btor_req1,2,counter_strat_0).
+holds_at(stateg7_0,2,counter_strat_0).
+holds_at(stateg7_1,2,counter_strat_0).
+not_holds_at(enq,2,counter_strat_0).
+not_holds_at(deq,2,counter_strat_0).
+holds_at(stateg12,2,counter_strat_0).
+not_holds_at(slc0,2,counter_strat_0).
+not_holds_at(slc1,2,counter_strat_0).
+not_holds_at(slc2,2,counter_strat_0).
+
+}).
+
+#pos({entailed(counter_strat_1)},{},{
+
+% CS_Path: ini_S0_S1_S2_S1
+
+trace(counter_strat_1).
+
+timepoint(0,counter_strat_1).
+timepoint(1,counter_strat_1).
+timepoint(2,counter_strat_1).
+timepoint(3,counter_strat_1).
+next(1,0,counter_strat_1).
+next(2,1,counter_strat_1).
+next(3,2,counter_strat_1).
+next(2,3,counter_strat_1).
+
+not_holds_at(stob_req0,0,counter_strat_1).
+not_holds_at(stob_req1,0,counter_strat_1).
+not_holds_at(stob_req2,0,counter_strat_1).
+not_holds_at(stob_req3,0,counter_strat_1).
+not_holds_at(stob_req4,0,counter_strat_1).
+not_holds_at(rtob_ack0,0,counter_strat_1).
+not_holds_at(rtob_ack1,0,counter_strat_1).
+not_holds_at(full,0,counter_strat_1).
+holds_at(empty,0,counter_strat_1).
+not_holds_at(btos_ack0,0,counter_strat_1).
+not_holds_at(btos_ack1,0,counter_strat_1).
+not_holds_at(btos_ack2,0,counter_strat_1).
+not_holds_at(btos_ack3,0,counter_strat_1).
+not_holds_at(btos_ack4,0,counter_strat_1).
+not_holds_at(btor_req0,0,counter_strat_1).
+not_holds_at(btor_req1,0,counter_strat_1).
+not_holds_at(stateg7_0,0,counter_strat_1).
+holds_at(stateg7_1,0,counter_strat_1).
+not_holds_at(enq,0,counter_strat_1).
+not_holds_at(deq,0,counter_strat_1).
+not_holds_at(stateg12,0,counter_strat_1).
+not_holds_at(slc0,0,counter_strat_1).
+not_holds_at(slc1,0,counter_strat_1).
+not_holds_at(slc2,0,counter_strat_1).
+holds_at(stob_req0,1,counter_strat_1).
+not_holds_at(stob_req1,1,counter_strat_1).
+not_holds_at(stob_req2,1,counter_strat_1).
+not_holds_at(stob_req3,1,counter_strat_1).
+not_holds_at(stob_req4,1,counter_strat_1).
+not_holds_at(rtob_ack0,1,counter_strat_1).
+not_holds_at(rtob_ack1,1,counter_strat_1).
+holds_at(full,1,counter_strat_1).
+not_holds_at(empty,1,counter_strat_1).
+not_holds_at(btos_ack0,1,counter_strat_1).
+not_holds_at(btos_ack1,1,counter_strat_1).
+not_holds_at(btos_ack2,1,counter_strat_1).
+not_holds_at(btos_ack3,1,counter_strat_1).
+not_holds_at(btos_ack4,1,counter_strat_1).
+not_holds_at(btor_req0,1,counter_strat_1).
+not_holds_at(btor_req1,1,counter_strat_1).
+holds_at(stateg7_0,1,counter_strat_1).
+holds_at(stateg7_1,1,counter_strat_1).
+not_holds_at(enq,1,counter_strat_1).
+not_holds_at(deq,1,counter_strat_1).
+not_holds_at(stateg12,1,counter_strat_1).
+not_holds_at(slc0,1,counter_strat_1).
+holds_at(slc1,1,counter_strat_1).
+holds_at(slc2,1,counter_strat_1).
+holds_at(stob_req0,2,counter_strat_1).
+not_holds_at(stob_req1,2,counter_strat_1).
+not_holds_at(stob_req2,2,counter_strat_1).
+not_holds_at(stob_req3,2,counter_strat_1).
+not_holds_at(stob_req4,2,counter_strat_1).
+not_holds_at(rtob_ack0,2,counter_strat_1).
+not_holds_at(rtob_ack1,2,counter_strat_1).
+holds_at(full,2,counter_strat_1).
+not_holds_at(empty,2,counter_strat_1).
+not_holds_at(btos_ack0,2,counter_strat_1).
+not_holds_at(btos_ack1,2,counter_strat_1).
+not_holds_at(btos_ack2,2,counter_strat_1).
+not_holds_at(btos_ack3,2,counter_strat_1).
+not_holds_at(btos_ack4,2,counter_strat_1).
+not_holds_at(btor_req0,2,counter_strat_1).
+not_holds_at(btor_req1,2,counter_strat_1).
+holds_at(stateg7_0,2,counter_strat_1).
+holds_at(stateg7_1,2,counter_strat_1).
+not_holds_at(enq,2,counter_strat_1).
+not_holds_at(deq,2,counter_strat_1).
+holds_at(stateg12,2,counter_strat_1).
+holds_at(slc0,2,counter_strat_1).
+not_holds_at(slc1,2,counter_strat_1).
+holds_at(slc2,2,counter_strat_1).
+holds_at(stob_req0,3,counter_strat_1).
+not_holds_at(stob_req1,3,counter_strat_1).
+not_holds_at(stob_req2,3,counter_strat_1).
+not_holds_at(stob_req3,3,counter_strat_1).
+not_holds_at(stob_req4,3,counter_strat_1).
+not_holds_at(rtob_ack0,3,counter_strat_1).
+not_holds_at(rtob_ack1,3,counter_strat_1).
+holds_at(full,3,counter_strat_1).
+not_holds_at(empty,3,counter_strat_1).
+not_holds_at(btos_ack0,3,counter_strat_1).
+not_holds_at(btos_ack1,3,counter_strat_1).
+not_holds_at(btos_ack2,3,counter_strat_1).
+not_holds_at(btos_ack3,3,counter_strat_1).
+not_holds_at(btos_ack4,3,counter_strat_1).
+not_holds_at(btor_req0,3,counter_strat_1).
+not_holds_at(btor_req1,3,counter_strat_1).
+holds_at(stateg7_0,3,counter_strat_1).
+holds_at(stateg7_1,3,counter_strat_1).
+not_holds_at(enq,3,counter_strat_1).
+not_holds_at(deq,3,counter_strat_1).
+holds_at(stateg12,3,counter_strat_1).
+holds_at(slc0,3,counter_strat_1).
+not_holds_at(slc1,3,counter_strat_1).
+holds_at(slc2,3,counter_strat_1).
+
+}).
+
+
+ILASP Error
+Elapsed time: 2013.91s
+Elapsed time: 2334.04s
+
+Process finished with exit code 0

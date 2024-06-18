@@ -1,0 +1,34 @@
+// Specification with weakend assumption 
+// check if realizable -- expected answer NO 
+// If no give counterstrategy
+
+module EffectivePump
+
+env boolean methane;
+env boolean lowWater;
+env boolean highWater;
+
+sys boolean pumpOn;
+
+
+asm waterLoweredWhenPumpon:
+	alw ((PREV(pumpOn=true) & pumpOn=true) -> next(highWater=false));
+
+asm neverBC:
+	alw ( true);  // or remove is spectra does not allow this 
+
+asm neverHighandLowWater:
+	alw (highWater=false | lowWater=false);
+
+
+gar waterEventuallyLowered:
+	alw (PREV(PREV(highWater=false)) & PREV(highWater=false) -> (highWater=false));
+
+gar pumpOffWhenLowWater:
+	alw (lowWater=true -> next(pumpOn=false));
+
+gar pumpOffWhenMethan:
+	alw (methane=true -> next(pumpOn=false));
+
+
+

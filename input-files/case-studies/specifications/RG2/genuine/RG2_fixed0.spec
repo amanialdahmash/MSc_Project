@@ -1,0 +1,4 @@
+-d=G (F(!cancel))
+-d=G (F (!req -> !cancel))
+-g=G(req -> F (X grant))
+-g=G( (cancel || grant) -> X !grant)

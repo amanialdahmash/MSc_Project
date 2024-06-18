@@ -1,0 +1,11 @@
+,file,run,types,prevs,n_dropped,outcome,total_time,max_time,median_time,n_runs
+0,../Translators/input-files/case-studies/modified-specs/minepump/genuine/minepump_fixed1.spectra,0,['A'],True,1,SimEnv.Timeout,563.6585392951965,65.77662992477417,59.397732734680176,10
+1,../Translators/input-files/case-studies/modified-specs/minepump/genuine/minepump_fixed1.spectra,1,['A'],True,1,SimEnv.Timeout,461.8670303821564,57.27304720878601,44.95913827419281,10
+2,../Translators/input-files/case-studies/modified-specs/minepump/genuine/minepump_fixed1.spectra,2,['A'],True,1,SimEnv.Timeout,454.03719663619995,51.08422660827637,44.77060258388519,10
+3,../Translators/input-files/case-studies/modified-specs/minepump/genuine/minepump_fixed1.spectra,3,['A'],True,1,SimEnv.Timeout,509.07336235046387,68.62292528152466,48.56111538410187,10
+4,../Translators/input-files/case-studies/modified-specs/minepump/genuine/minepump_fixed1.spectra,4,['A'],True,1,SimEnv.Timeout,476.8139452934265,55.074986696243286,47.08747947216034,10
+5,../Translators/input-files/case-studies/modified-specs/minepump/genuine/minepump_fixed1.spectra,0,"['A,G']",True,3,SimEnv.Timeout,34.43419933319092,34.43419933319092,34.43419933319092,1
+6,../Translators/input-files/case-studies/modified-specs/minepump/genuine/minepump_fixed1.spectra,1,"['A,G']",True,1,SimEnv.Timeout,544.9884111881256,76.82082152366638,54.58526062965393,10
+7,../Translators/input-files/case-studies/modified-specs/minepump/genuine/minepump_fixed1.spectra,2,"['A,G']",True,3,SimEnv.Timeout,0.9862892627716064,0.9862892627716064,0.9862892627716064,1
+8,../Translators/input-files/case-studies/modified-specs/minepump/genuine/minepump_fixed1.spectra,3,"['A,G']",True,3,SimEnv.Timeout,48.72423267364502,48.72423267364502,48.72423267364502,1
+9,../Translators/input-files/case-studies/modified-specs/minepump/genuine/minepump_fixed1.spectra,4,"['A,G']",True,1,SimEnv.Timeout,512.696695804596,65.09725785255432,48.75808238983154,10

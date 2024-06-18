@@ -1,0 +1,10 @@
+not_holds_at(ta,0,forced_violation_BC1).
+holds_at(tc,0,forced_violation_BC1).
+holds_at(ca,0,forced_violation_BC1).
+holds_at(cc,0,forced_violation_BC1).
+holds_at(go,0,forced_violation_BC1).
+not_holds_at(tc,1,forced_violation_BC1).
+not_holds_at(ta,1,forced_violation_BC1).
+not_holds_at(ca,1,forced_violation_BC1).
+not_holds_at(cc,1,forced_violation_BC1).
+not_holds_at(go,1,forced_violation_BC1).

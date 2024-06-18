@@ -1,0 +1,6 @@
+holds_at(req,0,forced_violation_BC6).
+holds_at(cancel,0,forced_violation_BC6).
+holds_at(grant,0,forced_violation_BC6).
+holds_at(grant,1,forced_violation_BC6).
+not_holds_at(req,1,forced_violation_BC6).
+not_holds_at(cancel,1,forced_violation_BC6).

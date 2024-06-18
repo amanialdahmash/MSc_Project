@@ -1,0 +1,11 @@
+not_holds_at(car, 0, stop_if_police).
+not_holds_at(green, 0, stop_if_police).
+not_holds_at(police, 0, stop_if_police).
+
+holds_at(car, 1, stop_if_police).
+holds_at(green, 1, stop_if_police).
+holds_at(police, 1, stop_if_police).
+
+holds_at(car, 2, stop_if_police).
+not_holds_at(green, 2, stop_if_police).
+not_holds_at(police, 2, stop_if_police).

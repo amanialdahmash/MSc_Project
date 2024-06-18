@@ -1,0 +1,28 @@
+module TrafficE2
+env boolean cara;
+env boolean carb;
+env boolean emergency;
+sys boolean greena;
+sys boolean greenb;
+guarantee -- lights_not_both_red:
+		G( greena=true| greena=false | greenb=false);
+
+guarantee -- carA_leads_to_greenA:
+		G(cara=true->F(greenb=false|greena=true));
+guarantee -- carB_lead_to_greenB:
+		G(carb=true->F(emergency=true|greenb=true));
+guarantee -- red_when_emergency:
+		G( emergency=true| emergency=false | (greena=false & greenb=false));
+
+assumption -- carA_idle_when_red:
+	G(carb=true-> next(cara=true) | emergency=true | greena=true );
+
+assumption -- carB_idle_when_red:
+	G(cara=true-> next(carb=true) | greenb=true );
+
+assumption -- carA_moves_when_green:
+	G(emergency=true | next(cara=false) | greena=false);
+assumption -- carB_moves_when_green:
+	G( carb=false | next(carb=false) );
+
+

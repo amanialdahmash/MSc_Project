@@ -1,0 +1,12 @@
+,type,name,formula,antecedent,consequent
+0,assumption,initial_env_conditions,I(carA=false&emergency=false);,,"not_holds_at(carA,0,S),
+	not_holds_at(emergency,0,S)"
+1,guarantee,initial_sys_conditions,I(greenA=false);,,"not_holds_at(greenA,0,S)"
+2,assumption,carA_detected_often,GF(carA=true);,,"holds_at_eventually(carA,T1,S)"
+3,assumption,not_police_often,GF(police=false);,,"not_holds_at_eventually(police,T1,S)"
+4,guarantee,greenA_often,GF(greenA=true);,,"holds_at_eventually(greenA,T1,S)"
+5,guarantee,no_carA_often,GF(carA=false);,,"not_holds_at_eventually(carA,T1,S)"
+6,assumption,carA_idle_when_red,G(carA=true&greenA=false->next(carA=true));,"holds_at(carA,T1,S),
+	not_holds_at(greenA,T1,S)","holds_at_next(carA,T1,S)"
+7,assumption,carA_moves_when_green,G(carA=true&greenA=true->next(carA=false));,"holds_at(carA,T1,S),
+	holds_at(greenA,T1,S)","not_holds_at_next(carA,T1,S)"

@@ -1,0 +1,1 @@
+-ins='p,q,r,s' -g='G (p -> (q W s))' -g='G (q -> r)'

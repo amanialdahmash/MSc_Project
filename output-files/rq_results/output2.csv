@@ -1,0 +1,35 @@
+,name,random_hypothesis,trace_length,n_assumptions,n_guarantees,n_violations,av_variables_in_violations,av_temporals_in_violations,n_assumption_realizability_checks,n_guarantee_realizability_checks,av_min_solutions,n_weakened_assumptions,n_weakened_guarantees,learning_time,result
+0,Minepump,False,0,2,2,1,2.0,1.0,1,1,3.0,1,1,14.764654874801636,Success
+1,Minepump,False,0,2,2,1,2.0,1.0,1,1,3.0,1,1,14.112267017364502,Realizable
+2,Minepump,False,1,2,2,1,2.0,1.0,1,1,3.0,1,1,14.615623950958252,Realizable
+3,Minepump,False,1,2,2,1,2.0,1.0,1,1,3.0,1,1,14.038259029388428,Success
+4,Minepump,False,1,2,2,1,2.0,1.0,1,1,3.0,1,1,14.345054626464844,Realizable
+5,Minepump,False,1,2,2,1,2.0,1.0,1,1,3.0,1,1,14.912965536117554,IncorrectGuarantees
+6,Minepump,False,1,2,2,1,2.0,1.0,1,1,3.0,1,1,14.20516061782837,Realizable
+7,Minepump,False,1,2,2,1,2.0,1.0,1,1,3.0,1,1,14.485238552093506,Success
+8,Lift,False,1,12,7,1,3.0,1.0,1,0,7.0,1,0,17.893254041671753,Realizable
+9,Lift,False,1,12,7,1,3.0,1.0,1,0,7.0,1,0,17.982657432556152,Realizable
+10,Lift,False,1,12,7,1,3.0,1.0,1,0,7.0,1,0,17.970946073532104,Realizable
+11,Lift,False,1,12,7,1,3.0,1.0,1,0,7.0,1,0,17.965325117111206,Realizable
+12,Lift,False,1,12,7,1,3.0,1.0,1,0,7.0,1,0,18.073303699493408,Realizable
+13,Lift,False,1,12,7,1,3.0,1.0,1,0,7.0,1,0,18.066016674041748,Realizable
+14,Traffic Single,False,0,3,2,0,0.0,0.0,0,0,0.0,0,0,,Realizable
+15,Traffic Single,False,0,3,2,0,0.0,0.0,0,0,0.0,0,0,,Realizable
+16,Traffic Single,False,0,3,2,0,0.0,0.0,0,0,0.0,0,0,,Realizable
+17,Traffic Single,False,0,3,2,0,0.0,0.0,0,0,0.0,0,0,,Realizable
+18,Traffic Single,False,0,3,2,0,0.0,0.0,0,0,0.0,0,0,,Realizable
+19,Traffic Single,False,0,3,2,0,0.0,0.0,0,0,0.0,0,0,,Realizable
+20,Traffic Single,False,0,3,2,0,0.0,0.0,0,0,0.0,0,0,,Realizable
+21,Traffic Single,False,0,3,2,0,0.0,0.0,0,0,0.0,0,0,,Realizable
+22,Traffic Single,False,0,3,2,0,0.0,0.0,0,0,0.0,0,0,,Realizable
+23,Traffic Single,False,0,3,2,0,0.0,0.0,0,0,0.0,0,0,,Realizable
+24,Traffic,False,0,5,4,0,0.0,0.0,0,0,0.0,0,0,,Realizable
+25,Traffic,False,0,5,4,0,0.0,0.0,0,0,0.0,0,0,,Realizable
+26,Traffic,False,0,5,4,0,0.0,0.0,0,0,0.0,0,0,,Realizable
+27,Traffic,False,0,5,4,0,0.0,0.0,0,0,0.0,0,0,,Realizable
+28,Traffic,False,0,5,4,0,0.0,0.0,0,0,0.0,0,0,,Realizable
+29,Traffic,False,0,5,4,0,0.0,0.0,0,0,0.0,0,0,,Realizable
+30,Traffic,False,0,5,4,0,0.0,0.0,0,0,0.0,0,0,,Realizable
+31,Traffic,False,0,5,4,0,0.0,0.0,0,0,0.0,0,0,,Realizable
+32,Traffic,False,0,5,4,0,0.0,0.0,0,0,0.0,0,0,,Realizable
+33,Traffic,False,0,5,4,0,0.0,0.0,0,0,0.0,0,0,,Realizable

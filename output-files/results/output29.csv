@@ -1,0 +1,8 @@
+,file,run,types,prevs,n_dropped,outcome,total_time,max_time,median_time,n_runs
+0,../Translators/input-files/case-studies/modified-specs/minepump/genuine/minepump_fixed1.spectra,0,['A'],True,1,SimEnv.Realizable,46.223278760910034,46.223278760910034,46.223278760910034,1
+1,../Translators/input-files/case-studies/modified-specs/minepump/genuine/minepump_fixed1.spectra,0,"['A,G']",True,1,SimEnv.Realizable,42.67356896400452,42.67356896400452,42.67356896400452,1
+2,../Translators/input-files/examples/Traffic/traffic_single_FINAL.spectra,0,['A'],True,2,SimEnv.Realizable,125.560546875,125.560546875,125.560546875,1
+3,../Translators/input-files/examples/Traffic/traffic_single_FINAL.spectra,0,"['A,G']",True,1,SimEnv.Realizable,209.85272598266602,209.85272598266602,209.85272598266602,1
+4,../Translators/input-files/examples/Traffic/traffic_updated_FINAL.spectra,0,['A'],True,2,SimEnv.Realizable,277.78162145614624,277.78162145614624,277.78162145614624,1
+5,../Translators/input-files/examples/Traffic/traffic_updated_FINAL.spectra,0,"['A,G']",True,6,SimEnv.Realizable,573.846834897995,573.846834897995,573.846834897995,1
+6,../Translators/input-files/examples/lift_FINAL.spectra,0,['A'],True,1,SimEnv.Success,2910.5032711029053,2910.5032711029053,2910.5032711029053,1

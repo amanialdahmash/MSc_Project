@@ -1,0 +1,18 @@
+b'clingo version 5.4.0
+Reading from ...odified-specs/RG2/Rg2_BC2_patterned.lp
+Solving...
+Answer: 1
+violation_holds(negated_bc1_1,0,forced_violation_BC2)
+violation_holds(negated_bc2_1,0,forced_violation_BC2)
+violation_holds(guarantee1_1,0,forced_violation_BC2)
+violation_holds(negated_bc1_1,1,forced_violation_BC2)
+violation_holds(negated_bc2_1,1,forced_violation_BC2)
+violation_holds(guarantee1_1,1,forced_violation_BC2)
+violation_holds(negated_bc2_1,2,forced_violation_BC2)
+SATISFIABLE
+
+Models       : 1
+Calls        : 1
+Time         : 0.023s (Solving: 0.00s 1st Model: 0.00s Unsat: 0.00s)
+CPU Time     : 0.006s
+'

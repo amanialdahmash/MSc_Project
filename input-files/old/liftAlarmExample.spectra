@@ -1,0 +1,123 @@
+module lift1
+
+env boolean b1 ;
+
+env boolean b2 ;
+
+env boolean b3 ;
+
+env boolean alarm ;
+
+env boolean stop ;
+
+sys boolean f1 ;
+
+sys boolean f2 ;
+
+sys boolean f3 ;
+
+assumption -- e_init
+
+b1=false & b2=false & b3=false & alarm=false ;
+
+assumption -- e_11
+
+G((b1=true & f1=true) -> next(b1=false)) ;
+
+assumption -- e_12
+
+G((b2=true & f2=true) -> next(b2=false)) ;
+
+assumption -- e_13
+
+G((b3=true & f3=true) -> next(b3=false)) ;
+
+
+assumption -- e_21
+
+G((b1=true & f1=false) -> next(b1=true)) ;
+
+assumption -- e_22
+
+G((b2=true & f2=false) -> next(b2=true)) ;
+
+assumption -- e_23
+
+G((b3=true & f3=false) -> next(b3=true)) ;
+
+
+guarantee -- s_init
+
+f1=true & f2=false & f3=false & stop=false ;
+
+guarantee -- s_1
+
+G((f1=false | f2=false) & (f2=false | f3=false) & (f1=false | f3=false)) ;
+
+guarantee -- s_21
+
+G((stop=false & f1=true) -> next (f2=true | f1=true)) ;
+
+guarantee -- s_22
+
+G((stop=false & f2=true) -> next(f1=true | f2=true | f3=true)) ;
+
+guarantee -- s_23
+
+G((stop=false & f3=true) -> next (f2=true | f3=true)) ;
+
+
+guarantee -- s_3
+
+G(((f1=true & next (f2=true)) | (f2=true & next(f3=true)) | (f3=true & next (f2=true)) | (f2=true & next(f1=true))) -> (b1=true | b2=true | b3=true)) ;
+
+guarantee -- s_41
+
+GF((stop=false & b1=true) -> f1=true) ;
+
+guarantee -- s_42
+
+GF((stop=false & b2=true) -> f2=true) ;
+
+guarantee -- s_43
+
+GF((stop=false & b3=true) -> f3=true) ;
+
+guarantee -- req23
+
+G(alarm=true -> next(stop=true)) ;
+
+guarantee -- req24_1
+
+G((stop=true & f1=true) -> next (f1=true)) ;
+
+guarantee -- req24_2
+
+G((stop=true & f2=true) -> next (f2=true)) ;
+
+guarantee -- req24_3
+
+G((stop=true & f3=true) -> next (f3=true)) ;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

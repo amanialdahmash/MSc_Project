@@ -1,0 +1,50 @@
+module TrafficE2
+
+env boolean carA;
+env boolean carB;
+env boolean emergency;
+
+sys boolean greenA;
+sys boolean greenB;
+
+assumption -- initial_env_conditions:
+    I (  carA=false & carB=false & emergency=false ) ;
+
+guarantee -- initial_sys_conditions:
+    I (  greenA=false &greenB=false ) ;
+
+assumption -- carA_detected_often:
+	GF (  carA=true ) ;
+
+assumption -- carB_detected_often:
+	GF (  carB=true ) ;
+
+assumption -- no_emergency_often:
+	GF (  emergency=false ) ;
+
+guarantee -- Bred_when_Agreen:
+	G (  greenA=true -> greenB=false ) ;
+
+guarantee -- Ared_when_Bgreen:
+	G (  greenB=true -> greenA=false ) ;
+
+guarantee -- greenA_often:
+	GF (  greenA=true ) ;
+
+guarantee -- greenB_often:
+	GF (  greenB=true ) ;
+
+guarantee -- red_when_emergency:
+	G (  emergency=true -> greenA=false & greenB=false ) ;
+
+assumption -- carA_idle_when_red:
+	G (  carA=true & greenA=false -> next(carA=true) ) ;
+
+assumption -- carB_idle_when_red:
+	G (  carB=true & greenB=false -> next(carB=true) ) ;
+
+assumption -- carA_moves_when_green:
+	G (  carA=true & greenA=true -> next(carA=false) ) ;
+
+assumption -- carB_moves_when_green:
+	G (  carB=true & greenB=true -> next(carB=false) ) ;

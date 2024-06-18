@@ -1,0 +1,41 @@
+,name,n_assumptions,n_guarantees,n_violations,av_variables_in_violations,av_temporals_in_violations,n_assumption_realizability_checks,n_guarantee_realizability_checks,av_min_solutions,n_weakened_assumptions,n_weakened_guarantees,learning_time,result
+0,Minepump,2,2,1,2.0,1.0,1,1,3.0,1,1,15.781717538833618,IncorrectGuarantees
+1,Minepump,2,2,1,2.0,1.0,1,1,3.0,1,1,15.93096661567688,IncorrectGuarantees
+2,Minepump,2,2,1,2.0,1.0,1,1,3.0,1,1,16.547099113464355,IncorrectGuarantees
+3,Minepump,2,2,1,2.0,1.0,1,1,3.0,1,1,15.616714239120483,Success
+4,Minepump,2,2,1,2.0,1.0,1,1,3.0,1,1,15.44379711151123,IncorrectGuarantees
+5,Minepump,2,2,1,2.0,1.0,1,1,3.0,1,1,15.672259330749512,Realizable
+6,Minepump,2,2,1,2.0,1.0,1,1,3.0,1,1,15.812063932418823,Realizable
+7,Minepump,2,2,1,2.0,1.0,1,1,3.0,1,1,15.662275552749634,IncorrectGuarantees
+8,Minepump,2,2,1,2.0,1.0,1,1,3.0,1,1,15.546518325805664,Success
+9,Minepump,2,2,1,2.0,1.0,1,1,3.0,1,1,15.451005458831787,IncorrectGuarantees
+10,Lift,12,7,1,3.0,1.0,1,0,7.0,1,0,21.92996335029602,Success
+11,Lift,12,7,1,3.0,1.0,1,0,7.0,1,0,21.8655948638916,Success
+12,Lift,12,7,1,3.0,1.0,1,0,7.0,1,0,22.255260944366455,Realizable
+13,Lift,12,7,1,3.0,1.0,1,0,7.0,1,0,21.662474155426025,Realizable
+14,Lift,12,7,1,3.0,1.0,1,0,7.0,1,0,22.53132724761963,Realizable
+15,Lift,12,7,1,3.0,1.0,1,0,7.0,1,0,25.9191997051239,Realizable
+16,Lift,12,7,1,3.0,1.0,1,0,7.0,1,0,23.078285455703735,Realizable
+17,Lift,12,7,1,3.0,1.0,1,0,7.0,1,0,24.869082927703857,Realizable
+18,Lift,12,7,1,3.0,1.0,1,0,7.0,1,0,30.372272968292236,Realizable
+19,Lift,12,7,1,3.0,1.0,1,0,7.0,1,0,32.58289575576782,Realizable
+20,Traffic Single,3,2,1,3.0,2.0,1,0,2.0,1,0,7.462748050689697,Realizable
+21,Traffic Single,3,2,1,3.0,2.0,1,0,2.0,1,0,6.433570146560669,Realizable
+22,Traffic Single,3,2,1,3.0,2.0,1,0,2.0,1,0,6.473957777023315,Realizable
+23,Traffic Single,3,2,1,3.0,2.0,1,0,2.0,1,0,6.61267352104187,Realizable
+24,Traffic Single,3,2,1,3.0,2.0,1,0,2.0,1,0,6.667651891708374,Realizable
+25,Traffic Single,3,2,1,3.0,2.0,1,0,2.0,1,0,6.575819492340088,Realizable
+26,Traffic Single,3,2,1,3.0,2.0,1,0,2.0,1,0,6.5687010288238525,Realizable
+27,Traffic Single,3,2,1,3.0,2.0,1,0,2.0,1,0,6.329209566116333,Realizable
+28,Traffic Single,3,2,1,3.0,2.0,1,0,2.0,1,0,6.495458364486694,Realizable
+29,Traffic Single,3,2,1,3.0,2.0,1,0,2.0,1,0,6.292767763137817,Realizable
+30,Traffic,5,4,2,3.0,2.0,1,0,9.0,2,0,9.843695640563965,Realizable
+31,Traffic,5,4,2,3.0,2.0,1,0,9.0,2,0,9.50202488899231,Realizable
+32,Traffic,5,4,2,3.0,2.0,1,0,9.0,2,0,9.834496974945068,Realizable
+33,Traffic,5,4,2,3.0,2.0,1,0,9.0,2,0,9.677584648132324,Success
+34,Traffic,5,4,2,3.0,2.0,1,0,9.0,2,0,9.565707921981812,Realizable
+35,Traffic,5,4,2,3.0,2.0,1,0,9.0,2,0,10.059965133666992,Realizable
+36,Traffic,5,4,2,3.0,2.0,1,0,9.0,2,0,9.859103202819824,Realizable
+37,Traffic,5,4,2,3.0,2.0,1,0,9.0,2,0,9.675942182540894,Realizable
+38,Traffic,5,4,2,3.0,2.0,1,0,9.0,2,0,9.70631718635559,Realizable
+39,Traffic,5,4,2,3.0,2.0,1,0,9.0,2,0,9.891432285308838,Realizable

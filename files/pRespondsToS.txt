@@ -1,0 +1,15 @@
+pattern pRespondsToS(s, p) {
+  var { S0, S1} state;
+
+  // initial assignments: initial state
+  ini state=S0;
+
+  // safety this and next state
+  alw ((state=S0 & ((!s) | (s & p)) & next(state=S0)) |
+  (state=S0 & (s & !p) & next(state=S1)) |
+  (state=S1 & (p) & next(state=S0)) |
+  (state=S1 & (!p) & next(state=S1)));
+
+  // equivalence of satisfaction
+  alwEv (state=S0);
+}

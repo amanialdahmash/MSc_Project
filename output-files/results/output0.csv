@@ -1,0 +1,6 @@
+,file,run,types,n_dropped,total_time,mean_time,max_time,median_time,n_runs
+0,../Translators/input-files/case-studies/modified-specs/minepump/genuine/minepump_fixed1.spectra,0,"A,G",1,11.714082479476929,11.714082479476929,11.714082479476929,11.714082479476929,1
+1,../Translators/input-files/case-studies/modified-specs/minepump/genuine/minepump_fixed1.spectra,1,"A,G",3,23.784555912017822,7.9281853040059405,10.0156991481781,9.963031768798828,3
+2,../Translators/input-files/case-studies/modified-specs/minepump/genuine/minepump_fixed1.spectra,2,"A,G",1,87.59325671195984,21.89831417798996,59.40045785903931,12.199374198913574,4
+3,../Translators/input-files/case-studies/modified-specs/minepump/genuine/minepump_fixed1.spectra,3,"A,G",2,7.217794418334961,7.217794418334961,7.217794418334961,7.217794418334961,1
+4,../Translators/input-files/case-studies/modified-specs/minepump/genuine/minepump_fixed1.spectra,4,"A,G",1,7.769390106201172,7.769390106201172,7.769390106201172,7.769390106201172,1

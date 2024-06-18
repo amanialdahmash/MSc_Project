@@ -1,0 +1,72 @@
+<?xml version="1.0" ?>
+<project>
+	<signals>
+		<signal>
+			<name>floor_0</name>
+			<kind>E</kind>
+			<type>boolean</type>
+			<notes/>
+		</signal>
+		<signal>
+			<name>floor_1</name>
+			<kind>E</kind>
+			<type>boolean</type>
+			<notes/>
+		</signal>
+		<signal>
+			<name>elevMot_0</name>
+			<kind>S</kind>
+			<type>boolean</type>
+			<notes/>
+		</signal>
+		<signal>
+			<name>elevMot_1</name>
+			<kind>S</kind>
+			<type>boolean</type>
+			<notes/>
+		</signal>
+		<signal>
+			<name>doorMot</name>
+			<kind>S</kind>
+			<type>boolean</type>
+			<notes/>
+		</signal>
+	</signals>
+	<requirements>
+		<requirement>
+			<name>assum_0</name>
+			<property>G(elevMot_0 &amp; !elevMot_1 -&gt; (!floor_0 | !floor_1))</property>
+			<kind>A</kind>
+			<notes/>
+			<toggled>1</toggled>
+		</requirement>
+		<requirement>
+			<name>guar_0</name>
+			<property>elevMot_0 &amp; !elevMot_1</property>
+			<kind>G</kind>
+			<notes/>
+			<toggled>1</toggled>
+		</requirement>
+		<requirement>
+			<name>guar_1</name>
+			<property>G(F(!elevMot_0 &amp; !elevMot_1))</property>
+			<kind>G</kind>
+			<notes/>
+			<toggled>1</toggled>
+		</requirement>
+		<requirement>
+			<name>guar_2</name>
+			<property>G(F(!floor_0 &amp; !floor_1 -&gt; !elevMot_0 &amp; !elevMot_1))</property>
+			<kind>G</kind>
+			<notes/>
+			<toggled>1</toggled>
+		</requirement>
+		<requirement>
+			<name>guar_3</name>
+			<property>G(F(floor_0 &amp; !floor_1 -&gt; !elevMot_0 &amp; elevMot_1))</property>
+			<kind>G</kind>
+			<notes/>
+			<toggled>1</toggled>
+		</requirement>
+	</requirements>
+</project>

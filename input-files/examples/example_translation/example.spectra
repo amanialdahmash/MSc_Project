@@ -1,0 +1,18 @@
+module Example
+
+env boolean a;
+sys boolean b;
+sys boolean c;
+
+
+guarantee -- justice
+    G(a -> b);
+
+guarantee -- fairness
+    GF(a | c);
+
+guarantee -- pRespondsToS
+    G(b -> F(c));
+
+assumption -- prev_and_next
+    G(PREV(a) -> next(c));

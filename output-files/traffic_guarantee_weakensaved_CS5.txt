@@ -1,0 +1,233 @@
+INI -> S0 {carA:false, carB:false, emergency:false, police:false} / {greenA:false, greenB:false};
+S0 -> DEAD {carA:true, carB:false, emergency:false, police:false} / {greenA:true, greenB:true};
+S0 -> S1 {carA:true, carB:false, emergency:false, police:false} / {greenA:false, greenB:false};
+S0 -> S1 {carA:true, carB:false, emergency:false, police:false} / {greenA:false, greenB:true};
+S0 -> S1 {carA:true, carB:false, emergency:false, police:false} / {greenA:true, greenB:false};
+S1 -> DEAD {carA:true, carB:false, emergency:false, police:false} / {greenA:true, greenB:true};
+S1 -> S2 {carA:true, carB:false, emergency:false, police:false} / {greenA:false, greenB:false};
+S1 -> S2 {carA:true, carB:false, emergency:false, police:false} / {greenA:false, greenB:true};
+S1 -> S2 {carA:true, carB:false, emergency:false, police:false} / {greenA:true, greenB:false};
+S2 -> S4 {carA:true, carB:true, emergency:false, police:false} / {greenA:true, greenB:false};
+S2 -> DEAD {carA:true, carB:true, emergency:false, police:false} / {greenA:true, greenB:true};
+S2 -> S4 {carA:true, carB:true, emergency:false, police:false} / {greenA:false, greenB:false};
+S2 -> S3 {carA:true, carB:true, emergency:false, police:false} / {greenA:false, greenB:true};
+S3 -> DEAD {carA:true, carB:false, emergency:false, police:false} / {greenA:true, greenB:true};
+S3 -> S0 {carA:true, carB:false, emergency:false, police:false} / {greenA:false, greenB:false};
+S3 -> S0 {carA:true, carB:false, emergency:false, police:false} / {greenA:false, greenB:true};
+S3 -> S0 {carA:true, carB:false, emergency:false, police:false} / {greenA:true, greenB:false};
+S4 -> S5 {carA:true, carB:true, emergency:false, police:false} / {greenA:true, greenB:false};
+S4 -> DEAD {carA:true, carB:true, emergency:false, police:false} / {greenA:true, greenB:true};
+S4 -> S5 {carA:true, carB:true, emergency:false, police:false} / {greenA:false, greenB:false};
+S4 -> S0 {carA:true, carB:true, emergency:false, police:false} / {greenA:false, greenB:true};
+S5 -> S2 {carA:true, carB:true, emergency:false, police:false} / {greenA:true, greenB:false};
+S5 -> DEAD {carA:true, carB:true, emergency:false, police:false} / {greenA:true, greenB:true};
+S5 -> S2 {carA:true, carB:true, emergency:false, police:false} / {greenA:false, greenB:false};
+S5 -> S1 {carA:true, carB:true, emergency:false, police:false} / {greenA:false, greenB:true};
+
+
+%---*** Violation Trace ***---
+
+#pos({},{entailed(ini_S0_S1_S2_S4_S5_S2)},{
+trace(ini_S0_S1_S2_S4_S5_S2).
+
+timepoint(0,ini_S0_S1_S2_S4_S5_S2).
+timepoint(1,ini_S0_S1_S2_S4_S5_S2).
+timepoint(2,ini_S0_S1_S2_S4_S5_S2).
+timepoint(3,ini_S0_S1_S2_S4_S5_S2).
+timepoint(4,ini_S0_S1_S2_S4_S5_S2).
+timepoint(5,ini_S0_S1_S2_S4_S5_S2).
+next(1,0,ini_S0_S1_S2_S4_S5_S2).
+next(2,1,ini_S0_S1_S2_S4_S5_S2).
+next(3,2,ini_S0_S1_S2_S4_S5_S2).
+next(4,3,ini_S0_S1_S2_S4_S5_S2).
+next(5,4,ini_S0_S1_S2_S4_S5_S2).
+next(3,5,ini_S0_S1_S2_S4_S5_S2).
+
+not_holds_at(carA,0,ini_S0_S1_S2_S4_S5_S2).
+not_holds_at(carB,0,ini_S0_S1_S2_S4_S5_S2).
+not_holds_at(emergency,0,ini_S0_S1_S2_S4_S5_S2).
+not_holds_at(police,0,ini_S0_S1_S2_S4_S5_S2).
+not_holds_at(greenA,0,ini_S0_S1_S2_S4_S5_S2).
+not_holds_at(greenB,0,ini_S0_S1_S2_S4_S5_S2).
+holds_at(carA,1,ini_S0_S1_S2_S4_S5_S2).
+not_holds_at(carB,1,ini_S0_S1_S2_S4_S5_S2).
+not_holds_at(emergency,1,ini_S0_S1_S2_S4_S5_S2).
+not_holds_at(police,1,ini_S0_S1_S2_S4_S5_S2).
+holds_at(greenA,1,ini_S0_S1_S2_S4_S5_S2).
+not_holds_at(greenB,1,ini_S0_S1_S2_S4_S5_S2).
+holds_at(carA,2,ini_S0_S1_S2_S4_S5_S2).
+not_holds_at(carB,2,ini_S0_S1_S2_S4_S5_S2).
+not_holds_at(emergency,2,ini_S0_S1_S2_S4_S5_S2).
+not_holds_at(police,2,ini_S0_S1_S2_S4_S5_S2).
+holds_at(greenA,2,ini_S0_S1_S2_S4_S5_S2).
+not_holds_at(greenB,2,ini_S0_S1_S2_S4_S5_S2).
+holds_at(carA,3,ini_S0_S1_S2_S4_S5_S2).
+holds_at(carB,3,ini_S0_S1_S2_S4_S5_S2).
+not_holds_at(emergency,3,ini_S0_S1_S2_S4_S5_S2).
+not_holds_at(police,3,ini_S0_S1_S2_S4_S5_S2).
+not_holds_at(greenA,3,ini_S0_S1_S2_S4_S5_S2).
+not_holds_at(greenB,3,ini_S0_S1_S2_S4_S5_S2).
+holds_at(carA,4,ini_S0_S1_S2_S4_S5_S2).
+holds_at(carB,4,ini_S0_S1_S2_S4_S5_S2).
+not_holds_at(emergency,4,ini_S0_S1_S2_S4_S5_S2).
+not_holds_at(police,4,ini_S0_S1_S2_S4_S5_S2).
+not_holds_at(greenA,4,ini_S0_S1_S2_S4_S5_S2).
+not_holds_at(greenB,4,ini_S0_S1_S2_S4_S5_S2).
+holds_at(carA,5,ini_S0_S1_S2_S4_S5_S2).
+holds_at(carB,5,ini_S0_S1_S2_S4_S5_S2).
+not_holds_at(emergency,5,ini_S0_S1_S2_S4_S5_S2).
+not_holds_at(police,5,ini_S0_S1_S2_S4_S5_S2).
+not_holds_at(greenA,5,ini_S0_S1_S2_S4_S5_S2).
+not_holds_at(greenB,5,ini_S0_S1_S2_S4_S5_S2).
+
+}).
+
+#pos({},{entailed(ini_S0_S1_S2_S4_S5_S1)},{
+trace(ini_S0_S1_S2_S4_S5_S1).
+
+timepoint(0,ini_S0_S1_S2_S4_S5_S1).
+timepoint(1,ini_S0_S1_S2_S4_S5_S1).
+timepoint(2,ini_S0_S1_S2_S4_S5_S1).
+timepoint(3,ini_S0_S1_S2_S4_S5_S1).
+timepoint(4,ini_S0_S1_S2_S4_S5_S1).
+timepoint(5,ini_S0_S1_S2_S4_S5_S1).
+next(1,0,ini_S0_S1_S2_S4_S5_S1).
+next(2,1,ini_S0_S1_S2_S4_S5_S1).
+next(3,2,ini_S0_S1_S2_S4_S5_S1).
+next(4,3,ini_S0_S1_S2_S4_S5_S1).
+next(5,4,ini_S0_S1_S2_S4_S5_S1).
+next(2,5,ini_S0_S1_S2_S4_S5_S1).
+
+not_holds_at(carA,0,ini_S0_S1_S2_S4_S5_S1).
+not_holds_at(carB,0,ini_S0_S1_S2_S4_S5_S1).
+not_holds_at(emergency,0,ini_S0_S1_S2_S4_S5_S1).
+not_holds_at(police,0,ini_S0_S1_S2_S4_S5_S1).
+not_holds_at(greenA,0,ini_S0_S1_S2_S4_S5_S1).
+not_holds_at(greenB,0,ini_S0_S1_S2_S4_S5_S1).
+holds_at(carA,1,ini_S0_S1_S2_S4_S5_S1).
+not_holds_at(carB,1,ini_S0_S1_S2_S4_S5_S1).
+not_holds_at(emergency,1,ini_S0_S1_S2_S4_S5_S1).
+not_holds_at(police,1,ini_S0_S1_S2_S4_S5_S1).
+holds_at(greenA,1,ini_S0_S1_S2_S4_S5_S1).
+not_holds_at(greenB,1,ini_S0_S1_S2_S4_S5_S1).
+holds_at(carA,2,ini_S0_S1_S2_S4_S5_S1).
+not_holds_at(carB,2,ini_S0_S1_S2_S4_S5_S1).
+not_holds_at(emergency,2,ini_S0_S1_S2_S4_S5_S1).
+not_holds_at(police,2,ini_S0_S1_S2_S4_S5_S1).
+holds_at(greenA,2,ini_S0_S1_S2_S4_S5_S1).
+not_holds_at(greenB,2,ini_S0_S1_S2_S4_S5_S1).
+holds_at(carA,3,ini_S0_S1_S2_S4_S5_S1).
+holds_at(carB,3,ini_S0_S1_S2_S4_S5_S1).
+not_holds_at(emergency,3,ini_S0_S1_S2_S4_S5_S1).
+not_holds_at(police,3,ini_S0_S1_S2_S4_S5_S1).
+not_holds_at(greenA,3,ini_S0_S1_S2_S4_S5_S1).
+not_holds_at(greenB,3,ini_S0_S1_S2_S4_S5_S1).
+holds_at(carA,4,ini_S0_S1_S2_S4_S5_S1).
+holds_at(carB,4,ini_S0_S1_S2_S4_S5_S1).
+not_holds_at(emergency,4,ini_S0_S1_S2_S4_S5_S1).
+not_holds_at(police,4,ini_S0_S1_S2_S4_S5_S1).
+not_holds_at(greenA,4,ini_S0_S1_S2_S4_S5_S1).
+not_holds_at(greenB,4,ini_S0_S1_S2_S4_S5_S1).
+holds_at(carA,5,ini_S0_S1_S2_S4_S5_S1).
+holds_at(carB,5,ini_S0_S1_S2_S4_S5_S1).
+not_holds_at(emergency,5,ini_S0_S1_S2_S4_S5_S1).
+not_holds_at(police,5,ini_S0_S1_S2_S4_S5_S1).
+not_holds_at(greenA,5,ini_S0_S1_S2_S4_S5_S1).
+holds_at(greenB,5,ini_S0_S1_S2_S4_S5_S1).
+
+}).
+
+#pos({},{entailed(ini_S0_S1_S2_S4_S0)},{
+trace(ini_S0_S1_S2_S4_S0).
+
+timepoint(0,ini_S0_S1_S2_S4_S0).
+timepoint(1,ini_S0_S1_S2_S4_S0).
+timepoint(2,ini_S0_S1_S2_S4_S0).
+timepoint(3,ini_S0_S1_S2_S4_S0).
+timepoint(4,ini_S0_S1_S2_S4_S0).
+next(1,0,ini_S0_S1_S2_S4_S0).
+next(2,1,ini_S0_S1_S2_S4_S0).
+next(3,2,ini_S0_S1_S2_S4_S0).
+next(4,3,ini_S0_S1_S2_S4_S0).
+next(1,4,ini_S0_S1_S2_S4_S0).
+
+not_holds_at(carA,0,ini_S0_S1_S2_S4_S0).
+not_holds_at(carB,0,ini_S0_S1_S2_S4_S0).
+not_holds_at(emergency,0,ini_S0_S1_S2_S4_S0).
+not_holds_at(police,0,ini_S0_S1_S2_S4_S0).
+not_holds_at(greenA,0,ini_S0_S1_S2_S4_S0).
+not_holds_at(greenB,0,ini_S0_S1_S2_S4_S0).
+holds_at(carA,1,ini_S0_S1_S2_S4_S0).
+not_holds_at(carB,1,ini_S0_S1_S2_S4_S0).
+not_holds_at(emergency,1,ini_S0_S1_S2_S4_S0).
+not_holds_at(police,1,ini_S0_S1_S2_S4_S0).
+holds_at(greenA,1,ini_S0_S1_S2_S4_S0).
+not_holds_at(greenB,1,ini_S0_S1_S2_S4_S0).
+holds_at(carA,2,ini_S0_S1_S2_S4_S0).
+not_holds_at(carB,2,ini_S0_S1_S2_S4_S0).
+not_holds_at(emergency,2,ini_S0_S1_S2_S4_S0).
+not_holds_at(police,2,ini_S0_S1_S2_S4_S0).
+holds_at(greenA,2,ini_S0_S1_S2_S4_S0).
+not_holds_at(greenB,2,ini_S0_S1_S2_S4_S0).
+holds_at(carA,3,ini_S0_S1_S2_S4_S0).
+holds_at(carB,3,ini_S0_S1_S2_S4_S0).
+not_holds_at(emergency,3,ini_S0_S1_S2_S4_S0).
+not_holds_at(police,3,ini_S0_S1_S2_S4_S0).
+not_holds_at(greenA,3,ini_S0_S1_S2_S4_S0).
+not_holds_at(greenB,3,ini_S0_S1_S2_S4_S0).
+holds_at(carA,4,ini_S0_S1_S2_S4_S0).
+holds_at(carB,4,ini_S0_S1_S2_S4_S0).
+not_holds_at(emergency,4,ini_S0_S1_S2_S4_S0).
+not_holds_at(police,4,ini_S0_S1_S2_S4_S0).
+not_holds_at(greenA,4,ini_S0_S1_S2_S4_S0).
+holds_at(greenB,4,ini_S0_S1_S2_S4_S0).
+
+}).
+
+#pos({},{entailed(ini_S0_S1_S2_S3_S0)},{
+trace(ini_S0_S1_S2_S3_S0).
+
+timepoint(0,ini_S0_S1_S2_S3_S0).
+timepoint(1,ini_S0_S1_S2_S3_S0).
+timepoint(2,ini_S0_S1_S2_S3_S0).
+timepoint(3,ini_S0_S1_S2_S3_S0).
+timepoint(4,ini_S0_S1_S2_S3_S0).
+next(1,0,ini_S0_S1_S2_S3_S0).
+next(2,1,ini_S0_S1_S2_S3_S0).
+next(3,2,ini_S0_S1_S2_S3_S0).
+next(4,3,ini_S0_S1_S2_S3_S0).
+next(1,4,ini_S0_S1_S2_S3_S0).
+
+not_holds_at(carA,0,ini_S0_S1_S2_S3_S0).
+not_holds_at(carB,0,ini_S0_S1_S2_S3_S0).
+not_holds_at(emergency,0,ini_S0_S1_S2_S3_S0).
+not_holds_at(police,0,ini_S0_S1_S2_S3_S0).
+not_holds_at(greenA,0,ini_S0_S1_S2_S3_S0).
+not_holds_at(greenB,0,ini_S0_S1_S2_S3_S0).
+holds_at(carA,1,ini_S0_S1_S2_S3_S0).
+not_holds_at(carB,1,ini_S0_S1_S2_S3_S0).
+not_holds_at(emergency,1,ini_S0_S1_S2_S3_S0).
+not_holds_at(police,1,ini_S0_S1_S2_S3_S0).
+holds_at(greenA,1,ini_S0_S1_S2_S3_S0).
+not_holds_at(greenB,1,ini_S0_S1_S2_S3_S0).
+holds_at(carA,2,ini_S0_S1_S2_S3_S0).
+not_holds_at(carB,2,ini_S0_S1_S2_S3_S0).
+not_holds_at(emergency,2,ini_S0_S1_S2_S3_S0).
+not_holds_at(police,2,ini_S0_S1_S2_S3_S0).
+holds_at(greenA,2,ini_S0_S1_S2_S3_S0).
+not_holds_at(greenB,2,ini_S0_S1_S2_S3_S0).
+holds_at(carA,3,ini_S0_S1_S2_S3_S0).
+holds_at(carB,3,ini_S0_S1_S2_S3_S0).
+not_holds_at(emergency,3,ini_S0_S1_S2_S3_S0).
+not_holds_at(police,3,ini_S0_S1_S2_S3_S0).
+not_holds_at(greenA,3,ini_S0_S1_S2_S3_S0).
+holds_at(greenB,3,ini_S0_S1_S2_S3_S0).
+holds_at(carA,4,ini_S0_S1_S2_S3_S0).
+not_holds_at(carB,4,ini_S0_S1_S2_S3_S0).
+not_holds_at(emergency,4,ini_S0_S1_S2_S3_S0).
+not_holds_at(police,4,ini_S0_S1_S2_S3_S0).
+holds_at(greenA,4,ini_S0_S1_S2_S3_S0).
+not_holds_at(greenB,4,ini_S0_S1_S2_S3_S0).
+
+}).
+

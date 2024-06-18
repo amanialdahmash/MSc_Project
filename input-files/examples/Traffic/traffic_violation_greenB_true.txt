@@ -1,0 +1,15 @@
+not_holds_at(carA, 0, violation_trace).
+not_holds_at(carB, 0, violation_trace).
+not_holds_at(emergency, 0, violation_trace).
+not_holds_at(greenA, 0, violation_trace).
+not_holds_at(greenB, 0, violation_trace).
+holds_at(carA, 1, violation_trace).
+holds_at(carB, 1, violation_trace).
+holds_at(emergency, 1, violation_trace).
+not_holds_at(greenA, 1, violation_trace).
+holds_at(greenB, 1, violation_trace).
+not_holds_at(carA, 2, violation_trace).
+not_holds_at(carB, 2, violation_trace).
+not_holds_at(emergency, 2, violation_trace).
+not_holds_at(greenA, 2, violation_trace).
+not_holds_at(greenB, 2, violation_trace).

@@ -1,0 +1,8 @@
+holds_at(r_0,0,forced_violation_BC5).
+not_holds_at(r_1,0,forced_violation_BC5).
+not_holds_at(g_0,0,forced_violation_BC5).
+not_holds_at(g_1,0,forced_violation_BC5).
+holds_at(r_1,1,forced_violation_BC5).
+not_holds_at(r_0,1,forced_violation_BC5).
+not_holds_at(g_0,1,forced_violation_BC5).
+not_holds_at(g_1,1,forced_violation_BC5).
