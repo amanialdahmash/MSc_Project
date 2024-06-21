@@ -27,3 +27,4 @@ scripts/visualisations/remote/asm.png
 **/specification_log.csv
 /logs/
 /build/
+/tests/test_files/out

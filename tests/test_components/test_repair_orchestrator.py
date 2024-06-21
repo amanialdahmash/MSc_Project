@@ -1,10 +1,12 @@
+import io
 import os
 from unittest import TestCase
+from unittest.mock import patch
 
 from spec_repair.components.repair_orchestrator import RepairOrchestrator
 from spec_repair.components.spec_learner import SpecLearner
 from spec_repair.components.spec_oracle import SpecOracle
-from spec_repair.old.specification_helper import read_file
+from spec_repair.old.specification_helper import read_file, write_file
 from spec_repair.util.spec_util import format_spec
 
 
@@ -23,6 +25,7 @@ class TestRepairOrchestrator(TestCase):
         # Restore the original working directory
         os.chdir(cls.original_working_directory)
 
+    @patch('sys.stdin', io.StringIO('1\n0\n1\n'))
     def test_repair_spec(self):
         spec: list[str] = format_spec(read_file(
             '../input-files/examples/Minepump/minepump_strong.spectra'))
@@ -33,4 +36,5 @@ class TestRepairOrchestrator(TestCase):
 
         repairer: RepairOrchestrator = RepairOrchestrator(SpecLearner(), SpecOracle())
         new_spec = repairer.repair_spec(spec, trace)
+        write_file(new_spec, "./test_files/out/minepump_test_fix.spectra")
         self.assertEqual(expected_spec, new_spec)
