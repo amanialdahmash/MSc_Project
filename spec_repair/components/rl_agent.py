@@ -43,7 +43,7 @@ class RLAgent:
 
     def update_rewards(self, reward):  ##
         for key in self.mode_dec.keys():
-            self.rewards[key] = self.reward_decay * self.rewards.get(key, 0) + reward
+            self.rewards[key] = self.decay * self.rewards.get(key, 0) + reward
 
     def prune_mode_dec(self):  ##
         key = max(self.fails, key=self.fails.get)

@@ -54,7 +54,7 @@ class SpecLearner:
 
         if not hypotheses:
             for key in self.rl_agent.mode_dec.keys():  #
-                self.rl_agent.failed_attempts[key] += 1  #
+                self.rl_agent.fails[key] += 1  #
             self.rl_agent.update_mode_dec("counter_strategy_found")  #
             ##??why
             raise NoWeakeningException(
