@@ -7,6 +7,9 @@ HeuristicType = Callable[[List[T]], T]
 
 
 def choose_one_with_heuristic(options_list: List[T], heuristic_function: HeuristicType) -> T:
+    print(options_list)
+    print(len(options_list))
+
     assert len(options_list) > 0
     if not config.STATISTICS and len(options_list) == 1:  # No need for heuristic
         return options_list[0]

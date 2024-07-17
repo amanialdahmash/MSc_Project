@@ -41,27 +41,31 @@ def make_directories_if_needed(output_filename):
 
 # TODO: remove this or write_to_file() from util.py
 def write_file(spec, output_filename):
-    '''
+    """
     NB: newline = '\\\\n' is necessary so that file is compatible with
     linux (ILASP is run from linux).\n
     :param spec: List of lines to save.
     :param output_filename: filename to save to
-    '''
+    """
     output_filename = re.sub(r"\\", "/", output_filename)
     make_directories_if_needed(output_filename)
-    output = ''.join(spec)
-    with open(output_filename, "w", newline='\n') as file:
+    output = "".join(spec)
+    with open(output_filename, "w", newline="\n") as file:
         file.write(output)
         file.close()
 
 
-def run_subprocess(cmd, encoding: str = 'utf-8', suppress=False, timeout=-1):
+def run_subprocess(cmd, encoding: str = "utf-8", suppress=False, timeout=-1):
     # timed = timeout > 0
 
     if suppress:
-        p = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.DEVNULL)#, start_new_session=timed)
+        p = subprocess.Popen(
+            cmd, stdout=subprocess.PIPE, stderr=subprocess.DEVNULL
+        )  # , start_new_session=timed)
     else:
-        p = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE)#, start_new_session=timed)
+        p = subprocess.Popen(
+            cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE
+        )  # , start_new_session=timed)
     # if timed:
     #     try:
     #         p.wait(timeout=timeout)
@@ -83,7 +87,7 @@ def assign_equalities(formula_n, variables):
 
 
 def strip_vars(spec, sub=["env", "sys"]):
-    return re.findall(r"[" + '|'.join(sub) + r"]\s*boolean\s*(.*)\s*;", '\n'.join(spec))
+    return re.findall(r"[" + "|".join(sub) + r"]\s*boolean\s*(.*)\s*;", "\n".join(spec))
     variables = []
     for line in spec:
         words = line.split(" ")
@@ -102,34 +106,37 @@ def get_name(filename):
     return name.title()
 
 
-CASE_STUDY_EXCLUSION_LIST = ['acheivepattern',
-                             'atm',
-                             'detector',
-                             'lily01',
-                             'lily02',
-                             'lily11',
-                             'lily15',
-                             'lily16',
-                             'ltl2dba_R_2',
-                             'ltl2dba_theta_2',
-                             'ltl2dba27',
-                             'prioritizedArbiter',
-                             'retractionPattern2',
-                             'tcp',
-                             'telephone']
+CASE_STUDY_EXCLUSION_LIST = [
+    "acheivepattern",
+    "atm",
+    "detector",
+    "lily01",
+    "lily02",
+    "lily11",
+    "lily15",
+    "lily16",
+    "ltl2dba_R_2",
+    "ltl2dba_theta_2",
+    "ltl2dba27",
+    "prioritizedArbiter",
+    "retractionPattern2",
+    "tcp",
+    "telephone",
+]
 
 CASE_STUDY_FINALS = {  # "../Translators/input-files/examples/Arbiter/Arbiter_FINAL.spectra",
-        "Lift": "../Translators/input-files/examples/lift_FINAL.spectra",
-        "Lift New": "../Translators/input-files/examples/lift_FINAL_NEW.spectra",
-        "Minepump": "../Translators/input-files/case-studies/modified-specs/minepump/genuine/minepump_FINAL.spectra",
-        "Traffic Single": "../Translators/input-files/examples/Traffic/traffic_single_FINAL.spectra",
-        "Traffic": "../Translators/input-files/examples/Traffic/traffic_updated_FINAL.spectra"}
+    "Lift": "../Translators/input-files/examples/lift_FINAL.spectra",
+    "Lift New": "../Translators/input-files/examples/lift_FINAL_NEW.spectra",
+    "Minepump": "../Translators/input-files/case-studies/modified-specs/minepump/genuine/minepump_FINAL.spectra",
+    "Traffic Single": "../Translators/input-files/examples/Traffic/traffic_single_FINAL.spectra",
+    "Traffic": "../Translators/input-files/examples/Traffic/traffic_updated_FINAL.spectra",
+}
 
 
 def create_cmd(param):
     cmd = []
-    if SETUP_DICT['wsl']:
-        cmd.append('wsl')
+    if SETUP_DICT["wsl"]:
+        cmd.append("wsl")
     cmd.append(SETUP_DICT[param[0]])
     if len(param) == 1:
         return cmd

@@ -13,9 +13,16 @@ from spec_repair.old.patterns import FIRST_PRED, ALL_PREDS
 from spec_repair.special_types import EventuallyConsequentRule
 from spec_repair.util.exp_util import eventualise_consequent
 from spec_repair.util.list_util import re_line_spec
-from spec_repair.util.spec_util import expressions_df_to_str, illegal_assignments, \
-    extract_variables, extract_df_content, trace_list_to_asp_form, \
-    trace_list_to_ilasp_form, format_spec, integrate_rule
+from spec_repair.util.spec_util import (
+    expressions_df_to_str,
+    illegal_assignments,
+    extract_variables,
+    extract_df_content,
+    trace_list_to_asp_form,
+    trace_list_to_ilasp_form,
+    format_spec,
+    integrate_rule,
+)
 from spec_repair.components.spec_generator import SpecGenerator
 
 
@@ -25,7 +32,9 @@ class SpecEncoder:
         self.include_next = False
         self.spec_generator = spec_generator
 
-    def encode_ASP(self, spec_df: Spec, trace: list[str], ct_list: List[CounterTrace]) -> str:
+    def encode_ASP(
+        self, spec_df: Spec, trace: list[str], ct_list: List[CounterTrace]
+    ) -> str:
         """
         ASSUMES LEARNING ASSUMPTION WEAKENING ONLY
         """
@@ -35,32 +44,58 @@ class SpecEncoder:
         assumption_string = expressions_df_to_str(assumptions, for_clingo=True)
         guarantee_string = expressions_df_to_str(guarantees, for_clingo=True)
         violation_trace = trace_list_to_asp_form(trace)
-        cs_trace_string: str = ''.join([cs_trace.get_asp_form() for cs_trace in ct_list])
-        return self.spec_generator.generate_clingo(spec_df, assumption_string, guarantee_string, violation_trace,
-                                                   cs_trace_string)
+        cs_trace_string: str = "".join(
+            [cs_trace.get_asp_form() for cs_trace in ct_list]
+        )
+        return self.spec_generator.generate_clingo(
+            spec_df,
+            assumption_string,
+            guarantee_string,
+            violation_trace,
+            cs_trace_string,
+        )
 
         # TODO: consider, instead of spec_df, to offer only assumptions/guarantees as df, based on learning type
         #       won't need to carry flag type anymore
 
-    def encode_ILASP(self, spec_df: pd.DataFrame, trace: List[str], ct_list: List[CounterTrace], violations: list[str],
-                     learning_type: Learning):
+    def encode_ILASP(
+        self,
+        spec_df: pd.DataFrame,
+        trace: List[str],
+        ct_list: List[CounterTrace],
+        violations: list[str],
+        learning_type: Learning,
+    ):
         ill_assign: dict = illegal_assignments(spec_df, violations, "")
-        mode_declaration = self._create_mode_bias(spec_df, violations, ill_assign, learning_type)
+        mode_declaration = self._create_mode_bias(
+            spec_df, violations, ill_assign, learning_type
+        )
         trace_asp = trace_list_to_asp_form(trace)
-        trace_ilasp = trace_list_to_ilasp_form(trace_asp, learning=Learning.ASSUMPTION_WEAKENING)
+        trace_ilasp = trace_list_to_ilasp_form(
+            trace_asp, learning=Learning.ASSUMPTION_WEAKENING
+        )
         # TODO: see how to deal with generation/renaming of counter-strategy traces (based on Learning type too)
-        ct_list_ilasp: str = ''.join([cs_trace.get_ilasp_form(learning=learning_type) for cs_trace in ct_list])
+        ct_list_ilasp: str = "".join(
+            [cs_trace.get_ilasp_form(learning=learning_type) for cs_trace in ct_list]
+        )
         expressions = filter_expressions_of_type(spec_df, learning_type.exp_type())
         if learning_type == Learning.ASSUMPTION_WEAKENING:
-            exp_names_to_learn = get_violated_expression_names_of_type(violations, learning_type.exp_type_str())
+            exp_names_to_learn = get_violated_expression_names_of_type(
+                violations, learning_type.exp_type_str()
+            )
         else:
-            exp_names_to_learn = get_expression_names_of_type(violations, learning_type.exp_type_str())
+            exp_names_to_learn = get_expression_names_of_type(
+                violations, learning_type.exp_type_str()
+            )
         expressions_to_weaken = expressions_df_to_str(expressions, exp_names_to_learn)
-        las = self.spec_generator.generate_ilasp(spec_df, mode_declaration, expressions_to_weaken, trace_ilasp,
-                                                 ct_list_ilasp)
+        las = self.spec_generator.generate_ilasp(
+            spec_df, mode_declaration, expressions_to_weaken, trace_ilasp, ct_list_ilasp
+        )
         return las
 
-    def _create_mode_bias(self, spec_df: Spec, violations: list[str], ill_assign, learning_type):
+    def _create_mode_bias(
+        self, spec_df: Spec, violations: list[str], ill_assign, learning_type
+    ):
         head = "antecedent_exception"
         next_type = ""
         in_bias = ""
@@ -69,10 +104,12 @@ class SpecEncoder:
             head = "consequent_exception"
             next_type = "_weak"
 
-        output = "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%\n" \
-                 "%% Mode Declaration\n" \
-                 "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%\n\n" \
-                 f"#modeh({head}(const(expression_v), var(time), var(trace))).\n"
+        output = (
+            "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%\n"
+            "%% Mode Declaration\n"
+            "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%\n\n"
+            f"#modeh({head}(const(expression_v), var(time), var(trace))).\n"
+        )
 
         # Learning rule for weakening to justice rule
         if config.WEAKENING_TO_JUSTICE:
@@ -94,7 +131,9 @@ class SpecEncoder:
         if not violations:
             expression_names = spec_df.loc[spec_df["type"] == "assumption"]["name"]
         else:
-            expression_names = get_violated_expression_names_of_type(violations, learning_type.exp_type_str())
+            expression_names = get_violated_expression_names_of_type(
+                violations, learning_type.exp_type_str()
+            )
 
         if learning_type == Learning.GUARANTEE_WEAKENING:
             expression_names = spec_df.loc[spec_df["type"] == "guarantee"]["name"]
@@ -102,7 +141,7 @@ class SpecEncoder:
         for name in expression_names:
             output += f"#constant(expression_v, {name}).\n"
 
-        output += f"#bias(\"\n"
+        output += f'#bias("\n'
         output += f":- constraint.\n"
         output += f":- {in_bias}head({head}(_,V1,V2)), {in_bias}body(holds_at(_,_,V3,V4)), (V3, V4) != (V1, V2).\n"
         output += f":- {in_bias}head({head}(_,V1,V2)), {in_bias}body(not_holds_at(_,_,V3,V4)), (V3, V4) != (V1, V2).\n"
@@ -123,7 +162,10 @@ class SpecEncoder:
             when = extract_df_content(spec_df, name, extract_col="when")
             if name in ill_assign.keys():
                 restricted_assignments = ill_assign[name]
-                restricted_assignments = [re.sub("_next", next_type + "_next", x) for x in restricted_assignments]
+                restricted_assignments = [
+                    re.sub("_next", next_type + "_next", x)
+                    for x in restricted_assignments
+                ]
             else:
                 restricted_assignments = []
 
@@ -136,7 +178,9 @@ class SpecEncoder:
             if when == When.EVENTUALLY:
                 output += f":- {in_bias}head({head}({name},V1,V2)), {in_bias}body(holds_at(current,_,_,_)).\n"
                 output += f":- {in_bias}head({head}({name},V1,V2)), {in_bias}body(not_holds_at(current_,_,_,_)).\n"
-                restricted_assignments = [re.sub("V1,V2", "_,_,_", x) for x in restricted_assignments]
+                restricted_assignments = [
+                    re.sub("V1,V2", "_,_,_", x) for x in restricted_assignments
+                ]
                 for assignment in restricted_assignments:
                     output += f":- {in_bias}head({head}({name},V1,V2)), {in_bias}body({assignment}).\n"
                 if self.include_prev:
@@ -148,7 +192,9 @@ class SpecEncoder:
 
         # This is making sure we don't learn a body that is already in our rule.
         for name in expression_names:
-            antecedent_list = extract_df_content(spec_df, name, extract_col=re.sub(r"_exception", "", head))
+            antecedent_list = extract_df_content(
+                spec_df, name, extract_col=re.sub(r"_exception", "", head)
+            )
             for antecedents in antecedent_list:
                 if antecedents != "":
                     antecedents = antecedents.split(",\n\t")
@@ -162,11 +208,17 @@ class SpecEncoder:
             output += f":- {in_bias}head(consequent_holds(_,_,_,_)), {in_bias}body(not_holds_at(_,_,_,_)).\n"
             output += f":- {in_bias}head(consequent_holds(eventually,E1,V1,V2)), {in_bias}body(root_consequent_holds(eventually,E2,V3,V4)), (E1,V1,V2) != (E2,V3,V4).\n"
 
-        output += "\").\n\n"
+        output += '").\n\n'
         return output
 
-    def integrate_learned_hypotheses(self, spec: list[str], learning_hypothesis, learning_type):
-        rules: list[str] = list(filter(re.compile("_exception|root_consequent_").search, learning_hypothesis))
+    def integrate_learned_hypotheses(
+        self, spec: list[str], learning_hypothesis, learning_type
+    ):
+        rules: list[str] = list(
+            filter(
+                re.compile("_exception|root_consequent_").search, learning_hypothesis
+            )
+        )
         if len(rules) == 0:
             raise LearningException("Nothing learned")
         else:
@@ -177,16 +229,31 @@ class SpecEncoder:
         output_list = []
         for rule in rules:
             if EventuallyConsequentRule.pattern.match(rule):
-                self.process_new_eventually_exception(learning_type, line_list, output_list, rule, rule_list,
-                                                      formatted_spec)
+                self.process_new_eventually_exception(
+                    learning_type,
+                    line_list,
+                    output_list,
+                    rule,
+                    rule_list,
+                    formatted_spec,
+                )
             else:  # either antecedent or consequent exception
-                self.process_new_rule_exception(learning_type, line_list, output_list, rule, rule_list, formatted_spec)
+                self.process_new_rule_exception(
+                    learning_type,
+                    line_list,
+                    output_list,
+                    rule,
+                    rule_list,
+                    formatted_spec,
+                )
 
         formatted_spec = [re.sub(r"\bI\b\s*\(", "(", line) for line in formatted_spec]
         formatted_spec = re_line_spec(formatted_spec)
         return formatted_spec
 
-    def process_new_rule_exception(self, learning_type, line_list, output_list, rule, rule_list, spec):
+    def process_new_rule_exception(
+        self, learning_type, line_list, output_list, rule, rule_list, spec
+    ):
         name = FIRST_PRED.search(rule).group(1)
         rule_split = rule.replace("\n", "").split(":-")
         if learning_type == Learning.ASSUMPTION_WEAKENING:
@@ -201,7 +268,7 @@ class SpecEncoder:
         print(line)
         line_list.append(line)
         print("Hypothesis:")
-        print(f'\t{rule}')
+        print(f"\t{rule}")
         rule_list.append(rule)
         line = spec[j].split("->")
         if len(line) == 1:
@@ -226,8 +293,10 @@ class SpecEncoder:
             print(output.strip("\n"))
             output_list.append(output.strip("\n"))
 
-    def process_new_eventually_exception(self, learning_type, line_list, output_list, rule, rule_list, spec):
-        name = ALL_PREDS.search(rule).group(1).split(',')[1].strip()
+    def process_new_eventually_exception(
+        self, learning_type, line_list, output_list, rule, rule_list, spec
+    ):
+        name = ALL_PREDS.search(rule).group(1).split(",")[1].strip()
         for i, line in enumerate(spec):
             if re.search(name + r"\b", line):
                 j = i + 1
@@ -235,7 +304,7 @@ class SpecEncoder:
         print(line)
         line_list.append(line)
         print("Hypothesis:")
-        print(f'\t{rule}')
+        print(f"\t{rule}")
         rule_list.append(rule)
         output = eventualise_consequent(line, learning_type)
         spec[j] = output
@@ -244,7 +313,9 @@ class SpecEncoder:
         output_list.append(output.strip("\n"))
 
 
-def get_violated_expression_names_of_type(violations: list[str], exp_type: str) -> list[str]:
+def get_violated_expression_names_of_type(
+    violations: list[str], exp_type: str
+) -> list[str]:
     assert exp_type in ["assumption", "guarantee"]
     vs: list[str] = get_violated_expression_names(violations)
     es: list[str] = get_expression_names_of_type(violations, exp_type)
@@ -253,8 +324,8 @@ def get_violated_expression_names_of_type(violations: list[str], exp_type: str) 
 
 def get_expression_names_of_type(asp_text: list[str], exp_type: str):
     assert exp_type in ["assumption", "guarantee"]
-    return re.findall(rf"{exp_type}\(\b([^,^)]*)", ''.join(asp_text))
+    return re.findall(rf"{exp_type}\(\b([^,^)]*)", "".join(asp_text))
 
 
 def get_violated_expression_names(violations: list[str]) -> list[str]:
-    return re.findall(r"violation_holds\(\b([^,^)]*)", ''.join(violations))
+    return re.findall(r"violation_holds\(\b([^,^)]*)", "".join(violations))

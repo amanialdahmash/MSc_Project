@@ -5,15 +5,19 @@ from spec_repair.components.spec_learner import SpecLearner
 from spec_repair.components.spec_oracle import SpecOracle
 from spec_repair.enums import Learning
 from spec_repair.exceptions import NoWeakeningException
-from spec_repair.heuristics import choose_one_with_heuristic, first_choice, manual_choice, random_choice
+from spec_repair.heuristics import (
+    choose_one_with_heuristic,
+    first_choice,
+    manual_choice,
+    random_choice,
+)
 from spec_repair.ltl import CounterStrategy
 from spec_repair.special_types import StopHeuristicType
 from spec_repair.util.file_util import read_file
 from spec_repair.util.spec_util import CSTraces, extract_trace, format_spec
 
-def counter_strat_to_trace(
-        lines: Optional[List[str]] = None
-) -> Dict[str, str]:
+
+def counter_strat_to_trace(lines: Optional[List[str]] = None) -> Dict[str, str]:
     start = "INI"
     output = ""
     trace_name_dict: dict[str, str] = {}
@@ -29,16 +33,24 @@ class RepairOrchestrator:
         self._ct_cnt = 0
 
     # Reimplementation of the highest level abstraction code
-    def repair_spec(self, spec: list[str], trace: list[str], stop_heuristic: StopHeuristicType = lambda a, g: True):
+    def repair_spec(
+        self,
+        spec: list[str],
+        trace: list[str],
+        stop_heuristic: StopHeuristicType = lambda a, g: True,
+    ):
         self._ct_cnt = 0
         ct_asm, ct_gar = [], []
         weak_spec_history = []
 
         # Assumption Weakening for Consistency
         weak_spec: list[str] = self._learner.learn_weaker_spec(
-            spec, trace, list(),
+            spec,
+            trace,
+            list(),
             learning_type=Learning.ASSUMPTION_WEAKENING,
-            heuristic=manual_choice)
+            ##heuristic=manual_choice,
+        )
         weak_spec_history.append(weak_spec)
         cs: Optional[CounterStrategy] = self._oracle.synthesise_and_check(weak_spec)
 
@@ -47,9 +59,12 @@ class RepairOrchestrator:
             while cs:  # not is_realisable
                 ct_asm.append(self.ct_from_cs(cs))
                 weaker_spec: list[str] = self._learner.learn_weaker_spec(
-                    spec, trace, ct_asm,
+                    spec,
+                    trace,
+                    ct_asm,
                     learning_type=Learning.ASSUMPTION_WEAKENING,
-                    heuristic=manual_choice)
+                    ##heuristic=manual_choice,
+                )
                 if weaker_spec == spec and stop_heuristic(spec, ct_asm):
                     break
                 weak_spec_history.append(weaker_spec)
@@ -66,9 +81,12 @@ class RepairOrchestrator:
         ct_gar.append(ct_asm[0])
         while cs:
             spec: list[str] = self._learner.learn_weaker_spec(
-                spec, trace, ct_gar,
+                spec,
+                trace,
+                ct_gar,
                 learning_type=Learning.GUARANTEE_WEAKENING,
-                heuristic=manual_choice)
+                ##heuristic=manual_choice,
+            )
             cs = self._oracle.synthesise_and_check(spec)
             if cs:
                 ct_gar.append(self.ct_from_cs(cs))

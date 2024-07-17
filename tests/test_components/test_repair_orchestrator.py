@@ -25,14 +25,15 @@ class TestRepairOrchestrator(TestCase):
         # Restore the original working directory
         os.chdir(cls.original_working_directory)
 
-    @patch('sys.stdin', io.StringIO('1\n0\n1\n'))
+    @patch("sys.stdin", io.StringIO("1\n0\n1\n"))
     def test_repair_spec(self):
-        spec: list[str] = format_spec(read_file(
-            '../input-files/examples/Minepump/minepump_strong.spectra'))
-        trace: list[str] = read_file(
-            "./test_files/minepump_strong_auto_violation.txt")
-        expected_spec: list[str] = format_spec(read_file(
-            './test_files/minepump_aw_methane_gw_methane_fix.spectra'))
+        spec: list[str] = format_spec(
+            read_file("../input-files/examples/Minepump/minepump_strong.spectra")
+        )
+        trace: list[str] = read_file("./test_files/minepump_strong_auto_violation.txt")
+        expected_spec: list[str] = format_spec(
+            read_file("./test_files/minepump_aw_methane_gw_methane_fix.spectra")
+        )
 
         repairer: RepairOrchestrator = RepairOrchestrator(SpecLearner(), SpecOracle())
         new_spec = repairer.repair_spec(spec, trace)
