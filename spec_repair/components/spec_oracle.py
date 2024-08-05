@@ -35,7 +35,9 @@ pattern pRespondsToS(s, p) {
         output = self._synthesise(spec)
         if re.search("Result: Specification is unrealizable", output):
             output = str(output).split("\n")
-            counter_strategy = list(filter(re.compile(r"\s*->\s*[^{]*{[^}]*").search, output))
+            counter_strategy = list(
+                filter(re.compile(r"\s*->\s*[^{]*{[^}]*").search, output)
+            )
             return counter_strategy
         elif re.search("Result: Specification is realizable", output):
             return None
@@ -45,12 +47,24 @@ pattern pRespondsToS(s, p) {
     def _synthesise(self, spec):
         spec = self._pRespondsToS_substitution(spec)
         spectra_file: str = generate_temp_filename(ext=".spectra")
-        write_to_file(spectra_file, '\n'.join(spec))
-        cmd = ['java', '-jar', PATH_TO_CLI, '-i', spectra_file, '--counter-strategy', '--jtlv']
+        write_to_file(spectra_file, "\n".join(spec))
+        cmd = [
+            "java",
+            "-jar",
+            PATH_TO_CLI,
+            "-i",
+            spectra_file,
+            "--counter-strategy",
+            "--jtlv",
+        ]
+        print("spectraCMD", cmd)  ##
         return run_subprocess(cmd)
 
     def _pRespondsToS_substitution(self, spec: list[str]) -> list[str]:
         is_necessary = False
+        added = False  ##
+        pattern = self._response_pattern.strip()  #
+        spec = [l for l in spec if pattern not in l]  #
         for i, line in enumerate(spec):
             line = line.strip("\t|\n|;")
             if PRS_REG.search(line):
@@ -62,6 +76,7 @@ pattern pRespondsToS(s, p) {
                 else:
                     raise ValueError(f"Trouble extracting p from: {line}")
                 spec[i] = f"\tpRespondsToS({s},{p});\n"
-        if is_necessary:
+        if is_necessary and not added:
             spec.append(self._response_pattern)
+            # added = True
         return spec

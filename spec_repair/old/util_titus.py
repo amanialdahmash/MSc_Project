@@ -3,7 +3,12 @@ import subprocess
 
 from spec_repair.old.case_study_translator import negate, realizable
 from spec_repair.enums import SimEnv
-from spec_repair.old.specification_helper import read_file, strip_vars, write_file, create_cmd
+from spec_repair.old.specification_helper import (
+    read_file,
+    strip_vars,
+    write_file,
+    create_cmd,
+)
 
 
 def generate_trace_asp(start_file, end_file, trace_file):
@@ -15,13 +20,21 @@ def generate_trace_asp(start_file, end_file, trace_file):
 
     trace = {}
 
-    initial_expressions, prevs, primed_expressions, unprimed_expressions, variables \
-        = extract_expressions(end_file, counter_strat=True)
-    initial_expressions_s, prevs_s, primed_expressions_s, unprimed_expressions_s, variables_s \
-        = extract_expressions(start_file, counter_strat=True)
+    initial_expressions, prevs, primed_expressions, unprimed_expressions, variables = (
+        extract_expressions(end_file, counter_strat=True)
+    )
+    (
+        initial_expressions_s,
+        prevs_s,
+        primed_expressions_s,
+        unprimed_expressions_s,
+        variables_s,
+    ) = extract_expressions(start_file, counter_strat=True)
 
     # To include starting guarantees:
-    ie_g, prevs_g, pe_g, upe_g, v_g = extract_expressions(start_file, guarantee_only=True)
+    ie_g, prevs_g, pe_g, upe_g, v_g = extract_expressions(
+        start_file, guarantee_only=True
+    )
     initial_expressions += ie_g
     primed_expressions += pe_g
     unprimed_expressions += upe_g
@@ -40,54 +53,92 @@ def generate_trace_asp(start_file, end_file, trace_file):
     variables = [var for var in variables if not re.search("prev|next", var)]
 
     # Lowercasing PREV in expressions
-    expressions = [re.sub(r"PREV\((!*)([^\|^\(]*)\)", r"\1prev_\2", x) for x in expressions]
-    neg_expressions = [re.sub(r"PREV\((!*)([^\|^\(]*)\)", r"\1prev_\2", x) for x in neg_expressions]
+    expressions = [
+        re.sub(r"PREV\((!*)([^\|^\(]*)\)", r"\1prev_\2", x) for x in expressions
+    ]
+    neg_expressions = [
+        re.sub(r"PREV\((!*)([^\|^\(]*)\)", r"\1prev_\2", x) for x in neg_expressions
+    ]
     # Removing braces around next function args (`next(sth)` -> `next_sth`)
-    expressions = [re.sub(r"next\((!*)([^\|^\(]*)\)", r"\1next_\2", x) for x in expressions]
-    neg_expressions = [re.sub(r"next\((!*)([^\|^\(]*)\)", r"\1next_\2", x) for x in neg_expressions]
+    expressions = [
+        re.sub(r"next\((!*)([^\|^\(]*)\)", r"\1next_\2", x) for x in expressions
+    ]
+    neg_expressions = [
+        re.sub(r"next\((!*)([^\|^\(]*)\)", r"\1next_\2", x) for x in neg_expressions
+    ]
 
-    one_point_exp = [re.sub(r"(" + '|'.join(variables) + r")", r"prev_\1", x) for x in
-                     unprimed_expressions + initial_expressions]
+    one_point_exp = [
+        re.sub(r"(" + "|".join(variables) + r")", r"prev_\1", x)
+        for x in unprimed_expressions + initial_expressions
+    ]
     expressions += one_point_exp
-    expressions += [re.sub(r"(" + '|'.join(variables) + r")", r"next_\1", x) for x in unprimed_expressions]
-    neg_one_point_exp = [re.sub(r"(" + '|'.join(variables) + r")", r"prev_\1", x) for x in
-                         unprimed_expressions_s + initial_expressions_s]
+    expressions += [
+        re.sub(r"(" + "|".join(variables) + r")", r"next_\1", x)
+        for x in unprimed_expressions
+    ]
+    neg_one_point_exp = [
+        re.sub(r"(" + "|".join(variables) + r")", r"prev_\1", x)
+        for x in unprimed_expressions_s + initial_expressions_s
+    ]
     neg_expressions += neg_one_point_exp
-    neg_expressions += [re.sub(r"(" + '|'.join(variables) + r")", r"next_\1", x) for x in unprimed_expressions_s]
+    neg_expressions += [
+        re.sub(r"(" + "|".join(variables) + r")", r"next_\1", x)
+        for x in unprimed_expressions_s
+    ]
 
     expressions += two_period_primed_expressions(primed_expressions, variables)
     neg_expressions += two_period_primed_expressions(primed_expressions_s, variables)
 
     # Can it be done with one time point?
-    state, violation = generate_model(one_point_exp,
-                                      neg_one_point_exp,
-                                      variables, scratch=True,
-                                      asp_restrictions=asp_restrictions)
+    state, violation = generate_model(
+        one_point_exp,
+        neg_one_point_exp,
+        variables,
+        scratch=True,
+        asp_restrictions=asp_restrictions,
+    )
     if state is not None and len(neg_one_point_exp) > 0:
-        trace[0] = [re.sub(r"prev_", "", var) for var in state[0] if re.search("prev_", var)]
+        trace[0] = [
+            re.sub(r"prev_", "", var) for var in state[0] if re.search("prev_", var)
+        ]
         write_trace(trace, trace_file)
         return trace_file, violation
 
     # Can it be done with two time points?
     two_point_exp = [x for x in expressions if not re.search("next", x)]
     two_point_neg_exp = [x for x in neg_expressions if not re.search("next", x)]
-    state, violation = generate_model(two_point_exp,
-                                      two_point_neg_exp, variables, scratch=True,
-                                      asp_restrictions=asp_restrictions)
+    state, violation = generate_model(
+        two_point_exp,
+        two_point_neg_exp,
+        variables,
+        scratch=True,
+        asp_restrictions=asp_restrictions,
+    )
     if state is not None and len(two_point_neg_exp) > 0:
-        trace[0] = [re.sub(r"prev_", "", var) for var in state[0] if re.search("prev_", var)]
+        trace[0] = [
+            re.sub(r"prev_", "", var) for var in state[0] if re.search("prev_", var)
+        ]
         trace[1] = [var for var in state[0] if not re.search("prev_|next_", var)]
         write_trace(trace, trace_file)
         return trace_file, violation
 
     # Can it be done with three time points?
-    state, violation = generate_model(expressions, neg_expressions, variables, scratch=True,
-                                      asp_restrictions=asp_restrictions)
+    state, violation = generate_model(
+        expressions,
+        neg_expressions,
+        variables,
+        scratch=True,
+        asp_restrictions=asp_restrictions,
+    )
     if state is None or len(neg_expressions) == 0:
         return None, None
-    trace[0] = [re.sub(r"prev_", "", var) for var in state[0] if re.search("prev_", var)]
+    trace[0] = [
+        re.sub(r"prev_", "", var) for var in state[0] if re.search("prev_", var)
+    ]
     trace[1] = [var for var in state[0] if not re.search("prev_|next_", var)]
-    trace[2] = [re.sub(r"next_", "", var) for var in state[0] if re.search("next_", var)]
+    trace[2] = [
+        re.sub(r"next_", "", var) for var in state[0] if re.search("next_", var)
+    ]
     write_trace(trace, trace_file)
     return trace_file, violation
 
@@ -95,7 +146,7 @@ def generate_trace_asp(start_file, end_file, trace_file):
 def write_trace(trace, filename):
     try:
         prev = read_file(filename)
-        timepoint = int(max(re.findall(r"trace_name_(\d*)", ''.join(prev)))) + 1
+        timepoint = int(max(re.findall(r"trace_name_(\d*)", "".join(prev)))) + 1
     except FileNotFoundError:
         timepoint = 0
     trace_name = "trace_name_" + str(timepoint)
@@ -108,16 +159,25 @@ def write_trace(trace, filename):
                 if var[0] == "!":
                     prefix = "not_"
                     var = var[1:]
-                output += prefix + "holds_at(" + var + "," + str(timepoint) + "," + trace_name + ").\n"
+                output += (
+                    prefix
+                    + "holds_at("
+                    + var
+                    + ","
+                    + str(timepoint)
+                    + ","
+                    + trace_name
+                    + ").\n"
+                )
         output += "\n"
-    with open(filename, 'a', newline='\n') as file:
+    with open(filename, "a", newline="\n") as file:
         file.write(output)
 
 
 def compose_old_traces(old_trace):
     if old_trace == []:
         return ""
-    string = ''.join(old_trace)
+    string = "".join(old_trace)
     traces = re.findall(r"trace_name_\d*", string)
     traces = list(dict.fromkeys(traces))
     output = "\n"
@@ -126,7 +186,7 @@ def compose_old_traces(old_trace):
         for n in range(3):
             as_name = "as" + str(i) + "_" + str(n)
             assignments += asp_trace_to_spectra(name, string, n)
-            output += as_name + " :- " + ','.join(assignments) + ".\n"
+            output += as_name + " :- " + ",".join(assignments) + ".\n"
             output += ":- " + as_name + ".\n"
     return output
 
@@ -147,7 +207,7 @@ def two_period_primed_expressions(primed_expressions, variables):
 
 
 def extract_expressions(file, counter_strat=False, guarantee_only=False):
-    spec = read_file(file)
+    spec = file  # read_file(file)
     variables = strip_vars(spec)
     spec = simplify_assignments(spec, variables)
     assumptions = extract_non_liveness(spec, "assumption")
@@ -156,22 +216,43 @@ def extract_expressions(file, counter_strat=False, guarantee_only=False):
         guarantees = []
     if guarantee_only:
         assumptions = []
-    prev_expressions = [re.search(r"G\((.*)\);", x).group(1) for x in assumptions + guarantees if
-                        re.search(r"PREV", x) and re.search("G", x)]
-    list_of_prevs = ["PREV\\(" + s + "\\)" for s in variables + ["!" + x for x in variables]]
-    prev_occurances = [re.findall('|'.join(list_of_prevs), exp) for exp in prev_expressions]
+    prev_expressions = [
+        re.search(r"G\((.*)\);", x).group(1)
+        for x in assumptions + guarantees
+        if re.search(r"PREV", x) and re.search("G", x)
+    ]
+    list_of_prevs = [
+        "PREV\\(" + s + "\\)" for s in variables + ["!" + x for x in variables]
+    ]
+    prev_occurances = [
+        re.findall("|".join(list_of_prevs), exp) for exp in prev_expressions
+    ]
     prevs = [item for sublist in prev_occurances for item in sublist]
     prevs = [re.sub(r"PREV\(!*(.*)\)", r"prev_\1", x) for x in prevs]
     prevs = list(dict.fromkeys(prevs))
     variables += prevs
     variables.sort()
 
-    unprimed_expressions = [re.search(r"G\(([^F]*)\);", x).group(1) for x in assumptions + guarantees if
-                            not re.search(r"PREV|next", x) and re.search(r"G\s*\(", x)]
-    primed_expressions = [re.search(r"G\(([^F]*)\);", x).group(1) for x in assumptions + guarantees if
-                          re.search(r"PREV|next", x) and re.search("G", x)]
-    initial_expressions = [x.strip(";") for x in assumptions + guarantees if not re.search(r"G\(|GF\(", x)]
-    return initial_expressions, prevs, primed_expressions, unprimed_expressions, variables
+    unprimed_expressions = [
+        re.search(r"G\(([^F]*)\);", x).group(1)
+        for x in assumptions + guarantees
+        if not re.search(r"PREV|next", x) and re.search(r"G\s*\(", x)
+    ]
+    primed_expressions = [
+        re.search(r"G\(([^F]*)\);", x).group(1)
+        for x in assumptions + guarantees
+        if re.search(r"PREV|next", x) and re.search("G", x)
+    ]
+    initial_expressions = [
+        x.strip(";") for x in assumptions + guarantees if not re.search(r"G\(|GF\(", x)
+    ]
+    return (
+        initial_expressions,
+        prevs,
+        primed_expressions,
+        unprimed_expressions,
+        variables,
+    )
 
 
 def extract_non_liveness(spec, exp_type):
@@ -179,14 +260,26 @@ def extract_non_liveness(spec, exp_type):
     return [spectra_to_DNF(x) for x in output if not re.search("F", x)]
 
 
-def generate_model(expressions, neg_expressions, variables, scratch=False, asp_restrictions="", force=False):
+def generate_model(
+    expressions,
+    neg_expressions,
+    variables,
+    scratch=False,
+    asp_restrictions="",
+    force=False,
+):
     if scratch:
         prevs = ["prev_" + var for var in variables]
         nexts = ["next_" + var for var in variables]
         if any([re.search("next", x) for x in expressions + neg_expressions]):
             variables = variables + prevs + nexts
         # TODO: double check regex, ensure it's correct
-        elif any([re.search(r"\b" + r"|\b".join(variables), x) for x in expressions + neg_expressions]):
+        elif any(
+            [
+                re.search(r"\b" + r"|\b".join(variables), x)
+                for x in expressions + neg_expressions
+            ]
+        ):
             variables = variables + prevs
         else:
             variables = prevs
@@ -197,26 +290,26 @@ def generate_model(expressions, neg_expressions, variables, scratch=False, asp_r
     for i, rule in enumerate(expressions):
         name = "t" + str(i)
         disjuncts = rule.split(";")
-        output += '\n'.join([name + " :- " + x + "." for x in disjuncts])
+        output += "\n".join([name + " :- " + x + "." for x in disjuncts])
         output += "\ns" + name + " :- not " + name + ".\n:- s" + name + ".\n"
 
     # output = '\n'.join([x + "." for x in expressions])
     # output += '\n'
-    output += '\n'.join(["{" + var + "}." for var in variables])
-    output += '\n'
+    output += "\n".join(["{" + var + "}." for var in variables])
+    output += "\n"
 
     neg_expressions = aspify(neg_expressions)
     rules = []
     for i, x in enumerate(neg_expressions):
         name = "rule" + str(i)
         disjuncts = x.split(";")
-        output += '\n'.join([name + " :- " + dis + "." for dis in disjuncts]) + "\n"
+        output += "\n".join([name + " :- " + dis + "." for dis in disjuncts]) + "\n"
         # output += name + " :- " + x + ".\n"
         rules.append(name)
 
     if len(rules) > 0:
-        output += ":- " + ','.join(rules) + ".\n"
-    output += '\n'.join(["#show " + var + "/0." for var in variables]) + "\n"
+        output += ":- " + ",".join(rules) + ".\n"
+    output += "\n".join(["#show " + var + "/0." for var in variables]) + "\n"
 
     file = "/tmp/temp_asp.lp"
     write_file(output, file)
@@ -243,7 +336,10 @@ def asp_trace_to_spectra(name, string, n):
         prefix = "next_"
     if n == 0:
         prefix = "prev_"
-    output = ["not " + prefix + tup[1] if tup[0] == "not_" else prefix + tup[1] for tup in tups]
+    output = [
+        "not " + prefix + tup[1] if tup[0] == "not_" else prefix + tup[1]
+        for tup in tups
+    ]
     return output
 
 
@@ -260,7 +356,11 @@ def extract_all_expressions(exp_type, spec):
         search_type = "asm|assumption"
     if exp_type in ["gar", "guarantee"]:
         search_type = "gar|guarantee"
-    output = [re.sub(r"\s", "", spec[i + 1]) for i, line in enumerate(spec) if re.search(search_type, line)]
+    output = [
+        re.sub(r"\s", "", spec[i + 1])
+        for i, line in enumerate(spec)
+        if re.search(search_type, line)
+    ]
     return output
 
 
@@ -284,7 +384,7 @@ def spectra_to_DNF(formula):
     parts = non_temporal_formula.split("->")
     if len(parts) == 1:
         return prefix + non_temporal_formula + suffix
-    return prefix + '|'.join([negate(parts[0]), parts[1]]) + suffix
+    return prefix + "|".join([negate(parts[0]), parts[1]]) + suffix
 
 
 def aspify(expressions):
@@ -298,9 +398,11 @@ def aspify(expressions):
 
 def run_clingo_raw(filename) -> str:
     filepath = f"{filename}"
-    cmd = create_cmd(['clingo', filepath])
-    output = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE).communicate()[0]
-    return output.decode('utf-8')
+    cmd = create_cmd(["clingo", filepath])
+    output = subprocess.Popen(
+        cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE
+    ).communicate()[0]
+    return output.decode("utf-8")
 
 
 def shift_prev_to_next(formula, variables):
@@ -311,7 +413,7 @@ def shift_prev_to_next(formula, variables):
         return re.sub("next", "X", formula)
     formula = re.sub("next", "XX", formula)
 
-    all_vars = '|'.join(["!" + var + "|" + var for var in variables])
+    all_vars = "|".join(["!" + var + "|" + var for var in variables])
     # formula = re.sub(r"([^\(^!])(" + all_vars + r")|([^V^X])\((" + all_vars + ")", r"\1X(\2)", formula)
     formula = re.sub(f"([^V^X])\(({all_vars})", r"\1(X(\2)", formula)
     formula = re.sub(f"([^\(^!])({all_vars})", r"\1X(\2)", formula)
@@ -349,10 +451,12 @@ def equivalent_expressions(exp_type, start_file, end_file):
     start_exp = extract_all_expressions_spot(exp_type, start_file)
     end_exp = extract_all_expressions_spot(exp_type, end_file)
     linux_cmd = ["ltlfilt", "-c", "-f", f"{start_exp}", "--equivalent-to", f"{end_exp}"]
-    p = subprocess.Popen(linux_cmd, stdout=subprocess.PIPE, stdin=subprocess.PIPE, stderr=subprocess.PIPE)
+    p = subprocess.Popen(
+        linux_cmd, stdout=subprocess.PIPE, stdin=subprocess.PIPE, stderr=subprocess.PIPE
+    )
     output = p.communicate()[0]
     close_file_descriptors_of_subprocess(p)
-    output = output.decode('utf-8')
+    output = output.decode("utf-8")
     reg = re.search(r"(\d)\n", output)
     if not reg:
         return None
@@ -377,11 +481,15 @@ def extract_all_expressions_spot(exp_type, file, return_list=False):
     spec = read_file(file)
     variables = strip_vars(spec)
     spec = simplify_assignments(spec, variables)
-    expressions = [re.sub(r"\s", "", spec[i + 1]) for i, line in enumerate(spec) if re.search("^" + exp_type, line)]
+    expressions = [
+        re.sub(r"\s", "", spec[i + 1])
+        for i, line in enumerate(spec)
+        if re.search("^" + exp_type, line)
+    ]
     expressions = [shift_prev_to_next(formula, variables) for formula in expressions]
     if any([re.search("PREV", x) for x in expressions]):
         raise Exception("There are still PREVs in the expressions!")
     if return_list:
         return [re.sub(";", "", x) for x in expressions]
-    exp_conj = re.sub(";", "", '&'.join(expressions))
+    exp_conj = re.sub(";", "", "&".join(expressions))
     return exp_conj

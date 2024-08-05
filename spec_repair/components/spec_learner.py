@@ -18,6 +18,7 @@ from spec_repair.heuristics import (
 from spec_repair.ltl import spectra_to_df
 from spec_repair.components.spec_generator import SpecGenerator
 from spec_repair.wrappers.asp_wrappers import get_violations, run_ILASP
+from spec_repair.components.spec_oracle import SpecOracle  #
 
 
 class SpecLearner:
@@ -25,6 +26,7 @@ class SpecLearner:
         self.file_generator = SpecGenerator()
         self.spec_encoder = SpecEncoder(self.file_generator)
         self.rl_agent = rl_agent
+        self.oracle=SpecOracle()
 
     ####
     def learn_weaker_spec(
@@ -35,6 +37,9 @@ class SpecLearner:
         learning_type: Learning,
         ##heuristic: HeuristicType = manual_choice,
     ) -> Optional[list[str]]:
+        # while True:  ##
+        #     try:  ##
+        print("STARTING WKN")
         mode_dec = self.rl_agent.get_mode_dec()  ##
         spec_df: pd.DataFrame = spectra_to_df(spec)
         asp: str = self.spec_encoder.encode_ASP(spec_df, trace, cs_traces)
@@ -53,35 +58,52 @@ class SpecLearner:
         # print("hyp: ", hypotheses)
 
         if not hypotheses:
-            for key in self.rl_agent.mode_dec.keys():  #
-                self.rl_agent.fails[key] += 1  #
-            self.rl_agent.update_mode_dec("counter_strategy_found")  #
-            ##??why
-            raise NoWeakeningException(
-                f"No {learning_type.exp_type_str()} weakening produces realizable spec (las file UNSAT)"
-            )
-        # hypothesis = select_learning_hypothesis(hypotheses, heuristic)
-        ##get best instead, auto
+            self.rl_agent.update_mode_dec("counter_strategy_found")
+            return None
+        # if not hypotheses:
+        #     print("NO HYPO")
+        #     for key in self.rl_agent.mode_dec.keys():  #
+        #         self.rl_agent.fails[key] += 1  #
+        #     result = self.rl_agent.update_mode_dec("counter_strategy_found")  #
+        #     if result in ["max", "converged"]:
+        #         return None
+
         hypothesis = self.select_best_hypothesis(hypotheses)
+        print("BESSTTTT", hypothesis)
+
+        ##no need?
+        if hypothesis is None:
+            print("No BEST hyp2")
+            # for k in self.rl_agent.mode_dec.keys():
+            #     self.rl_agent.fails[k] += 1
+            self.rl_agent.update_mode_dec("counter_strategy_found")  #
+            # if result in ["max", "converged"]:
+            #     return None
+            return None
+
         new_spec = self.spec_encoder.integrate_learned_hypotheses(
             spec, hypothesis, learning_type
         )
-        self.rl_agent.update_mode_dec("realisable")  #
         return new_spec
+
+    # except NoWeakeningException as e:  ##
+    #     print(str(e))
+    #     self.rl_agent.update_mode_dec("counter_strategy_found")
 
     def select_best_hypothesis(self, hypotheses):
         best_hyp = None
         best_score = float("inf")
 
         for hyp in hypotheses:  # search for best in all hypotheses
-            score = self.extract(hyp)  ###
-            if score > best_score:
-                best_score = score
-                best_hyp = hyp
+            if hyp:
+                score = self.extract(hyp)  ###
+                if score < best_score:  # >?
+                    best_score = score
+                    best_hyp = hyp
         return best_hyp
 
     def extract(self, hyp):
-        match = re.search(r"\(score(\d+)\)", hyp[0])
+        match = re.search(r"score (\d+)", hyp[0])
         if match:
             return int(match.group(1))
         return float("inf")
@@ -123,12 +145,17 @@ def get_hypotheses(output: str) -> Optional[List[List[str]]]:
         output = re.sub(r"\), ", "); ", output)
         hypotheses = [re.sub(r"b'|'", "", output).split("\n")]
     else:
-        hypotheses = [
+        sol = output.split("%% Solution ")
+        hypotheses = []
+        for s in sol:
+            lines = s.strip().split("\n")
+            if lines:
+                hypotheses.append([l.strip() for l in lines if l.strip()])
             # part.split("\n") for part in "".join(output).split("%% Solution ")
-            part.split("\n")
-            for part in output.split("%% Solution ")
-        ]
+            # part.split("\n")
+            # for part in output.split("%% Solution ") ]
     ##
-    hypotheses = [[line for line in hyp if line.strip()] for hyp in hypotheses]
+    # hypotheses = [[line for line in hyp if line.strip()] for hyp in hypotheses]
     ##return hypotheses
+    print("hyp:", hypotheses)
     return [hyp for hyp in hypotheses if hyp]

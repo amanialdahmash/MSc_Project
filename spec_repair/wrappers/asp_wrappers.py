@@ -108,8 +108,13 @@ def run_ILASP_raw(las_file, pylasp_integrated=False):
         cmd = create_cmd(["FastLAS", "--nopl", "--force-safety", las_file])
     else:
         cmd = create_cmd(["ILASP", las_file])
+
+    print(f"Running ILASP with command: {' '.join(cmd)}")
+
     output = run_subprocess(cmd, timeout=60)
     error_check_ILASP_output(output)
+    # print("RUNNINGILASPRAAAAWW")
+
     return output
 
 
@@ -124,6 +129,7 @@ def run_ILASP(las, pylasp_integrated=False):
     ilasp_file = generate_temp_filename(ext=".las")
     write_to_file(ilasp_file, las)
     output = run_ILASP_raw(ilasp_file, pylasp_integrated)
+    # print("RUNNINGILASP")
     return output
 
 
