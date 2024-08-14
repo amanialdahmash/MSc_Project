@@ -12,11 +12,22 @@ from spec_repair.old.specification_helper import (
 
 
 def generate_trace_asp(start_file, end_file, trace_file):
-    try:
-        old_trace = read_file(trace_file)
-    except FileNotFoundError:
-        old_trace = []
-    asp_restrictions = compose_old_traces(old_trace)
+    # print("start_file", start_file)
+    # print("end_file", end_file)
+    print("trace_file", trace_file)
+    # trace_file should be:
+    # tests/test_files/minepump_aw_methane_gw_methane_fix.spectra
+    # now:
+    # var/folders/rt/qwpf5rpj4w12vzp34kh76g9w0000gn/T/tmprue1eqqj.txt
+
+    # try:
+    #     old_trace = read_file(trace_file)
+    # except FileNotFoundError:
+    #     old_trace = []
+    # print("old_trace", old_trace)
+    # asp_restrictions = compose_old_traces(old_trace)
+    asp_restrictions = ""
+    print("asp_restrictions", asp_restrictions)
 
     trace = {}
 
@@ -88,6 +99,9 @@ def generate_trace_asp(start_file, end_file, trace_file):
 
     expressions += two_period_primed_expressions(primed_expressions, variables)
     neg_expressions += two_period_primed_expressions(primed_expressions_s, variables)
+
+    print("expressions", expressions)
+    print("neg_expressions", neg_expressions)
 
     # Can it be done with one time point?
     state, violation = generate_model(
@@ -172,6 +186,8 @@ def write_trace(trace, filename):
         output += "\n"
     with open(filename, "a", newline="\n") as file:
         file.write(output)
+    print(f"Trace written to {filename}:")
+    print(output)
 
 
 def compose_old_traces(old_trace):

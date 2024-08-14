@@ -57,7 +57,7 @@ pattern pRespondsToS(s, p) {
             "--counter-strategy",
             "--jtlv",
         ]
-        print("spectraCMD", cmd)  ##
+        # print("spectraCMD", cmd)  ##
         return run_subprocess(cmd)
 
     def _pRespondsToS_substitution(self, spec: list[str]) -> list[str]:

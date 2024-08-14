@@ -39,7 +39,7 @@ class RepairOrchestrator:
         trace: list[str],
         stop_heuristic: StopHeuristicType = lambda a, g: True,
     ):
-        self._ct_cnt = 0
+        self._ct_cnt = 0  # cts
         ct_asm, ct_gar = [], []
         weak_spec_history = []
         cs = None  ##

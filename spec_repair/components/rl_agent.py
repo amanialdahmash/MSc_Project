@@ -132,7 +132,7 @@ class RLAgent:
         # pass  ##TODO: write method
         return sum(temp.rewards.values())  ##improve
 
-    def add_c(self):
+    def add_c(self):  ##ideally no
         # if agent is None:  # do for all?
         #     agent = self  #
         new_c = f"#constant(t2,c{len(self.mode_dec)+1})."
@@ -204,5 +204,3 @@ class RLAgent:
         # if len(recent) <= 1:
         #     return True
         # return False
-
-
