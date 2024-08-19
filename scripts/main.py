@@ -37,11 +37,13 @@ def main():
     oracle = SpecOracle()
 
     print("ORIGINAL IDEAL", expected_spec)
+    # rmv
+    # mode_dec = derive_initial_mode_dec(expected_spec)
+    # print("MODEDEC!!")
+    # print(mode_dec)
     ##agent
-    cs = oracle.synthesise_and_check(expected_spec)
-    print("CHECKING THIS")
-    num_mut = 10
-    muts = generate_mutated_specs(expected_spec, num_mut, oracle)
+    num_mut = 4  # 10
+    muts, violation_traces = generate_mutated_specs(expected_spec, num_mut, oracle)
     print("ALL 10 MUTS", muts)
     # check_unique_mutations(muts)
 
@@ -49,10 +51,8 @@ def main():
     print("MODEDEC!!")
     print(mode_dec)
     rl_agent = RLAgent(mode_dec)  ##
-    repairer: RepairOrchestrator = RepairOrchestrator(
-        SpecLearner(rl_agent), SpecOracle()
-    )
-    violation_traces = generate_violating_traces(expected_spec, muts)  #
+    # repairer: RepairOrchestrator = RepairOrchestrator(SpecLearner(rl_agent), SpecOracle())
+    # violation_traces = generate_violating_traces(expected_spec, muts)  #
 
     print("violation traces:", violation_traces)
 
@@ -62,20 +62,24 @@ def main():
     print("TEST:", test_data)
 
     ###now for trainiing
-    num_epochs = 1
+    num_epochs = 2
+    rl_agent.training = True
     for epoch in range(num_epochs):
         print(f"Epoch {epoch+1}/{num_mut}")
         for spec, trace in train_data:
             mode_dec = derive_initial_mode_dec(spec)
-            rl_agent.update_with_spec(mode_dec)  ##
+            rl_agent.update_with_spec(mode_dec)  ##resets mode_dec
             repairer: RepairOrchestrator = RepairOrchestrator(
                 SpecLearner(rl_agent), oracle
             )
             new_spec = repairer.repair_spec(spec, trace)
+            ##
             write_file(new_spec, "tests/test_files/out/minepump_test_fix.spectra")
         # # change write file
 
     # rl_agent.save()
+    print("TrainingDone")
+    rl_agent.training = False
     for spec, trace in test_data:
         mode_dec = derive_initial_mode_dec(spec)
         rl_agent.update_with_spec(mode_dec)  ##
@@ -179,9 +183,14 @@ def generate_mutated_specs(spec, num_mutations, oracle):  # REWRITE
             )
         if random.random() < 0.3:
             line = line.replace("&", "|") if "&" in line else line.replace("|", "&")
+        ##adding
+        if random.random() < 0.2:
+            if "G(" in line or "F(" in line:
+                line = line.replace("G(", "F(G(").replace("F(", "G(F(")
         return line
 
     mutated_specs = []
+    violation_traces = []
     attempts = 0
     max_attempts = 100  # Limit the number of attempts
     while len(mutated_specs) < num_mutations and attempts < max_attempts:
@@ -193,46 +202,26 @@ def generate_mutated_specs(spec, num_mutations, oracle):  # REWRITE
         trace_file = tempfile.mktemp(suffix=".spectra")
         # open(trace_file, "a").close()
         try:
-            print("NOW CHECKOTHEER?")
+            # print("NOW CHECKOTHEER?")
             cs = oracle.synthesise_and_check(mut)
             if not cs:
                 # print("R")
                 if check_unique_mutations(mut, mutated_specs):
                     # trace_file = tempfile.mktemp(suffix=".txt")  ##txt
-                    trace_path, _ = generate_trace_asp(spec, mut, trace_file)
+                    trace_path, violation_trace, _ = generate_trace_asp(
+                        spec, mut, trace_file
+                    )
+                    print("trace path", trace_path)
                     if trace_path:
                         mutated_specs.append(mut)
+                        violation_traces.append(violation_trace)
                         print("Valid mutation found")
                         print(mut)
+                        print(violation_trace)
         except Exception as e:
             print(f"Error during synthesise_and_check: {e}")
         attempts += 1
-    return mutated_specs
-
-
-def generate_violating_traces(ideal_spec_path, mutated_specs):  # REWRITE
-    traces = []
-    with tempfile.TemporaryDirectory() as temp_dir:
-        for i, spec in enumerate(mutated_specs):
-            mutated_spec_path = os.path.join(temp_dir, f"mutated_spec_{i}.spectra")
-            print("1", mutated_spec_path)
-            write_file(spec, mutated_spec_path)
-            trace_file = os.path.join(temp_dir, f"trace_{i}.spectra")
-            print("2", trace_file)
-            try:
-                trace_path, _ = generate_trace_asp(
-                    ideal_spec_path, mutated_spec_path, trace_file
-                )
-                print("3", trace_path)
-                if trace_path:
-                    traces.append(read_file(trace_path))
-                    print("4")
-                else:
-                    traces.append([])  # Append an empty trace if generation fails
-            except Exception as e:
-                print(f"Error during generate_trace_asp: {e}")
-                traces.append([])  # Append an empty trace if generation fails
-    return traces
+    return mutated_specs, violation_traces
 
 
 def derive_initial_mode_dec(spec):
@@ -241,10 +230,20 @@ def derive_initial_mode_dec(spec):
     for line in spec:
         matches = re.findall(r"\b\w+\b", line)
         for match in matches:
-            if match.islower() and match not in {"true", "false"}:
+            if match.islower() and match not in {
+                "true",
+                "false",
+                # "module",
+                # "env",
+                # "sys",
+                # "boolean",
+                # "next",
+                # "G",
+                # "PREV",
+            }:
                 constants.add(match)
-            elif match.islower() is False:
-                predicates.add(match)
+            elif match.isupper() or match[0].isupper():
+                predicates.add(match.lower())
 
     # mode_dec = {
     #     "modeha": f"#modeha(r(var(t1),const(t2))).",
@@ -256,13 +255,20 @@ def derive_initial_mode_dec(spec):
     #     "maxv": "#maxv(2).",##btwn pred?
     # }
 
-    modeh = [f"#modeh({pred}(var(t1)))." for pred in predicates]
-    modeb = [f"#modeb({pred}(var(t1)))." for pred in predicates]
-    consts = [f"#constant(t2,{const})." for const in constants]
+    modeh = {
+        f"#modeh_{i}": f"modeh({pred}(var(t1)))." for i, pred in enumerate(predicates)
+    }
+    modeb = {
+        f"#modeb_{i}": f"#modeb(1,{pred}(var(t1)))."
+        for i, pred in enumerate(predicates)
+    }
+    consts = {
+        f"#constant_{i}": f"#constant(t2,{const})." for i, const in enumerate(constants)
+    }
     maxv_val = max(len(predicates), 2)  ##or just 2?
-    maxv = [f"#maxv({maxv_val})"]
+    maxv = {"maxv": f"#maxv({maxv_val})"}
     # return mode_dec
-    return modeh + modeb + consts + maxv
+    return {**modeh, **modeb, **consts, **maxv}
 
 
 def check_unique_mutations(new, mutated_specs):

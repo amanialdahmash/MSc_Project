@@ -5,8 +5,9 @@ import re
 
 
 class RLAgent:
-    def __init__(self, inital_mode_dec, epsilon=0.1, decay=0.99):  ##exp epsilon & decay
+    def __init__(self, inital_mode_dec, epsilon=0.5, decay=0.99):  ##exp epsilon & decay
         self.mode_dec = inital_mode_dec
+        self.inital_mode_dec = inital_mode_dec
         # self.pruned_areas=set()
         self.epsilon = epsilon
         self.decay = decay
@@ -17,6 +18,7 @@ class RLAgent:
         self.max_iterations = 100  #
         self.states = []
         self.state_rewards = []
+        self.training = True
 
         ##to ensure its not missing
         if "maxv" not in self.mode_dec:
@@ -27,37 +29,45 @@ class RLAgent:
         return "\n".join(self.mode_dec.values())  ##
 
     def update_with_spec(self, spec):
+        # for key, value in spec.items():
+        #     if key not in self.mode_dec:
+        #         self.mode_dec[key] = value
+        #         self.fails[key] = 0
+        self.mode_dec = copy.deepcopy(self.inital_mode_dec)
+        self.rewards = {key: 0 for key in self.inital_mode_dec.keys()}
+        self.fails = {key: 0 for key in self.inital_mode_dec.keys()}
+        self.iterations = 0
         for key, value in spec.items():
-            if key not in self.mode_dec:
-                self.mode_dec[key] = value
-                self.fails[key] = 0
+            self.mode_dec[key] = value
+            self.fails[key] = 0
 
     def update_mode_dec(self, feedback):
-        self.update_rewards(self.get_reward(feedback))  #
+        if self.training:
+            self.update_rewards(self.get_reward(feedback))  #
 
-        if feedback == "counter_strategy_found":  ##unrealisable
-            self.prune_mode_dec()
-            # self.expand_mode_dec()
-        elif feedback == "realisable":
-            print("Realisable specification found.")
-            return "realisable"  # True  #
+            if feedback == "counter_strategy_found":  ##unrealisable
+                self.prune_mode_dec()
+                # self.expand_mode_dec()
+            elif feedback == "realisable":
+                print("Realisable specification found.")
+                return "realisable"  # True  #
 
-        if random.uniform(0, 1) < self.epsilon:
-            self.expand_mode_dec()
-        else:
-            self.expand_best()  ##not sure
+            if random.uniform(0, 1) < self.epsilon:
+                self.expand_mode_dec()
+            else:
+                self.expand_best()  ##not sure
 
-        self.epsilon *= self.decay
-        self.iterations += 1
-        print(f"Iteration: {self.iterations}, Mode Decleration: {self.mode_dec}")
+            self.epsilon *= self.decay
+            self.iterations += 1
+            print(f"Iteration: {self.iterations}, Mode Decleration: {self.mode_dec}")
 
-        self.history.append(copy.deepcopy(self.mode_dec))  ##
-        self.states.append(copy.deepcopy(self.mode_dec))
-        self.state_rewards.append(self.rewards.copy())
-        print("HISTORY", self.history)
-        if self.iterations >= self.max_iterations:
-            print("Maximum iterations reached.")
-            return "max"
+            self.history.append(copy.deepcopy(self.mode_dec))  ##
+            self.states.append(copy.deepcopy(self.mode_dec))
+            self.state_rewards.append(self.rewards.copy())
+            print("HISTORY", self.history)
+            if self.iterations >= self.max_iterations:
+                print("Maximum iterations reached.")
+                return "max"
 
         # if len(self.history) > 10:
         #     if self.converged():

@@ -26,7 +26,7 @@ class SpecLearner:
         self.file_generator = SpecGenerator()
         self.spec_encoder = SpecEncoder(self.file_generator)
         self.rl_agent = rl_agent
-        self.oracle=SpecOracle()
+        self.oracle = SpecOracle()
 
     ####
     def learn_weaker_spec(
@@ -39,23 +39,43 @@ class SpecLearner:
     ) -> Optional[list[str]]:
         # while True:  ##
         #     try:  ##
-        print("STARTING WKN")
+        print("STARTING WKNoo")
         mode_dec = self.rl_agent.get_mode_dec()  ##
         spec_df: pd.DataFrame = spectra_to_df(spec)
         asp: str = self.spec_encoder.encode_ASP(spec_df, trace, cs_traces)
         violations = get_violations(asp, exp_type=learning_type.exp_type())
+        # print("ASP: ", asp)
+        # print("violations", violations)
+
+        ##
+        if (
+            isinstance(violations, list)
+            and len(violations) == 1
+            and isinstance(violations[0], str)
+        ):
+            violations = violations[0].split("\n")
+
+        print("violations", violations)
+
         if not violations:
+            print("VVVV")
             raise NoViolationException("Violation trace is not violating!")
+
+        print("1")
+
         ilasp: str = self.spec_encoder.encode_ILASP(
             spec_df, trace, cs_traces, violations, learning_type
         )
+        print("2")
         output: str = run_ILASP(ilasp)
-        hypotheses = get_hypotheses(output)
+        print("3")
 
-        # print("ASP: ", asp)
-        # print("ILASP: ", ilasp)
-        # print("output: ", output)
-        # print("hyp: ", hypotheses)
+        hypotheses = get_hypotheses(output)
+        print("4")
+        print("ILASP: ", ilasp)
+
+        print("output: ", output)
+        print("hyp!!: ", hypotheses)
 
         if not hypotheses:
             self.rl_agent.update_mode_dec("counter_strategy_found")
@@ -68,7 +88,8 @@ class SpecLearner:
         #     if result in ["max", "converged"]:
         #         return None
 
-        hypothesis = self.select_best_hypothesis(hypotheses)
+        # hypothesis = self.select_best_hypothesis(hypotheses)
+        hypothesis = self.select_learning_hypothesis(hypotheses)
         print("BESSTTTT", hypothesis)
 
         ##no need?
@@ -84,6 +105,8 @@ class SpecLearner:
         new_spec = self.spec_encoder.integrate_learned_hypotheses(
             spec, hypothesis, learning_type
         )
+        print("NEW")
+        print(new_spec)
         return new_spec
 
     # except NoWeakeningException as e:  ##
@@ -108,36 +131,41 @@ class SpecLearner:
             return int(match.group(1))
         return float("inf")
 
+    ###i wont use this func: (for now,trying diff approach)
+    def select_learning_hypothesis(
+        self,
+        hypotheses: List[List[str]],  # , heuristic: HeuristicType
+    ) -> List[str]:
 
-###i wont use this func: (for now,trying diff approach)
-def select_learning_hypothesis(
-    hypotheses: List[List[str]], heuristic: HeuristicType
-) -> List[str]:
-    # TODO: store amount of top_hyp learned
-    # TODO: make sure no repeated hypotheses occur
-    print(hypotheses)
-    all_hyp = hypotheses[1:]
-    scores = [
-        int(re.search(r"score (\d*)", hyp[0]).group(1))
-        for hyp in all_hyp
-        if re.search(r"score (\d*)", hyp[0])
-    ]
-    top_hyp = [hyp[1:] for i, hyp in enumerate(all_hyp) if scores[i] == min(scores)]
-    learning_hyp = choose_one_with_heuristic(top_hyp, heuristic)
-    return learning_hyp
+        # TODO: store amount of top_hyp learned
+        # TODO: make sure no repeated hypotheses occur
+        print("this", hypotheses)
+        all_hyp = hypotheses[1:]
+        scores = [
+            int(re.search(r"score (\d*)", hyp[0]).group(1))
+            for hyp in all_hyp
+            if re.search(r"score (\d*)", hyp[0])
+        ]
+        top_hyp = [hyp[1:] for i, hyp in enumerate(all_hyp) if scores[i] == min(scores)]
+        # learning_hyp = choose_one_with_heuristic(top_hyp, heuristic)
+        # return learning_hyp
+        return top_hyp
 
 
 def get_hypotheses(output: str) -> Optional[List[List[str]]]:
     # if re.search("UNSATISFIABLE", "".join(output)):
     if "UNSATISFIABLE" in output:
+        print("none??")
+
         return None
     # if re.search(r"1 \(score 0\)", "".join(output)):
-    if re.search(r"1 \(score 0\)", output):
-        raise NoViolationException(
-            "Learning problem is trivially solvable. "
-            "If spec is not realisable, we have a learning error."
-        )
-
+    #     # if re.search(r"1 \(score 0\)", output):
+    #     print("raised??")
+    #     raise NoViolationException(
+    #         "Learning problem is trivially solvable. "
+    #         "If spec is not realisable, we have a learning error."
+    #     )
+    hypotheses = []
     if FASTLAS:
         output = re.sub(r"time\(V\d*\)|trace\(V\d*\)", "", output)
         output = re.sub(r" ,", "", output)
@@ -157,5 +185,14 @@ def get_hypotheses(output: str) -> Optional[List[List[str]]]:
     ##
     # hypotheses = [[line for line in hyp if line.strip()] for hyp in hypotheses]
     ##return hypotheses
-    print("hyp:", hypotheses)
-    return [hyp for hyp in hypotheses if hyp]
+    print("hypooo:", hypotheses)
+    # return [hyp for hyp in hypotheses if hyp]
+    clean = []
+    for hyp in hypotheses:
+        c = [line for line in hyp if "score" not in line and "%" not in line]
+        if c:
+            clean.append(c)
+
+    print("clean", clean)
+    # return [hyp for hyp in hypotheses if hyp] if isinstance(hypotheses, list) else []
+    return clean if clean else []

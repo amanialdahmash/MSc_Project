@@ -115,8 +115,8 @@ def generate_trace_asp(start_file, end_file, trace_file):
         trace[0] = [
             re.sub(r"prev_", "", var) for var in state[0] if re.search("prev_", var)
         ]
-        write_trace(trace, trace_file)
-        return trace_file, violation
+        v = write_trace(trace, trace_file)
+        return trace_file, v, violation
 
     # Can it be done with two time points?
     two_point_exp = [x for x in expressions if not re.search("next", x)]
@@ -133,8 +133,8 @@ def generate_trace_asp(start_file, end_file, trace_file):
             re.sub(r"prev_", "", var) for var in state[0] if re.search("prev_", var)
         ]
         trace[1] = [var for var in state[0] if not re.search("prev_|next_", var)]
-        write_trace(trace, trace_file)
-        return trace_file, violation
+        v = write_trace(trace, trace_file)
+        return trace_file, v, violation
 
     # Can it be done with three time points?
     state, violation = generate_model(
@@ -153,8 +153,8 @@ def generate_trace_asp(start_file, end_file, trace_file):
     trace[2] = [
         re.sub(r"next_", "", var) for var in state[0] if re.search("next_", var)
     ]
-    write_trace(trace, trace_file)
-    return trace_file, violation
+    v = write_trace(trace, trace_file)
+    return trace_file, v, violation
 
 
 def write_trace(trace, filename):
@@ -165,6 +165,7 @@ def write_trace(trace, filename):
         timepoint = 0
     trace_name = "trace_name_" + str(timepoint)
     output = ""
+    label = "#pos"  ##me
     for timepoint in trace.keys():
         variables = list(trace[timepoint])
         for var in variables:
@@ -174,20 +175,25 @@ def write_trace(trace, filename):
                     prefix = "not_"
                     var = var[1:]
                 output += (
+                    # label
+                    # + " "
+                    # +
                     prefix
                     + "holds_at("
                     + var
                     + ","
                     + str(timepoint)
-                    + ","
-                    + trace_name
+                    # + ","
+                    # + trace_name
                     + ").\n"
                 )
         output += "\n"
     with open(filename, "a", newline="\n") as file:
         file.write(output)
     print(f"Trace written to {filename}:")
+    print(trace)
     print(output)
+    return output  ##me
 
 
 def compose_old_traces(old_trace):
