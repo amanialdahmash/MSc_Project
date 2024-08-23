@@ -2,10 +2,13 @@
 import random
 import copy  #
 import re
+import numpy as np
+
+from spec_repair.components.spec_oracle import SpecOracle
 
 
 class RLAgent:
-    def __init__(self, inital_mode_dec, epsilon=0.5, decay=0.99):  ##exp epsilon & decay
+    def __init__(self, inital_mode_dec, epsilon=0.9, decay=0.99):  ##exp epsilon & decay
         self.mode_dec = inital_mode_dec
         self.inital_mode_dec = inital_mode_dec
         # self.pruned_areas=set()
@@ -19,10 +22,96 @@ class RLAgent:
         self.states = []
         self.state_rewards = []
         self.training = True
+        self.spec = []  ##
+        self.q_table = {}
+        self.actions = ["add_c", "add_p", "add_r", "add_l", "rmv_l"]
+
+        self.oracle = SpecOracle()
 
         ##to ensure its not missing
         if "maxv" not in self.mode_dec:
             self.mode_dec["maxv"] = "#maxv(2)."
+
+    def extract_features(self, spec, trace):
+        num_ass = sum(1 for line in spec if "assumption" in line)
+        num_guar = sum(1 for line in spec if "guarantee" in line)
+        num_temp_operators = sum(
+            1
+            for line in spec
+            if any(op in line for op in ["next", "prev", "eventually"])
+        )
+        num_violated = len(trace)
+        spec_length = len(spec)
+
+        feature_vec = np.array(
+            [num_ass, num_guar, num_temp_operators, num_violated, spec_length]
+        )
+        return feature_vec
+
+    def select_action(self, state):
+        if np.random.rand() < self.epsilon:
+            return np.random.choice(self.actions)
+        else:
+            return self.best_action(state)
+
+    def best_action(self, state):
+        state_str = str(state)
+        if state_str in self.q_table:
+            return max(self.q_table[state_str], key=self.q_table[state_str].get)
+        else:
+            return np.random.choice(self.actions)
+
+    def update_policy(self, state, action, reward, next_state):
+        state_str = str(state)
+        next_str = str(next_state)
+        if state_str not in self.q_table:
+            self.q_table[state_str] = {a: 0 for a in self.actions}
+        best_next_action = self.best_action(next_state)
+        q_update = reward + self.decay * self.q_table[next_str].get(best_next_action, 0)
+        self.q_table[state_str][action] = (1 - self.decay) * self.q_table[
+            state_str[action]
+        ] + self.decay * q_update
+
+    def train(self, spec, trace):
+        state = self.extract_features(spec, trace)
+        while True:
+            action = self.select_action(state)
+            modified_spec = self.apply_action(action, spec)
+            cs = self.oracle.synthesise_and_check(spec)
+            print("CS:", cs)
+            if not cs:
+                feedback = "realisable"
+            else:
+                feedback = "counter_strategy_found"
+            reward = self.get_reward(feedback)
+            next_state = self.extract_features(modified_spec, trace)
+            self.update_policy(state, action, reward, next_state)
+            state = next_state
+            if feedback == "realisable" or self.iterations >= self.max_iterations:
+                break
+            self.iterations += 1
+        self.epsilon *= self.decay
+
+    def get_reward(self, feedback):
+        if feedback == "counter_strategy_found":  ##unrealisable
+            return -1
+        elif feedback == "realisable":
+            return 10
+        else:
+            return 0  ##no need?
+
+    def apply_action(self, action, spec):
+        if action == "add_c":
+            return self.add_c(spec)
+        elif action == "add_p":
+            return self.add_p(spec)
+        elif action == "add_r":
+            return self.add_r(spec)
+        elif action == "add_l":
+            return self.add_l(spec)  ##inc maxv
+        elif action == "rmv_l":
+            return self.rmv_l(spec)  ##dec maxv
+        return spec
 
     def get_mode_dec(self):
         # return self.mode_dec
@@ -34,6 +123,7 @@ class RLAgent:
         #         self.mode_dec[key] = value
         #         self.fails[key] = 0
         self.mode_dec = copy.deepcopy(self.inital_mode_dec)
+        self.spec = copy.deepcopy(spec)  ##
         self.rewards = {key: 0 for key in self.inital_mode_dec.keys()}
         self.fails = {key: 0 for key in self.inital_mode_dec.keys()}
         self.iterations = 0
@@ -75,14 +165,6 @@ class RLAgent:
         #         return "converged"
 
         return "continue"  # False  #
-
-    def get_reward(self, feedback):
-        if feedback == "counter_strategy_found":  ##unrealisable
-            return -1
-        elif feedback == "realisable":
-            return 10
-        else:
-            return 0  ##no need?
 
     def update_rewards(self, reward):  ##
         for key in self.mode_dec.keys():
@@ -142,53 +224,83 @@ class RLAgent:
         # pass  ##TODO: write method
         return sum(temp.rewards.values())  ##improve
 
-    def add_c(self):  ##ideally no
+    def add_c(self, spec):  ##ideally no
         # if agent is None:  # do for all?
         #     agent = self  #
-        new_c = f"#constant(t2,c{len(self.mode_dec)+1})."
-        key = f"constant_c{len(self.mode_dec)+1}"
-        if key not in self.mode_dec:  ##
-            self.mode_dec[key] = new_c
-            self.fails[key] = 0
-            # self.history.append(f"Added constant: {new_c}")
-            self.history.append(copy.deepcopy(self.mode_dec))
-            self.states.append(copy.deepcopy(self.mode_dec))
-            self.state_rewards.append(self.rewards.copy())
+        new_c = f"#constant(t2,c{len(spec)+1})."
+        # key = f"constant_c{len(self.mode_dec)+1}"
+        if new_c not in spec:  ##
+            spec.append(new_c)
+            # self.mode_dec[key] = new_c
+            # self.fails[key] = 0
+            # # self.history.append(f"Added constant: {new_c}")
+            # self.history.append(copy.deepcopy(self.mode_dec))
+            # self.states.append(copy.deepcopy(self.mode_dec))
+            # self.state_rewards.append(self.rewards.copy())
+        return spec
 
-    def add_p(self):
-        new_p = f"#modeh(new_pred_{len(self.mode_dec)}(var(t1))))."
-        key = f"new_pred_{len(self.mode_dec)}"
-        if key not in self.mode_dec:  ##
-            self.mode_dec[key] = new_p
-            self.fails[key] = 0
-            self.history.append(copy.deepcopy(self.mode_dec))
-            self.states.append(copy.deepcopy(self.mode_dec))
-            self.state_rewards.append(self.rewards.copy())
+    def add_p(self, spec):
+        new_p = f"#modeh(new_pred_{len(spec)}(var(t1))))."
+        # key = f"constant_c{len(self.mode_dec)+1}"
+        if new_p not in spec:  ##
+            spec.append(new_p)
+        # new_p = f"#modeh(new_pred_{len(self.mode_dec)}(var(t1))))."
+        # key = f"new_pred_{len(self.mode_dec)}"
+        # if key not in self.mode_dec:  ##
+        #     self.mode_dec[key] = new_p
+        #     self.fails[key] = 0
+        #     self.history.append(copy.deepcopy(self.mode_dec))
+        #     self.states.append(copy.deepcopy(self.mode_dec))
+        #     self.state_rewards.append(self.rewards.copy())
+        return spec
 
-    def add_r(self):
-        new_r = f"#modeb(new_body_pred_{len(self.mode_dec)}(var(t1))))."  ##body?rule?
-        key = f"new_body_pred_{len(self.mode_dec)}"  ##body?rule?
-        if key not in self.mode_dec:  ##
-            self.mode_dec[key] = new_r
-            self.fails[key] = 0
-            self.history.append(copy.deepcopy(self.mode_dec))
-            self.states.append(copy.deepcopy(self.mode_dec))
-            self.state_rewards.append(self.rewards.copy())
+    def add_r(self, spec):
+        new_r = f"#modeb(new_body_pred_{len(spec)}(var(t1))))."  ##body?rule?
+        if new_r not in spec:  ##
+            spec.append(new_r)
+        # key = f"new_body_pred_{len(self.mode_dec)}"  ##body?rule?
+        # if key not in self.mode_dec:  ##
+        #     self.mode_dec[key] = new_r
+        #     self.fails[key] = 0
+        #     self.history.append(copy.deepcopy(self.mode_dec))
+        #     self.states.append(copy.deepcopy(self.mode_dec))
+        #     self.state_rewards.append(self.rewards.copy())
+        return spec
 
-    def add_l(self):
-        current_maxv = int(re.search(r"#maxv\((\d+)\)", self.mode_dec["maxv"]).group(1))
-        self.mode_dec["maxv"] = f"#maxv({current_maxv+1})."
-        self.history.append(copy.deepcopy(self.mode_dec))
-        self.states.append(copy.deepcopy(self.mode_dec))
-        self.state_rewards.append(self.rewards.copy())
+    def add_l(self, spec):
 
-    def rmv_l(self):
-        current_maxv = int(re.search(r"#maxv\((\d+)\)", self.mode_dec["maxv"]).group(1))
-        if current_maxv > 1:
-            self.mode_dec["maxv"] = f"#maxv({current_maxv-1})."
-            self.history.append(copy.deepcopy(self.mode_dec))
-            self.states.append(copy.deepcopy(self.mode_dec))  ##no need
-            self.state_rewards.append(self.rewards.copy())
+        # current_maxv = int(re.search(r"#maxv\((\d+)\)", self.mode_dec["maxv"]).group(1))
+        # self.mode_dec["maxv"] = f"#maxv({current_maxv+1})."
+        # self.history.append(copy.deepcopy(self.mode_dec))
+        # self.states.append(copy.deepcopy(self.mode_dec))
+        # self.state_rewards.append(self.rewards.copy())
+
+        maxv_pattern = re.compile(r"#maxv\((\d+)\).")
+        for i, line in enumerate(spec):
+            match = maxv_pattern.match(line)
+            if match:
+                current_maxv = int(match.group(1))
+                spec[i] = f"#maxv({current_maxv+1})."
+                break
+        return spec
+
+    def rmv_l(self, spec):
+
+        # current_maxv = int(re.search(r"#maxv\((\d+)\)", self.mode_dec["maxv"]).group(1))
+        # if current_maxv > 1:
+        #     self.mode_dec["maxv"] = f"#maxv({current_maxv-1})."
+        #     self.history.append(copy.deepcopy(self.mode_dec))
+        #     self.states.append(copy.deepcopy(self.mode_dec))  ##no need
+        #     self.state_rewards.append(self.rewards.copy())
+        maxv_pattern = re.compile(r"#maxv\((\d+)\).")
+        for i, line in enumerate(spec):
+            match = maxv_pattern.match(line)
+            if match:
+                current_maxv = int(match.group(1))
+                if current_maxv > 1:
+                    spec[i] = f"#maxv({current_maxv-1})."
+                break
+        return spec
 
     # def add_maxbody(self):
     #     if "maxbody" in self.mode_dec:

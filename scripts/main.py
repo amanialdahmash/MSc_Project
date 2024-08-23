@@ -32,16 +32,10 @@ def main():
     expected_spec: list[str] = format_spec(
         read_file("tests/test_files/minepump_aw_methane_gw_methane_fix.spectra")
     )
-    # initial_mode_dec = derive_initial_mode_dec(expected_spec)
-    # rl_agent = RLAgent(initial_mode_dec)  ##
+
     oracle = SpecOracle()
 
     print("ORIGINAL IDEAL", expected_spec)
-    # rmv
-    # mode_dec = derive_initial_mode_dec(expected_spec)
-    # print("MODEDEC!!")
-    # print(mode_dec)
-    ##agent
     num_mut = 4  # 10
     muts, violation_traces = generate_mutated_specs(expected_spec, num_mut, oracle)
     print("ALL 10 MUTS", muts)
@@ -67,12 +61,17 @@ def main():
     for epoch in range(num_epochs):
         print(f"Epoch {epoch+1}/{num_mut}")
         for spec, trace in train_data:
-            mode_dec = derive_initial_mode_dec(spec)
+            # mode_dec = derive_initial_mode_dec(spec)
             rl_agent.update_with_spec(mode_dec)  ##resets mode_dec
             repairer: RepairOrchestrator = RepairOrchestrator(
                 SpecLearner(rl_agent), oracle
             )
             new_spec = repairer.repair_spec(spec, trace)
+            if new_spec != spec:
+                print("SUCCESS")
+                print(spec)
+            else:
+                print("FAIL")
             ##
             write_file(new_spec, "tests/test_files/out/minepump_test_fix.spectra")
         # # change write file
@@ -81,7 +80,7 @@ def main():
     print("TrainingDone")
     rl_agent.training = False
     for spec, trace in test_data:
-        mode_dec = derive_initial_mode_dec(spec)
+        # mode_dec = derive_initial_mode_dec(spec)
         rl_agent.update_with_spec(mode_dec)  ##
         repairer: RepairOrchestrator = RepairOrchestrator(SpecLearner(rl_agent), oracle)
         new_spec = repairer.repair_spec(spec, trace)
@@ -93,77 +92,6 @@ def split(muts, trace, test_size=0.2):
         muts, trace, test_size=test_size
     )
     return list(zip(train_muts, train_trace)), list(zip(test_muts, test_trace))
-
-
-def gen_mutation(spec, num):  #####!!
-    muts = []
-    for _ in range(num):
-        mut = spec.copy()
-        for i in range(len(mut)):
-            if random.random() < 0.5:
-                if "true" in mut[i]:
-                    mut[i] = mut[i].replace("true", "false")
-            elif "false" in mut[i]:
-                mut[i] = mut[i].replace("false", "true")
-        muts.append(mut)
-    return muts
-
-
-def gen_v_traces(ideal_spec, mut):
-    traces = []
-    for s in mut:
-        trace = generate_violating_traces(ideal_spec, s)
-        traces.append(trace)
-    return traces
-
-
-def create_mode_dec(spec):
-    v, p, c = parse(spec)
-    mode_dec = gen_mode_dec(v, p, c)
-    return mode_dec
-
-
-def gen_mode_dec(v, p, c):
-    mode_dec = {}
-
-    for i, pred in enumerate(p):
-        mode_dec[f"modeh_{pred}"] = f"#modeh({pred}(var(time)))."
-        mode_dec[f"modeb_{i*2}"] = f"#modeb(1,{pred}(var(variable),var(time)))."
-        mode_dec[f"modeb_{i*2+1}"] = f"#modeb(1,not_{pred}(var(variable),var(time)))."
-
-    for i, var in enumerate(v):
-        mode_dec[f"constant_{i}"] = f"#constant(variable,{var})."
-
-    for i, const in enumerate(c):
-        mode_dec[f"constant_{i}"] = f"#constant(constant,{const})."
-
-    mode_dec["maxv"] = "#maxv(2)."
-
-    return mode_dec
-
-
-def parse(spec):
-    v = set()
-    p = set()
-    c = set()
-
-    for line in spec:
-        if line.startswith("env boolean") or line.startswith("sys boolean"):
-            var = line.split()[2].strip(";")
-            v.add(var)
-
-    if "->" in line or "|" in line:
-        parts = re.split(r"->|\||\(|\)|;|&", line)
-        for part in parts:
-            part = part.strip()
-            if part and part not in v:
-                if re.match(r"\w+\(.*\)", part):
-                    p.add(part.split("(")[0])
-                elif part in ["true", "false"]:
-                    c.add(part)
-                else:
-                    v.add(part)
-    return v, p, c
 
 
 def generate_mutated_specs(spec, num_mutations, oracle):  # REWRITE

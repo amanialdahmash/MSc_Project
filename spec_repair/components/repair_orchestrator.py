@@ -47,11 +47,23 @@ class RepairOrchestrator:
         max_iter = 10  ##
         iterations = 0
 
+        while iterations < max_iter:
+            self._learner.rl_agent.train(spec, trace)
+            spec = self._learner.rl_agent.spec
+            cs = self._oracle.synthesise_and_check(spec)
+            if not cs:
+                print("YAY")
+                return spec
+            iterations += 1
+        print("FAILED")
+        return spec
+
         # cs = self._oracle.synthesise_and_check(spec)
         # if cs is None:
         #     print("REALIIIIISSZZZABBBLLEE OOH")
 
         # asmp wkn
+        ##IGN ALL REST NOW
         once = False
         weak_spec: list[str] = None
         while iterations < max_iter:
@@ -86,9 +98,6 @@ class RepairOrchestrator:
                 print("CS:", cs)
                 if not cs:
                     print("REALISABLE")
-                    # result = self._learner.rl_agent.update_mode_dec("realisable")
-                    # if result == "realisable":
-                    #     print("REALIABLE SPECC!!!")
                     return weak_spec  # weak_spec_history[-1] if weak_spec_history else spec
                 else:
                     print("not yet1")
@@ -100,14 +109,6 @@ class RepairOrchestrator:
                         break
                 weak_spec_history.append(weak_spec)
             else:
-                # cs = self._oracle.synthesise_and_check(weak_spec)
-                # if not cs:
-                #     print("NO")
-                #     # result = self._learner.rl_agent.update_mode_dec("realisable")
-                #     # if result == "realisable":
-                #     #     print("REALIABLE SPECC!!!")
-                #     return spec  # weak_spec_history[-1] if weak_spec_history else spec
-                # else:
                 print("not yet2")
                 result = self._learner.rl_agent.update_mode_dec(
                     "counter_strategy_found"
@@ -117,83 +118,9 @@ class RepairOrchestrator:
                     break
 
             iterations += 1
-            # else:
-            # result=self._learner.rl_agent.update_mode_dec("counter_strategy_found")
-
-            # it?
-
-            # weak_spec_history.append(weak_spec)
-            # cs: Optional[CounterStrategy] = self._oracle.synthesise_and_check(weak_spec)
-            # ct_asm.append(self.ct_from_cs(cs))  ##
-            # if cs:
-            #    break
-
-        # Assumption Weakening for Realisability
-        # try:##
-        ####?????
-        # if cs:
-        #     while cs:  # not is_realisable
-        #         print("TWOTWOTWO")
-
-        #         print(f"cs found {cs}")
-        #         ct_asm.append(self.ct_from_cs(cs))
-
-        #         weaker_spec: list[str] = self._learner.learn_weaker_spec(
-        #             spec,
-        #             trace,
-        #             ct_asm,
-        #             learning_type=Learning.ASSUMPTION_WEAKENING,
-        #             ##heuristic=manual_choice,
-        #         )
-        #         # if weaker_spec is None:  ##
-        #         #    continue  #
-        #         if weak_spec is not None:  ##
-        #             cs = self._oracle.synthesise_and_check(weak_spec)
-        #             if not cs:
-        #                 result = self._learner.rl_agent.update_mode_dec("realisable")
-        #                 if result in ["max", "converged", "realisable"]:
-        #                     return weak_spec_history[-1]
-        #             else:
-        #                 result = self._learner.rl_agent.update_mode_dec(
-        #                     "counter_strategy_found"
-        #                 )
-        #                 if result in ["max", "converged"]:
-        #                     return weak_spec_history[-1]
-        #             weak_spec_history.append(weak_spec)
-        # cs = self._oracle.synthesise_and_check(weak_spec)
-
-        # if not cs:
-        #     result = self._learner.rl_agent.update_mode_dec("realisable")
-        #     if result in ["max", "converged", "realisable"]:
-        #         if weak_spec_history[-1]:
-        #             return weak_spec_history[-1]
-        #         else:
-        #             return spec
-        # else:
-        #     result = self._learner.rl_agent.update_mode_dec(
-        #         "counter_strategy_found"
-        #     )
-        #     if result in ["max", "converged"]:
-        #         if weak_spec_history[-1]:
-        #             return weak_spec_history[-1]
-        #         else:
-        #             return spec
-        # it?
-        # if weaker_spec == spec and stop_heuristic(spec, ct_asm):
-        # if weak_spec_history[-1]:
-        #     return weak_spec_history[-1]
-        # else:
-        # return spec
-        # weak_spec_history.append(weaker_spec)
-        # cs = self._oracle.synthesise_and_check(weaker_spec)
-        # except NoWeakeningException as e:##
-        #    print(str(e))##
 
         if not weak_spec_history:  # cs
             print("Repair completed without moving to Guarantee Weakening")
-            # if weak_spec_history:
-            #     return weak_spec_history[-1]
-            # else:
             return spec
         print("Moving to Guarantee Weakening")
 
@@ -257,36 +184,6 @@ class RepairOrchestrator:
                     break
 
             iterations += 1
-
-        #         cs = self._oracle.synthesise_and_check(weak_spec)
-        #         if not cs:
-        #             result = self._learner.rl_agent.update_mode_dec("realisable")
-        #             if result in ["max", "converged", "realisable"]:
-        #                 if weak_spec_history:
-        #                     return weak_spec_history[-1]
-        #                 else:
-        #                     return spec
-        #         else:
-        #             result = self._learner.rl_agent.update_mode_dec(
-        #                 "counter_strategy_found"
-        #             )
-        #             if result in ["max", "converged"]:
-        #                 if weak_spec_history:
-        #                     return weak_spec_history[-1]
-        #                 else:
-        #                     return spec
-        #             # it?
-
-        #     # cs = self._oracle.synthesise_and_check(spec)
-        #     if spec == spec and stop_heuristic(spec, ct_gar):
-        #         # ct_gar.append(self.ct_from_cs(cs))
-        #         if weak_spec_history:
-        #             return weak_spec_history[-1]
-        #         else:
-        #             return spec
-        # if not cs:
-        #     print("Repair completed after moving to Guarantee Weakening")
-        # else:
         print("Repair Failed :(")
         if weak_spec_history:
             return weak_spec_history[-1]
