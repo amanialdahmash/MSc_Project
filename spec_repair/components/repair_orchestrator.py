@@ -37,6 +37,7 @@ class RepairOrchestrator:
         self,
         spec: list[str],
         trace: list[str],
+        training: bool = True,
         stop_heuristic: StopHeuristicType = lambda a, g: True,
     ):
         self._ct_cnt = 0  # cts
@@ -48,8 +49,17 @@ class RepairOrchestrator:
         iterations = 0
 
         while iterations < max_iter:
-            self._learner.rl_agent.train(spec, trace)
-            spec = self._learner.rl_agent.spec
+            if training:
+                self._learner.rl_agent.train(spec, trace)
+                spec = self._learner.rl_agent.spec
+
+            else:
+                ##rv
+                state = self._learner.rl_agent.extract_features(spec, trace)
+                action = self._learner.rl_agent.select_action(state)
+                spec = self._learner.rl_agent.apply_action(action, spec)
+
+            # spec = self._learner.rl_agent.spec
             cs = self._oracle.synthesise_and_check(spec)
             if not cs:
                 print("YAY")

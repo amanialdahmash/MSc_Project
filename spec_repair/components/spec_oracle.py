@@ -33,6 +33,9 @@ pattern pRespondsToS(s, p) {
         If it is, nothing is returned. Otherwise, it returns a CounterStrategy.
         """
         output = self._synthesise(spec)
+        print(spec)
+        print("AND")
+        print(output)
         if re.search("Result: Specification is unrealizable", output):
             output = str(output).split("\n")
             counter_strategy = list(
@@ -41,6 +44,12 @@ pattern pRespondsToS(s, p) {
             return counter_strategy
         elif re.search("Result: Specification is realizable", output):
             return None
+        ###
+        elif "Using BDD Package" in output:
+            print("Info: BDD package message, continuing execution.")
+            return None
+
+        ###
         else:
             raise Exception(output)
 

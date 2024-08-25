@@ -43,28 +43,30 @@ class SpecLearner:
         mode_dec = self.rl_agent.get_mode_dec()  ##
         spec_df: pd.DataFrame = spectra_to_df(spec)
         asp: str = self.spec_encoder.encode_ASP(spec_df, trace, cs_traces)
-        violations = get_violations(asp, exp_type=learning_type.exp_type())
+        # violations = get_violations(asp, exp_type=learning_type.exp_type())
         # print("ASP: ", asp)
-        # print("violations", violations)
+        print("violations", trace)
 
         ##
-        if (
-            isinstance(violations, list)
-            and len(violations) == 1
-            and isinstance(violations[0], str)
-        ):
-            violations = violations[0].split("\n")
+        # if (
+        #     isinstance(violations, list)
+        #     and len(violations) == 1
+        #     and isinstance(violations[0], str)
+        # ):
+        #     violations = violations[0].split("\n")
 
-        print("violations", violations)
+        # print("violations", violations)
 
-        if not violations:
+        if not trace:
             print("VVVV")
-            raise NoViolationException("Violation trace is not violating!")
+            # raise NoViolationException("Violation trace is not violating!")
+            # return None
+            return spec
 
         print("1")
 
         ilasp: str = self.spec_encoder.encode_ILASP(
-            spec_df, trace, cs_traces, violations, learning_type
+            spec_df, trace, cs_traces, trace, learning_type
         )
         print("2")
         output: str = run_ILASP(ilasp)
@@ -79,7 +81,9 @@ class SpecLearner:
 
         if not hypotheses:
             self.rl_agent.update_mode_dec("counter_strategy_found")
-            return None
+            # return None
+            return spec
+
         # if not hypotheses:
         #     print("NO HYPO")
         #     for key in self.rl_agent.mode_dec.keys():  #
@@ -89,18 +93,19 @@ class SpecLearner:
         #         return None
 
         # hypothesis = self.select_best_hypothesis(hypotheses)
-        hypothesis = self.select_learning_hypothesis(hypotheses)
+        hypothesis = self.rl_agent.select_action(hypotheses)
+        # hypothesis = self.select_learning_hypothesis(hypotheses)
         print("BESSTTTT", hypothesis)
 
         ##no need?
-        if hypothesis is None:
-            print("No BEST hyp2")
-            # for k in self.rl_agent.mode_dec.keys():
-            #     self.rl_agent.fails[k] += 1
-            self.rl_agent.update_mode_dec("counter_strategy_found")  #
-            # if result in ["max", "converged"]:
-            #     return None
-            return None
+        # if hypothesis is None:
+        #     print("No BEST hyp2")
+        #     # for k in self.rl_agent.mode_dec.keys():
+        #     #     self.rl_agent.fails[k] += 1
+        #     self.rl_agent.update_mode_dec("counter_strategy_found")  #
+        #     # if result in ["max", "converged"]:
+        #     #     return None
+        #     return None
 
         new_spec = self.spec_encoder.integrate_learned_hypotheses(
             spec, hypothesis, learning_type
@@ -174,7 +179,7 @@ def get_hypotheses(output: str) -> Optional[List[List[str]]]:
         hypotheses = [re.sub(r"b'|'", "", output).split("\n")]
     else:
         sol = output.split("%% Solution ")
-        hypotheses = []
+        # hypotheses = []
         for s in sol:
             lines = s.strip().split("\n")
             if lines:

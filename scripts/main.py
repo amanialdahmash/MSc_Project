@@ -11,6 +11,8 @@ import re
 import os
 import tempfile
 
+import matplotlib.pyplot as plt
+
 
 def main():
     ####example from ILASP website: https://doc.ilasp.com/specification/mode_declarations.html
@@ -36,7 +38,7 @@ def main():
     oracle = SpecOracle()
 
     print("ORIGINAL IDEAL", expected_spec)
-    num_mut = 4  # 10
+    num_mut = 10
     muts, violation_traces = generate_mutated_specs(expected_spec, num_mut, oracle)
     print("ALL 10 MUTS", muts)
     # check_unique_mutations(muts)
@@ -55,36 +57,73 @@ def main():
     print("TRAIN:", train_data)
     print("TEST:", test_data)
 
+    training_rewards = []
+    eval_rewards = []
     ###now for trainiing
-    num_epochs = 2
+    num_epochs = 10
     rl_agent.training = True
     for epoch in range(num_epochs):
         print(f"Epoch {epoch+1}/{num_mut}")
+        epoch_reward = []
         for spec, trace in train_data:
             # mode_dec = derive_initial_mode_dec(spec)
             rl_agent.update_with_spec(mode_dec)  ##resets mode_dec
             repairer: RepairOrchestrator = RepairOrchestrator(
                 SpecLearner(rl_agent), oracle
             )
-            new_spec = repairer.repair_spec(spec, trace)
+            new_spec = repairer.repair_spec(spec, trace, rl_agent.training)
+
+            state = rl_agent.extract_features(spec, trace)
+            action = rl_agent.select_action(state)
+            q_val = rl_agent.q_table.get(str(state), {}).get(action, 0)
+            print("QVAL", q_val)
             if new_spec != spec:
                 print("SUCCESS")
                 print(spec)
             else:
+                # self.q_table[state_str][action]
+                # reward = rl_agent.get_reward("counter_strategy_found")
                 print("FAIL")
-            ##
-            write_file(new_spec, "tests/test_files/out/minepump_test_fix.spectra")
+
+            epoch_reward.append(q_val)  ##reward?
+        training_rewards.append(epoch_reward)
+        ##
+        # write_file(new_spec, "tests/test_files/out/minepump_test_fix.spectra")
         # # change write file
 
     # rl_agent.save()
     print("TrainingDone")
     rl_agent.training = False
+    rl_agent.epsilon = 0
+    success = 0
     for spec, trace in test_data:
         # mode_dec = derive_initial_mode_dec(spec)
         rl_agent.update_with_spec(mode_dec)  ##
         repairer: RepairOrchestrator = RepairOrchestrator(SpecLearner(rl_agent), oracle)
-        new_spec = repairer.repair_spec(spec, trace)
-        write_file(new_spec, "tests/test_files/out/minepump_test_fix.spectra")
+        new_spec = repairer.repair_spec(spec, trace, rl_agent.training)
+        if new_spec != spec:
+            reward = rl_agent.get_reward("realisable")
+            print("SUCCESS")
+            print(spec)
+            success += 1
+        else:
+            reward = rl_agent.get_reward("counter_strategy_found")
+            print("FAIL")
+        eval_rewards.append(reward)
+    print("TestingDone")
+    print("TRAINGING REWARDS:", training_rewards)
+    print("TESTING REWARDS:", eval_rewards)
+
+    # write_file(new_spec, "tests/test_files/out/minepump_test_fix.spectra")
+
+    plt.figure(figsize=(12, 6))
+    plt.plot([sum(r) / len(r) for r in training_rewards], label="Training Rewards")
+    # plt.plot(eval_rewards, label="Eval Rewards")
+    plt.xlabel("Epoch")
+    plt.ylabel("Average Reward")
+    plt.title("Rewards over Time")
+    plt.legend()
+    plt.show()
 
 
 def split(muts, trace, test_size=0.2):

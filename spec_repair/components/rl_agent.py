@@ -5,10 +5,12 @@ import re
 import numpy as np
 
 from spec_repair.components.spec_oracle import SpecOracle
+from spec_repair.components.spec_learner import SpecLearner
+from spec_repair.enums import Learning
 
 
 class RLAgent:
-    def __init__(self, inital_mode_dec, epsilon=0.9, decay=0.99):  ##exp epsilon & decay
+    def __init__(self, inital_mode_dec, epsilon=0.1, decay=0.99):  ##exp epsilon & decay
         self.mode_dec = inital_mode_dec
         self.inital_mode_dec = inital_mode_dec
         # self.pruned_areas=set()
@@ -24,9 +26,11 @@ class RLAgent:
         self.training = True
         self.spec = []  ##
         self.q_table = {}
-        self.actions = ["add_c", "add_p", "add_r", "add_l", "rmv_l"]
+        self.actions = ["add_c", "add_p", "add_r", "add_l", "rmv_l", "ilasp"]  # ilasp?
 
         self.oracle = SpecOracle()
+        self.spec_learner = SpecLearner(self)
+        print("STARTQTABLE:", self.q_table)
 
         ##to ensure its not missing
         if "maxv" not in self.mode_dec:
@@ -49,6 +53,8 @@ class RLAgent:
         return feature_vec
 
     def select_action(self, state):
+        print("actQTABLE:", self.q_table)
+
         if np.random.rand() < self.epsilon:
             return np.random.choice(self.actions)
         else:
@@ -57,27 +63,46 @@ class RLAgent:
     def best_action(self, state):
         state_str = str(state)
         if state_str in self.q_table:
+            print("FROMTABLE")
             return max(self.q_table[state_str], key=self.q_table[state_str].get)
         else:
+            print("RANDOM")
             return np.random.choice(self.actions)
+
+    def best_hypo(self, hypo):
+        return max(hypo, key=lambda hyp: self.q_table.get(str(hyp), 0))
 
     def update_policy(self, state, action, reward, next_state):
         state_str = str(state)
         next_str = str(next_state)
         if state_str not in self.q_table:
             self.q_table[state_str] = {a: 0 for a in self.actions}
+
+        if next_str not in self.q_table:
+            self.q_table[next_str] = {a: 0 for a in self.actions}
+
         best_next_action = self.best_action(next_state)
         q_update = reward + self.decay * self.q_table[next_str].get(best_next_action, 0)
-        self.q_table[state_str][action] = (1 - self.decay) * self.q_table[
-            state_str[action]
+        self.q_table[state_str][action] = (1 - self.decay) * self.q_table[state_str][
+            action
         ] + self.decay * q_update
+        # .get(action, 0)
 
     def train(self, spec, trace):
         state = self.extract_features(spec, trace)
         while True:
             action = self.select_action(state)
-            modified_spec = self.apply_action(action, spec)
-            cs = self.oracle.synthesise_and_check(spec)
+
+            # modified_spec = self.apply_action(action, spec)
+            print("action", action)
+            if action == "ilasp":
+                cs_traces = []
+                modified_spec = self.spec_learner.learn_weaker_spec(
+                    spec, trace, cs_traces, Learning.ASSUMPTION_WEAKENING
+                )
+            else:
+                modified_spec = self.apply_action(action, spec)
+            cs = self.oracle.synthesise_and_check(modified_spec)
             print("CS:", cs)
             if not cs:
                 feedback = "realisable"
@@ -86,6 +111,7 @@ class RLAgent:
             reward = self.get_reward(feedback)
             next_state = self.extract_features(modified_spec, trace)
             self.update_policy(state, action, reward, next_state)
+            print("QTABLE:", self.q_table)
             state = next_state
             if feedback == "realisable" or self.iterations >= self.max_iterations:
                 break
@@ -123,17 +149,17 @@ class RLAgent:
         #         self.mode_dec[key] = value
         #         self.fails[key] = 0
         self.mode_dec = copy.deepcopy(self.inital_mode_dec)
-        self.spec = copy.deepcopy(spec)  ##
+        self.spec = copy.deepcopy(list(spec))  ##
         self.rewards = {key: 0 for key in self.inital_mode_dec.keys()}
         self.fails = {key: 0 for key in self.inital_mode_dec.keys()}
         self.iterations = 0
-        for key, value in spec.items():
-            self.mode_dec[key] = value
-            self.fails[key] = 0
+        # for key, value in spec.items():
+        #     self.mode_dec[key] = value
+        #     self.fails[key] = 0
 
     def update_mode_dec(self, feedback):
         if self.training:
-            self.update_rewards(self.get_reward(feedback))  #
+            #     self.update_rewards(self.get_reward(feedback))  #
 
             if feedback == "counter_strategy_found":  ##unrealisable
                 self.prune_mode_dec()
@@ -190,7 +216,7 @@ class RLAgent:
             # self.add_maxbody,
         ]  #
         change = random.choice(possibilities)
-        change()
+        change(self.spec)
         print(f"expanded mode dec")
 
     def expand_best(self):
@@ -208,14 +234,14 @@ class RLAgent:
         for change in possibilities:  # search for best in all possibilities
             temp = copy.deepcopy(self)  ###
             change_func = getattr(temp, change.__name__)
-            change_func()
+            change_func(temp.spec)
             reward = self.evaluate(temp)
             if reward > best_reward:
                 best_reward = reward
                 best_change = change
 
         if best_change:  ##found
-            best_change()
+            best_change(self.spec)
             print(f"best expansion")
         else:  ##random
             self.expand_mode_dec()
