@@ -60,7 +60,7 @@ def main():
     training_rewards = []
     eval_rewards = []
     ###now for trainiing
-    num_epochs = 10
+    num_epochs = 30
     rl_agent.training = True
     for epoch in range(num_epochs):
         print(f"Epoch {epoch+1}/{num_mut}")
