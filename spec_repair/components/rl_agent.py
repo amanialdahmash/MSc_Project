@@ -30,7 +30,7 @@ class RLAgent:
 
         self.oracle = SpecOracle()
         self.spec_learner = SpecLearner(self)
-        print("STARTQTABLE:", self.q_table)
+        # print("STARTQTABLE:", self.q_table)
 
         ##to ensure its not missing
         if "maxv" not in self.mode_dec:
@@ -53,7 +53,7 @@ class RLAgent:
         return feature_vec
 
     def select_action(self, state):
-        print("actQTABLE:", self.q_table)
+        # print("actQTABLE:", self.q_table)
 
         if np.random.rand() < self.epsilon:
             return np.random.choice(self.actions)
@@ -92,6 +92,36 @@ class RLAgent:
         state = self.extract_features(spec, trace)
         while True:
             action = self.select_action(state)
+            # modified_spec = self.apply_action(action, spec)
+            print("action", action)
+            if action == "ilasp":
+                cs_traces = []
+                modified_spec = self.spec_learner.learn_weaker_spec(
+                    spec, trace, cs_traces, Learning.ASSUMPTION_WEAKENING
+                )
+            else:
+                modified_spec = self.apply_action(action, spec)
+            cs = self.oracle.synthesise_and_check(modified_spec)
+            # print("CS:", cs)
+            if not cs:
+                feedback = "realisable"
+            else:
+                feedback = "counter_strategy_found"
+            reward = self.get_reward(feedback)
+            next_state = self.extract_features(modified_spec, trace)
+            self.update_policy(state, action, reward, next_state)
+            # ("QTABLE:", self.q_table)
+            state = next_state
+            if feedback == "realisable" or self.iterations >= self.max_iterations:
+                break
+            self.iterations += 1
+        self.epsilon *= self.decay
+
+    def test(self, spec, trace):
+        self.iterations = 0  ##
+        state = self.extract_features(spec, trace)
+        while True:
+            action = self.select_action(state)
 
             # modified_spec = self.apply_action(action, spec)
             print("action", action)
@@ -103,20 +133,21 @@ class RLAgent:
             else:
                 modified_spec = self.apply_action(action, spec)
             cs = self.oracle.synthesise_and_check(modified_spec)
-            print("CS:", cs)
+            # print("CS:", cs)
             if not cs:
                 feedback = "realisable"
             else:
                 feedback = "counter_strategy_found"
-            reward = self.get_reward(feedback)
             next_state = self.extract_features(modified_spec, trace)
-            self.update_policy(state, action, reward, next_state)
-            print("QTABLE:", self.q_table)
+            # self.update_policy(state, action, reward, next_state)
+            # print("QTABLE:", self.q_table)
             state = next_state
             if feedback == "realisable" or self.iterations >= self.max_iterations:
                 break
             self.iterations += 1
-        self.epsilon *= self.decay
+
+            # self.epsilon *= self.decay
+        # return  total_reward
 
     def get_reward(self, feedback):
         if feedback == "counter_strategy_found":  ##unrealisable
@@ -125,6 +156,26 @@ class RLAgent:
             return 10
         else:
             return 0  ##no need?
+
+    def loss(self, state, action, new_spec, trace):
+        state_str = str(state)
+        next_state = self.extract_features(new_spec, trace)
+        next_str = str(next_state)
+        cs = self.oracle.synthesise_and_check(new_spec)
+        if not cs:
+            feedback = "realisable"
+        else:
+            feedback = "counter_strategy_found"
+        reward = self.get_reward(feedback)
+        if next_str in self.q_table:
+            best_action = self.best_action(next_state)
+            target = reward + self.decay * self.q_table[next_str].get(best_action, 0)
+        else:
+            target = reward
+
+        current_q = self.q_table[state_str].get(action, 0)
+        loss = abs(current_q - (target))
+        return loss
 
     def apply_action(self, action, spec):
         if action == "add_c":
@@ -175,12 +226,12 @@ class RLAgent:
 
             self.epsilon *= self.decay
             self.iterations += 1
-            print(f"Iteration: {self.iterations}, Mode Decleration: {self.mode_dec}")
+            # print(f"Iteration: {self.iterations}, Mode Decleration: {self.mode_dec}")
 
             self.history.append(copy.deepcopy(self.mode_dec))  ##
             self.states.append(copy.deepcopy(self.mode_dec))
             self.state_rewards.append(self.rewards.copy())
-            print("HISTORY", self.history)
+            # ("HISTORY", self.history)
             if self.iterations >= self.max_iterations:
                 print("Maximum iterations reached.")
                 return "max"

@@ -39,13 +39,13 @@ class SpecLearner:
     ) -> Optional[list[str]]:
         # while True:  ##
         #     try:  ##
-        print("STARTING WKNoo")
+        # print("STARTING WKNoo")
         mode_dec = self.rl_agent.get_mode_dec()  ##
         spec_df: pd.DataFrame = spectra_to_df(spec)
         asp: str = self.spec_encoder.encode_ASP(spec_df, trace, cs_traces)
         # violations = get_violations(asp, exp_type=learning_type.exp_type())
         # print("ASP: ", asp)
-        print("violations", trace)
+        # print("violations", trace)
 
         ##
         # if (
@@ -63,21 +63,21 @@ class SpecLearner:
             # return None
             return spec
 
-        print("1")
+        # print("1")
 
         ilasp: str = self.spec_encoder.encode_ILASP(
             spec_df, trace, cs_traces, trace, learning_type
         )
-        print("2")
+        # print("2")
         output: str = run_ILASP(ilasp)
-        print("3")
+        # print("3")
 
         hypotheses = get_hypotheses(output)
-        print("4")
-        print("ILASP: ", ilasp)
+        # print("4")
+        # print("ILASP: ", ilasp)
 
-        print("output: ", output)
-        print("hyp!!: ", hypotheses)
+        # print("output: ", output)
+        # print("hyp!!: ", hypotheses)
 
         if not hypotheses:
             self.rl_agent.update_mode_dec("counter_strategy_found")
@@ -95,7 +95,7 @@ class SpecLearner:
         # hypothesis = self.select_best_hypothesis(hypotheses)
         hypothesis = self.rl_agent.select_action(hypotheses)
         # hypothesis = self.select_learning_hypothesis(hypotheses)
-        print("BESSTTTT", hypothesis)
+        # print("BESSTTTT", hypothesis)
 
         ##no need?
         # if hypothesis is None:
@@ -110,8 +110,8 @@ class SpecLearner:
         new_spec = self.spec_encoder.integrate_learned_hypotheses(
             spec, hypothesis, learning_type
         )
-        print("NEW")
-        print(new_spec)
+        # print("NEW")
+        # print(new_spec)
         return new_spec
 
     # except NoWeakeningException as e:  ##
@@ -144,7 +144,7 @@ class SpecLearner:
 
         # TODO: store amount of top_hyp learned
         # TODO: make sure no repeated hypotheses occur
-        print("this", hypotheses)
+        # print("this", hypotheses)
         all_hyp = hypotheses[1:]
         scores = [
             int(re.search(r"score (\d*)", hyp[0]).group(1))
@@ -190,7 +190,7 @@ def get_hypotheses(output: str) -> Optional[List[List[str]]]:
     ##
     # hypotheses = [[line for line in hyp if line.strip()] for hyp in hypotheses]
     ##return hypotheses
-    print("hypooo:", hypotheses)
+    # print("hypooo:", hypotheses)
     # return [hyp for hyp in hypotheses if hyp]
     clean = []
     for hyp in hypotheses:
@@ -198,6 +198,6 @@ def get_hypotheses(output: str) -> Optional[List[List[str]]]:
         if c:
             clean.append(c)
 
-    print("clean", clean)
+    # print("clean", clean)
     # return [hyp for hyp in hypotheses if hyp] if isinstance(hypotheses, list) else []
     return clean if clean else []

@@ -55,9 +55,11 @@ class RepairOrchestrator:
 
             else:
                 ##rv
-                state = self._learner.rl_agent.extract_features(spec, trace)
-                action = self._learner.rl_agent.select_action(state)
-                spec = self._learner.rl_agent.apply_action(action, spec)
+                # state = self._learner.rl_agent.extract_features(spec, trace)
+                # action = self._learner.rl_agent.select_action(state)
+                # spec = self._learner.rl_agent.apply_action(action, spec)
+                self._learner.rl_agent.test(spec, trace)
+                spec = self._learner.rl_agent.spec
 
             # spec = self._learner.rl_agent.spec
             cs = self._oracle.synthesise_and_check(spec)

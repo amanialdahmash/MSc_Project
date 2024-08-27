@@ -32,7 +32,8 @@ def main():
     # spec: list[str] = format_spec(read_file("input-files/examples/Minepump/minepump_strong.spectra"))
     # trace: list[str] = read_file("tests/test_files/minepump_strong_auto_violation.txt")
     expected_spec: list[str] = format_spec(
-        read_file("tests/test_files/minepump_aw_methane_gw_methane_fix.spectra")
+        # read_file("tests/test_files/minepump_aw_methane_gw_methane_fix.spectra")
+        read_file("tests/test_files/forklift_test.spectra")
     )
 
     oracle = SpecOracle()
@@ -44,8 +45,8 @@ def main():
     # check_unique_mutations(muts)
 
     mode_dec = derive_initial_mode_dec(expected_spec)
-    print("MODEDEC!!")
-    print(mode_dec)
+    # print("MODEDEC!!")
+    # print(mode_dec)
     rl_agent = RLAgent(mode_dec)  ##
     # repairer: RepairOrchestrator = RepairOrchestrator(SpecLearner(rl_agent), SpecOracle())
     # violation_traces = generate_violating_traces(expected_spec, muts)  #
@@ -59,12 +60,15 @@ def main():
 
     training_rewards = []
     eval_rewards = []
+    training_loss = []
+    eval_loss = []
     ###now for trainiing
-    num_epochs = 30
+    num_epochs = 100
     rl_agent.training = True
     for epoch in range(num_epochs):
-        print(f"Epoch {epoch+1}/{num_mut}")
+        print(f"Epoch {epoch+1}/{num_epochs}")
         epoch_reward = []
+        epoch_loss = []
         for spec, trace in train_data:
             # mode_dec = derive_initial_mode_dec(spec)
             rl_agent.update_with_spec(mode_dec)  ##resets mode_dec
@@ -73,18 +77,23 @@ def main():
             )
             new_spec = repairer.repair_spec(spec, trace, rl_agent.training)
 
-            state = rl_agent.extract_features(spec, trace)
+            state = rl_agent.extract_features(spec, trace)  ##
             action = rl_agent.select_action(state)
             q_val = rl_agent.q_table.get(str(state), {}).get(action, 0)
-            print("QVAL", q_val)
+            # print("QVAL", q_val)
             if new_spec != spec:
                 print("SUCCESS")
-                print(spec)
+                # print(spec)
             else:
                 # self.q_table[state_str][action]
                 # reward = rl_agent.get_reward("counter_strategy_found")
                 print("FAIL")
-
+            # loss = rl_agent.loss(state, action, new_spec, trace)
+            # epoch_loss.append(loss)
+            #     epoch_reward2.append(q_val)
+            # eval_rewards.append(epoch_reward2)
+            # avg_loss = sum(epoch_loss) / len(epoch_loss)
+            # training_loss.append(avg_loss)
             epoch_reward.append(q_val)  ##reward?
         training_rewards.append(epoch_reward)
         ##
@@ -92,50 +101,88 @@ def main():
         # # change write file
 
     # rl_agent.save()
-    print("TrainingDone")
-    rl_agent.training = False
-    rl_agent.epsilon = 0
-    success = 0
-    for spec, trace in test_data:
-        # mode_dec = derive_initial_mode_dec(spec)
-        rl_agent.update_with_spec(mode_dec)  ##
-        repairer: RepairOrchestrator = RepairOrchestrator(SpecLearner(rl_agent), oracle)
-        new_spec = repairer.repair_spec(spec, trace, rl_agent.training)
-        if new_spec != spec:
-            reward = rl_agent.get_reward("realisable")
-            print("SUCCESS")
-            print(spec)
-            success += 1
-        else:
-            reward = rl_agent.get_reward("counter_strategy_found")
-            print("FAIL")
-        eval_rewards.append(reward)
+    #########!!
+    # print("TrainingDone")
+    # rl_agent.training = False
+    # rl_agent.epsilon = 0  ##
+    # for epoch in range(num_epochs):
+    #     print(f"Epoch {epoch+1}/{num_epochs}")
+    #     epoch_reward2 = []
+    #     epoch_loss = []
+    #     for spec, trace in test_data:
+    #         # mode_dec = derive_initial_mode_dec(spec)
+    #         rl_agent.update_with_spec(mode_dec)  ##?
+    #         repairer: RepairOrchestrator = RepairOrchestrator(
+    #             SpecLearner(rl_agent), oracle
+    #         )
+    #         new_spec = repairer.repair_spec(spec, trace, rl_agent.training)
+
+    #         state = rl_agent.extract_features(spec, trace)  ##!!
+    #         action = rl_agent.select_action(state)
+    #         q_val = rl_agent.q_table.get(str(state), {}).get(action, 0)
+    #         # print("QVAL", q_val)
+    #         if new_spec != spec:
+    #             # reward = rl_agent.get_reward("realisable")
+    #             print("SUCCESS")
+    #             print(spec)
+    #         else:
+    #             # reward = rl_agent.get_reward("counter_strategy_found")
+    #             print("FAIL")
+    #         # loss = rl_agent.loss(state, action, new_spec, trace)
+    #         # epoch_loss.append(loss)
+    #         epoch_reward2.append(q_val)
+    #     eval_rewards.append(epoch_reward2)
+    # avg_loss = sum(epoch_loss) / len(epoch_loss)
+    # eval_loss.append(avg_loss)
+
     print("TestingDone")
     print("TRAINGING REWARDS:", training_rewards)
-    print("TESTING REWARDS:", eval_rewards)
+    # print("TESTING REWARDS:", eval_rewards)
+    # print("TRAININGLOSS", training_loss)
+    # print("TESTNGLOSS", eval_loss)
 
     # write_file(new_spec, "tests/test_files/out/minepump_test_fix.spectra")
 
     plt.figure(figsize=(12, 6))
     plt.plot([sum(r) / len(r) for r in training_rewards], label="Training Rewards")
     # plt.plot(eval_rewards, label="Eval Rewards")
+    # plt.plot([sum(r) / len(r) for r in eval_rewards], label="Testing Rewards")
     plt.xlabel("Epoch")
     plt.ylabel("Average Reward")
     plt.title("Rewards over Time")
     plt.legend()
     plt.show()
 
+    # plt.figure(figsize=(12, 6))
+    # plt.plot(training_loss, label="Training Loss")
+    # # plt.plot(eval_rewards, label="Eval Rewards")
+    # plt.plot(eval_loss, label="Testing Loss")
+    # plt.xlabel("Epoch")
+    # plt.ylabel("Average Loss")
+    # plt.title("Loss over Time")
+    # plt.legend()
+    # plt.show()
+    # plt.figure(figsize=(12, 6))
+    # # plt.plot([sum(r) / len(r) for r in training_rewards], label="Training Rewards")
+    # plt.plot(eval_rewards, label="Testing Rewards")
+    # plt.xlabel("Epoch")
+    # plt.ylabel("Average Reward")
+    # plt.title("Rewards over Time (Testing)")
+    # plt.legend()
+    # plt.show()
+
 
 def split(muts, trace, test_size=0.2):
+    print("muts:", muts)
+    print("trace:", trace)
     train_muts, test_muts, train_trace, test_trace = train_test_split(
         muts, trace, test_size=test_size
     )
     return list(zip(train_muts, train_trace)), list(zip(test_muts, test_trace))
 
 
-def generate_mutated_specs(spec, num_mutations, oracle):  # REWRITE
+def generate_mutated_specs(spec, num_mutations, oracle):
     def mutate_line(line):
-        # Apply multiple types of mutations
         if random.random() < 0.3:
             line = (
                 line.replace("true", "false")
@@ -150,45 +197,94 @@ def generate_mutated_specs(spec, num_mutations, oracle):  # REWRITE
             )
         if random.random() < 0.3:
             line = line.replace("&", "|") if "&" in line else line.replace("|", "&")
-        ##adding
-        if random.random() < 0.2:
+        if random.random() < 0.3:
             if "G(" in line or "F(" in line:
-                line = line.replace("G(", "F(G(").replace("F(", "G(F(")
+                line = line.replace("G(", "F(G(").replace("F(G(", "G(")
         return line
 
     mutated_specs = []
-    violation_traces = []
+    violated_traces = []
     attempts = 0
-    max_attempts = 100  # Limit the number of attempts
+    max_attempts = 100
     while len(mutated_specs) < num_mutations and attempts < max_attempts:
         mut = spec.copy()
         for i in range(len(mut)):
-            if random.random() < 0.5:  # Randomly decide to mutate each line or not
+            if random.random() < 0.5:
                 mut[i] = mutate_line(mut[i])
-
         trace_file = tempfile.mktemp(suffix=".spectra")
-        # open(trace_file, "a").close()
         try:
-            # print("NOW CHECKOTHEER?")
             cs = oracle.synthesise_and_check(mut)
             if not cs:
-                # print("R")
                 if check_unique_mutations(mut, mutated_specs):
-                    # trace_file = tempfile.mktemp(suffix=".txt")  ##txt
-                    trace_path, violation_trace, _ = generate_trace_asp(
+                    trace_path, violated_trace, _ = generate_trace_asp(
                         spec, mut, trace_file
                     )
-                    print("trace path", trace_path)
                     if trace_path:
                         mutated_specs.append(mut)
-                        violation_traces.append(violation_trace)
+                        violated_traces.append(violated_trace)
                         print("Valid mutation found")
-                        print(mut)
-                        print(violation_trace)
         except Exception as e:
             print(f"Error during synthesise_and_check: {e}")
         attempts += 1
-    return mutated_specs, violation_traces
+    return mutated_specs, violated_traces
+
+
+# def generate_mutated_specs(spec, num_mutations, oracle):  # REWRITE
+#     def mutate_line(line):
+#         # Apply multiple types of mutations
+#         if random.random() < 0.3:
+#             line = (
+#                 line.replace("true", "false")
+#                 if "true" in line
+#                 else line.replace("false", "true")
+#             )
+#         if random.random() < 0.3:
+#             line = (
+#                 line.replace("next", "eventually")
+#                 if "next" in line
+#                 else line.replace("eventually", "next")
+#             )
+#         if random.random() < 0.3:
+#             line = line.replace("&", "|") if "&" in line else line.replace("|", "&")
+#         ##adding
+#         if random.random() < 0.2:
+#             if "G(" in line or "F(" in line:
+#                 line = line.replace("G(", "F(G(").replace("F(", "G(F(")
+#         return line
+
+#     mutated_specs = []
+#     violation_traces = []
+#     attempts = 0
+#     max_attempts = 100  # Limit the number of attempts
+#     while len(mutated_specs) < num_mutations and attempts < max_attempts:
+#         mut = spec.copy()
+#         for i in range(len(mut)):
+#             if random.random() < 0.5:  # Randomly decide to mutate each line or not
+#                 mut[i] = mutate_line(mut[i])
+
+#         trace_file = tempfile.mktemp(suffix=".spectra")
+#         # open(trace_file, "a").close()
+#         try:
+#             # print("NOW CHECKOTHEER?")
+#             cs = oracle.synthesise_and_check(mut)
+#             if not cs:
+#                 # print("R")
+#                 if check_unique_mutations(mut, mutated_specs):
+#                     # trace_file = tempfile.mktemp(suffix=".txt")  ##txt
+#                     trace_path, violation_trace, _ = generate_trace_asp(
+#                         spec, mut, trace_file
+#                     )
+#                     print("trace path", trace_path)
+#                     if trace_path:
+#                         mutated_specs.append(mut)
+#                         violation_traces.append(violation_trace)
+#                         print("Valid mutation found")
+#                         print(mut)
+#                         print(violation_trace)
+#         except Exception as e:
+#             print(f"Error during synthesise_and_check: {e}")
+#         attempts += 1
+#     return mutated_specs, violation_traces
 
 
 def derive_initial_mode_dec(spec):
