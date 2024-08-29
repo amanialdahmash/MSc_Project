@@ -33,9 +33,9 @@ pattern pRespondsToS(s, p) {
         If it is, nothing is returned. Otherwise, it returns a CounterStrategy.
         """
         output = self._synthesise(spec)
-        print(spec)
-        print("AND")
-        print(output)
+        # print(spec)
+        # print("AND")
+        # print(output)
         if re.search("Result: Specification is unrealizable", output):
             output = str(output).split("\n")
             counter_strategy = list(

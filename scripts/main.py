@@ -34,6 +34,7 @@ def main():
     expected_spec: list[str] = format_spec(
         # read_file("tests/test_files/minepump_aw_methane_gw_methane_fix.spectra")
         read_file("tests/test_files/forklift_test.spectra")
+        # read_file("tests/test_files/CS2.spectra")
     )
 
     oracle = SpecOracle()
@@ -63,7 +64,7 @@ def main():
     training_loss = []
     eval_loss = []
     ###now for trainiing
-    num_epochs = 100
+    num_epochs = 1000
     rl_agent.training = True
     for epoch in range(num_epochs):
         print(f"Epoch {epoch+1}/{num_epochs}")
@@ -111,7 +112,7 @@ def main():
     #     epoch_loss = []
     #     for spec, trace in test_data:
     #         # mode_dec = derive_initial_mode_dec(spec)
-    #         rl_agent.update_with_spec(mode_dec)  ##?
+    #         #rl_agent.update_with_spec(mode_dec)  ##?
     #         repairer: RepairOrchestrator = RepairOrchestrator(
     #             SpecLearner(rl_agent), oracle
     #         )
@@ -179,6 +180,15 @@ def split(muts, trace, test_size=0.2):
         muts, trace, test_size=test_size
     )
     return list(zip(train_muts, train_trace)), list(zip(test_muts, test_trace))
+
+
+# def get vio(self,spec, mut, trace_file):
+#     trace_path, violated_trace, _ = generate_trace_asp(
+#                         spec, mut, trace_file
+#                     )
+#     if trace_path:
+#                         mutated_specs.append(mut)
+#                         violated_traces.append(violated_trace)
 
 
 def generate_mutated_specs(spec, num_mutations, oracle):
