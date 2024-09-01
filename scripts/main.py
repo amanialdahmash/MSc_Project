@@ -32,9 +32,11 @@ def main():
     # spec: list[str] = format_spec(read_file("input-files/examples/Minepump/minepump_strong.spectra"))
     # trace: list[str] = read_file("tests/test_files/minepump_strong_auto_violation.txt")
     expected_spec: list[str] = format_spec(
-        # read_file("tests/test_files/minepump_aw_methane_gw_methane_fix.spectra")
-        read_file("tests/test_files/forklift_test.spectra")
+        read_file("tests/test_files/minepump_aw_methane_gw_methane_fix.spectra")
+        #read_file("tests/test_files/forklift_test.spectra")
         # read_file("tests/test_files/CS2.spectra")
+        #read_file("tests/test_files/traffic_test.spectra")
+
     )
 
     oracle = SpecOracle()
@@ -64,7 +66,7 @@ def main():
     training_loss = []
     eval_loss = []
     ###now for trainiing
-    num_epochs = 1000
+    num_epochs = 100
     rl_agent.training = True
     for epoch in range(num_epochs):
         print(f"Epoch {epoch+1}/{num_epochs}")

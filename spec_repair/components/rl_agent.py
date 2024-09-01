@@ -10,12 +10,14 @@ from spec_repair.enums import Learning
 
 
 class RLAgent:
-    def __init__(self, inital_mode_dec, epsilon=0.1, decay=0.99):  ##exp epsilon & decay
+    def __init__(self, inital_mode_dec, epsilon=0.1, decay=0.99,gamma=0.99,alpha=0.99):  ##exp epsilon & decay
         self.mode_dec = inital_mode_dec
         self.inital_mode_dec = inital_mode_dec
         # self.pruned_areas=set()
         self.epsilon = epsilon
         self.decay = decay
+        self.gamma=gamma
+        self.alpha=alpha
         self.rewards = {key: 0 for key in inital_mode_dec.keys()}
         self.fails = {key: 0 for key in inital_mode_dec.keys()}
         self.history = []  ##not sure
@@ -82,10 +84,14 @@ class RLAgent:
             self.q_table[next_str] = {a: 0 for a in self.actions}
 
         best_next_action = self.best_action(next_state)
-        q_update = reward + self.decay * self.q_table[next_str].get(best_next_action, 0)
-        self.q_table[state_str][action] = (1 - self.decay) * self.q_table[state_str][
+        q_update = reward + self.gamma * self.q_table[next_str].get(best_next_action, 0)
+        self.q_table[state_str][action] = (1 - self.alpha) * self.q_table[state_str][
             action
-        ] + self.decay * q_update
+        ] + self.alpha * q_update
+        # q_update = reward + self.decay * self.q_table[next_str].get(best_next_action, 0)
+        # self.q_table[state_str][action] = (1 - self.decay) * self.q_table[state_str][
+        #     action
+        # ] + self.decay * q_update
         # .get(action, 0)
 
     def train(self, spec, trace):
