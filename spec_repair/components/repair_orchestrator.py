@@ -64,7 +64,6 @@ class RepairOrchestrator:
             # spec = self._learner.rl_agent.spec
             cs = self._oracle.synthesise_and_check(spec)
             if not cs:
-                print("YAY")
                 return spec
             iterations += 1
         print("FAILED")

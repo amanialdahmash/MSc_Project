@@ -24,7 +24,6 @@ def get_folders(folder, exclusions=[]):
 
 
 def read_file(spectra_file) -> list[str]:
-    print("okay")
     with open(spectra_file, "r") as file:
         # print("READ!!")
         # print("FILE", file)

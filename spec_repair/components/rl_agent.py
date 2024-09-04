@@ -65,10 +65,8 @@ class RLAgent:
     def best_action(self, state):
         state_str = str(state)
         if state_str in self.q_table:
-            print("FROMTABLE")
             return max(self.q_table[state_str], key=self.q_table[state_str].get)
         else:
-            print("RANDOM")
             return np.random.choice(self.actions)
 
     def best_hypo(self, hypo):
