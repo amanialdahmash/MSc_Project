@@ -43,81 +43,34 @@ class SpecLearner:
         mode_dec = self.rl_agent.get_mode_dec()  ##
         spec_df: pd.DataFrame = spectra_to_df(spec)
         asp: str = self.spec_encoder.encode_ASP(spec_df, trace, cs_traces)
-        # violations = get_violations(asp, exp_type=learning_type.exp_type())
-        # print("ASP: ", asp)
-        # print("violations", trace)
-
-        ##
-        # if (
-        #     isinstance(violations, list)
-        #     and len(violations) == 1
-        #     and isinstance(violations[0], str)
-        # ):
-        #     violations = violations[0].split("\n")
-
-        # print("violations", violations)
 
         if not trace:
-            print("VVVV")
-            # raise NoViolationException("Violation trace is not violating!")
-            # return None
+            print("no violation")
             return spec
-
-        # print("1")
 
         ilasp: str = self.spec_encoder.encode_ILASP(
             spec_df, trace, cs_traces, trace, learning_type
         )
-        # print("2")
         output: str = run_ILASP(ilasp)
-        # print("3")
 
         hypotheses = get_hypotheses(output)
-        # print("4")
-        # print("ILASP: ", ilasp)
 
+        # print("ILASP: ", ilasp)
         # print("output: ", output)
         # print("hyp!!: ", hypotheses)
 
         if not hypotheses:
             self.rl_agent.update_mode_dec("counter_strategy_found")
-            # return None
             return spec
 
-        # if not hypotheses:
-        #     print("NO HYPO")
-        #     for key in self.rl_agent.mode_dec.keys():  #
-        #         self.rl_agent.fails[key] += 1  #
-        #     result = self.rl_agent.update_mode_dec("counter_strategy_found")  #
-        #     if result in ["max", "converged"]:
-        #         return None
-
-        # hypothesis = self.select_best_hypothesis(hypotheses)
         hypothesis = self.rl_agent.select_action(hypotheses)
-        # hypothesis = self.select_learning_hypothesis(hypotheses)
-        # print("BESSTTTT", hypothesis)
-
-        ##no need?
-        # if hypothesis is None:
-        #     print("No BEST hyp2")
-        #     # for k in self.rl_agent.mode_dec.keys():
-        #     #     self.rl_agent.fails[k] += 1
-        #     self.rl_agent.update_mode_dec("counter_strategy_found")  #
-        #     # if result in ["max", "converged"]:
-        #     #     return None
-        #     return None
 
         new_spec = self.spec_encoder.integrate_learned_hypotheses(
             spec, hypothesis, learning_type
         )
-        # print("NEW")
-        # print(new_spec)
         return new_spec
-
-    # except NoWeakeningException as e:  ##
-    #     print(str(e))
-    #     self.rl_agent.update_mode_dec("counter_strategy_found")
-
+    
+    #gets best hypo
     def select_best_hypothesis(self, hypotheses):
         best_hyp = None
         best_score = float("inf")
@@ -130,6 +83,7 @@ class SpecLearner:
                     best_hyp = hyp
         return best_hyp
 
+    # gets hypo score
     def extract(self, hyp):
         match = re.search(r"score (\d+)", hyp[0])
         if match:
@@ -156,7 +110,7 @@ class SpecLearner:
         # return learning_hyp
         return top_hyp
 
-
+#gets hypo
 def get_hypotheses(output: str) -> Optional[List[List[str]]]:
     # if re.search("UNSATISFIABLE", "".join(output)):
     if "UNSATISFIABLE" in output:
@@ -184,20 +138,10 @@ def get_hypotheses(output: str) -> Optional[List[List[str]]]:
             lines = s.strip().split("\n")
             if lines:
                 hypotheses.append([l.strip() for l in lines if l.strip()])
-            # part.split("\n") for part in "".join(output).split("%% Solution ")
-            # part.split("\n")
-            # for part in output.split("%% Solution ") ]
-    ##
-    # hypotheses = [[line for line in hyp if line.strip()] for hyp in hypotheses]
-    ##return hypotheses
-    # print("hypooo:", hypotheses)
-    # return [hyp for hyp in hypotheses if hyp]
     clean = []
     for hyp in hypotheses:
         c = [line for line in hyp if "score" not in line and "%" not in line]
         if c:
             clean.append(c)
 
-    # print("clean", clean)
-    # return [hyp for hyp in hypotheses if hyp] if isinstance(hypotheses, list) else []
     return clean if clean else []
