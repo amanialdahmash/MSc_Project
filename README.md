@@ -1,3 +1,5 @@
+This repository contains the code for my Meta-Learning for Specification Degradation in Reactive Systems project. It builds upon the work of "SpecRepair", which is available here: https://github.com/TibiIC/SpecRepair/tree/main
+
 <<<<<<< HEAD
 This repository contains code for weakening GR(1) specifications via Inductive Logic Programming.
 The code utilises Python 3.10.11 and the old functionality lies in the file old_experiments.py
